@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>front-matter编写教程</title>
+    <url>/2023/03/02/tutorials/front-matter%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h3 id="front-matter编写教程"><a href="#front-matter编写教程" class="headerlink" title="front-matter编写教程"></a>front-matter编写教程</h3><blockquote>
+<p>参考：<a href="https://blog.csdn.net/weixin_42252518/article/details/99550466">(98条消息) front-matter使用详解_front matter_略略略～的博客-CSDN博客</a></p>
+</blockquote>
+<p>编写实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World # 标题</span><br><span class="line">date: 2019/3/26 hh:mm:ss # 时间</span><br><span class="line">type: tags		# 帮助脚本识别这是一个用来创建tags的文档</span><br><span class="line">layout: tag 	# 我的tags模版标签叫tag你可以根据你的模版名称输入对应的名称</span><br><span class="line">categories: # 分类（严格的顺序结构）</span><br><span class="line">- first		# 第一级</span><br><span class="line">- second	# 第二级</span><br><span class="line">- third		# 第三级</span><br><span class="line">- fourth	# 第四级</span><br><span class="line">- ……</span><br><span class="line">tags: # 标签（多个标签均为并列关系，不存在父子关系）</span><br><span class="line">- math</span><br><span class="line">- games</span><br><span class="line">- physics</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="front-matter包含的内容"><a href="#front-matter包含的内容" class="headerlink" title="front-matter包含的内容"></a>front-matter包含的内容</h3><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302004708972.png" alt="参数list"></p>
+]]></content>
+      <categories>
+        <category>教程</category>
+      </categories>
+      <tags>
+        <tag>博客搭建</tag>
+        <tag>front-matter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第一章（多媒体技术与应用）</title>
+    <url>/2023/03/02/junior/course/multi-media-tech/%E7%AC%AC%E4%B8%80%E7%AB%A0/</url>
+    <content><![CDATA[<h1 id="多媒体技术与应用"><a href="#多媒体技术与应用" class="headerlink" title="多媒体技术与应用"></a>多媒体技术与应用</h1>]]></content>
+      <categories>
+        <category>大学</category>
+        <category>大三</category>
+        <category>多媒体技术与应用</category>
+      </categories>
+      <tags>
+        <tag>课堂笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人旅行</title>
+    <url>/2023/03/02/Personal%20life/travel/</url>
+    <content><![CDATA[<h2 id="个人旅行"><a href="#个人旅行" class="headerlink" title="个人旅行"></a>个人旅行</h2><p><strong>《秋浦歌》</strong></p>
+<p>唐·李白</p>
+<p>逻人横鸟道，江祖出鱼梁。</p>
+<p>水急客舟疾，山花拂面香。</p>
+]]></content>
+      <categories>
+        <category>个人</category>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>旅行</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>My New Post</title>
     <url>/2023/03/01/test/My-New-Post/</url>
     <content><![CDATA[<h2 id="这是一个测试！！！"><a href="#这是一个测试！！！" class="headerlink" title="这是一个测试！！！"></a>这是一个测试！！！</h2>]]></content>
@@ -90,55 +140,5 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>个人旅行</title>
-    <url>/2023/03/02/Personal%20life/travel/</url>
-    <content><![CDATA[<h2 id="个人旅行"><a href="#个人旅行" class="headerlink" title="个人旅行"></a>个人旅行</h2><p><strong>《秋浦歌》</strong></p>
-<p>唐·李白</p>
-<p>逻人横鸟道，江祖出鱼梁。</p>
-<p>水急客舟疾，山花拂面香。</p>
-]]></content>
-      <categories>
-        <category>个人</category>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>旅行</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第一章（多媒体技术与应用）</title>
-    <url>/2023/03/02/junior/course/multi-media-tech/%E7%AC%AC%E4%B8%80%E7%AB%A0/</url>
-    <content><![CDATA[<h1 id="多媒体技术与应用"><a href="#多媒体技术与应用" class="headerlink" title="多媒体技术与应用"></a>多媒体技术与应用</h1>]]></content>
-      <categories>
-        <category>大学</category>
-        <category>大三</category>
-        <category>多媒体技术与应用</category>
-      </categories>
-      <tags>
-        <tag>课堂笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>front-matter编写教程</title>
-    <url>/2023/03/02/tutorials/front-matter%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h3 id="front-matter编写教程"><a href="#front-matter编写教程" class="headerlink" title="front-matter编写教程"></a>front-matter编写教程</h3><blockquote>
-<p>参考：<a href="https://blog.csdn.net/weixin_42252518/article/details/99550466">(98条消息) front-matter使用详解_front matter_略略略～的博客-CSDN博客</a></p>
-</blockquote>
-<p>编写实例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World # 标题</span><br><span class="line">date: 2019/3/26 hh:mm:ss # 时间</span><br><span class="line">type: tags		# 帮助脚本识别这是一个用来创建tags的文档</span><br><span class="line">layout: tag 	# 我的tags模版标签叫tag你可以根据你的模版名称输入对应的名称</span><br><span class="line">categories: # 分类（严格的顺序结构）</span><br><span class="line">- first		# 第一级</span><br><span class="line">- second	# 第二级</span><br><span class="line">- third		# 第三级</span><br><span class="line">- fourth	# 第四级</span><br><span class="line">- ……</span><br><span class="line">tags: # 标签（多个标签均为并列关系，不存在父子关系）</span><br><span class="line">- math</span><br><span class="line">- games</span><br><span class="line">- physics</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="front-matter包含的内容"><a href="#front-matter包含的内容" class="headerlink" title="front-matter包含的内容"></a>front-matter包含的内容</h3><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302004708972.png" alt="参数list"></p>
-]]></content>
-      <categories>
-        <category>教程</category>
-      </categories>
-      <tags>
-        <tag>博客搭建</tag>
-        <tag>front-matter</tag>
-      </tags>
   </entry>
 </search>
