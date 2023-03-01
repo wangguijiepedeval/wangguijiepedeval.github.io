@@ -18,8 +18,8 @@
   
   <entry>
     <title>个人旅行</title>
-    <link href="http://example.com/2023/03/02/travel/"/>
-    <id>http://example.com/2023/03/02/travel/</id>
+    <link href="http://example.com/2023/03/02/Personal%20life/travel/"/>
+    <id>http://example.com/2023/03/02/Personal%20life/travel/</id>
     <published>2023-03-01T16:10:53.056Z</published>
     <updated>2023-03-01T16:13:53.065Z</updated>
     
@@ -43,8 +43,8 @@
   
   <entry>
     <title>My New Post</title>
-    <link href="http://example.com/2023/03/01/My-New-Post/"/>
-    <id>http://example.com/2023/03/01/My-New-Post/</id>
+    <link href="http://example.com/2023/03/01/test/My-New-Post/"/>
+    <id>http://example.com/2023/03/01/test/My-New-Post/</id>
     <published>2023-03-01T14:49:41.000Z</published>
     <updated>2023-03-01T14:50:15.321Z</updated>
     
@@ -64,8 +64,8 @@
   
   <entry>
     <title>个人博客搭建流程</title>
-    <link href="http://example.com/2023/03/01/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-    <id>http://example.com/2023/03/01/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</id>
+    <link href="http://example.com/2023/03/01/tutorials/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    <id>http://example.com/2023/03/01/tutorials/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</id>
     <published>2023-03-01T14:40:03.375Z</published>
     <updated>2023-03-01T15:59:56.979Z</updated>
     
@@ -92,8 +92,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2023/03/01/hello-world/"/>
-    <id>http://example.com/2023/03/01/hello-world/</id>
+    <link href="http://example.com/2023/03/01/test/hello-world/"/>
+    <id>http://example.com/2023/03/01/test/hello-world/</id>
     <published>2023-03-01T13:58:35.983Z</published>
     <updated>2023-03-01T13:58:35.983Z</updated>
     
