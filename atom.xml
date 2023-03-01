@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-03-01T16:13:53.065Z</updated>
+  <updated>2023-03-01T16:47:19.272Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,67 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>front-matter编写教程</title>
+    <link href="http://example.com/2023/03/02/tutorials/front-matter%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/"/>
+    <id>http://example.com/2023/03/02/tutorials/front-matter%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/</id>
+    <published>2023-03-01T16:38:36.841Z</published>
+    <updated>2023-03-01T16:47:19.272Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;front-matter编写教程&quot;&gt;&lt;a href=&quot;#front-matter编写教程&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="教程" scheme="http://example.com/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="博客搭建" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+    <category term="front-matter" scheme="http://example.com/tags/front-matter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一章（多媒体技术与应用）</title>
+    <link href="http://example.com/2023/03/02/junior/course/multi-media-tech/%E7%AC%AC%E4%B8%80%E7%AB%A0/"/>
+    <id>http://example.com/2023/03/02/junior/course/multi-media-tech/%E7%AC%AC%E4%B8%80%E7%AB%A0/</id>
+    <published>2023-03-01T16:37:19.099Z</published>
+    <updated>2023-03-01T16:35:45.980Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;多媒体技术与应用&quot;&gt;&lt;a href=&quot;#多媒体技术与应用&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="大学" scheme="http://example.com/categories/%E5%A4%A7%E5%AD%A6/"/>
+    
+    <category term="大三" scheme="http://example.com/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/"/>
+    
+    <category term="多媒体技术与应用" scheme="http://example.com/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/"/>
+    
+    
+    <category term="课堂笔记" scheme="http://example.com/tags/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>个人旅行</title>
     <link href="http://example.com/2023/03/02/Personal%20life/travel/"/>
     <id>http://example.com/2023/03/02/Personal%20life/travel/</id>
     <published>2023-03-01T16:10:53.056Z</published>
-    <updated>2023-03-01T16:13:53.065Z</updated>
+    <updated>2023-03-01T16:37:42.951Z</updated>
     
     
       
@@ -34,7 +90,9 @@
     
     
     
-    <category term="生活" scheme="http://example.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="个人" scheme="http://example.com/categories/%E4%B8%AA%E4%BA%BA/"/>
+    
+    <category term="生活" scheme="http://example.com/categories/%E4%B8%AA%E4%BA%BA/%E7%94%9F%E6%B4%BB/"/>
     
     
     <category term="旅行" scheme="http://example.com/tags/%E6%97%85%E8%A1%8C/"/>
@@ -67,7 +125,7 @@
     <link href="http://example.com/2023/03/01/tutorials/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     <id>http://example.com/2023/03/01/tutorials/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</id>
     <published>2023-03-01T14:40:03.375Z</published>
-    <updated>2023-03-01T15:59:56.979Z</updated>
+    <updated>2023-03-01T16:53:19.136Z</updated>
     
     
       
