@@ -97,4 +97,19 @@ npm config get registry
         <tag>hexo</tag>
       </tags>
   </entry>
+  <entry>
+    <title>个人旅行</title>
+    <url>/2023/03/02/travel/</url>
+    <content><![CDATA[<h2 id="个人旅行"><a href="#个人旅行" class="headerlink" title="个人旅行"></a>个人旅行</h2><p><strong>《秋浦歌》</strong></p>
+<p>唐·李白</p>
+<p>逻人横鸟道，江祖出鱼梁。</p>
+<p>水急客舟疾，山花拂面香。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>旅行</tag>
+      </tags>
+  </entry>
 </search>
