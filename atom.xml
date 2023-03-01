@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Wgj&#39;s Block</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2023-03-01T14:50:15.321Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>Wangguijie</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>My New Post</title>
+    <link href="http://example.com/2023/03/01/My-New-Post/"/>
+    <id>http://example.com/2023/03/01/My-New-Post/</id>
+    <published>2023-03-01T14:49:41.000Z</published>
+    <updated>2023-03-01T14:50:15.321Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;这是一个测试！！！&quot;&gt;&lt;a href=&quot;#这是一个测试！！！&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>个人博客搭建流程</title>
+    <link href="http://example.com/2023/03/01/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    <id>http://example.com/2023/03/01/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</id>
+    <published>2023-03-01T14:40:03.375Z</published>
+    <updated>2023-03-01T15:59:56.979Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;个人博客搭建&quot;&gt;&lt;a href=&quot;#个人博客搭建&quot; class=&quot;headerlink&quot; title=&quot;个人博客搭建&quot;&gt;&lt;/a&gt;个人博客搭建&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;博客地址：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="教程" scheme="http://example.com/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="博客搭建" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+    <category term="hexo" scheme="http://example.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2023/03/01/hello-world/"/>
+    <id>http://example.com/2023/03/01/hello-world/</id>
+    <published>2023-03-01T13:58:35.983Z</published>
+    <updated>2023-03-01T13:58:35.983Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
