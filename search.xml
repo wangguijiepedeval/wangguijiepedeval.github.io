@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CCF-CSP模拟考笔记</title>
+    <url>/2023/03/02/junior/competition/CCF-CSP/CCF-CSP%E6%A8%A1%E6%8B%9F%E8%80%83%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="CCF-CSP模拟考笔记"><a href="#CCF-CSP模拟考笔记" class="headerlink" title="CCF-CSP模拟考笔记"></a>CCF-CSP模拟考笔记</h1><h4 id="202212-1、现值计算"><a href="#202212-1、现值计算" class="headerlink" title="202212-1、现值计算"></a>202212-1、现值计算</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302165411891.png" alt="问题描述"></p>
+<blockquote>
+<p>根据题意有两种集散方式，其中根据题中的最后一句话“<u>将所有款项转换为当前价值后</u>”，因此我们需要利用后面的计算第K年的x元的当前价值的$x*(1+i)^{-k}$计算公式来求解。（依次将每一年的金额转换为当前价值的金额）</p>
+</blockquote>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">double</span> i;</span><br><span class="line"><span class="type">int</span> q[N];</span><br><span class="line"><span class="type">double</span> result;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j &lt;= n;j++)&#123;</span><br><span class="line">        cin &gt;&gt; q[j];</span><br><span class="line">        result+=q[j]*<span class="built_in">pow</span>(<span class="number">1</span>+i,-j);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.3f&quot;</span>,result)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">double</span> i;</span><br><span class="line"><span class="type">int</span> q[N];</span><br><span class="line"><span class="type">double</span> all;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= n; j++) &#123;</span><br><span class="line">        cin &gt;&gt; q[j];</span><br><span class="line">        all += q[j] * <span class="built_in">pow</span>(<span class="number">1</span> + i, -j);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.3f&quot;</span>, all);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>竞赛</category>
+        <category>CCF-CSP认证</category>
+      </categories>
+      <tags>
+        <tag>CCF-CSP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第三章（数字音频编码）</title>
     <url>/2023/03/02/junior/course/multi-media-tech/%E7%AC%AC%E4%B8%89%E7%AB%A0/</url>
     <content><![CDATA[<h1 id="数字音频编码"><a href="#数字音频编码" class="headerlink" title="数字音频编码"></a>数字音频编码</h1><p>声卡的作用：将数字信号与模拟信号进行相互转换。</p>
@@ -255,6 +272,9 @@
 <blockquote>
 <p>参考：<a href="https://blog.csdn.net/u012724595/article/details/114740935">(98条消息) windows下git bash安装与环境变量设置_git bash 环境变量_sning999的博客-CSDN博客</a></p>
 </blockquote>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>编写md文件时注意不要在代码块前设置排序，否则部署上去后会无法识别</li>
+</ol>
 ]]></content>
       <categories>
         <category>教程</category>
