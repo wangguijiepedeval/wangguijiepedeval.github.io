@@ -85,7 +85,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">96</span>
+            <span class="post-count">594</span>
         </span>
     </span>
 
@@ -94,7 +94,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -111,9 +111,49 @@
        
   <h1 id="数字音频编码"><a href="#数字音频编码" class="headerlink" title="数字音频编码"></a>数字音频编码</h1><p>声卡的作用：将数字信号与模拟信号进行相互转换。</p>
 <p>数模转换器（DAC）：将数字信号转换为模拟信号。</p>
-<p>模数转换（AD）：将模拟信号转换为数字信号。</p>
+<p>模数转换（ADC）：将模拟信号转换为数字信号。</p>
 <p>Audio Codec（数&#x2F;模转换器）：数字信号与模拟信号的转换。</p>
 <p>软波表（可以刷新）与波表（不可刷新）</p>
+<h4 id="模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。"><a href="#模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。" class="headerlink" title="模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。"></a>模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。</h4><h5 id="模拟音频数字化的三个步骤：采样、量化、编码。"><a href="#模拟音频数字化的三个步骤：采样、量化、编码。" class="headerlink" title="模拟音频数字化的三个步骤：采样、量化、编码。"></a><u>模拟音频数字化</u>的三个步骤：采样、量化、编码。</h5><h3 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h3><blockquote>
+<p>采样：是指以一定的频率（或周期）捕获模拟音频信号，从而得到一系列离散化音频样本的过程。</p>
+<p>采样频率：单位时间内捕获的样本个数称为<u><strong>采样频率</strong></u>（Sampling Rate）</p>
+<p>**<u>采样频率</u>**大于模拟信号频带F的两倍</p>
+</blockquote>
+<h3 id="量化"><a href="#量化" class="headerlink" title="量化"></a>量化</h3><blockquote>
+<p>量化：是指用若干比特表示一个样本的过程；</p>
+<p>量化深度：表示一个样本所使用的比特数称为量化深度（bit depth）。</p>
+</blockquote>
+<p><u><strong>量化间隔</strong>（量化阶跃）：幅值平均划分之后的每一份平均幅值就是量化间隔。</u></p>
+<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><blockquote>
+<p>编码实际上是以某种格式最终生成数字音频数据流的过程</p>
+</blockquote>
+<p>音频编码：将<u>模拟信号转换为数字信号</u>并以某种格式存储的技术或过程。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302112947670.png" alt="实例"></p>
+<blockquote>
+<p>经过采样的时间离散之后波上有根据时间点均匀划分的值（点），再经过量化的空间离散之后将整个模拟信号根据振幅进行均匀划分（如量化深度为3，则将振幅划分为8份，也就是8个值），最后根据模拟信号上的点与量化划分线之间的远近进行近似拟合，因此可以近似为3、5、5、2、4、6、7等具体数值，然后转化为二进制形式即可（011、101、101、……）。</p>
+</blockquote>
+<h3 id="脉冲编码调制（PCM）"><a href="#脉冲编码调制（PCM）" class="headerlink" title="脉冲编码调制（PCM）"></a>脉冲编码调制（PCM）</h3><p>在各种音频编码技术中，&#x3D;&#x3D;脉冲编码调制&#x3D;&#x3D;（Pulse Code Modulation，PCM）是<u>最重要、最完善</u>的编码系统，应用范围最广。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302113605304.png" alt="PCM编码框图"></p>
+<p><span style="color: red;">脉冲编码调制（Pulse Code Modulation，PCM）</span>的两种量化方式：</p>
+<ol>
+<li>均匀量化（线性量化）</li>
+<li>非均匀量化（非线性量化）<ul>
+<li>13折线（不做要求）</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>均匀量化</th>
+<th>非均匀量化</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302113938730.png" alt="均匀量化"></td>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302113958688.png" alt="非均匀量化"></td>
+</tr>
+</tbody></table>
  
       <!-- reward -->
       
