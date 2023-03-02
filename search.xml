@@ -1,6 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>第三章（数字音频编码）</title>
+    <url>/2023/03/02/junior/course/multi-media-tech/%E7%AC%AC%E4%B8%89%E7%AB%A0/</url>
+    <content><![CDATA[<h1 id="数字音频编码"><a href="#数字音频编码" class="headerlink" title="数字音频编码"></a>数字音频编码</h1><p>声卡的作用：将数字信号与模拟信号进行相互转换。</p>
+<p>数模转换器（DAC）：将数字信号转换为模拟信号。</p>
+<p>模数转换（AD）：将模拟信号转换为数字信号。</p>
+<p>Audio Codec（数&#x2F;模转换器）：数字信号与模拟信号的转换。</p>
+<p>软波表（可以刷新）与波表（不可刷新）</p>
+]]></content>
+      <categories>
+        <category>大学</category>
+        <category>大三</category>
+        <category>多媒体技术与应用</category>
+      </categories>
+      <tags>
+        <tag>课堂笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第二章（编程环境与平台）</title>
+    <url>/2023/03/02/junior/course/multi-media-tech/%E7%AC%AC%E4%BA%8C%E7%AB%A0/</url>
+    <content><![CDATA[<h1 id="编程环境与平台"><a href="#编程环境与平台" class="headerlink" title="编程环境与平台"></a>编程环境与平台</h1><h3 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h3><p>数据流： 数据流是同一类型的媒体数据的一种序列。</p>
+<h3 id="媒体容器"><a href="#媒体容器" class="headerlink" title="媒体容器"></a>媒体容器</h3><p>媒体容器（相当于&#x3D;&#x3D;文件&#x3D;&#x3D;）：</p>
+<ol>
+<li>文件头部：描述流的个数，以及每一个流的格式等。 </li>
+<li>索引：用于随机存取内容。 </li>
+<li>元数据：即数据的数据，也就是用于描述内容的数据（例如作者或标题）。 </li>
+<li>数据包头部：用于网络传输或随机存取Media Foundation使用术语“容器”来描述<u><strong>数据流、头部、索引、元数据</strong></u>等等的整个包。</li>
+</ol>
+<p>Windows程序的核心是&#x3D;&#x3D;事件驱&#x3D;&#x3D;动和&#x3D;&#x3D;消息循环机制&#x3D;&#x3D;以及回调机制（<strong>窗口过程</strong>是典型的回调函数）</p>
+<h3 id="Media-Foundation架构"><a href="#Media-Foundation架构" class="headerlink" title="Media Foundation架构"></a>Media Foundation架构</h3><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302102456749.png" alt="Media Foundation架构"></p>
+<blockquote>
+<p>Media Session并不直接管理媒体数据，而是要借助&#x3D;&#x3D;Topology&#x3D;&#x3D;</p>
+<p>Topology也是一个Media Foundation对象，用于表示媒体管道中的数据如何流动。</p>
+<p>在Topology中，数据流所经过的处理模块称为&#x3D;&#x3D;节点(Node）&#x3D;&#x3D;，如<em><strong>媒体源、转换器、输出节点</strong></em>。</p>
+</blockquote>
+<p>数据管道模式：</p>
+<ul>
+<li>通过Media Session控制其他组件</li>
+<li>Media Source、MFT、Media Sink</li>
+<li>MFT通常由MF平台自动处理</li>
+<li>应用不能直接处理数据</li>
+</ul>
+<p>数据源模式：</p>
+<ul>
+<li>Source Reader、Sink Writer控制数据</li>
+<li>程序处理MFT(Encoder&#x2F;Decoder)</li>
+<li>应用可以直接处理数据</li>
+</ul>
+<h3 id="媒体信道"><a href="#媒体信道" class="headerlink" title="媒体信道"></a>媒体信道</h3><p>媒体信道<strong>包括三种类型的对象，以生成或处理媒体数据。</strong></p>
+<ul>
+<li>媒体源（Media Source）：将数据引入管道。一个媒体源可以从本地文件中获取数据，如以一个视频文件；也可以从网络流或是硬件捕获设备中获取数据。</li>
+<li>Media Foundation变换（MFTs）：在数据流中处理数据，编码器和译码器是作为MFT的实现。</li>
+<li>媒体信宿（Media Sink）：使用数据；例如在显示屏上播放视频、播放音频、或是把数据写入一个媒体文件等。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>大学</category>
+        <category>大三</category>
+        <category>多媒体技术与应用</category>
+      </categories>
+      <tags>
+        <tag>课堂笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>front-matter编写教程</title>
     <url>/2023/03/02/tutorials/front-matter%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h3 id="front-matter编写教程"><a href="#front-matter编写教程" class="headerlink" title="front-matter编写教程"></a>front-matter编写教程</h3><blockquote>
@@ -22,9 +87,25 @@
       </tags>
   </entry>
   <entry>
-    <title>第一章（多媒体技术与应用）</title>
+    <title>第一章（多媒体技术概述）</title>
     <url>/2023/03/02/junior/course/multi-media-tech/%E7%AC%AC%E4%B8%80%E7%AB%A0/</url>
-    <content><![CDATA[<h1 id="多媒体技术与应用"><a href="#多媒体技术与应用" class="headerlink" title="多媒体技术与应用"></a>多媒体技术与应用</h1>]]></content>
+    <content><![CDATA[<h1 id="多媒体技术概述"><a href="#多媒体技术概述" class="headerlink" title="多媒体技术概述"></a>多媒体技术概述</h1><p><span style="color: red;">媒体分类</span>：</p>
+<ol>
+<li>感觉媒体<ul>
+<li>图像、视频</li>
+</ul>
+</li>
+<li>表示媒体</li>
+<li>表现媒体</li>
+<li>存储媒体</li>
+<li>传输媒体</li>
+</ol>
+<blockquote>
+<p>代表：多媒体游戏、3D电影、网络视频、VR等</p>
+</blockquote>
+<p><strong>多媒体（技术）</strong>：指融合了两种以上感觉媒体的协同应用系统和技术，以帮助人们获得更丰富的应用体验</p>
+<p><strong>多媒体技术的特征：</strong>媒体类型和媒体技术的多样性、媒体内容的同步性和媒体应用的交互性</p>
+]]></content>
       <categories>
         <category>大学</category>
         <category>大三</category>
