@@ -650,19 +650,22 @@
 <li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301214142053.png" alt="image-20230301214142053"></li>
 </ul>
 <p>直接设置npm的config文件：</p>
-<ul>
-<li><p>&#96;&#96;&#96;</p>
-<h1 id="设置默认global安装的目录"><a href="#设置默认global安装的目录" class="headerlink" title="设置默认global安装的目录"></a>设置默认global安装的目录</h1><p>npm config set prefix “C:\D\downLoad\node\node_global”   </p>
-<h1 id="设置默认的cache文件目录"><a href="#设置默认的cache文件目录" class="headerlink" title="设置默认的cache文件目录"></a>设置默认的cache文件目录</h1><p>npm config set cache “C:\D\downLoad\node\node_cache”</p>
-<h1 id="PS：新安装的nodejs最好设置以上两个默认路径，否则会默认安装到C盘下"><a href="#PS：新安装的nodejs最好设置以上两个默认路径，否则会默认安装到C盘下" class="headerlink" title="PS：新安装的nodejs最好设置以上两个默认路径，否则会默认安装到C盘下"></a>PS：新安装的nodejs最好设置以上两个默认路径，否则会默认安装到C盘下</h1><h1 id="设置镜像"><a href="#设置镜像" class="headerlink" title="设置镜像"></a>设置镜像</h1><p>npm config set registry <a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a></p>
-<h1 id="查看当前使用的镜像地址命令"><a href="#查看当前使用的镜像地址命令" class="headerlink" title="查看当前使用的镜像地址命令"></a>查看当前使用的镜像地址命令</h1><p>npm config get registry</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### front-matter使用教程</span><br><span class="line"></span><br><span class="line">网络参考：[(98条消息) front-matter使用详解_front matter_略略略～的博客-CSDN博客](https://blog.csdn.net/weixin_42252518/article/details/99550466)</span><br><span class="line"></span><br><span class="line">## Hexo</span><br><span class="line"></span><br><span class="line">### 1、常用命令</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>hexo new “name”       # 新建文章<br>hexo new page “name”  # 新建页面<br>hexo g                # 生成页面<br>hexo d                # 部署<br>hexo g -d             # 生成页面并部署<br>hexo s                # 本地预览<br>hexo clean            # 清除缓存和已生成的静态文件<br>hexo help             # 帮助</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置默认global安装的目录</span></span><br><span class="line">npm config set prefix &quot;C:\D\downLoad\node\node_global&quot;   </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置默认的cache文件目录</span></span><br><span class="line">npm config set cache &quot;C:\D\downLoad\node\node_cache&quot;</span><br><span class="line">              </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">PS：新安装的nodejs最好设置以上两个默认路径，否则会默认安装到C盘下</span></span><br><span class="line">              </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置镜像</span></span><br><span class="line">npm config set registry https://registry.npm.taobao.org</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看当前使用的镜像地址命令</span></span><br><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>
+
+
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 2、日常推送</span><br><span class="line"></span><br><span class="line">写好文章之后执行如下命令：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>hexo g                # 生成页面<br>hexo d                # 部署</p>
-<p>&#96;&#96;&#96;</p>
+<h3 id="front-matter使用教程"><a href="#front-matter使用教程" class="headerlink" title="front-matter使用教程"></a>front-matter使用教程</h3><blockquote>
+<p>网络参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42252518/article/details/99550466">(98条消息) front-matter使用详解_front matter_略略略～的博客-CSDN博客</a></p>
+</blockquote>
+<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="1、常用命令"><a href="#1、常用命令" class="headerlink" title="1、常用命令"></a>1、常用命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;name&quot;       # 新建文章</span><br><span class="line">hexo new page &quot;name&quot;  # 新建页面</span><br><span class="line">hexo g                # 生成页面</span><br><span class="line">hexo d                # 部署</span><br><span class="line">hexo g -d             # 生成页面并部署</span><br><span class="line">hexo s                # 本地预览</span><br><span class="line">hexo clean            # 清除缓存和已生成的静态文件</span><br><span class="line">hexo help             # 帮助</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、日常推送"><a href="#2、日常推送" class="headerlink" title="2、日常推送"></a>2、日常推送</h3><p>写好文章之后执行如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g                # 生成页面</span><br><span class="line">hexo d                # 部署</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h4 id="1、关于Git-Bash无法打开的错误（闪退）"><a href="#1、关于Git-Bash无法打开的错误（闪退）" class="headerlink" title="1、关于Git Bash无法打开的错误（闪退）"></a>1、关于Git Bash无法打开的错误（闪退）</h4><p>解决：</p>
 <ol>
 <li>配置环境变量：<code>C:\Program Files\Git\bin</code></li>
