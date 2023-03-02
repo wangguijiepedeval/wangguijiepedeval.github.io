@@ -3,7 +3,10 @@
   <entry>
     <title>CCF-CSP模拟考笔记</title>
     <url>/2023/03/02/junior/competition/CCF-CSP/CCF-CSP%E6%A8%A1%E6%8B%9F%E8%80%83%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="CCF-CSP模拟考笔记"><a href="#CCF-CSP模拟考笔记" class="headerlink" title="CCF-CSP模拟考笔记"></a>CCF-CSP模拟考笔记</h1><h4 id="202212-1、现值计算"><a href="#202212-1、现值计算" class="headerlink" title="202212-1、现值计算"></a>202212-1、现值计算</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302165411891.png" alt="问题描述"></p>
+    <content><![CDATA[<h1 id="CCF-CSP模拟考笔记"><a href="#CCF-CSP模拟考笔记" class="headerlink" title="CCF-CSP模拟考笔记"></a>CCF-CSP模拟考笔记</h1><blockquote>
+<p>参考：<a href="https://blog.csdn.net/weixin_53919192/article/details/124893395">(98条消息) CCF-CSP历年真题大全附题解(202212已更)_csp真题_Hulake_的博客-CSDN博客</a></p>
+</blockquote>
+<h4 id="202212-1、现值计算"><a href="#202212-1、现值计算" class="headerlink" title="202212-1、现值计算"></a>202212-1、现值计算</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302165411891.png" alt="问题描述"></p>
 <blockquote>
 <p>根据题意有两种集散方式，其中根据题中的最后一句话“<u>将所有款项转换为当前价值后</u>”，因此我们需要利用后面的计算第K年的x元的当前价值的$x*(1+i)^{-k}$计算公式来求解。（依次将每一年的金额转换为当前价值的金额）</p>
 </blockquote>
