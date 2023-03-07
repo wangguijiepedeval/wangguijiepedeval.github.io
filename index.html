@@ -150,7 +150,7 @@
     
     
     <article
-  id="post-junior/competition/CCF-CSP/CCF-CSP模拟考笔记"
+  id="post-junior/competition/CCF-CSP/CCF-CSP模拟考第一题笔记"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -161,7 +161,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2023/03/02/junior/competition/CCF-CSP/CCF-CSP%E6%A8%A1%E6%8B%9F%E8%80%83%E7%AC%94%E8%AE%B0/"
+  <a class="article-title" href="/2023/03/08/junior/competition/CCF-CSP/CCF-CSP%E6%A8%A1%E6%8B%9F%E8%80%83%E7%AC%AC%E4%B8%80%E9%A2%98%E7%AC%94%E8%AE%B0/"
     >CCF-CSP模拟考笔记</a> 
 </h2>
  
@@ -170,26 +170,119 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/03/02/junior/competition/CCF-CSP/CCF-CSP%E6%A8%A1%E6%8B%9F%E8%80%83%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2023-03-02T09:33:59.148Z" itemprop="datePublished">2023-03-02</time>
+      <a href="/2023/03/08/junior/competition/CCF-CSP/CCF-CSP%E6%A8%A1%E6%8B%9F%E8%80%83%E7%AC%AC%E4%B8%80%E9%A2%98%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2023-03-07T16:37:14.627Z" itemprop="datePublished">2023-03-08</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/CCF-CSP%E8%AE%A4%E8%AF%81/">CCF-CSP认证</a>
+    <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/CCF-CSP%E8%AE%A4%E8%AF%81/">CCF-CSP认证</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/CCF-CSP%E8%AE%A4%E8%AF%81/%E7%AC%AC%E4%B8%80%E9%A2%98/">第一题</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="CCF-CSP模拟考笔记"><a href="#CCF-CSP模拟考笔记" class="headerlink" title="CCF-CSP模拟考笔记"></a>CCF-CSP模拟考笔记</h1><blockquote>
+  <h3 id="编码注意"><a href="#编码注意" class="headerlink" title="编码注意"></a>编码注意</h3><blockquote>
+<p>在使用DevC++时，为了使用万能开头（<code>#include&lt;bits/stdc++.h&gt;</code>），必须在编译选项中加入<code>-std=c++11</code>：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307101026639.png" alt="image-20230307101026639"></p>
+</blockquote>
+<h1 id="CCF-CSP模拟考笔记"><a href="#CCF-CSP模拟考笔记" class="headerlink" title="CCF-CSP模拟考笔记"></a>CCF-CSP模拟考笔记</h1><h5 id="star-特别提醒：编写代码时最好将变量以及数组定义等放在main函数外面"><a href="#star-特别提醒：编写代码时最好将变量以及数组定义等放在main函数外面" class="headerlink" title=":star:特别提醒：编写代码时最好将变量以及数组定义等放在main函数外面"></a>:star:<u><strong><span style="color: red;">特别提醒：</span>编写代码时最好将变量以及数组定义等放在main函数外面</strong></u></h5><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://github.com/richenyunqi/CCF-CSP-and-PAT-solution">richenyunqi&#x2F;CCF-CSP-and-PAT-solution: CCF CSP和PAT考试题解（使用C++14语法） (github.com)</a></p>
+</blockquote>
+<blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_53919192/article/details/124893395">(98条消息) CCF-CSP历年真题大全附题解(202212已更)_csp真题_Hulake_的博客-CSDN博客</a></p>
+<p>官网模拟题：<a target="_blank" rel="noopener" href="http://118.190.20.162/home.page">首页 - 计算机软件能力认证考试系统</a></p>
 </blockquote>
 <h4 id="202212-1、现值计算"><a href="#202212-1、现值计算" class="headerlink" title="202212-1、现值计算"></a>202212-1、现值计算</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302165411891.png" alt="问题描述"></p>
 <blockquote>
 <p>根据题意有两种集散方式，其中根据题中的最后一句话“<u>将所有款项转换为当前价值后</u>”，因此我们需要利用后面的计算第K年的x元的当前价值的$x*(1+i)^{-k}$计算公式来求解。（依次将每一年的金额转换为当前价值的金额）</p>
 </blockquote>
 <p>解决代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">double</span> i;</span><br><span class="line"><span class="type">int</span> q[N];</span><br><span class="line"><span class="type">double</span> result;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j &lt;= n;j++)&#123;</span><br><span class="line">        cin &gt;&gt; q[j];</span><br><span class="line">        result+=q[j]*<span class="built_in">pow</span>(<span class="number">1</span>+i,-j);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.3f&quot;</span>,result)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">double</span> i;</span><br><span class="line"><span class="type">int</span> q[N];</span><br><span class="line"><span class="type">double</span> all;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= n; j++) &#123;</span><br><span class="line">        cin &gt;&gt; q[j];</span><br><span class="line">        all += q[j] * <span class="built_in">pow</span>(<span class="number">1</span> + i, -j);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.3f&quot;</span>, all);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">double</span> i;</span><br><span class="line"><span class="type">int</span> q[N];</span><br><span class="line"><span class="type">double</span> result;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j &lt;= n;j++)&#123;</span><br><span class="line">        cin &gt;&gt; q[j];</span><br><span class="line">        result+=q[j]*<span class="built_in">pow</span>(<span class="number">1</span>+i,-j);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.3f&quot;</span>,result)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//网上100分参考代码</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">double</span> i;</span><br><span class="line"><span class="type">int</span> q[N];</span><br><span class="line"><span class="type">double</span> all;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= n; j++) &#123;</span><br><span class="line">        cin &gt;&gt; q[j];</span><br><span class="line">        all += q[j] * <span class="built_in">pow</span>(<span class="number">1</span> + i, -j);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.3f&quot;</span>, all);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h4 id="202209-1、如此编码"><a href="#202209-1、如此编码" class="headerlink" title="202209-1、如此编码"></a>202209-1、如此编码</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230304210937266.png" alt="题目描述"></p>
+<blockquote>
+<p>由$m % c_j&#x3D;\sum_{i&#x3D;1}^j c_{i-1} \times b_i$可知有$m % c_3 &amp; &#x3D;c_0 \times b_1+c_1 \times b_2+c_2 \times b_3 \$，又因为$c_2&#x3D;a_1<em>a_2$，也就是$c_2&#x3D;c_1</em>a_2$，则可以得到$\frac{m % c_3}{c_2} &amp; &#x3D;\frac{c_0 \times b_1+c_1 \times b_2+c_2 \times b_3 \}{c_2}&#x3D;\frac{c_0 \times b_1+c_1 \times b_2 \}{c_2}+b_3$，同时显然可以知道$\frac{c_0 \times b_1+c_1 \times b_2 \}{c_2}&lt;1$，因此得到以下求$b_i$的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mul=c*a[i];		<span class="comment">//mul就是c[i]，c就是c[i-1]</span></span><br><span class="line">b[i]=<span class="built_in">int</span>((m%mul)/c);</span><br><span class="line">c=mul;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,b[i]);<span class="comment">//输出结果</span></span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一次85分代码如下：</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n,m;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;<span class="built_in">a</span>(n+<span class="number">1</span>,<span class="number">0</span>);<span class="comment">//下标从1开始 </span></span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;<span class="built_in">c</span>(n,<span class="number">0</span>);<span class="comment">//下标从0开始 </span></span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;<span class="built_in">b</span>(n+<span class="number">1</span>,<span class="number">-1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//输入每道题的选项数目 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	c[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> mul;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		mul=c[i<span class="number">-1</span>]*a[i];</span><br><span class="line">		c[i]=mul;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> remainder,quotient ;<span class="comment">//定义余数和商 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;--i)&#123;</span><br><span class="line">		remainder=m%c[i];</span><br><span class="line">		quotient=m/c[i]; </span><br><span class="line">		b[i+<span class="number">1</span>]=quotient;</span><br><span class="line">		m=remainder;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//输出结果</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,b[i]);</span><br><span class="line">	&#125; </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改后100分的代码：</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n,m;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;<span class="built_in">a</span>(n+<span class="number">1</span>,<span class="number">0</span>);<span class="comment">//下标从1开始 </span></span><br><span class="line"><span class="comment">//	vector&lt;int&gt;c(n,0);//下标从0开始 </span></span><br><span class="line">	<span class="type">int</span> c=<span class="number">1</span>;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;<span class="built_in">b</span>(n+<span class="number">1</span>,<span class="number">-1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//输入每道题的选项数目 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> mul;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		mul=c*a[i];</span><br><span class="line">		b[i]=<span class="built_in">int</span>((m%mul)/c);</span><br><span class="line">		c=mul;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,b[i]);<span class="comment">//输出结果</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//网上100分参考代码：</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">21</span>;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> a[N];</span><br><span class="line"><span class="type">int</span> b[N];</span><br><span class="line"><span class="type">int</span> c = <span class="number">1</span>, tc = <span class="number">1</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;n; i++)</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;n; i++) &#123;</span><br><span class="line">        tc = a[i] * c;</span><br><span class="line">        b[i] = <span class="built_in">int</span>((m % tc) / c);</span><br><span class="line">        c = tc;</span><br><span class="line">        cout &lt;&lt; b[i] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="202206-1、归一化处理"><a href="#202206-1、归一化处理" class="headerlink" title="202206-1、归一化处理"></a>202206-1、归一化处理</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230304170401201.png" alt="问题描述"></p>
+<blockquote>
+<p>注意最重要的是误差不能超过$10^{-4}$，其它直接根据公式编写代码即可。</p>
+</blockquote>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//存储整数的数组a要定义为double类型如果定义为int类型会导致最后的输出结果的误差大于了10-4 </span></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">vector&lt;<span class="type">double</span>&gt;<span class="built_in">a</span>(<span class="number">1000</span>,<span class="number">0</span>);</span><br><span class="line"><span class="type">double</span> mean_a;</span><br><span class="line"><span class="type">double</span> D_a;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="type">double</span> mid_sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;a[i];  </span><br><span class="line">		mid_sum+=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	mean_a=mid_sum/n;</span><br><span class="line">	</span><br><span class="line">	<span class="type">double</span> sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;n;++j)&#123;</span><br><span class="line">		sum+=<span class="built_in">pow</span>(a[j]-mean_a,<span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	D_a=<span class="built_in">sqrt</span>(sum/n);</span><br><span class="line">	</span><br><span class="line">	<span class="type">double</span> f;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;n;++k)&#123;</span><br><span class="line">		f=(a[k]-mean_a)/(D_a);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%f\n&quot;</span>,f);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="202203-1、未初始化警告"><a href="#202203-1、未初始化警告" class="headerlink" title="202203-1、未初始化警告"></a>202203-1、未初始化警告</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230305104223205.png" alt="问题描述"></p>
+<blockquote>
+<p>这道题需要注意的是如果输入右值为0的话，则表示的是右值为常数；主要利用map进行hash映射来判断。</p>
+<p><span style="color: red;">PS：map只能初始化大小，不能初始化值 </span></p>
+</blockquote>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span> </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n,k;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">	<span class="type">int</span> key,key1,counts=<span class="number">0</span>;</span><br><span class="line">	unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt;<span class="built_in">hash</span>(n);</span><br><span class="line">	cin&gt;&gt;key&gt;&gt;key1;</span><br><span class="line">	<span class="keyword">if</span>(key1==<span class="number">0</span>)</span><br><span class="line">		hash[key1]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		hash[key1]=<span class="number">-1</span>;	<span class="comment">//未初始化 </span></span><br><span class="line">		counts++;</span><br><span class="line">	&#125;</span><br><span class="line">	hash[key]=<span class="number">1</span>;	<span class="comment">//已初始化 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;k;++i)&#123;</span><br><span class="line">		cin&gt;&gt;key&gt;&gt;key1;</span><br><span class="line">		<span class="keyword">if</span>(key1==<span class="number">0</span>||hash[key1]==<span class="number">1</span>)&#123;<span class="comment">//已初始化 </span></span><br><span class="line">			hash[key1]=<span class="number">1</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;<span class="comment">//未初始化 </span></span><br><span class="line">			hash[key1]=<span class="number">-1</span>;</span><br><span class="line">			counts++;</span><br><span class="line">		&#125;</span><br><span class="line">		hash[key]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,counts);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="202112-1、序列查询"><a href="#202112-1、序列查询" class="headerlink" title="202112-1、序列查询"></a>202112-1、序列查询</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230305111538519.png" alt="问题描述"></p>
+<blockquote>
+<p>采用 lower_bound()查找位置下标，如果A集合中存在与N相等的元素，则直接返回的是与N相等的元素的位置下标；如果A集合中不存在与N相等的元素，则返回的是第一个大于N的元素的位置下标，因此需要根据题意将位置下标-1。</p>
+</blockquote>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n,N;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;N;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;<span class="built_in">A</span>(n+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;A[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> sum=<span class="number">0</span>,f;</span><br><span class="line">	N=N<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(N&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">		f=<span class="built_in">lower_bound</span>(A.<span class="built_in">begin</span>(),A.<span class="built_in">end</span>(),N)-A.<span class="built_in">begin</span>();<span class="comment">//lower_bound返回一个迭代器</span></span><br><span class="line">		<span class="keyword">if</span>(A[f]!=N)f=f<span class="number">-1</span>;	<span class="comment">//注意如果A[f]的值等于N的值则返回的f不减1</span></span><br><span class="line">		sum+=f;</span><br><span class="line">		N=N<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,sum);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="202109-1、数组推导"><a href="#202109-1、数组推导" class="headerlink" title="202109-1、数组推导"></a>202109-1、数组推导</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230305181740827.png" alt="问题描述"></p>
+<blockquote>
+<p>重点是B数组的单调不降性。同时求最小和时连续出现多个相等元素时最小和加上0。</p>
+</blockquote>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n,min_sum=<span class="number">0</span>,max_sum=<span class="number">0</span>;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="type">int</span> max_val,tmp;</span><br><span class="line">	cin&gt;&gt;tmp;<span class="comment">//输入数据为不递减 </span></span><br><span class="line">	max_val=tmp;</span><br><span class="line">	min_sum+=tmp;</span><br><span class="line">	max_sum+=tmp;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;++i)&#123;<span class="comment">//从第二个输入整数开始 </span></span><br><span class="line">		cin&gt;&gt;tmp;</span><br><span class="line">		max_sum+=tmp;<span class="comment">//最大和就是输入序列直接求和 </span></span><br><span class="line">		<span class="keyword">if</span>(tmp!=max_val)&#123;<span class="comment">//最大值发生变化 </span></span><br><span class="line">			max_val=tmp;</span><br><span class="line">			min_sum+=tmp; <span class="comment">//当连续出现多个相等元素时，B中可以存在多个0的情况，因此最小和加上0 </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,max_sum);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,min_sum);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="202104-1、灰度直方图"><a href="#202104-1、灰度直方图" class="headerlink" title="202104-1、灰度直方图"></a>202104-1、灰度直方图</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230305213930289.png" alt="问题描述"></p>
+<blockquote>
+<p>灰度值只能是[0,L)内的整数，本题要求相同灰度值的像素个数，因此可以采用unordered_map求解。</p>
+</blockquote>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n,m,L;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m&gt;&gt;L;</span><br><span class="line">	unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt;<span class="built_in">hash</span>(L);</span><br><span class="line">	<span class="type">int</span> M_A;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n*m;++i)&#123;</span><br><span class="line">		cin&gt;&gt;M_A;</span><br><span class="line">		++hash[M_A];</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;L;++i)&#123;</span><br><span class="line">		cout&lt;&lt;hash[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="202012-1、期末预测之安全指数"><a href="#202012-1、期末预测之安全指数" class="headerlink" title="202012-1、期末预测之安全指数"></a>202012-1、期末预测之安全指数</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307181927537.png" alt="题目描述"></p>
+<blockquote>
+<p><u>这道题很简单！</u>求和，比较即可。</p>
+</blockquote>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n,w,score,x=<span class="number">0</span>;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;w&gt;&gt;score;</span><br><span class="line">		x+=w*score;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;<span class="built_in">max</span>(<span class="number">0</span>,x);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ 
       <!-- reward -->
       
     </div>
@@ -200,6 +293,223 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CCF-CSP/" rel="tag">CCF-CSP</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-junior/competition/CCF-CSP/CCF-CSP模拟考第二题笔记"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/03/08/junior/competition/CCF-CSP/CCF-CSP%E6%A8%A1%E6%8B%9F%E8%80%83%E7%AC%AC%E4%BA%8C%E9%A2%98%E7%AC%94%E8%AE%B0/"
+    >CCF-CSP模拟考笔记</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/03/08/junior/competition/CCF-CSP/CCF-CSP%E6%A8%A1%E6%8B%9F%E8%80%83%E7%AC%AC%E4%BA%8C%E9%A2%98%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2023-03-07T16:37:14.620Z" itemprop="datePublished">2023-03-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/CCF-CSP%E8%AE%A4%E8%AF%81/">CCF-CSP认证</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/CCF-CSP%E8%AE%A4%E8%AF%81/%E7%AC%AC%E4%BA%8C%E9%A2%98/">第二题</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="CCF-CSP模拟考笔记"><a href="#CCF-CSP模拟考笔记" class="headerlink" title="CCF-CSP模拟考笔记"></a>CCF-CSP模拟考笔记</h1><blockquote>
+<p>官网模拟题：<a target="_blank" rel="noopener" href="http://118.190.20.162/home.page">首页 - 计算机软件能力认证考试系统</a></p>
+</blockquote>
+<h4 id="202212-2、训练计划"><a href="#202212-2、训练计划" class="headerlink" title="202212-2、训练计划"></a>202212-2、训练计划</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230306145523303.png" alt="问题描述"></p>
+<blockquote>
+<p>100分参考代码：<a target="_blank" rel="noopener" href="https://blog.csdn.net/futurech/article/details/129170838">(99条消息) CCF CSP202212-2训练计划【100分】详细注释_Brienzz的博客-CSDN博客</a></p>
+<p>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">10 5</span><br><span class="line">0 1 0 2 0</span><br><span class="line">1 2 3 2 10</span><br><span class="line">----------</span><br><span class="line">10 5</span><br><span class="line">0 1 2 3 4</span><br><span class="line">1 2 3 2 1</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 2 1 4 1</span><br><span class="line">6 7 8 9 1</span><br><span class="line">----------</span><br><span class="line">1 2 4 7 9</span><br><span class="line">2 3 5 8 10</span><br></pre></td></tr></table></figure>
+
+<p><span style="color: red;">关键：</span></p>
+<ol>
+<li>正向遍历易求最早开始时间。</li>
+<li>反向遍历要注意找到具有依赖关系的后项post存储值的数学表达式。（<code>post[dependency[i]]=-T[i]+post[i]</code>）</li>
+<li>是否输出最晚开始时间要看求出的最晚开始时间last数组中是否有小于1的值。若有，则不输出；没有，则输出。</li>
+</ol>
+<p><u><em><strong>提醒：</strong></em></u>直接暴力求解最早开始时间就能够得到70分。</p>
+</blockquote>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//网上100分参考代码：</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;climits&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn = <span class="number">365</span>+<span class="number">5</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxm = <span class="number">100</span>+<span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> p[maxm];</span><br><span class="line"><span class="type">int</span> t[maxm];</span><br><span class="line"><span class="type">int</span> early[maxm];</span><br><span class="line"><span class="type">int</span> last[maxm];</span><br><span class="line"><span class="keyword">typedef</span> multimap&lt;<span class="type">int</span>,<span class="type">int</span>&gt;::iterator Iterator;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    multimap&lt;<span class="type">int</span>,<span class="type">int</span>&gt; rel;</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">        cin&gt;&gt;p[i];</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        (p[i],i)表示项目i的依赖项目为p[i],称i是依赖对象,p[i]是被依赖对象</span></span><br><span class="line"><span class="comment">        依赖关系可以用multiset表示 </span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        rel.<span class="built_in">insert</span>(<span class="built_in">make_pair</span>(p[i],i)); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        cin&gt;&gt;t[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">bool</span> flag = <span class="literal">true</span>;<span class="comment">//默认最早开始时间满足n天训练 </span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(p[i]==<span class="number">0</span>)&#123;</span><br><span class="line">            early[i] = <span class="number">1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            early[i] = early[p[i]]+t[p[i]]; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(early[i]+t[i]<span class="number">-1</span>&gt;n) flag = <span class="literal">false</span>;<span class="comment">//最早开始时间不满足n天训练 </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        cout&lt;&lt;early[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">if</span>(flag==<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        由于满足依赖科目编号p[i]小于当前项目i的编号，因此可以从编号大的开始往前计算最晚开始时间 </span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=m;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">            <span class="comment">//找项目i的被依赖对象，如果项目i没有被依赖对象，则依赖关系(i,p[i])不存在 </span></span><br><span class="line">            pair&lt;Iterator,Iterator&gt; it = rel.<span class="built_in">equal_range</span>(i);</span><br><span class="line">            <span class="keyword">if</span>(it.first==it.second)&#123;<span class="comment">//依赖关系不存在 </span></span><br><span class="line">                last[i] = n - t[i] +<span class="number">1</span>; </span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;<span class="comment">//依赖关系存在 </span></span><br><span class="line">                Iterator it1;</span><br><span class="line">                <span class="type">int</span> value = INT_MAX;</span><br><span class="line">                <span class="keyword">for</span>(it1 = it.first;it1 != it.second; ++it1) &#123;</span><br><span class="line"><span class="comment">//                    cout&lt;&lt;it1-&gt;first&lt;&lt;&quot; ==== &quot;&lt;&lt;it1-&gt;second&lt;&lt;&quot;---&quot;;</span></span><br><span class="line">                    value = <span class="built_in">min</span>(value,last[it1-&gt;second]);</span><br><span class="line"><span class="comment">//                    cout&lt;&lt;value&lt;&lt;endl;</span></span><br><span class="line">                &#125;</span><br><span class="line">                last[i] = value - t[i];</span><br><span class="line">            &#125;</span><br><span class="line"><span class="comment">//            cout&lt;&lt;last[i]&lt;&lt;&quot; &quot;;</span></span><br><span class="line">        &#125;    </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">            cout&lt;&lt;last[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="202209-2、何以包邮？"><a href="#202209-2、何以包邮？" class="headerlink" title="202209-2、何以包邮？"></a>202209-2、何以包邮？</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230306145706568.png" alt="问题描述"></p>
+<blockquote>
+<p><span style="color: red;">思路：</span></p>
+<ol>
+<li>动态规划（0-1背包问题）</li>
+<li>第一种方法：<ul>
+<li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/a5bff9881ddd4843bfa4d14e1f94e636.png" alt="img"></li>
+</ul>
+</li>
+<li>第二种方法：<ul>
+<li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/d22e0b5b862f40b99d585736b3511b68.png" alt="img"></li>
+</ul>
+</li>
+</ol>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_51800570/article/details/128965002">(99条消息) 202209-2 CCF 何以包邮？ （01背包解法（两种解法） + 详细思路）_一只可爱的小猴子的博客-CSDN博客</a></p>
+<p><span style="color: red;">PS：</span><u><strong>在某些情况下，使用vector定义数组可能会导致空间使用增加。</strong></u></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307092308900.png" alt="image-20230307092308900"></p>
+</blockquote>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*	0-1动态规划求出在需要删去的书中的最大的价格总和，再将所有书的价格总和减去前面的总和得到的就是最小但是能够包邮的花费。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N=<span class="number">35</span>,M=<span class="number">3e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="comment">//vector&lt;int&gt;a(N);</span></span><br><span class="line"><span class="comment">//vector&lt;vector&lt;int&gt;&gt;f(N+1,vector&lt;int&gt;(M+1,0));</span></span><br><span class="line"><span class="type">int</span> f[N][M];</span><br><span class="line"><span class="type">int</span> a[N]; </span><br><span class="line"></span><br><span class="line"><span class="comment">//第一种解法 ——从 [0，sum-x]区间中选出使得花费最大的，再减去最大的就是最小的 </span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n,x,sum=<span class="number">0</span>;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;x;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;a[i];</span><br><span class="line">		sum+=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=sum-x;++j)&#123;<span class="comment">//在[0，sum-x]中求出最大值，那么最后的花费就会最小且满足包邮条件 </span></span><br><span class="line">			f[i][j]=f[i<span class="number">-1</span>][j];<span class="comment">//没选第i本书</span></span><br><span class="line">			<span class="keyword">if</span>(j&gt;=a[i]) f[i][j]=<span class="built_in">max</span>(f[i][j],f[i<span class="number">-1</span>][j-a[i]]+a[i]);	<span class="comment">//j&gt;=a[i]时才能继续往背包里加东西 </span></span><br><span class="line">			res=<span class="built_in">max</span>(res,f[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,sum-res);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//第二种解法 ——从总的中删去不要的 </span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n,x,sum=<span class="number">0</span>;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;x;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;a[i];</span><br><span class="line">		sum+=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)f[i][sum]=sum;<span class="comment">//在容量为sum的情况下最大总价值为sum </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j=x;j&lt;=sum;++j)f[<span class="number">0</span>][j]=sum;<span class="comment">//在容量在[x,sum]的情况下，未删去书籍时的初始情况为sum</span></span><br><span class="line">	</span><br><span class="line">	<span class="type">int</span> res=INT_MAX;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=sum;j&gt;=x;--j)&#123;<span class="comment">//每一次循环j都会减少，j代表的是最终要支付的金额</span></span><br><span class="line">			f[i][j]=f[i<span class="number">-1</span>][j];<span class="comment">//没删去第i本书 </span></span><br><span class="line">			<span class="keyword">if</span>(j+a[i]&lt;=sum)f[i][j]=<span class="built_in">min</span>(f[i][j],f[i<span class="number">-1</span>][j+a[i]]-a[i]);<span class="comment">//删去第i本书 </span></span><br><span class="line">			<span class="keyword">if</span>(f[i][j]&gt;=x)res=<span class="built_in">min</span>(res,f[i][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	cout&lt;&lt;res;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="202206-2、寻宝！大冒险！"><a href="#202206-2、寻宝！大冒险！" class="headerlink" title="202206-2、寻宝！大冒险！"></a>202206-2、寻宝！大冒险！</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307101335157.png" alt="问题描述"></p>
+<blockquote>
+<p><span style="color: red;">注意：</span>本题有30%的数据会有很大的绿化图，这样的绿化图不能够直接使用二维数组存储，需要对空间进行优化。采用<code>vector&lt;pair&lt;int,int&gt;&gt;A;</code>对绿化图进行空间优化。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_51800570/article/details/126673741">(99条消息) 202206-2 CCF 寻宝！大冒险！ （简单模拟 满分题解）_ccf20220602_一只可爱的小猴子的博客-CSDN博客</a></p>
+</blockquote>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//70分代码：——主要是因为绿化图的大小很大的情况下，用二维数组存储是不行的，因此需要进行空间优化</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> L=<span class="number">2010</span>,S=<span class="number">60</span>;</span><br><span class="line"><span class="type">int</span> A[L+<span class="number">1</span>][L+<span class="number">1</span>];</span><br><span class="line"><span class="type">int</span> B[S+<span class="number">1</span>][S+<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n,L,S,count=<span class="number">0</span>;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;L&gt;&gt;S;</span><br><span class="line"><span class="comment">//	vector&lt;vector&lt;int&gt;&gt;A(L+1,vector&lt;int&gt;(L+1,0));</span></span><br><span class="line"><span class="comment">//	vector&lt;vector&lt;int&gt;&gt;B(S+1,vector&lt;int&gt;(S+1,0));</span></span><br><span class="line">	<span class="type">int</span> x1,y1;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;x1&gt;&gt;y1;</span><br><span class="line">		A[x1][y1]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=S;i&gt;=<span class="number">0</span>;--i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=S;++j)&#123;</span><br><span class="line">			cin&gt;&gt;B[i][j];</span><br><span class="line">		&#125; </span><br><span class="line">	&#125; </span><br><span class="line">	<span class="comment">//在矩阵A的L-S范围内查找树的位置作为藏宝图的B[0][0]，再看A与B之间是否能够匹配（也就是A是否完全包含了B） </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=L;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=L;++j)&#123;</span><br><span class="line">			<span class="type">bool</span> flag=<span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">if</span>(A[i][j]==<span class="number">1</span>&amp;&amp;i+S&lt;=L&amp;&amp;j+S&lt;=L)&#123;</span><br><span class="line">				<span class="type">int</span> x=<span class="number">0</span>,y=<span class="number">0</span>;</span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> x=<span class="number">0</span>;x&lt;=S;++x)&#123;</span><br><span class="line">					<span class="keyword">for</span>(<span class="type">int</span> y=<span class="number">0</span>;y&lt;=S;++y)&#123;</span><br><span class="line">						<span class="keyword">if</span>(A[i+x][j+y]==B[x][y])<span class="keyword">continue</span>;</span><br><span class="line">						<span class="keyword">else</span>&#123;</span><br><span class="line">							flag=<span class="literal">false</span>;</span><br><span class="line">							<span class="keyword">break</span>;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">if</span>(!flag)<span class="keyword">break</span>; </span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(flag)++count;</span><br><span class="line">			&#125;		</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;count;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//100分代码：</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> s=<span class="number">60</span>;</span><br><span class="line"><span class="type">int</span> n,L,S;</span><br><span class="line"><span class="comment">//int A[L+1][L+1];//绿化图 </span></span><br><span class="line">vector&lt;pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt;A;<span class="comment">//绿化图 </span></span><br><span class="line"><span class="type">int</span> B[s+<span class="number">1</span>][s+<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=S;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=S;++j)&#123;</span><br><span class="line">			<span class="keyword">if</span>(x+i&lt;<span class="number">0</span>||x+i&gt;L||y+j&lt;<span class="number">0</span>||y+j&gt;L)<span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//藏宝图有部分超过了绿化图，因此不匹配 </span></span><br><span class="line">			<span class="type">bool</span> flag=<span class="literal">false</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">auto</span> &amp;p:A)&#123;<span class="comment">//当前藏宝图B[i][j]的位置与绿化图中树的位置集合A中有一个相等即可 </span></span><br><span class="line">				<span class="keyword">if</span>(x+i==p.first&amp;&amp;y+j==p.second)&#123;</span><br><span class="line">					flag=<span class="literal">true</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//判断藏宝图 B[i][j]是否为一个树并结合前面判断好的关于当前藏宝图的位置是否在集合A中 </span></span><br><span class="line">			<span class="keyword">if</span>((B[i][j]&amp;&amp;!flag)||(!B[i][j]&amp;&amp;flag))<span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//不用考虑 B[i][j]=0以及 flag=false的情况：因为如果 B[i][j]=0则表明其不是一棵树，那么自然不可能存在于集合A中 </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> count=<span class="number">0</span>;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;L&gt;&gt;S;</span><br><span class="line"><span class="comment">//	vector&lt;vector&lt;int&gt;&gt;A(L+1,vector&lt;int&gt;(L+1,0));</span></span><br><span class="line"><span class="comment">//	vector&lt;vector&lt;int&gt;&gt;B(S+1,vector&lt;int&gt;(S+1,0));</span></span><br><span class="line">	<span class="type">int</span> x1,y1;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;x1&gt;&gt;y1;</span><br><span class="line">		A.<span class="built_in">push_back</span>(&#123;x1,y1&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=S;i&gt;=<span class="number">0</span>;--i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=S;++j)&#123;</span><br><span class="line">			cin&gt;&gt;B[i][j];</span><br><span class="line">		&#125; </span><br><span class="line">	&#125; </span><br><span class="line">	<span class="comment">//对绿化图中每一棵树作为藏宝图B[0][0]点，并由此为起点进行一次判断看否能够满足藏宝图的要求 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">check</span>(A[i].first,A[i].second))&#123;</span><br><span class="line">			++count;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	cout&lt;&lt;count;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h4 id="202012-2、-期末预测之最佳阈值"><a href="#202012-2、-期末预测之最佳阈值" class="headerlink" title="202012-2、 期末预测之最佳阈值"></a>202012-2、 期末预测之最佳阈值</h4><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307182808564.png" alt="问题描述"></p>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43464088/article/details/112080044">(99条消息) CCF-CSP 202012-2 期末预测之最佳阈值（前缀和、set去重、代码极简）_AngleCavalier的博客-CSDN博客</a></p>
+<p><span style="color: red;">关键：</span></p>
+<ol>
+<li>考前缀和的应用</li>
+<li>两层for循环暴力求解只能通过70%的数据</li>
+</ol>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/2021012611454258.jpg" alt="img"></p>
+</blockquote>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//70分代码：——运行超时</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> m;</span><br><span class="line">	cin&gt;&gt;m;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;<span class="built_in">fit_selta</span>(m,<span class="number">0</span>);</span><br><span class="line">	unordered_map&lt;<span class="type">int</span>,pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;&gt;<span class="built_in">hash</span>(m);</span><br><span class="line">	<span class="type">int</span> y,result;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;++i)&#123;</span><br><span class="line">		cin&gt;&gt;y&gt;&gt;result;</span><br><span class="line">		hash[i]=make_pair&lt;&gt;(y,result);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//	for(int i=0;i&lt;m;++i)&#123;</span></span><br><span class="line"><span class="comment">//		cout&lt;&lt;hash[i].first&lt;&lt;&quot; &quot;;</span></span><br><span class="line"><span class="comment">//	&#125; </span></span><br><span class="line">	<span class="type">int</span> selta,predict,max_num=INT_MIN,max_index;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;++i)&#123;</span><br><span class="line">		selta=hash[i].first;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;m;++j)&#123;</span><br><span class="line">			<span class="keyword">if</span>(hash[j].first&gt;=selta)predict=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> predict=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(predict==hash[j].second)++fit_selta[i];</span><br><span class="line">		&#125;<span class="comment">//确保输出的预测次数最多且selta值最大的值 </span></span><br><span class="line">		<span class="keyword">if</span>(max_num&lt;fit_selta[i]||(max_num==fit_selta[i]&amp;&amp;hash[max_index].first&lt;selta))&#123;</span><br><span class="line">			max_num=fit_selta[i];</span><br><span class="line">			max_index=i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;hash[max_index].first;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//-----------------------------------------------</span></span><br><span class="line"><span class="comment">//100分代码:——关键是利用前缀和进行预处理，减少运行时间,提高效率</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> m;</span><br><span class="line">	cin&gt;&gt;m;</span><br><span class="line">	pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt;hash[m+<span class="number">1</span>];</span><br><span class="line">	<span class="type">int</span> sum[m+<span class="number">1</span>]=&#123;<span class="number">0</span>&#125;;<span class="comment">//注要赋sum[0]的初值 ——也可以写成：int sum[m+1]=&#123;0&#125; </span></span><br><span class="line">	set&lt;<span class="type">int</span>&gt;st;</span><br><span class="line">	<span class="type">int</span> y,result;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</span><br><span class="line">		cin&gt;&gt;y&gt;&gt;result;</span><br><span class="line">		hash[i]=make_pair&lt;&gt;(y,result);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//按照阈值进行升序排序</span></span><br><span class="line">	<span class="built_in">sort</span>(hash+<span class="number">1</span>,hash+<span class="number">1</span>+m);</span><br><span class="line">	<span class="comment">//求前缀和</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+hash[i].second;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="type">int</span> max_sum=INT_MIN,ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</span><br><span class="line">		<span class="type">int</span> selta=hash[i].first;<span class="comment">//选定阈值 </span></span><br><span class="line">		<span class="keyword">if</span>(st.<span class="built_in">count</span>(selta))<span class="keyword">continue</span>;<span class="comment">//跳过选定的阈值(set去重，相同阈值得到的正确预测次数相等)</span></span><br><span class="line">		st.<span class="built_in">insert</span>(selta);<span class="comment">//存储已经被选定过的阈值,方便去重操作 </span></span><br><span class="line">		<span class="type">int</span> p1=sum[m]-sum[i<span class="number">-1</span>];<span class="comment">//大于等于阈值selta并且预测结果中为1的个数</span></span><br><span class="line">		<span class="type">int</span> p0=i<span class="number">-1</span>-sum[i<span class="number">-1</span>];<span class="comment">//求小于阈值selta并且预测结果中为0的个数</span></span><br><span class="line">		<span class="type">int</span> all=p1+p0;<span class="comment">//总正确预测次数 </span></span><br><span class="line">		<span class="keyword">if</span>(all&gt;=max_sum)&#123;<span class="comment">//确保是大于等于，如果阈值更大且正确预测次数相同的情况下也需要执行函数体 </span></span><br><span class="line">			max_sum=all;</span><br><span class="line">			ans=selta;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	cout&lt;&lt;ans;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//-----------------------------------------------</span></span><br><span class="line"><span class="comment">//GitHub上100分参考代码：</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> gg = <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    map&lt;gg, array&lt;gg, 2&gt;&gt; r;</span><br><span class="line">    gg mi, y, res;</span><br><span class="line">    cin &gt;&gt; mi;</span><br><span class="line">    <span class="keyword">for</span> (gg i = <span class="number">0</span>; i &lt; mi; ++i) &#123;</span><br><span class="line">        cin &gt;&gt; y &gt;&gt; res;</span><br><span class="line">        r[y][res]++;</span><br><span class="line">    &#125;</span><br><span class="line">    gg p0 = <span class="number">0</span>, p1 = <span class="number">0</span>, ans = <span class="number">0</span>, c = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : r) &#123;</span><br><span class="line">        gg t = p0 + mi - p1;</span><br><span class="line">        <span class="keyword">if</span> (t &gt;= c) &#123;</span><br><span class="line">            c = t;</span><br><span class="line">            ans = i.first;</span><br><span class="line">        &#125;</span><br><span class="line">        p0 += i.second[<span class="number">0</span>];</span><br><span class="line">        p1 += i.second[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CCF-CSP/" rel="tag">CCF-CSP</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-junior/course/multi-media-tech/第四章"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/03/08/junior/course/multi-media-tech/%E7%AC%AC%E5%9B%9B%E7%AB%A0/"
+    >第四章（音频数据处理程序设计）</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/03/08/junior/course/multi-media-tech/%E7%AC%AC%E5%9B%9B%E7%AB%A0/" class="article-date">
+  <time datetime="2023-03-07T16:35:13.359Z" itemprop="datePublished">2023-03-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BA%94%E7%94%A8/">多媒体技术与应用</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="音频数据处理程序设计"><a href="#音频数据处理程序设计" class="headerlink" title="音频数据处理程序设计"></a>音频数据处理程序设计</h1><p>Media Session（媒体会话）：管理媒体数据、实现播放、暂停操作。</p>
+<h5 id="WAVE文件由4个块组成："><a href="#WAVE文件由4个块组成：" class="headerlink" title="WAVE文件由4个块组成："></a>WAVE文件由4个块组成：</h5><ol>
+<li>RIFF WAVE Chunk</li>
+<li>Format Chunk</li>
+<li>Fact Chunk（可选）</li>
+<li>Data Chunk<ul>
+<li>双声道的采样数要加倍</li>
+<li>小端序：低位字节存在地址空间中的低位（比如：Ox0782中的低位字节82存储在地址空间中的低位）</li>
+<li>大端序：低位字节存在地址空间中的高位</li>
+</ul>
+</li>
+</ol>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307151517811.png" alt="image-20230307151517811" style="zoom:50%;" />
+
+<blockquote>
+<ol>
+<li>ID都是4个字节，<u>比如<code>ID=&#39;fmt &#39;</code>中fmt之后还有一个<strong>空字符</strong></u>（用“四字符码”作块ID，是RIFF文件的重要特点）</li>
+</ol>
+</blockquote>
+<h5 id="WAVE文件的地址空间"><a href="#WAVE文件的地址空间" class="headerlink" title="WAVE文件的地址空间"></a>WAVE文件的地址空间</h5><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307153329553.png" alt="WAVE文件的地址空间" style="zoom: 67%;" />
+
+<p><u><strong>将10进制转换为16进制来存储到地址空间中。</strong></u></p>
+<blockquote>
+<ol>
+<li>每个块的ID和RIFF块的Type（WAVE）的端序是<strong>大端存储</strong>，其他都是<strong>小端存储</strong></li>
+<li>16进制存储</li>
+</ol>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" rel="tag">课堂笔记</a></li></ul>
 
     </footer>
   </div>
@@ -247,16 +557,19 @@
 <p>模数转换（ADC）：将模拟信号转换为数字信号。</p>
 <p>Audio Codec（数&#x2F;模转换器）：数字信号与模拟信号的转换。</p>
 <p>软波表（可以刷新）与波表（不可刷新）</p>
-<h4 id="模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。"><a href="#模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。" class="headerlink" title="模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。"></a>模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。</h4><h5 id="模拟音频数字化的三个步骤：采样、量化、编码。"><a href="#模拟音频数字化的三个步骤：采样、量化、编码。" class="headerlink" title="模拟音频数字化的三个步骤：采样、量化、编码。"></a><u>模拟音频数字化</u>的三个步骤：采样、量化、编码。</h5><h3 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h3><blockquote>
+<h5 id="声音的三要素：音色、音强、音高"><a href="#声音的三要素：音色、音强、音高" class="headerlink" title="声音的三要素：音色、音强、音高"></a>声音的三要素：<u>音色、音强、音高</u></h5><h4 id="模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。"><a href="#模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。" class="headerlink" title="模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。"></a>模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。</h4><h5 id="模拟音频数字化的三个步骤：采样、量化、编码。"><a href="#模拟音频数字化的三个步骤：采样、量化、编码。" class="headerlink" title="模拟音频数字化的三个步骤：采样、量化、编码。"></a><u>模拟音频数字化</u>的三个步骤：采样、量化、编码。</h5><h3 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h3><blockquote>
 <p>采样：是指以一定的频率（或周期）捕获模拟音频信号，从而得到一系列离散化音频样本的过程。</p>
 <p>采样频率：单位时间内捕获的样本个数称为<u><strong>采样频率</strong></u>（Sampling Rate）</p>
-<p>**<u>采样频率</u>**大于模拟信号频带F的两倍</p>
+<p>**<u>采样定理</u><strong>：</strong><u>采样频率</u>**大于模拟信号频带F的两倍</p>
 </blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307140528727.png" alt="image-20230307140528727" style="zoom:50%;" />
+
+<p><u><em><strong>人能听到的频率范围：20Hz～20000Hz（20Hz~2kHz）</strong></em></u></p>
 <h3 id="量化"><a href="#量化" class="headerlink" title="量化"></a>量化</h3><blockquote>
 <p>量化：是指用若干比特表示一个样本的过程；</p>
-<p>量化深度：表示一个样本所使用的比特数称为量化深度（bit depth）。</p>
+<p>量化深度：表示一个样本所使用的<strong>比特数</strong>称为量化深度（bit depth）。</p>
 </blockquote>
-<p><u><strong>量化间隔</strong>（量化阶跃）：幅值平均划分之后的每一份平均幅值就是量化间隔。</u></p>
+<p><u><strong>量化间隔</strong>（量化阶跃）：就是指将整个量化空间分割成若干离 散的有限状态后，相邻的两个离散状态值之间的差值。（幅值平均划分之后的每一份平均幅值就是量化间隔。）</u></p>
 <h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><blockquote>
 <p>编码实际上是以某种格式最终生成数字音频数据流的过程</p>
 </blockquote>
@@ -265,7 +578,15 @@
 <blockquote>
 <p>经过采样的时间离散之后波上有根据时间点均匀划分的值（点），再经过量化的空间离散之后将整个模拟信号根据振幅进行均匀划分（如量化深度为3，则将振幅划分为8份，也就是8个值），最后根据模拟信号上的点与量化划分线之间的远近进行近似拟合，因此可以近似为3、5、5、2、4、6、7等具体数值，然后转化为二进制形式即可（011、101、101、……）。</p>
 </blockquote>
-<h3 id="脉冲编码调制（PCM）"><a href="#脉冲编码调制（PCM）" class="headerlink" title="脉冲编码调制（PCM）"></a>脉冲编码调制（PCM）</h3><p>在各种音频编码技术中，&#x3D;&#x3D;脉冲编码调制&#x3D;&#x3D;（Pulse Code Modulation，PCM）是<u>最重要、最完善</u>的编码系统，应用范围最广。</p>
+<h2 id="数字音频编码-1"><a href="#数字音频编码-1" class="headerlink" title="数字音频编码"></a>数字音频编码</h2><ol>
+<li>参数编码（了解）</li>
+<li><u>波形编码（要考，重点）</u><ul>
+<li>以下都是波形编码</li>
+</ul>
+</li>
+</ol>
+<h3 id="1、脉冲编码调制（PCM）"><a href="#1、脉冲编码调制（PCM）" class="headerlink" title="1、脉冲编码调制（PCM）"></a>1、脉冲编码调制（PCM）</h3><p>在各种音频编码技术中，&#x3D;&#x3D;脉冲编码调制&#x3D;&#x3D;（Pulse Code Modulation，PCM）是<u>最重要、最完善</u>的编码系统，应用范围最广。</p>
+<p><u><em><strong>针对<span style="color: red;">样本</span>进行编码</strong></em></u></p>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302113605304.png" alt="PCM编码框图"></p>
 <p><span style="color: red;">脉冲编码调制（Pulse Code Modulation，PCM）</span>的两种量化方式：</p>
 <ol>
@@ -287,6 +608,47 @@
 <td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302113958688.png" alt="非均匀量化"></td>
 </tr>
 </tbody></table>
+<p>&#x3D;&#x3D;三种编码方式的本质和区别？&#x3D;&#x3D;</p>
+<h4 id="（1）自适应脉冲编码调制（APCM）"><a href="#（1）自适应脉冲编码调制（APCM）" class="headerlink" title="（1）自适应脉冲编码调制（APCM）"></a>（1）自适应脉冲编码调制（APCM）</h4><p>APCM是根据输入<strong>信号幅度大小</strong>来改变量化阶跃大小的一种波形编码技术。</p>
+<blockquote>
+</blockquote>
+<h4 id="（2）差分脉冲编码调制（DPCM）"><a href="#（2）差分脉冲编码调制（DPCM）" class="headerlink" title="（2）差分脉冲编码调制（DPCM）"></a>（2）差分脉冲编码调制（DPCM）</h4><blockquote>
+<p>思想：根据过去的样本幅值来估算下一个样本信号的幅度大小，这个值称为预测值，然后计算实际信号值与预测值之差，最后<u><strong>对这个差值进行量化编码</strong></u>。</p>
+</blockquote>
+<h4 id="（3）自适应差分脉冲编码调制（ADPCM）"><a href="#（3）自适应差分脉冲编码调制（ADPCM）" class="headerlink" title="（3）自适应差分脉冲编码调制（ADPCM）"></a>（3）自适应差分脉冲编码调制（ADPCM）</h4><p>ADPCM是利用样本与样本之间的高度相关性和量化阶自适应来压缩数据的一种波形编码技术。</p>
+<blockquote>
+<p><u><strong>对实际样本值和预测值之间的差值进行编码</strong></u></p>
+</blockquote>
+<h5 id="码率计算公式："><a href="#码率计算公式：" class="headerlink" title="码率计算公式："></a>码率计算公式：</h5><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307144339993.png" alt="image-20230307144339993"></p>
+<h5 id="数据量公式："><a href="#数据量公式：" class="headerlink" title="数据量公式："></a>数据量公式：</h5><p>数据量（字节&#x2F;秒）&#x3D;（采样频率（Hz）×采样位数（bit）×声道数）&#x2F;8</p>
+<h5 id="课堂练习："><a href="#课堂练习：" class="headerlink" title="课堂练习："></a>课堂练习：</h5><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307144650999.png" alt="小练习"></p>
+<blockquote>
+<p>该文件的音频数据的字节数：（码率*播放时间）&#x2F;8$\longrightarrow$结果：15876000字节</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/54537178.html">音频文件存储容量计算_百度知道 (baidu.com)</a></p>
+</blockquote>
+<h3 id="2、增量调制编码（DM）"><a href="#2、增量调制编码（DM）" class="headerlink" title="2、增量调制编码（DM）"></a>2、增量调制编码（DM）</h3><p><span style="color: blue;">增量调制编码（DM）</span>：通过增量起伏来记录模拟音频信号实际变化过程的数字音频编码。</p>
+<p><u><em><strong>针对<span style="color: red;">极性</span>进行编码</strong></em></u></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307141721643.png" alt="image-20230307141721643" style="zoom: 50%;" />
+
+<blockquote>
+<ol>
+<li><span style="color: red;">红色</span>为预测值</li>
+<li><span style="color: blue;">蓝色</span>为实际值</li>
+</ol>
+<ul>
+<li><u><strong>实际值大于预测值，则为1；否则，为0。</strong></u></li>
+</ul>
+<ol>
+<li>斜率过载：即模拟信号的斜率太大，超过了量化阶跃允许的变化幅度（模拟的预测值的变化趋势要小于实际值）。<ul>
+<li>解决：增大量化阶跃（间隔）</li>
+</ul>
+</li>
+<li>粒状噪声：当输入信号变化比较平缓时，增量调制器的编码输出为交错出现的0和1，即数字信号并不平缓，而是以量化阶跃Δ的大小起伏变化，这就相当于引入了噪声信号。<ul>
+<li>解决：减小量化阶跃（间隔）</li>
+</ul>
+</li>
+</ol>
+</blockquote>
  
       <!-- reward -->
       
@@ -340,7 +702,11 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="编程环境与平台"><a href="#编程环境与平台" class="headerlink" title="编程环境与平台"></a>编程环境与平台</h1><h3 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h3><p>数据流： 数据流是同一类型的媒体数据的一种序列。</p>
+  <h1 id="编程环境与平台"><a href="#编程环境与平台" class="headerlink" title="编程环境与平台"></a>编程环境与平台</h1><blockquote>
+<p><span style="color: red;">课程要求</span>：<u><em><strong>自学（2小时）：Windows运行机制。</strong></em></u></p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av42464433/?spm_id_from=333.788.videocard.5">https://www.bilibili.com/video/av42464433/?spm_id_from=333.788.videocard.5</a></p>
+</blockquote>
+<h3 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h3><p>数据流： 数据流是同一类型的媒体数据的一种序列。</p>
 <h3 id="媒体容器"><a href="#媒体容器" class="headerlink" title="媒体容器"></a>媒体容器</h3><p>媒体容器（相当于&#x3D;&#x3D;文件&#x3D;&#x3D;）：</p>
 <ol>
 <li>文件头部：描述流的个数，以及每一个流的格式等。 </li>
@@ -762,69 +1128,14 @@
 </article>
 
     
-    <article
-  id="post-test/hello-world"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/03/01/test/hello-world/"
-    >Hello World</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/03/01/test/hello-world/" class="article-date">
-  <time datetime="2023-03-01T13:58:35.983Z" itemprop="datePublished">2023-03-01</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
   </article>
   
 
+  
+  <nav class="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+  </nav>
   
 </section>
 </div>
