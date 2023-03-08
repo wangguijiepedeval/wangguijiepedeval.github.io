@@ -115,21 +115,30 @@
 <p>Media Session（媒体会话）：管理媒体数据、实现播放、暂停操作。</p>
 <h5 id="wave文件由4个块组成：">WAVE文件由4个块组成：</h5>
 <ol>
-<li>RIFF WAVE Chunk</li>
-<li>Format Chunk</li>
-<li>Fact Chunk（可选）</li>
-<li>Data Chunk
-<ul>
-<li>双声道的采样数要加倍</li>
-<li>小端序：低位字节存在地址空间中的低位（比如：Ox0782中的低位字节82存储在地址空间中的低位）</li>
-<li>大端序：低位字节存在地址空间中的高位</li>
+<li class="lvl-3">
+<p>RIFF WAVE Chunk</p>
+</li>
+<li class="lvl-3">
+<p>Format Chunk</p>
+</li>
+<li class="lvl-3">
+<p>Fact Chunk（可选）</p>
+</li>
+<li class="lvl-3">
+<p>Data Chunk</p>
+<ul class="lvl-2">
+<li class="lvl-5">双声道的采样数要加倍</li>
+<li class="lvl-5">小端序：低位字节存在地址空间中的低位（比如：Ox0782中的低位字节82存储在地址空间中的低位）</li>
+<li class="lvl-5">大端序：低位字节存在地址空间中的高位</li>
 </ul>
 </li>
 </ol>
 <img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307151517811.png" alt="image-20230307151517811" style="zoom:50%;" />
 <blockquote>
 <ol>
-<li>ID都是4个字节，<u>比如<code>ID='fmt '</code>中fmt之后还有一个<strong>空字符</strong></u>（用“四字符码”作块ID，是RIFF文件的重要特点）</li>
+<li class="lvl-3">
+<p>ID都是4个字节，<u>比如<code>ID='fmt '</code>中fmt之后还有一个<strong>空字符</strong></u>（用“四字符码”作块ID，是RIFF文件的重要特点）</p>
+</li>
 </ol>
 </blockquote>
 <h5 id="wave文件的地址空间">WAVE文件的地址空间</h5>
@@ -137,8 +146,12 @@
 <p><u><strong>将10进制转换为16进制来存储到地址空间中。</strong></u></p>
 <blockquote>
 <ol>
-<li>每个块的ID和RIFF块的Type（WAVE）的端序是<strong>大端存储</strong>，其他都是<strong>小端存储</strong></li>
-<li>16进制存储</li>
+<li class="lvl-3">
+<p>每个块的ID和RIFF块的Type（WAVE）的端序是<strong>大端存储</strong>，其他都是<strong>小端存储</strong></p>
+</li>
+<li class="lvl-3">
+<p>16进制存储</p>
+</li>
 </ol>
 </blockquote>
  

@@ -145,23 +145,29 @@
 </blockquote>
 <h2 id="数字音频编码">数字音频编码</h2>
 <ol>
-<li>参数编码（了解）</li>
-<li><u>波形编码（要考，重点）</u>
-<ul>
-<li>以下都是波形编码</li>
+<li class="lvl-3">
+<p>参数编码（了解）</p>
+</li>
+<li class="lvl-3">
+<p><u>波形编码（要考，重点）</u></p>
+<ul class="lvl-2">
+<li class="lvl-5">以下都是波形编码</li>
 </ul>
 </li>
 </ol>
 <h3 id="1-脉冲编码调制-pcm">1、脉冲编码调制（PCM）</h3>
-<p>在各种音频编码技术中，==脉冲编码调制==（Pulse Code Modulation，PCM）是<u>最重要、最完善</u>的编码系统，应用范围最广。</p>
+<p>在各种音频编码技术中，<mark>脉冲编码调制</mark>（Pulse Code Modulation，PCM）是<u>最重要、最完善</u>的编码系统，应用范围最广。</p>
 <p><u><em><strong>针对<span style="color: red;">样本</span>进行编码</strong></em></u></p>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302113605304.png" alt="PCM编码框图"></p>
 <p><span style="color: red;">脉冲编码调制（Pulse Code Modulation，PCM）</span>的两种量化方式：</p>
 <ol>
-<li>均匀量化（线性量化）</li>
-<li>非均匀量化（非线性量化）
-<ul>
-<li>13折线（不做要求）</li>
+<li class="lvl-3">
+<p>均匀量化（线性量化）</p>
+</li>
+<li class="lvl-3">
+<p>非均匀量化（非线性量化）</p>
+<ul class="lvl-2">
+<li class="lvl-5">13折线（不做要求）</li>
 </ul>
 </li>
 </ol>
@@ -179,7 +185,7 @@
 </tr>
 </tbody>
 </table>
-<p>==三种编码方式的本质和区别？==</p>
+<p><mark>三种编码方式的本质和区别？</mark></p>
 <h4 id="1-自适应脉冲编码调制-apcm">（1）自适应脉冲编码调制（APCM）</h4>
 <p>APCM是根据输入<strong>信号幅度大小</strong>来改变量化阶跃大小的一种波形编码技术。</p>
 <blockquote></blockquote>
@@ -208,21 +214,27 @@
 <img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307141721643.png" alt="image-20230307141721643" style="zoom: 50%;" />
 <blockquote>
 <ol>
-<li><span style="color: red;">红色</span>为预测值</li>
-<li><span style="color: blue;">蓝色</span>为实际值</li>
+<li class="lvl-3">
+<p><span style="color: red;">红色</span>为预测值</p>
+</li>
+<li class="lvl-3">
+<p><span style="color: blue;">蓝色</span>为实际值</p>
+</li>
 </ol>
-<ul>
-<li><u><strong>实际值大于预测值，则为1；否则，为0。</strong></u></li>
+<ul class="lvl-1">
+<li class="lvl-2"><u><strong>实际值大于预测值，则为1；否则，为0。</strong></u></li>
 </ul>
 <ol>
-<li>斜率过载：即模拟信号的斜率太大，超过了量化阶跃允许的变化幅度（模拟的预测值的变化趋势要小于实际值）。
-<ul>
-<li>解决：增大量化阶跃（间隔）</li>
+<li class="lvl-3">
+<p>斜率过载：即模拟信号的斜率太大，超过了量化阶跃允许的变化幅度（模拟的预测值的变化趋势要小于实际值）。</p>
+<ul class="lvl-3">
+<li class="lvl-5">解决：增大量化阶跃（间隔）</li>
 </ul>
 </li>
-<li>粒状噪声：当输入信号变化比较平缓时，增量调制器的编码输出为交错出现的0和1，即数字信号并不平缓，而是以量化阶跃Δ的大小起伏变化，这就相当于引入了噪声信号。
-<ul>
-<li>解决：减小量化阶跃（间隔）</li>
+<li class="lvl-3">
+<p>粒状噪声：当输入信号变化比较平缓时，增量调制器的编码输出为交错出现的0和1，即数字信号并不平缓，而是以量化阶跃Δ的大小起伏变化，这就相当于引入了噪声信号。</p>
+<ul class="lvl-3">
+<li class="lvl-5">解决：减小量化阶跃（间隔）</li>
 </ul>
 </li>
 </ol>

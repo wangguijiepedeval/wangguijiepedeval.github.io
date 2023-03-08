@@ -6,7 +6,7 @@
   <link href="https://wangguijiepedeval.github.io/atom.xml" rel="self"/>
   
   <link href="https://wangguijiepedeval.github.io/"/>
-  <updated>2023-03-08T01:11:46.835Z</updated>
+  <updated>2023-03-08T01:29:51.122Z</updated>
   <id>https://wangguijiepedeval.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://wangguijiepedeval.github.io/2023/03/08/test/2023-3-8%E6%B5%8B%E8%AF%95/"/>
     <id>https://wangguijiepedeval.github.io/2023/03/08/test/2023-3-8%E6%B5%8B%E8%AF%95/</id>
     <published>2023-03-08T00:50:13.828Z</published>
-    <updated>2023-03-08T01:11:46.835Z</updated>
+    <updated>2023-03-08T01:29:51.122Z</updated>
     
     
       
@@ -118,7 +118,8 @@
 &lt;p&gt;Media Session（媒体会话）：管理媒体数据、实现播放、暂停操作。&lt;/p&gt;
 &lt;h5 id=&quot;wave文件由4个块组成：&quot;&gt;WAVE文件由4个块组成：&lt;/h5&gt;
 &lt;ol&gt;
-&lt;li&gt;RIFF WAVE</summary>
+&lt;li class=&quot;lvl-3&quot;&gt;
+&lt;p&gt;RIFF</summary>
         
       
     
@@ -242,7 +243,12 @@
         
         
     <summary type="html">&lt;h1&gt;多媒体技术概述&lt;/h1&gt;
-&lt;p&gt;&lt;span style=&quot;color:</summary>
+&lt;p&gt;&lt;span style=&quot;color: red;&quot;&gt;媒体分类&lt;/span&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li class=&quot;lvl-3&quot;&gt;
+&lt;p&gt;感觉媒体&lt;/p&gt;
+&lt;ul class=&quot;lvl-2&quot;&gt;
+&lt;li</summary>
         
       
     
@@ -312,7 +318,7 @@
     <link href="https://wangguijiepedeval.github.io/2023/03/01/tutorials/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     <id>https://wangguijiepedeval.github.io/2023/03/01/tutorials/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</id>
     <published>2023-03-01T14:40:03.375Z</published>
-    <updated>2023-03-02T05:39:07.851Z</updated>
+    <updated>2023-03-08T01:24:33.026Z</updated>
     
     
       

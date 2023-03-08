@@ -125,9 +125,15 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 2 1 4 1</span><br><span class="line">6 7 8 9 1</span><br><span class="line">----------</span><br><span class="line">1 2 4 7 9</span><br><span class="line">2 3 5 8 10</span><br></pre></td></tr></table></figure>
 <p><span style="color: red;">关键：</span></p>
 <ol>
-<li>正向遍历易求最早开始时间。</li>
-<li>反向遍历要注意找到具有依赖关系的后项post存储值的数学表达式。（<code>post[dependency[i]]=-T[i]+post[i]</code>）</li>
-<li>是否输出最晚开始时间要看求出的最晚开始时间last数组中是否有小于1的值。若有，则不输出；没有，则输出。</li>
+<li class="lvl-3">
+<p>正向遍历易求最早开始时间。</p>
+</li>
+<li class="lvl-3">
+<p>反向遍历要注意找到具有依赖关系的后项post存储值的数学表达式。（<code>post[dependency[i]]=-T[i]+post[i]</code>）</p>
+</li>
+<li class="lvl-3">
+<p>是否输出最晚开始时间要看求出的最晚开始时间last数组中是否有小于1的值。若有，则不输出；没有，则输出。</p>
+</li>
 </ol>
 <p><u><em><strong>提醒：</strong></em></u>直接暴力求解最早开始时间就能够得到70分。</p>
 </blockquote>
@@ -139,15 +145,15 @@
 <blockquote>
 <p><span style="color: red;">思路：</span></p>
 <ol>
-<li>动态规划（0-1背包问题）</li>
-<li>第一种方法：
-<ul>
-<li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/a5bff9881ddd4843bfa4d14e1f94e636.png" alt="img"></li>
+<li class="lvl-3">动态规划（0-1背包问题）</li>
+<li class="lvl-3">第一种方法：
+<ul class="lvl-3">
+<li class="lvl-5"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/a5bff9881ddd4843bfa4d14e1f94e636.png" alt="img"></li>
 </ul>
 </li>
-<li>第二种方法：
-<ul>
-<li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/d22e0b5b862f40b99d585736b3511b68.png" alt="img"></li>
+<li class="lvl-3">第二种方法：
+<ul class="lvl-3">
+<li class="lvl-5"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/d22e0b5b862f40b99d585736b3511b68.png" alt="img"></li>
 </ul>
 </li>
 </ol>
@@ -171,8 +177,12 @@
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43464088/article/details/112080044">(99条消息) CCF-CSP 202012-2 期末预测之最佳阈值（前缀和、set去重、代码极简）_AngleCavalier的博客-CSDN博客</a></p>
 <p><span style="color: red;">关键：</span></p>
 <ol>
-<li>考前缀和的应用</li>
-<li>两层for循环暴力求解只能通过70%的数据</li>
+<li class="lvl-3">
+<p>考前缀和的应用</p>
+</li>
+<li class="lvl-3">
+<p>两层for循环暴力求解只能通过70%的数据</p>
+</li>
 </ol>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/2021012611454258.jpg" alt="img"></p>
 </blockquote>

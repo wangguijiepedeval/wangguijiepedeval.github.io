@@ -21,7 +21,7 @@
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307101026639.png" alt="image-20230307101026639"></p>
 </blockquote>
 <h1>CCF-CSP模拟考笔记</h1>
-<h5 id="star-u-span-style-color-red-特别提醒：-span-编写代码时最好将变量以及数组定义等放在main函数外面-u">:star:<u><strong><span style="color: red;">特别提醒：</span>编写代码时最好将变量以及数组定义等放在main函数外面</strong></u></h5>
+<h5 id="u-span-style-color-red-特别提醒：-span-编写代码时最好将变量以及数组定义等放在main函数外面-u">⭐️<u><strong><span style="color: red;">特别提醒：</span>编写代码时最好将变量以及数组定义等放在main函数外面</strong></u></h5>
 <blockquote>
 <p>参考：<a href="https://github.com/richenyunqi/CCF-CSP-and-PAT-solution">richenyunqi/CCF-CSP-and-PAT-solution: CCF CSP和PAT考试题解（使用C++14语法） (github.com)</a></p>
 </blockquote>
@@ -114,9 +114,15 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 2 1 4 1</span><br><span class="line">6 7 8 9 1</span><br><span class="line">----------</span><br><span class="line">1 2 4 7 9</span><br><span class="line">2 3 5 8 10</span><br></pre></td></tr></table></figure>
 <p><span style="color: red;">关键：</span></p>
 <ol>
-<li>正向遍历易求最早开始时间。</li>
-<li>反向遍历要注意找到具有依赖关系的后项post存储值的数学表达式。（<code>post[dependency[i]]=-T[i]+post[i]</code>）</li>
-<li>是否输出最晚开始时间要看求出的最晚开始时间last数组中是否有小于1的值。若有，则不输出；没有，则输出。</li>
+<li class="lvl-3">
+<p>正向遍历易求最早开始时间。</p>
+</li>
+<li class="lvl-3">
+<p>反向遍历要注意找到具有依赖关系的后项post存储值的数学表达式。（<code>post[dependency[i]]=-T[i]+post[i]</code>）</p>
+</li>
+<li class="lvl-3">
+<p>是否输出最晚开始时间要看求出的最晚开始时间last数组中是否有小于1的值。若有，则不输出；没有，则输出。</p>
+</li>
 </ol>
 <p><u><em><strong>提醒：</strong></em></u>直接暴力求解最早开始时间就能够得到70分。</p>
 </blockquote>
@@ -128,15 +134,15 @@
 <blockquote>
 <p><span style="color: red;">思路：</span></p>
 <ol>
-<li>动态规划（0-1背包问题）</li>
-<li>第一种方法：
-<ul>
-<li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/a5bff9881ddd4843bfa4d14e1f94e636.png" alt="img"></li>
+<li class="lvl-3">动态规划（0-1背包问题）</li>
+<li class="lvl-3">第一种方法：
+<ul class="lvl-3">
+<li class="lvl-5"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/a5bff9881ddd4843bfa4d14e1f94e636.png" alt="img"></li>
 </ul>
 </li>
-<li>第二种方法：
-<ul>
-<li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/d22e0b5b862f40b99d585736b3511b68.png" alt="img"></li>
+<li class="lvl-3">第二种方法：
+<ul class="lvl-3">
+<li class="lvl-5"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/d22e0b5b862f40b99d585736b3511b68.png" alt="img"></li>
 </ul>
 </li>
 </ol>
@@ -160,8 +166,12 @@
 <p>参考：<a href="https://blog.csdn.net/qq_43464088/article/details/112080044">(99条消息) CCF-CSP 202012-2 期末预测之最佳阈值（前缀和、set去重、代码极简）_AngleCavalier的博客-CSDN博客</a></p>
 <p><span style="color: red;">关键：</span></p>
 <ol>
-<li>考前缀和的应用</li>
-<li>两层for循环暴力求解只能通过70%的数据</li>
+<li class="lvl-3">
+<p>考前缀和的应用</p>
+</li>
+<li class="lvl-3">
+<p>两层for循环暴力求解只能通过70%的数据</p>
+</li>
 </ol>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/2021012611454258.jpg" alt="img"></p>
 </blockquote>
@@ -184,21 +194,30 @@
 <p>Media Session（媒体会话）：管理媒体数据、实现播放、暂停操作。</p>
 <h5 id="wave文件由4个块组成：">WAVE文件由4个块组成：</h5>
 <ol>
-<li>RIFF WAVE Chunk</li>
-<li>Format Chunk</li>
-<li>Fact Chunk（可选）</li>
-<li>Data Chunk
-<ul>
-<li>双声道的采样数要加倍</li>
-<li>小端序：低位字节存在地址空间中的低位（比如：Ox0782中的低位字节82存储在地址空间中的低位）</li>
-<li>大端序：低位字节存在地址空间中的高位</li>
+<li class="lvl-3">
+<p>RIFF WAVE Chunk</p>
+</li>
+<li class="lvl-3">
+<p>Format Chunk</p>
+</li>
+<li class="lvl-3">
+<p>Fact Chunk（可选）</p>
+</li>
+<li class="lvl-3">
+<p>Data Chunk</p>
+<ul class="lvl-2">
+<li class="lvl-5">双声道的采样数要加倍</li>
+<li class="lvl-5">小端序：低位字节存在地址空间中的低位（比如：Ox0782中的低位字节82存储在地址空间中的低位）</li>
+<li class="lvl-5">大端序：低位字节存在地址空间中的高位</li>
 </ul>
 </li>
 </ol>
 <img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307151517811.png" alt="image-20230307151517811" style="zoom:50%;" />
 <blockquote>
 <ol>
-<li>ID都是4个字节，<u>比如<code>ID='fmt '</code>中fmt之后还有一个<strong>空字符</strong></u>（用“四字符码”作块ID，是RIFF文件的重要特点）</li>
+<li class="lvl-3">
+<p>ID都是4个字节，<u>比如<code>ID='fmt '</code>中fmt之后还有一个<strong>空字符</strong></u>（用“四字符码”作块ID，是RIFF文件的重要特点）</p>
+</li>
 </ol>
 </blockquote>
 <h5 id="wave文件的地址空间">WAVE文件的地址空间</h5>
@@ -206,8 +225,12 @@
 <p><u><strong>将10进制转换为16进制来存储到地址空间中。</strong></u></p>
 <blockquote>
 <ol>
-<li>每个块的ID和RIFF块的Type（WAVE）的端序是<strong>大端存储</strong>，其他都是<strong>小端存储</strong></li>
-<li>16进制存储</li>
+<li class="lvl-3">
+<p>每个块的ID和RIFF块的Type（WAVE）的端序是<strong>大端存储</strong>，其他都是<strong>小端存储</strong></p>
+</li>
+<li class="lvl-3">
+<p>16进制存储</p>
+</li>
 </ol>
 </blockquote>
 ]]></content>
@@ -257,23 +280,29 @@
 </blockquote>
 <h2 id="数字音频编码">数字音频编码</h2>
 <ol>
-<li>参数编码（了解）</li>
-<li><u>波形编码（要考，重点）</u>
-<ul>
-<li>以下都是波形编码</li>
+<li class="lvl-3">
+<p>参数编码（了解）</p>
+</li>
+<li class="lvl-3">
+<p><u>波形编码（要考，重点）</u></p>
+<ul class="lvl-2">
+<li class="lvl-5">以下都是波形编码</li>
 </ul>
 </li>
 </ol>
 <h3 id="1-脉冲编码调制-pcm">1、脉冲编码调制（PCM）</h3>
-<p>在各种音频编码技术中，==脉冲编码调制==（Pulse Code Modulation，PCM）是<u>最重要、最完善</u>的编码系统，应用范围最广。</p>
+<p>在各种音频编码技术中，<mark>脉冲编码调制</mark>（Pulse Code Modulation，PCM）是<u>最重要、最完善</u>的编码系统，应用范围最广。</p>
 <p><u><em><strong>针对<span style="color: red;">样本</span>进行编码</strong></em></u></p>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302113605304.png" alt="PCM编码框图"></p>
 <p><span style="color: red;">脉冲编码调制（Pulse Code Modulation，PCM）</span>的两种量化方式：</p>
 <ol>
-<li>均匀量化（线性量化）</li>
-<li>非均匀量化（非线性量化）
-<ul>
-<li>13折线（不做要求）</li>
+<li class="lvl-3">
+<p>均匀量化（线性量化）</p>
+</li>
+<li class="lvl-3">
+<p>非均匀量化（非线性量化）</p>
+<ul class="lvl-2">
+<li class="lvl-5">13折线（不做要求）</li>
 </ul>
 </li>
 </ol>
@@ -291,7 +320,7 @@
 </tr>
 </tbody>
 </table>
-<p>==三种编码方式的本质和区别？==</p>
+<p><mark>三种编码方式的本质和区别？</mark></p>
 <h4 id="1-自适应脉冲编码调制-apcm">（1）自适应脉冲编码调制（APCM）</h4>
 <p>APCM是根据输入<strong>信号幅度大小</strong>来改变量化阶跃大小的一种波形编码技术。</p>
 <blockquote></blockquote>
@@ -320,21 +349,27 @@
 <img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307141721643.png" alt="image-20230307141721643" style="zoom: 50%;" />
 <blockquote>
 <ol>
-<li><span style="color: red;">红色</span>为预测值</li>
-<li><span style="color: blue;">蓝色</span>为实际值</li>
+<li class="lvl-3">
+<p><span style="color: red;">红色</span>为预测值</p>
+</li>
+<li class="lvl-3">
+<p><span style="color: blue;">蓝色</span>为实际值</p>
+</li>
 </ol>
-<ul>
-<li><u><strong>实际值大于预测值，则为1；否则，为0。</strong></u></li>
+<ul class="lvl-1">
+<li class="lvl-2"><u><strong>实际值大于预测值，则为1；否则，为0。</strong></u></li>
 </ul>
 <ol>
-<li>斜率过载：即模拟信号的斜率太大，超过了量化阶跃允许的变化幅度（模拟的预测值的变化趋势要小于实际值）。
-<ul>
-<li>解决：增大量化阶跃（间隔）</li>
+<li class="lvl-3">
+<p>斜率过载：即模拟信号的斜率太大，超过了量化阶跃允许的变化幅度（模拟的预测值的变化趋势要小于实际值）。</p>
+<ul class="lvl-3">
+<li class="lvl-5">解决：增大量化阶跃（间隔）</li>
 </ul>
 </li>
-<li>粒状噪声：当输入信号变化比较平缓时，增量调制器的编码输出为交错出现的0和1，即数字信号并不平缓，而是以量化阶跃Δ的大小起伏变化，这就相当于引入了噪声信号。
-<ul>
-<li>解决：减小量化阶跃（间隔）</li>
+<li class="lvl-3">
+<p>粒状噪声：当输入信号变化比较平缓时，增量调制器的编码输出为交错出现的0和1，即数字信号并不平缓，而是以量化阶跃Δ的大小起伏变化，这就相当于引入了噪声信号。</p>
+<ul class="lvl-3">
+<li class="lvl-5">解决：减小量化阶跃（间隔）</li>
 </ul>
 </li>
 </ol>
@@ -360,40 +395,68 @@
 <h3 id="数据流">数据流</h3>
 <p>数据流： 数据流是同一类型的媒体数据的一种序列。</p>
 <h3 id="媒体容器">媒体容器</h3>
-<p>媒体容器（相当于==文件==）：</p>
+<p>媒体容器（相当于<mark>文件</mark>）：</p>
 <ol>
-<li>文件头部：描述流的个数，以及每一个流的格式等。</li>
-<li>索引：用于随机存取内容。</li>
-<li>元数据：即数据的数据，也就是用于描述内容的数据（例如作者或标题）。</li>
-<li>数据包头部：用于网络传输或随机存取Media Foundation使用术语“容器”来描述<u><strong>数据流、头部、索引、元数据</strong></u>等等的整个包。</li>
+<li class="lvl-3">
+<p>文件头部：描述流的个数，以及每一个流的格式等。</p>
+</li>
+<li class="lvl-3">
+<p>索引：用于随机存取内容。</p>
+</li>
+<li class="lvl-3">
+<p>元数据：即数据的数据，也就是用于描述内容的数据（例如作者或标题）。</p>
+</li>
+<li class="lvl-3">
+<p>数据包头部：用于网络传输或随机存取Media Foundation使用术语“容器”来描述<u><strong>数据流、头部、索引、元数据</strong></u>等等的整个包。</p>
+</li>
 </ol>
-<p>Windows程序的核心是==事件驱==动和==消息循环机制==以及回调机制（<strong>窗口过程</strong>是典型的回调函数）</p>
+<p>Windows程序的核心是<mark>事件驱</mark>动和<mark>消息循环机制</mark>以及回调机制（<strong>窗口过程</strong>是典型的回调函数）</p>
 <h3 id="media-foundation架构">Media Foundation架构</h3>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302102456749.png" alt="Media Foundation架构"></p>
 <blockquote>
-<p>Media Session并不直接管理媒体数据，而是要借助==Topology==</p>
+<p>Media Session并不直接管理媒体数据，而是要借助<mark>Topology</mark></p>
 <p>Topology也是一个Media Foundation对象，用于表示媒体管道中的数据如何流动。</p>
-<p>在Topology中，数据流所经过的处理模块称为==节点(Node）==，如<em><strong>媒体源、转换器、输出节点</strong></em>。</p>
+<p>在Topology中，数据流所经过的处理模块称为<mark>节点(Node）</mark>，如<em><strong>媒体源、转换器、输出节点</strong></em>。</p>
 </blockquote>
 <p>数据管道模式：</p>
-<ul>
-<li>通过Media Session控制其他组件</li>
-<li>Media Source、MFT、Media Sink</li>
-<li>MFT通常由MF平台自动处理</li>
-<li>应用不能直接处理数据</li>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>通过Media Session控制其他组件</p>
+</li>
+<li class="lvl-2">
+<p>Media Source、MFT、Media Sink</p>
+</li>
+<li class="lvl-2">
+<p>MFT通常由MF平台自动处理</p>
+</li>
+<li class="lvl-2">
+<p>应用不能直接处理数据</p>
+</li>
 </ul>
 <p>数据源模式：</p>
-<ul>
-<li>Source Reader、Sink Writer控制数据</li>
-<li>程序处理MFT(Encoder/Decoder)</li>
-<li>应用可以直接处理数据</li>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Source Reader、Sink Writer控制数据</p>
+</li>
+<li class="lvl-2">
+<p>程序处理MFT(Encoder/Decoder)</p>
+</li>
+<li class="lvl-2">
+<p>应用可以直接处理数据</p>
+</li>
 </ul>
 <h3 id="媒体信道">媒体信道</h3>
 <p>媒体信道<strong>包括三种类型的对象，以生成或处理媒体数据。</strong></p>
-<ul>
-<li>媒体源（Media Source）：将数据引入管道。一个媒体源可以从本地文件中获取数据，如以一个视频文件；也可以从网络流或是硬件捕获设备中获取数据。</li>
-<li>Media Foundation变换（MFTs）：在数据流中处理数据，编码器和译码器是作为MFT的实现。</li>
-<li>媒体信宿（Media Sink）：使用数据；例如在显示屏上播放视频、播放音频、或是把数据写入一个媒体文件等。</li>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>媒体源（Media Source）：将数据引入管道。一个媒体源可以从本地文件中获取数据，如以一个视频文件；也可以从网络流或是硬件捕获设备中获取数据。</p>
+</li>
+<li class="lvl-2">
+<p>Media Foundation变换（MFTs）：在数据流中处理数据，编码器和译码器是作为MFT的实现。</p>
+</li>
+<li class="lvl-2">
+<p>媒体信宿（Media Sink）：使用数据；例如在显示屏上播放视频、播放音频、或是把数据写入一个媒体文件等。</p>
+</li>
 </ul>
 ]]></content>
       <categories>
@@ -431,34 +494,34 @@
     <content><![CDATA[<h1>多媒体技术概述</h1>
 <p><span style="color: red;">媒体分类</span>：</p>
 <ol>
-<li>
+<li class="lvl-3">
 <p>感觉媒体</p>
-<ul>
-<li>图形图像、视频（直接作用于人的感官）</li>
+<ul class="lvl-2">
+<li class="lvl-5">图形图像、视频（直接作用于人的感官）</li>
 </ul>
 </li>
-<li>
+<li class="lvl-3">
 <p>表示媒体</p>
-<ul>
-<li>编码形态的媒体，<strong>以模拟或数字编码形态出现的感觉媒体</strong></li>
+<ul class="lvl-2">
+<li class="lvl-5">编码形态的媒体，<strong>以模拟或数字编码形态出现的感觉媒体</strong></li>
 </ul>
 </li>
-<li>
+<li class="lvl-3">
 <p>表现媒体</p>
-<ul>
-<li><strong>显示成感觉媒体的设备或技术</strong></li>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>显示成感觉媒体的设备或技术</strong></li>
 </ul>
 </li>
-<li>
+<li class="lvl-3">
 <p>存储媒体</p>
-<ul>
-<li>存放表示媒体的设备或技术</li>
+<ul class="lvl-2">
+<li class="lvl-5">存放表示媒体的设备或技术</li>
 </ul>
 </li>
-<li>
+<li class="lvl-3">
 <p>传输媒体</p>
-<ul>
-<li><strong>用于传送表示媒体的设备或技术</strong></li>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>用于传送表示媒体的设备或技术</strong></li>
 </ul>
 </li>
 </ol>
@@ -509,27 +572,29 @@
 <p>域名地址：<a href="https://www.wgj.ink/">https://www.wgj.ink/</a></p>
 <p>hexo官方文档：<a href="https://hexo.io/zh-cn/docs/index.html">文档 | Hexo</a></p>
 <p>（主要）参考：<a href="https://zhuanlan.zhihu.com/p/60578464">使用 Hexo+GitHub 搭建个人免费博客教程（小白向） - 知乎 (zhihu.com)</a></p>
+<p>更换Markdown渲染器：<a href="https://blog.csdn.net/qq_42951560/article/details/123596899">(99条消息) 【Hexo】选择更高级的Markdown渲染器_hexo markdown_Xavier Jiezou的博客-CSDN博客</a></p>
 </blockquote>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/v2-a193a47cf70fe6ecf156e5f3d34920ea_r.jpg" alt="img"></p>
 <h2 id="git与nodejs的相关配置">Git与Nodejs的相关配置</h2>
 <h4 id="windows下配置与github的连接">Windows下配置与GitHub的连接</h4>
 <p>首先在windows上产生公钥私钥对：</p>
 <ol>
-<li>用Git Bash工具产生（需要安装git）：
+<li class="lvl-3">
+<p>用Git Bash工具产生（需要安装git）：</p>
 <ol>
-<li>打开 Git Bash工具 输入命令 <code>ssh-keygen</code></li>
-<li>输入完命令一直按回车即可</li>
-<li>在 <code>C:\Users\wgj\.ssh</code> 的目录中生成了两个密钥文件。id_rsa 为私钥，id_rsa.pub 为公钥</li>
-<li>将id_rsa.pub中的信息写入GitHub中的SSH and GPG keys中：
-<ul>
-<li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301164653254.png" alt="image-20230301164653254"></li>
-<li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301164725171.png" alt="image-20230301164725171"></li>
+<li class="lvl-6">打开 Git Bash工具 输入命令 <code>ssh-keygen</code></li>
+<li class="lvl-6">输入完命令一直按回车即可</li>
+<li class="lvl-6">在 <code>C:\Users\wgj\.ssh</code> 的目录中生成了两个密钥文件。id_rsa 为私钥，id_rsa.pub 为公钥</li>
+<li class="lvl-6">将id_rsa.pub中的信息写入GitHub中的SSH and GPG keys中：
+<ul class="lvl-4">
+<li class="lvl-8"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301164653254.png" alt="image-20230301164653254"></li>
+<li class="lvl-8"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301164725171.png" alt="image-20230301164725171"></li>
 </ul>
 </li>
-<li>最后在GitBash中验证即可：
-<ul>
-<li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301164804006.png" alt="image-20230301164804006"></li>
-<li>验证成功！</li>
+<li class="lvl-6">最后在GitBash中验证即可：
+<ul class="lvl-4">
+<li class="lvl-8"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301164804006.png" alt="image-20230301164804006"></li>
+<li class="lvl-8">验证成功！</li>
 </ul>
 </li>
 </ol>
@@ -538,8 +603,8 @@
 <h3 id="npm的相关配置">npm的相关配置</h3>
 <blockquote>
 <p>修改npm的config文件：npm config edit</p>
-<ul>
-<li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301214142053.png" alt="image-20230301214142053"></li>
+<ul class="lvl-1">
+<li class="lvl-2"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301214142053.png" alt="image-20230301214142053"></li>
 </ul>
 <p>直接设置npm的config文件：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置默认global安装的目录</span></span><br><span class="line">npm config set prefix &quot;C:\D\downLoad\node\node_global&quot;   </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置默认的cache文件目录</span></span><br><span class="line">npm config set cache &quot;C:\D\downLoad\node\node_cache&quot;</span><br><span class="line">              </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">PS：新安装的nodejs最好设置以上两个默认路径，否则会默认安装到C盘下</span></span><br><span class="line">              </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置镜像</span></span><br><span class="line">npm config set registry https://registry.npm.taobao.org</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看当前使用的镜像地址命令</span></span><br><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>
@@ -558,10 +623,13 @@
 <h4 id="1-关于git-bash无法打开的错误-闪退">1、关于Git Bash无法打开的错误（闪退）</h4>
 <p>解决：</p>
 <ol>
-<li>配置环境变量：<code>C:\Program Files\Git\bin</code></li>
-<li>在Windows Terminal中配置C:\Program Files\Git\bin目录下的bash.exe快捷启动方式;
-<ul>
-<li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301162808194.png" alt="image-20230301162808194"></li>
+<li class="lvl-3">
+<p>配置环境变量：<code>C:\Program Files\Git\bin</code></p>
+</li>
+<li class="lvl-3">
+<p>在Windows Terminal中配置C:\Program Files\Git\bin目录下的bash.exe快捷启动方式;</p>
+<ul class="lvl-2">
+<li class="lvl-5"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301162808194.png" alt="image-20230301162808194"></li>
 </ul>
 </li>
 </ol>
@@ -570,7 +638,9 @@
 </blockquote>
 <h2 id="注意事项">注意事项</h2>
 <ol>
-<li>编写md文件时注意不要在代码块前设置排序，否则部署上去后会无法识别</li>
+<li class="lvl-3">
+<p>编写md文件时注意不要在代码块前设置排序，否则部署上去后会无法识别</p>
+</li>
 </ol>
 ]]></content>
       <categories>

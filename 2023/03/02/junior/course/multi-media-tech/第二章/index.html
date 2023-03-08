@@ -119,40 +119,68 @@
 <h3 id="数据流">数据流</h3>
 <p>数据流： 数据流是同一类型的媒体数据的一种序列。</p>
 <h3 id="媒体容器">媒体容器</h3>
-<p>媒体容器（相当于==文件==）：</p>
+<p>媒体容器（相当于<mark>文件</mark>）：</p>
 <ol>
-<li>文件头部：描述流的个数，以及每一个流的格式等。</li>
-<li>索引：用于随机存取内容。</li>
-<li>元数据：即数据的数据，也就是用于描述内容的数据（例如作者或标题）。</li>
-<li>数据包头部：用于网络传输或随机存取Media Foundation使用术语“容器”来描述<u><strong>数据流、头部、索引、元数据</strong></u>等等的整个包。</li>
+<li class="lvl-3">
+<p>文件头部：描述流的个数，以及每一个流的格式等。</p>
+</li>
+<li class="lvl-3">
+<p>索引：用于随机存取内容。</p>
+</li>
+<li class="lvl-3">
+<p>元数据：即数据的数据，也就是用于描述内容的数据（例如作者或标题）。</p>
+</li>
+<li class="lvl-3">
+<p>数据包头部：用于网络传输或随机存取Media Foundation使用术语“容器”来描述<u><strong>数据流、头部、索引、元数据</strong></u>等等的整个包。</p>
+</li>
 </ol>
-<p>Windows程序的核心是==事件驱==动和==消息循环机制==以及回调机制（<strong>窗口过程</strong>是典型的回调函数）</p>
+<p>Windows程序的核心是<mark>事件驱</mark>动和<mark>消息循环机制</mark>以及回调机制（<strong>窗口过程</strong>是典型的回调函数）</p>
 <h3 id="media-foundation架构">Media Foundation架构</h3>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302102456749.png" alt="Media Foundation架构"></p>
 <blockquote>
-<p>Media Session并不直接管理媒体数据，而是要借助==Topology==</p>
+<p>Media Session并不直接管理媒体数据，而是要借助<mark>Topology</mark></p>
 <p>Topology也是一个Media Foundation对象，用于表示媒体管道中的数据如何流动。</p>
-<p>在Topology中，数据流所经过的处理模块称为==节点(Node）==，如<em><strong>媒体源、转换器、输出节点</strong></em>。</p>
+<p>在Topology中，数据流所经过的处理模块称为<mark>节点(Node）</mark>，如<em><strong>媒体源、转换器、输出节点</strong></em>。</p>
 </blockquote>
 <p>数据管道模式：</p>
-<ul>
-<li>通过Media Session控制其他组件</li>
-<li>Media Source、MFT、Media Sink</li>
-<li>MFT通常由MF平台自动处理</li>
-<li>应用不能直接处理数据</li>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>通过Media Session控制其他组件</p>
+</li>
+<li class="lvl-2">
+<p>Media Source、MFT、Media Sink</p>
+</li>
+<li class="lvl-2">
+<p>MFT通常由MF平台自动处理</p>
+</li>
+<li class="lvl-2">
+<p>应用不能直接处理数据</p>
+</li>
 </ul>
 <p>数据源模式：</p>
-<ul>
-<li>Source Reader、Sink Writer控制数据</li>
-<li>程序处理MFT(Encoder/Decoder)</li>
-<li>应用可以直接处理数据</li>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Source Reader、Sink Writer控制数据</p>
+</li>
+<li class="lvl-2">
+<p>程序处理MFT(Encoder/Decoder)</p>
+</li>
+<li class="lvl-2">
+<p>应用可以直接处理数据</p>
+</li>
 </ul>
 <h3 id="媒体信道">媒体信道</h3>
 <p>媒体信道<strong>包括三种类型的对象，以生成或处理媒体数据。</strong></p>
-<ul>
-<li>媒体源（Media Source）：将数据引入管道。一个媒体源可以从本地文件中获取数据，如以一个视频文件；也可以从网络流或是硬件捕获设备中获取数据。</li>
-<li>Media Foundation变换（MFTs）：在数据流中处理数据，编码器和译码器是作为MFT的实现。</li>
-<li>媒体信宿（Media Sink）：使用数据；例如在显示屏上播放视频、播放音频、或是把数据写入一个媒体文件等。</li>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>媒体源（Media Source）：将数据引入管道。一个媒体源可以从本地文件中获取数据，如以一个视频文件；也可以从网络流或是硬件捕获设备中获取数据。</p>
+</li>
+<li class="lvl-2">
+<p>Media Foundation变换（MFTs）：在数据流中处理数据，编码器和译码器是作为MFT的实现。</p>
+</li>
+<li class="lvl-2">
+<p>媒体信宿（Media Sink）：使用数据；例如在显示屏上播放视频、播放音频、或是把数据写入一个媒体文件等。</p>
+</li>
 </ul>
  
       <!-- reward -->
