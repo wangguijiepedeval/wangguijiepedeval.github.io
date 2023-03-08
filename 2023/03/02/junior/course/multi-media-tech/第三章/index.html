@@ -111,25 +111,31 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="数字音频编码"><a href="#数字音频编码" class="headerlink" title="数字音频编码"></a>数字音频编码</h1><p>声卡的作用：将数字信号与模拟信号进行相互转换。</p>
+  <h1>数字音频编码</h1>
+<p>声卡的作用：将数字信号与模拟信号进行相互转换。</p>
 <p>数模转换器（DAC）：将数字信号转换为模拟信号。</p>
 <p>模数转换（ADC）：将模拟信号转换为数字信号。</p>
-<p>Audio Codec（数&#x2F;模转换器）：数字信号与模拟信号的转换。</p>
+<p>Audio Codec（数/模转换器）：数字信号与模拟信号的转换。</p>
 <p>软波表（可以刷新）与波表（不可刷新）</p>
-<h5 id="声音的三要素：音色、音强、音高"><a href="#声音的三要素：音色、音强、音高" class="headerlink" title="声音的三要素：音色、音强、音高"></a>声音的三要素：<u>音色、音强、音高</u></h5><h4 id="模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。"><a href="#模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。" class="headerlink" title="模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。"></a>模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。</h4><h5 id="模拟音频数字化的三个步骤：采样、量化、编码。"><a href="#模拟音频数字化的三个步骤：采样、量化、编码。" class="headerlink" title="模拟音频数字化的三个步骤：采样、量化、编码。"></a><u>模拟音频数字化</u>的三个步骤：采样、量化、编码。</h5><h3 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h3><blockquote>
+<h5 id="声音的三要素：-u-音色-音强-音高-u">声音的三要素：<u>音色、音强、音高</u></h5>
+<h4 id="模拟信号经过采样-时间离散-和量化-空间离散-得到离散化的数字信号">模拟信号经过采样（时间离散）和量化（空间离散）得到离散化的数字信号。</h4>
+<h5 id="u-模拟音频数字化-u-的三个步骤：采样-量化-编码"><u>模拟音频数字化</u>的三个步骤：采样、量化、编码。</h5>
+<h3 id="采样">采样</h3>
+<blockquote>
 <p>采样：是指以一定的频率（或周期）捕获模拟音频信号，从而得到一系列离散化音频样本的过程。</p>
 <p>采样频率：单位时间内捕获的样本个数称为<u><strong>采样频率</strong></u>（Sampling Rate）</p>
-<p>**<u>采样定理</u><strong>：</strong><u>采样频率</u>**大于模拟信号频带F的两倍</p>
+<p><strong><u>采样定理</u></strong>：**<u>采样频率</u>**大于模拟信号频带F的两倍</p>
 </blockquote>
 <img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307140528727.png" alt="image-20230307140528727" style="zoom:50%;" />
-
 <p><u><em><strong>人能听到的频率范围：20Hz～20000Hz（20Hz~2kHz）</strong></em></u></p>
-<h3 id="量化"><a href="#量化" class="headerlink" title="量化"></a>量化</h3><blockquote>
+<h3 id="量化">量化</h3>
+<blockquote>
 <p>量化：是指用若干比特表示一个样本的过程；</p>
 <p>量化深度：表示一个样本所使用的<strong>比特数</strong>称为量化深度（bit depth）。</p>
 </blockquote>
 <p><u><strong>量化间隔</strong>（量化阶跃）：就是指将整个量化空间分割成若干离 散的有限状态后，相邻的两个离散状态值之间的差值。（幅值平均划分之后的每一份平均幅值就是量化间隔。）</u></p>
-<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><blockquote>
+<h3 id="编码">编码</h3>
+<blockquote>
 <p>编码实际上是以某种格式最终生成数字音频数据流的过程</p>
 </blockquote>
 <p>音频编码：将<u>模拟信号转换为数字信号</u>并以某种格式存储的技术或过程。</p>
@@ -137,20 +143,24 @@
 <blockquote>
 <p>经过采样的时间离散之后波上有根据时间点均匀划分的值（点），再经过量化的空间离散之后将整个模拟信号根据振幅进行均匀划分（如量化深度为3，则将振幅划分为8份，也就是8个值），最后根据模拟信号上的点与量化划分线之间的远近进行近似拟合，因此可以近似为3、5、5、2、4、6、7等具体数值，然后转化为二进制形式即可（011、101、101、……）。</p>
 </blockquote>
-<h2 id="数字音频编码-1"><a href="#数字音频编码-1" class="headerlink" title="数字音频编码"></a>数字音频编码</h2><ol>
+<h2 id="数字音频编码">数字音频编码</h2>
+<ol>
 <li>参数编码（了解）</li>
-<li><u>波形编码（要考，重点）</u><ul>
+<li><u>波形编码（要考，重点）</u>
+<ul>
 <li>以下都是波形编码</li>
 </ul>
 </li>
 </ol>
-<h3 id="1、脉冲编码调制（PCM）"><a href="#1、脉冲编码调制（PCM）" class="headerlink" title="1、脉冲编码调制（PCM）"></a>1、脉冲编码调制（PCM）</h3><p>在各种音频编码技术中，&#x3D;&#x3D;脉冲编码调制&#x3D;&#x3D;（Pulse Code Modulation，PCM）是<u>最重要、最完善</u>的编码系统，应用范围最广。</p>
+<h3 id="1-脉冲编码调制-pcm">1、脉冲编码调制（PCM）</h3>
+<p>在各种音频编码技术中，==脉冲编码调制==（Pulse Code Modulation，PCM）是<u>最重要、最完善</u>的编码系统，应用范围最广。</p>
 <p><u><em><strong>针对<span style="color: red;">样本</span>进行编码</strong></em></u></p>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302113605304.png" alt="PCM编码框图"></p>
 <p><span style="color: red;">脉冲编码调制（Pulse Code Modulation，PCM）</span>的两种量化方式：</p>
 <ol>
 <li>均匀量化（线性量化）</li>
-<li>非均匀量化（非线性量化）<ul>
+<li>非均匀量化（非线性量化）
+<ul>
 <li>13折线（不做要求）</li>
 </ul>
 </li>
@@ -162,33 +172,40 @@
 <th>非均匀量化</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302113938730.png" alt="均匀量化"></td>
 <td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302113958688.png" alt="非均匀量化"></td>
 </tr>
-</tbody></table>
-<p>&#x3D;&#x3D;三种编码方式的本质和区别？&#x3D;&#x3D;</p>
-<h4 id="（1）自适应脉冲编码调制（APCM）"><a href="#（1）自适应脉冲编码调制（APCM）" class="headerlink" title="（1）自适应脉冲编码调制（APCM）"></a>（1）自适应脉冲编码调制（APCM）</h4><p>APCM是根据输入<strong>信号幅度大小</strong>来改变量化阶跃大小的一种波形编码技术。</p>
+</tbody>
+</table>
+<p>==三种编码方式的本质和区别？==</p>
+<h4 id="1-自适应脉冲编码调制-apcm">（1）自适应脉冲编码调制（APCM）</h4>
+<p>APCM是根据输入<strong>信号幅度大小</strong>来改变量化阶跃大小的一种波形编码技术。</p>
+<blockquote></blockquote>
+<h4 id="2-差分脉冲编码调制-dpcm">（2）差分脉冲编码调制（DPCM）</h4>
 <blockquote>
-</blockquote>
-<h4 id="（2）差分脉冲编码调制（DPCM）"><a href="#（2）差分脉冲编码调制（DPCM）" class="headerlink" title="（2）差分脉冲编码调制（DPCM）"></a>（2）差分脉冲编码调制（DPCM）</h4><blockquote>
 <p>思想：根据过去的样本幅值来估算下一个样本信号的幅度大小，这个值称为预测值，然后计算实际信号值与预测值之差，最后<u><strong>对这个差值进行量化编码</strong></u>。</p>
 </blockquote>
-<h4 id="（3）自适应差分脉冲编码调制（ADPCM）"><a href="#（3）自适应差分脉冲编码调制（ADPCM）" class="headerlink" title="（3）自适应差分脉冲编码调制（ADPCM）"></a>（3）自适应差分脉冲编码调制（ADPCM）</h4><p>ADPCM是利用样本与样本之间的高度相关性和量化阶自适应来压缩数据的一种波形编码技术。</p>
+<h4 id="3-自适应差分脉冲编码调制-adpcm">（3）自适应差分脉冲编码调制（ADPCM）</h4>
+<p>ADPCM是利用样本与样本之间的高度相关性和量化阶自适应来压缩数据的一种波形编码技术。</p>
 <blockquote>
 <p><u><strong>对实际样本值和预测值之间的差值进行编码</strong></u></p>
 </blockquote>
-<h5 id="码率计算公式："><a href="#码率计算公式：" class="headerlink" title="码率计算公式："></a>码率计算公式：</h5><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307144339993.png" alt="image-20230307144339993"></p>
-<h5 id="数据量公式："><a href="#数据量公式：" class="headerlink" title="数据量公式："></a>数据量公式：</h5><p>数据量（字节&#x2F;秒）&#x3D;（采样频率（Hz）×采样位数（bit）×声道数）&#x2F;8</p>
-<h5 id="课堂练习："><a href="#课堂练习：" class="headerlink" title="课堂练习："></a>课堂练习：</h5><p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307144650999.png" alt="小练习"></p>
+<h5 id="码率计算公式：">码率计算公式：</h5>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307144339993.png" alt="image-20230307144339993"></p>
+<h5 id="数据量公式：">数据量公式：</h5>
+<p>数据量（字节/秒）=（采样频率（Hz）×采样位数（bit）×声道数）/8</p>
+<h5 id="课堂练习：">课堂练习：</h5>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307144650999.png" alt="小练习"></p>
 <blockquote>
-<p>该文件的音频数据的字节数：（码率*播放时间）&#x2F;8$\longrightarrow$结果：15876000字节</p>
+<p>该文件的音频数据的字节数：（码率*播放时间）/8<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>结果：15876000字节</p>
 <p>参考：<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/54537178.html">音频文件存储容量计算_百度知道 (baidu.com)</a></p>
 </blockquote>
-<h3 id="2、增量调制编码（DM）"><a href="#2、增量调制编码（DM）" class="headerlink" title="2、增量调制编码（DM）"></a>2、增量调制编码（DM）</h3><p><span style="color: blue;">增量调制编码（DM）</span>：通过增量起伏来记录模拟音频信号实际变化过程的数字音频编码。</p>
+<h3 id="2-增量调制编码-dm">2、增量调制编码（DM）</h3>
+<p><span style="color: blue;">增量调制编码（DM）</span>：通过增量起伏来记录模拟音频信号实际变化过程的数字音频编码。</p>
 <p><u><em><strong>针对<span style="color: red;">极性</span>进行编码</strong></em></u></p>
 <img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230307141721643.png" alt="image-20230307141721643" style="zoom: 50%;" />
-
 <blockquote>
 <ol>
 <li><span style="color: red;">红色</span>为预测值</li>
@@ -198,11 +215,13 @@
 <li><u><strong>实际值大于预测值，则为1；否则，为0。</strong></u></li>
 </ul>
 <ol>
-<li>斜率过载：即模拟信号的斜率太大，超过了量化阶跃允许的变化幅度（模拟的预测值的变化趋势要小于实际值）。<ul>
+<li>斜率过载：即模拟信号的斜率太大，超过了量化阶跃允许的变化幅度（模拟的预测值的变化趋势要小于实际值）。
+<ul>
 <li>解决：增大量化阶跃（间隔）</li>
 </ul>
 </li>
-<li>粒状噪声：当输入信号变化比较平缓时，增量调制器的编码输出为交错出现的0和1，即数字信号并不平缓，而是以量化阶跃Δ的大小起伏变化，这就相当于引入了噪声信号。<ul>
+<li>粒状噪声：当输入信号变化比较平缓时，增量调制器的编码输出为交错出现的0和1，即数字信号并不平缓，而是以量化阶跃Δ的大小起伏变化，这就相当于引入了噪声信号。
+<ul>
 <li>解决：减小量化阶跃（间隔）</li>
 </ul>
 </li>

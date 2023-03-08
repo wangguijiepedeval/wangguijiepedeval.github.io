@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">540</span>
+            <span class="post-count">543</span>
         </span>
     </span>
 
@@ -111,25 +111,31 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="个人博客搭建"><a href="#个人博客搭建" class="headerlink" title="个人博客搭建"></a>个人博客搭建</h1><blockquote>
+  <h1>个人博客搭建</h1>
+<blockquote>
 <p>博客地址：<a href="https://wangguijiepedeval.github.io/">wangguijie.github.io | wangguijiepedeval.github.io</a></p>
 <p>域名地址：<a target="_blank" rel="noopener" href="https://www.wgj.ink/">https://www.wgj.ink/</a></p>
 <p>hexo官方文档：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/index.html">文档 | Hexo</a></p>
 <p>（主要）参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60578464">使用 Hexo+GitHub 搭建个人免费博客教程（小白向） - 知乎 (zhihu.com)</a></p>
 </blockquote>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/v2-a193a47cf70fe6ecf156e5f3d34920ea_r.jpg" alt="img"></p>
-<h2 id="Git与Nodejs的相关配置"><a href="#Git与Nodejs的相关配置" class="headerlink" title="Git与Nodejs的相关配置"></a>Git与Nodejs的相关配置</h2><h4 id="Windows下配置与GitHub的连接"><a href="#Windows下配置与GitHub的连接" class="headerlink" title="Windows下配置与GitHub的连接"></a>Windows下配置与GitHub的连接</h4><p>首先在windows上产生公钥私钥对：</p>
+<h2 id="git与nodejs的相关配置">Git与Nodejs的相关配置</h2>
+<h4 id="windows下配置与github的连接">Windows下配置与GitHub的连接</h4>
+<p>首先在windows上产生公钥私钥对：</p>
 <ol>
-<li>用Git Bash工具产生（需要安装git）：<ol>
-<li>打开 Git Bash工具 输入命令 <code>ssh-keygen</code> </li>
-<li>输入完命令一直按回车即可 </li>
+<li>用Git Bash工具产生（需要安装git）：
+<ol>
+<li>打开 Git Bash工具 输入命令 <code>ssh-keygen</code></li>
+<li>输入完命令一直按回车即可</li>
 <li>在 <code>C:\Users\wgj\.ssh</code> 的目录中生成了两个密钥文件。id_rsa 为私钥，id_rsa.pub 为公钥</li>
-<li>将id_rsa.pub中的信息写入GitHub中的SSH and GPG keys中：<ul>
+<li>将id_rsa.pub中的信息写入GitHub中的SSH and GPG keys中：
+<ul>
 <li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301164653254.png" alt="image-20230301164653254"></li>
 <li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301164725171.png" alt="image-20230301164725171"></li>
 </ul>
 </li>
-<li>最后在GitBash中验证即可：<ul>
+<li>最后在GitBash中验证即可：
+<ul>
 <li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301164804006.png" alt="image-20230301164804006"></li>
 <li>验证成功！</li>
 </ul>
@@ -137,32 +143,32 @@
 </ol>
 </li>
 </ol>
-<h3 id="npm的相关配置"><a href="#npm的相关配置" class="headerlink" title="npm的相关配置"></a>npm的相关配置</h3><blockquote>
+<h3 id="npm的相关配置">npm的相关配置</h3>
+<blockquote>
 <p>修改npm的config文件：npm config edit</p>
 <ul>
 <li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301214142053.png" alt="image-20230301214142053"></li>
 </ul>
 <p>直接设置npm的config文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置默认global安装的目录</span></span><br><span class="line">npm config set prefix &quot;C:\D\downLoad\node\node_global&quot;   </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置默认的cache文件目录</span></span><br><span class="line">npm config set cache &quot;C:\D\downLoad\node\node_cache&quot;</span><br><span class="line">              </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">PS：新安装的nodejs最好设置以上两个默认路径，否则会默认安装到C盘下</span></span><br><span class="line">              </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置镜像</span></span><br><span class="line">npm config set registry https://registry.npm.taobao.org</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看当前使用的镜像地址命令</span></span><br><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>
-
-
 </blockquote>
-<h3 id="front-matter使用教程"><a href="#front-matter使用教程" class="headerlink" title="front-matter使用教程"></a>front-matter使用教程</h3><blockquote>
+<h3 id="front-matter使用教程">front-matter使用教程</h3>
+<blockquote>
 <p>网络参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42252518/article/details/99550466">(98条消息) front-matter使用详解_front matter_略略略～的博客-CSDN博客</a></p>
 </blockquote>
-<h2 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><h3 id="1、常用命令"><a href="#1、常用命令" class="headerlink" title="1、常用命令"></a>1、常用命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;name&quot;       # 新建文章</span><br><span class="line">hexo new page &quot;name&quot;  # 新建页面</span><br><span class="line">hexo g                # 生成页面</span><br><span class="line">hexo d                # 部署</span><br><span class="line">hexo g -d             # 生成页面并部署</span><br><span class="line">hexo s                # 本地预览</span><br><span class="line">hexo clean            # 清除缓存和已生成的静态文件</span><br><span class="line">hexo help             # 帮助</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="2、日常推送"><a href="#2、日常推送" class="headerlink" title="2、日常推送"></a>2、日常推送</h3><p>写好文章之后执行如下命令：</p>
+<h2 id="hexo">Hexo</h2>
+<h3 id="1-常用命令">1、常用命令</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;name&quot;       # 新建文章</span><br><span class="line">hexo new page &quot;name&quot;  # 新建页面</span><br><span class="line">hexo g                # 生成页面</span><br><span class="line">hexo d                # 部署</span><br><span class="line">hexo g -d             # 生成页面并部署</span><br><span class="line">hexo s                # 本地预览</span><br><span class="line">hexo clean            # 清除缓存和已生成的静态文件</span><br><span class="line">hexo help             # 帮助</span><br></pre></td></tr></table></figure>
+<h3 id="2-日常推送">2、日常推送</h3>
+<p>写好文章之后执行如下命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g                # 生成页面</span><br><span class="line">hexo d                # 部署</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h4 id="1、关于Git-Bash无法打开的错误（闪退）"><a href="#1、关于Git-Bash无法打开的错误（闪退）" class="headerlink" title="1、关于Git Bash无法打开的错误（闪退）"></a>1、关于Git Bash无法打开的错误（闪退）</h4><p>解决：</p>
+<h2 id="遇到的问题">遇到的问题</h2>
+<h4 id="1-关于git-bash无法打开的错误-闪退">1、关于Git Bash无法打开的错误（闪退）</h4>
+<p>解决：</p>
 <ol>
 <li>配置环境变量：<code>C:\Program Files\Git\bin</code></li>
-<li>在Windows Terminal中配置C:\Program Files\Git\bin目录下的bash.exe快捷启动方式;<ul>
+<li>在Windows Terminal中配置C:\Program Files\Git\bin目录下的bash.exe快捷启动方式;
+<ul>
 <li><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301162808194.png" alt="image-20230301162808194"></li>
 </ul>
 </li>
@@ -170,7 +176,8 @@
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012724595/article/details/114740935">(98条消息) windows下git bash安装与环境变量设置_git bash 环境变量_sning999的博客-CSDN博客</a></p>
 </blockquote>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<h2 id="注意事项">注意事项</h2>
+<ol>
 <li>编写md文件时注意不要在代码块前设置排序，否则部署上去后会无法识别</li>
 </ol>
  
