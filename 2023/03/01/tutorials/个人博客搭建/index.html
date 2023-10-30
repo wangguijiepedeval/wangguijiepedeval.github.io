@@ -102,7 +102,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">4.2k</span>
+            <span class="post-count">4.3k</span>
         </span>
     </span>
 
@@ -111,7 +111,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">16 min</span>
+            <span class="post-count">17 min</span>
         </span>
     </span>
 </div>
@@ -128,8 +128,8 @@
        
   <h1>个人博客搭建</h1>
 <blockquote>
-<p>⭐️ayer主题官方中文参考：<a target="_blank" rel="noopener" href="https://shen-yu.gitee.io/2019/ayer/">https://shen-yu.gitee.io/2019/ayer/</a></p>
-<p>⭐️ayer主题 GitHub仓库：<a target="_blank" rel="noopener" href="https://github.com/shen-yu/hexo-theme-ayer">https://github.com/shen-yu/hexo-theme-ayer</a></p>
+<p>⭐ayer主题官方中文参考：<a target="_blank" rel="noopener" href="https://shen-yu.gitee.io/2019/ayer/">https://shen-yu.gitee.io/2019/ayer/</a></p>
+<p>⭐ayer主题 GitHub仓库：<a target="_blank" rel="noopener" href="https://github.com/shen-yu/hexo-theme-ayer">https://github.com/shen-yu/hexo-theme-ayer</a></p>
 </blockquote>
 <blockquote>
 <p>博客地址：<a href="https://wangguijiepedeval.github.io/">wangguijie.github.io | wangguijiepedeval.github.io</a></p>
@@ -162,34 +162,34 @@
 </li>
 </ol>
 <blockquote>
-<p>⭐️注意使用Windows的Terminal时需要使用<strong>管理员运行</strong>打开，不然会有权限限制问题。</p>
+<p>⭐注意使用Windows的Terminal时需要使用<strong>管理员运行</strong>打开，不然会有权限限制问题。</p>
 </blockquote>
 <p>不同的主题对于<strong>hexo的配置文件</strong><code>_config.xml</code>中的参数格式会有不同的要求，因此切换不同主题时注意甄别修改。</p>
 <p>比如<strong>tranquilpeak主题</strong>的keywords要求：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">keywords:</span><br><span class="line">- hexo</span><br><span class="line">- javascript</span><br></pre></td></tr></table></figure>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231016211044507.png" alt="image-20231016211044507"></p>
 <h1>博客页面布局及其设计思路</h1>
-<h3 id="1-主界面">1、主界面</h3>
+<h3 id="1、主界面">1、主界面</h3>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710013922215.png" alt="image-20230710013922215"></p>
 <p>封面显示博客网站名称，下方通过“打字特效”的方式呈现设定好的文本内容；</p>
 <p>网站左侧边栏显示菜单可选项，包括：主页、归档、分类、标签……。</p>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710014747540.png" alt="image-20230710014747540"></p>
 <p>网站主页下方显示的是最新上传的文章精简信息（包括置顶文章：红色标签“sticky”标记），点击即可进入对应的文章界面。</p>
-<h3 id="2-归档界面">2、归档界面</h3>
+<h3 id="2、归档界面">2、归档界面</h3>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710015003143.png" alt="image-20230710015003143"></p>
 <p>根据时间日期降序显示上传文章。</p>
-<h3 id="3-分类界面">3、分类界面</h3>
+<h3 id="3、分类界面">3、分类界面</h3>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710015121079.png" alt="image-20230710015121079"></p>
 <p>根据<code>.md</code>文件中<code>Front-matter</code>中的目录结构生成对应的分类结构。</p>
-<h3 id="4-标签界面">4、标签界面</h3>
+<h3 id="4、标签界面">4、标签界面</h3>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710015229533.png" alt="image-20230710015229533"></p>
 <p>根据<code>.md</code>文件中<code>Front-matter</code>中的<code>tag</code>结构生成对应的标签。</p>
 <p>比如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">title: 个人博客搭建流程</span><br><span class="line">author: Guijie Wang</span><br><span class="line">categories: # 分类</span><br><span class="line">- 教程</span><br><span class="line">tags: # 标签</span><br><span class="line">- 博客搭建</span><br><span class="line">- hexo</span><br><span class="line">description: &quot;本文介绍如何使用 Hexo 快速搭建个人博客，并分享一些实用的主题和插件。&quot;</span><br><span class="line">top: True # 文章置顶（需要安装相关插件）</span><br></pre></td></tr></table></figure>
-<h3 id="5-文档界面">5、文档界面</h3>
+<h3 id="5、文档界面">5、文档界面</h3>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710015333186.png" alt="image-20230710015333186"></p>
 <p>文档界面嵌入了PDF阅读器，可以在线阅读上传的PDF文件。</p>
-<h3 id="6-播放器界面">6、播放器界面</h3>
+<h3 id="6、播放器界面">6、播放器界面</h3>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710015436038.png" alt="image-20230710015436038"></p>
 <p>播放界面嵌入了音乐播放器和视频播放器：</p>
 <ul class="lvl-0">
@@ -200,12 +200,12 @@
 <p>视频播放器：嵌入固定的视频代码，实现视频的播放。</p>
 </li>
 </ul>
-<h3 id="7-个人信息界面">7、个人信息界面</h3>
+<h3 id="7、个人信息界面">7、个人信息界面</h3>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710015629863.png" alt="image-20230710015629863"></p>
 <p>个人信息界面主要是展示博客作者的相关信息。</p>
 <h1>博客功能实现及其技术选择</h1>
-<h2 id="git与nodejs的相关配置">Git与Nodejs的相关配置</h2>
-<h4 id="windows下配置与github的连接">Windows下配置与GitHub的连接</h4>
+<h2 id="Git与Nodejs的相关配置">Git与Nodejs的相关配置</h2>
+<h4 id="Windows下配置与GitHub的连接">Windows下配置与GitHub的连接</h4>
 <p>首先在windows上产生公钥私钥对：</p>
 <ol>
 <li class="lvl-3">
@@ -243,10 +243,10 @@
 <p>网络参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42252518/article/details/99550466">(98条消息) front-matter使用详解_front matter_略略略～的博客-CSDN博客</a></p>
 <p>Hexo官方参考：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter.html">https://hexo.io/zh-cn/docs/front-matter.html</a></p>
 </blockquote>
-<h2 id="hexo">Hexo</h2>
-<h3 id="1-常用命令">1、常用命令</h3>
+<h2 id="Hexo">Hexo</h2>
+<h3 id="1、常用命令">1、常用命令</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;name&quot;       # 新建文章</span><br><span class="line">hexo new page &quot;name&quot;  # 新建页面</span><br><span class="line">hexo g                # 生成页面</span><br><span class="line">hexo d                # 部署</span><br><span class="line">hexo g -d             # 生成页面并部署</span><br><span class="line">hexo s                # 本地预览</span><br><span class="line">hexo clean            # 清除缓存和已生成的静态文件</span><br><span class="line">hexo help             # 帮助</span><br></pre></td></tr></table></figure>
-<h3 id="2-日常推送">2、日常推送</h3>
+<h3 id="2、日常推送">2、日常推送</h3>
 <p>写好文章之后在博客目录下执行如下命令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g                # 生成页面</span><br><span class="line">hexo d                # 部署</span><br></pre></td></tr></table></figure>
 <h2 id="文章置顶">文章置顶</h2>
@@ -254,7 +254,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-generator-index --save</span><br><span class="line">npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure>
 <h3 id="置顶方法">置顶方法</h3>
 <p>在front-matter中加入<code>top: True</code> 即可</p>
-<h3 id="可选-文章排序规则">（可选）文章排序规则</h3>
+<h3 id="（可选）文章排序规则">（可选）文章排序规则</h3>
 <p>在root config.yml文件中添加或修改以下部分：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">10</span></span><br><span class="line">  <span class="attr">order_by:</span> <span class="string">-date</span></span><br></pre></td></tr></table></figure>
 <ul class="lvl-0">
@@ -288,28 +288,28 @@
 </ul>
 <p>更多插件请见 <a target="_blank" rel="noopener" href="https://hexo.io/plugins/">hexo 插件市场</a></p>
 <h2 id="valine文章评论功能">valine文章评论功能</h2>
-<h4 id="1-获取app-id-和-app-key">1、获取APP ID 和 APP Key</h4>
+<h4 id="1、获取APP-ID-和-APP-Key">1、获取APP ID 和 APP Key</h4>
 <p>登录LeanCloud创建应用获取APP ID 和 APP Key</p>
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://valine.js.org/quickstart.html">快速开始 | Valine 一款快速、简洁且高效的无后端评论系统。</a></p>
 <p>LeanCloud官网：<a target="_blank" rel="noopener" href="https://console.leancloud.cn/apps">LeanCloud</a></p>
 </blockquote>
-<h4 id="2-启用评论功能">2、启用评论功能</h4>
+<h4 id="2、启用评论功能">2、启用评论功能</h4>
 <p>在博客主题Ayer文件下的_config.yml文件中添加app_id、app_key以及启用相应的功能</p>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230418223521043.png" alt="image-20230418223521043"></p>
 <h2 id="gitalk文章评论功能">gitalk文章评论功能</h2>
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ayuayue/article/details/109198490">为hexo增加gitalk评论系统-CSDN博客</a></p>
 </blockquote>
-<h4 id="1-创建评论仓库wgj-blog-talk">1、创建评论仓库<code>wgj_blog_talk</code></h4>
-<h4 id="2-创建oauth-apps">2、创建<code>OAuth Apps</code></h4>
+<h4 id="1、创建评论仓库wgj-blog-talk">1、创建评论仓库<code>wgj_blog_talk</code></h4>
+<h4 id="2、创建OAuth-Apps">2、创建<code>OAuth Apps</code></h4>
 <p>在github的个人settings中左边栏最下main的<code>Developer settings</code>中找到<code>OAuth Apps</code>，填写如下信息进行注册，获得id和secret。</p>
 <img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231016214654587.png" alt="image-20231016214654587" style="zoom:50%;" />
 <img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/20200925170806924.png" alt="image" style="zoom:50%;" />
 <p>填写相关信息，完成设置：</p>
 <img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231016213353796.png" alt="image-20231016213353796" style="zoom:50%;" />
 <h2 id="博客实现pdf在线预览">博客实现pdf在线预览</h2>
-<h3 id="pdf文件准备">PDF文件准备</h3>
+<h3 id="PDF文件准备">PDF文件准备</h3>
 <ol>
 <li class="lvl-3">
 <p>在<code>wgj-Hexo-Blog\source\</code>目录下新增文件夹用于存储和管理PDF文件：<code>file-pdf/</code></p>
@@ -317,7 +317,7 @@
 <li class="lvl-3">
 <p>将PDF存放到<code>file-pdf/</code>文件夹之后，再通过以下<mark>方法</mark>在<code>_post/</code>目录下的<code>.md</code>文件中引用即可</p>
 <ul class="lvl-2">
-<li class="lvl-5">⭐️<mark>引用路径格式</mark>：<code>/file-pdf/mytore-course-list(test).pdf</code></li>
+<li class="lvl-5">⭐<mark>引用路径格式</mark>：<code>/file-pdf/mytore-course-list(test).pdf</code></li>
 </ul>
 </li>
 </ol>
@@ -340,7 +340,7 @@
 <blockquote>
 <p>将以上引用代码插入到<code>.md</code>文件中想要插入的位置即可。</p>
 </blockquote>
-<h3 id="方法二-html的iframe标签">方法二:HTML的iframe标签</h3>
+<h3 id="方法二-HTML的iframe标签">方法二:HTML的iframe标签</h3>
 <blockquote>
 <p>特点：</p>
 <ul class="lvl-1">
@@ -389,7 +389,7 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% meting &quot;3986040&quot; &quot;netease&quot; &quot;song&quot; &quot;theme:#555&quot; &quot;mutex:true&quot; &quot;listmaxheight:340px&quot; &quot;preload:auto&quot; %&#125;</span><br></pre></td></tr></table></figure>
 <p>（2）歌单插入：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% meting &quot;627070825&quot; &quot;netease&quot; &quot;playlist&quot; &quot;theme:#555&quot; &quot;mutex:true&quot; &quot;listmaxheight:340px&quot; &quot;preload:auto&quot; %&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="ps：获取歌曲或者歌单的id">PS：获取歌曲或者歌单的id</h5>
+<h5 id="PS：获取歌曲或者歌单的id">PS：获取歌曲或者歌单的id</h5>
 <p>登录网页版的音乐网站，点击进入一个歌单便可在URL中看到id：7489569642</p>
 <p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230518204910597.png" alt="image-20230518204910597"></p>
 <p>或者点击<u><strong>分享</strong></u>，复制链接：</p>
@@ -513,7 +513,7 @@
 </li>
 </ul>
 </blockquote>
-<h2 id="gravatar全球通用头像">Gravatar全球通用头像</h2>
+<h2 id="Gravatar全球通用头像">Gravatar全球通用头像</h2>
 <blockquote>
 <p>Gravatar官网：<a target="_blank" rel="noopener" href="https://en.gravatar.com/">Gravatar - Globally Recognized Avatars</a></p>
 </blockquote>
@@ -533,7 +533,7 @@
 </blockquote>
 <h1>博客制作过程中遇到的问题及其解决方法</h1>
 <h2 id="遇到的问题">遇到的问题</h2>
-<h4 id="1-关于git-bash无法打开的错误-闪退">1、关于Git Bash无法打开的错误（闪退）</h4>
+<h4 id="1、关于Git-Bash无法打开的错误（闪退）">1、关于Git Bash无法打开的错误（闪退）</h4>
 <p>解决：</p>
 <ol>
 <li class="lvl-3">
@@ -549,8 +549,8 @@
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012724595/article/details/114740935">(98条消息) windows下git bash安装与环境变量设置_git bash 环境变量_sning999的博客-CSDN博客</a></p>
 </blockquote>
-<h4 id="2-hexo部署出现错误err-spawn-failed">2、Hexo部署出现错误err: Spawn failed</h4>
-<p>解决：</p>
+<h4 id="2、Hexo部署出现错误err-Spawn-failed">2、Hexo部署出现错误err: Spawn failed</h4>
+<p>解决一：</p>
 <ol>
 <li class="lvl-3">
 <p>删去博客目录下的.deploy_git文件</p>
@@ -568,6 +568,38 @@
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41256398/article/details/117994899?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-117994899-blog-106876940.235%5Ev32%5Epc_relevant_default_base3&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-117994899-blog-106876940.235%5Ev32%5Epc_relevant_default_base3&amp;utm_relevant_index=2">(113条消息) Hexo部署出现错误err: Error: Spawn failed解决方式_wei-xiansen的博客-CSDN博客</a></p>
 </blockquote>
+<p>若以上方法无法解决，并且出现错误：<span style="color: red;">fatal: bad config line 1 in file C:/Users/wgj/.gitconfig</span></p>
+<p>解决二：</p>
+<ol>
+<li class="lvl-3">
+<p>删去<code>C:/Users/wgj/</code>目录下的<code>.gitconfig</code>文件；</p>
+</li>
+<li class="lvl-3">
+<p>重新配置用户名和邮箱，输入下面的命令：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><code>git config --global user.name &quot;用户名&quot;</code></li>
+<li class="lvl-5"><code>git config --global user.email &quot;邮箱&quot;</code></li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>之后会生成新的<code>.gitconfig</code>文件。</p>
+</li>
+<li class="lvl-3">
+<p>最后继续解决问题：<span style="color: red;">err: Spawn failed</span></p>
+<ol>
+<li class="lvl-6">删除 <code>.deploy_git</code> 文件夹；</li>
+<li class="lvl-6">输入 <code>git config --global core.autocrlf false</code>；</li>
+<li class="lvl-6">最后，依次执行：<code>hexo clean</code>，<code>hexo g</code>，<code>hexo s</code>，<code>hexo d</code>。</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>参考：</p>
+<ul class="lvl-1">
+<li class="lvl-2">git错误参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dotnet261010/p/10844090.html">https://www.cnblogs.com/dotnet261010/p/10844090.html</a></li>
+<li class="lvl-2">Spawn failed参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28919533/article/details/124338891">https://blog.csdn.net/qq_28919533/article/details/124338891</a></li>
+</ul>
+</blockquote>
 <h2 id="注意事项">注意事项</h2>
 <ol>
 <li class="lvl-3">
@@ -575,7 +607,7 @@
 </li>
 </ol>
 <h2 id="博客搭建相关资源">博客搭建相关资源</h2>
-<h3 id="logo设计">LOGO设计</h3>
+<h3 id="LOGO设计">LOGO设计</h3>
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://www.logosc.cn/">LOGO设计神器；公司logo在线设计生成器 - 标小智LOGO神器 (logosc.cn)</a></p>
 <p>链接：<a target="_blank" rel="noopener" href="https://www.logosc.cn/logo/monogram?s=w">w字母图标生成器 | 汉字徽章图标一键生成 - 标小智LOGO神器 (logosc.cn)</a></p>
@@ -584,7 +616,7 @@
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://www.iconfinder.com/">7,400,000+ free and premium vector icons, illustrations and 3D illustrations (iconfinder.com)</a></p>
 </blockquote>
-<h3 id="获取网站logo">获取网站Logo</h3>
+<h3 id="获取网站Logo">获取网站Logo</h3>
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6987258296881119262">下载网站 favicon 图标的 3 种方法 - 掘金 (juejin.cn)</a></p>
 </blockquote>
@@ -610,7 +642,7 @@
 <p>对<u><strong>网站开发技术</strong></u>，如HTML、CSS、JavaScript等技术进一步熟悉并运用；</p>
 <p>对<u><strong>一定阶段内的自我学习成果</strong></u>进行总结和归纳。</p>
 <blockquote>
-<h5 id="1-seo相关术语">1、SEO相关术语。</h5>
+<h5 id="1、SEO相关术语。">1、SEO相关术语。</h5>
 <p>SEO (Search Engine Optimization)，译为<mark>搜索引擎优化</mark></p>
 <p>SEO相关术语：</p>
 <ul class="lvl-1">
@@ -636,7 +668,7 @@
 <p>SPAM(Specially Processed Assorted Meat): <u><em>指专门针对那些欺骗搜索引擎的技术。搜索引擎垃圾技术是利用不道德的技巧去提高自己搜索引擎上的排名</em></u></p>
 </li>
 </ul>
-<h5 id="2-seo常用的技术">2、SEO常用的技术。</h5>
+<h5 id="2、SEO常用的技术。">2、SEO常用的技术。</h5>
 <ol>
 <li class="lvl-3">
 <p>网页title的优化</p>
