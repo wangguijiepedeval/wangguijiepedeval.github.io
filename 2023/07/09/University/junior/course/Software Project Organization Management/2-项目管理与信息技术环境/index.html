@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>第二章（项目管理与信息技术环境） |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software Project Organization Management/2-项目管理与信息技术环境"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  第二章（项目管理与信息技术环境）
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/2-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E7%8E%AF%E5%A2%83/" class="article-date">
+  <time datetime="2023-07-09T10:33:40.999Z" itemprop="datePublished">2023-07-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/">软件项目组织管理</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">4 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>项目管理与信息技术环境</h1>
+<h5 id="理解项目情境时涉及的因素：">理解项目情境时涉及的因素：</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>应用系统方法</p>
+</li>
+<li class="lvl-2">
+<p>组织</p>
+</li>
+<li class="lvl-2">
+<p>管理利益相关者</p>
+</li>
+<li class="lvl-2">
+<p>产品生命周期和项目环境匹配</p>
+</li>
+<li class="lvl-2">
+<p>IT项目的情景</p>
+</li>
+</ul>
+<p>系统：是由若干个可以<u><strong>相互区别、相互联系而又相互作用</strong></u>的要素所组成, 在一定的层次结构形式中分布, 在给定的环境约束下, 为达到**<u>整体的目的</u>**而存在的<u><strong>有机集合体</strong></u>。</p>
+<h3 id="系统方法">系统方法</h3>
+<p>描述一种在解决复杂问题时所需的<u><strong>整体性和分析性</strong></u>的方法</p>
+<p>包括三部分</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><em><strong><u>系统哲学</u></strong></em> - 将事情作为系统考虑的整体模型</p>
+</li>
+<li class="lvl-2">
+<p><u><em><strong>系统分析</strong></em></u> - 解决问题的方法（需要定义系统的范围、将其分解为各个组成部分，然后识别和估计问题、机会、约束和需求）</p>
+</li>
+<li class="lvl-2">
+<p><u><em><strong>系统管理</strong></em></u> - 解决与系统的创建、维持和变更相关的<mark>业务上</mark>（费用）、<mark>技术上</mark>和<mark>组织上</mark>的问题</p>
+</li>
+</ul>
+<h4 id="系统管理">⭐️系统管理</h4>
+<p><u><em><strong>业务（Business）、技术（Technology）、组织（Organization）</strong></em></u></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230504171901132.png" alt="image-20230504171901132" style="zoom:50%;" />
+<h3 id="组织">⭐️组织</h3>
+<p>组织是指一个有明确目标并通过<u><strong>规划、协调、分配资源和聚集人力</strong></u>等手段实现这些目标的实体。</p>
+<p>组织环境：影响组织的元素等。（是指对一个组织的经营、管理和发展产生影响的所有因素和条件）</p>
+<h5 id="四个框架">⭐️四个框架</h5>
+<table>
+<thead>
+<tr>
+<th>结构框架</th>
+<th>人力资源框架</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用来解决组织结构化的问题着眼于不同部门的角色、责任，以满足最高管理层设定的目标和政策， <br /><span style="color: red;"> 重点用于协调、控制  </span></td>
+<td>重点在于促成组织需求和个人需求之间的<span style="color: red;">平衡与协调</span></td>
+</tr>
+<tr>
+<td><strong>政治框架</strong></td>
+<td><strong>标志框架</strong></td>
+</tr>
+<tr>
+<td>处理组织和人的政治问题  假定组织是由各种人和利益集团组成的联合体 <br /><span style="color: red;">冲突和权力是中心问题</span></td>
+<td>主要指与事件相关的符号和含义 <br /><span style="color: red;">文化很重要  </span></td>
+</tr>
+</tbody>
+</table>
+<h4 id="组织结构">⭐️组织结构</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u><em><strong>职能型</strong></em></u> – 职能经理向CEO汇报</p>
+</li>
+<li class="lvl-2">
+<p><u><em><strong>项目型</strong></em></u> – 项目经理对CEO负责</p>
+</li>
+<li class="lvl-2">
+<p><u><em><strong>矩阵型</strong></em></u> --介于职能型组织和项目型组织之间. 需要向两个或多个上级汇报, <u><strong>弱矩阵、平衡矩阵和强矩阵</strong></u></p>
+</li>
+</ul>
+<h5 id="组织结构对项目的影响">组织结构对项目的影响</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230504173431442.png" alt="image-20230504173431442" style="zoom:50%;" />
+<h4 id="组织文化">组织文化</h4>
+<h6 id="组织文化的10个特征">组织文化的10个特征</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>成员认同</p>
+</li>
+<li class="lvl-2">
+<p>强调群体</p>
+</li>
+<li class="lvl-2">
+<p>关注员工</p>
+</li>
+<li class="lvl-2">
+<p>单位整合</p>
+</li>
+<li class="lvl-2">
+<p>控制</p>
+</li>
+<li class="lvl-2">
+<p>风险容忍</p>
+</li>
+<li class="lvl-2">
+<p>奖励标准</p>
+</li>
+<li class="lvl-2">
+<p>冲突容忍</p>
+</li>
+<li class="lvl-2">
+<p>过程——结果导向</p>
+</li>
+<li class="lvl-2">
+<p>基于开放的系统</p>
+</li>
+</ul>
+<h4 id="项目生命周期">⭐️项目生命周期</h4>
+<p>生命周期：项目都需要经历一个从**<u>开始到结束的时间过程</u>**，项目工作在这一过程中呈现出一定的<u><strong>阶段性</strong></u>的特征。</p>
+<h4 id="项目阶段">项目阶段</h4>
+<p>阶段：几个基本的阶段包括:</p>
+<p>1）概念 Conceive     2) 开发 Develop</p>
+<p>3）实施 Execute        4) 收尾 Finish</p>
+<p>(简称C ．Ｄ．Ｅ．Ｆ阶段)</p>
+<p>说明：前两个阶段(概念和开发)主要工作是做计划，称做<strong>项目可行性阶段</strong>。后两个阶段(实施和收尾)主要是开展实际工作，称做<strong>项目获取阶段</strong>。</p>
+<h5 id="项目生命周期基本框架">项目生命周期基本框架</h5>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230508142544919.png" alt="项目生命周期基本框架"></p>
+<blockquote>
+<p>每个阶段结束之后需要进行<mark>项目管理评审</mark></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>【项目生命周期中的资源投入】</th>
+<th>【项目生命周期中的风险级别】</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230508143351866.png" alt="image-20230508143351866"></td>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230508143402124.png" alt="image-20230508143402124"></td>
+</tr>
+<tr>
+<td><strong>【利益相关者对项目的影响】</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230508143512271.png" alt="image-20230508143512271"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="每个阶段的交付成果">每个阶段的交付成果</h5>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230508143614259.png" alt="image-20230508143614259"></p>
+<h5 id="系统开发项目可遵循的-生命周期-：">系统开发项目可遵循的“生命周期”：</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>预测生命周期 – 项目的范围可以清晰描述, 项目进度时间表和费用可以被预测</p>
+</li>
+<li class="lvl-2">
+<p>自适应软件开发生命周期 – 项目是任务驱动、基于组件的, 使用基于时间的周期来满足目标日期</p>
+</li>
+</ul>
+<blockquote>
+<p>在确定使用哪种生命周期时，两个重要因素：</p>
+<ul class="lvl-1">
+<li class="lvl-3">需求的变化程度</li>
+<li class="lvl-3">有用成果的交付频率</li>
+</ul>
+</blockquote>
+<p><u><em><strong>在什么情况下，要知道选择什么模型？</strong></em></u></p>
+<h4 id="项目管理评审">⭐️项目管理评审</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>评审</p>
+</li>
+<li class="lvl-2">
+<p>标志</p>
+</li>
+<li class="lvl-2">
+<p>目的</p>
+</li>
+</ul>
+<p><strong>项目管理评审的<mark>目的</mark>是要判断项目是否应该继续、重新定位或终止</strong></p>
+<h5 id="三种离岸外包">三种离岸外包</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u><strong>ITO</strong></u>（Information Technology Outsourcing）是指将IT业务流程外包给第三方服务提供商。这些服务可能包括软件开发、网络管理、数据管理、技术支持等。</p>
+</li>
+<li class="lvl-2">
+<p><u><strong>BPO</strong></u>（Business Process Outsourcing）是指将企业的非核心业务流程外包给第三方服务提供商。这些服务可能包括客户服务、财务和会计服务、人力资源管理等。</p>
+</li>
+<li class="lvl-2">
+<p><u><strong>KPO</strong></u>（Knowledge Process Outsourcing）是指将需要高度专业知识和技能的业务流程外包给第三方服务提供商。这些服务可能包括市场研究、数据分析、知识管理等。</p>
+</li>
+</ul>
+<h3 id="虚拟团队">⭐️虚拟团队</h3>
+<h2 id="课堂快速测试">课堂快速测试</h2>
+<ol>
+<li class="lvl-3">
+<p>可交付成果；</p>
+</li>
+<li class="lvl-3">
+<p>终止点；</p>
+</li>
+<li class="lvl-3">
+<p>矩阵型；</p>
+</li>
+<li class="lvl-3">
+<p>标志框架；</p>
+</li>
+<li class="lvl-3">
+<p>业务、技术、组织</p>
+</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/2-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E7%8E%AF%E5%A2%83/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" rel="tag">课堂笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/" rel="tag">软件项目组织管理</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/3-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%BF%87%E7%A8%8B%E7%BB%84/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            第三章（项目管理过程组）
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/1-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E6%A6%82%E8%BF%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">第一章（项目管理概述）</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

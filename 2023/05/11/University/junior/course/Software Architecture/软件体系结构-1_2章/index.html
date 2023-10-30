@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>软件体系结构1-2章 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software Architecture/软件体系结构-1_2章"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  软件体系结构1-2章
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-1_2%E7%AB%A0/" class="article-date">
+  <time datetime="2023-05-11T03:31:27.861Z" itemprop="datePublished">2023-05-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">9 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>软件体系结构1-2章</h1>
+<blockquote>
+<p><mark>往年考试题（大概）</mark>：根据一个场景来选择自己认为合适的模式进行设计，画出UML类图（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>也可能是</mtext><mn>2</mn><mtext>个模式</mtext><mo>⟶</mo><mtext>最多两个连用</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{也可能是2个模式 \longrightarrow最多两个连用}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6943em;vertical-align:-0.011em;"></span><span class="mord cjk_fallback" style="color:red;">也可能是</span><span class="mord" style="color:red;">2</span><span class="mord cjk_fallback" style="color:red;">个模式</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel" style="color:red;">⟶</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">最多两个连用</span></span></span></span>）</p>
+</blockquote>
+<h2 id="第一章-6分">第一章==（6分）==</h2>
+<blockquote>
+<p>MVC是<u><em><strong>架构模式</strong></em></u>，不是<u><em><strong>设计模型</strong></em></u></p>
+</blockquote>
+<h3 id="第一章教学内容">第一章教学内容</h3>
+<ol>
+<li class="lvl-3">
+<p>引言</p>
+</li>
+<li class="lvl-3">
+<p>软件体系结构的意义</p>
+</li>
+<li class="lvl-3">
+<p>软件体系结构的定义</p>
+</li>
+<li class="lvl-3">
+<p>软件体系结构的发展</p>
+</li>
+<li class="lvl-3">
+<p>软件体系结构的优势</p>
+</li>
+</ol>
+<h4 id="软件体系结构的定义">软件体系结构的定义</h4>
+<p>国内普遍接受的定义：软件体系结构包括构件、连接件和约束，它是<mark>可预制</mark>和<mark>可重构</mark>的软件框架结构。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>构件</mark>是<u>可预制和可重用的</u>软件部件，是<mark>组成体系结构</mark>的<mark>基本计算单元</mark>或<mark>数据存储单元</mark></p>
+</li>
+<li class="lvl-2">
+<p><mark>连接件</mark>也是可预制和可重用的软件部件，是<mark>构件之间</mark>的<mark>连接单元</mark></p>
+</li>
+<li class="lvl-2">
+<p>构件和连接件<mark>之间的关系</mark>用<mark>约束来描述</mark></p>
+</li>
+</ul>
+<p><mark>软件体系结构 <strong>=</strong> 构件 <strong>+</strong> 连接件 <strong>+</strong> 约束</mark></p>
+<h6 id="软件体系结构包括三大要素：">软件体系结构包括三大要素：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>构件(Component)——项目文件也可以是构件，可简单可复杂，从<u>文件</u>到<u>系统</u>都<mark>能成为构件</mark>，<u>框架也可以是一种构件</u></p>
+</li>
+<li class="lvl-2">
+<p>连接件(Connector)</p>
+<ul class="lvl-2">
+<li class="lvl-4"><strong>连接件是体系结构的一个元素，它可以用于建模：</strong>
+<ul class="lvl-4">
+<li class="lvl-6">构件之间的相互作用</li>
+<li class="lvl-6">控制这些相互作用的规则</li>
+</ul>
+</li>
+<li class="lvl-4"><strong>简单相互作用：</strong>
+<ul class="lvl-4">
+<li class="lvl-6">过程的调用</li>
+<li class="lvl-6">访问<mark>共享变量</mark></li>
+</ul>
+</li>
+<li class="lvl-4"><strong>复杂和语义相关的相互作用：</strong>
+<ul class="lvl-4">
+<li class="lvl-6">客户端-服务器<mark>协议</mark></li>
+<li class="lvl-6">数据库访问<mark>协议</mark></li>
+<li class="lvl-6">异步事件的多点传送</li>
+<li class="lvl-6"><u><strong>管道数据流</strong></u></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>约束(Constraint)或配置(Configuration)</p>
+<ul class="lvl-2">
+<li class="lvl-4">正确的连接性</li>
+<li class="lvl-4">并发和分布性</li>
+<li class="lvl-4">符合设计的启发式和风格规则</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>在类图中，<u><strong>类</strong></u>就是<mark>构件</mark>，<u><strong>类与类之间的关系</strong></u>就是<mark>连接件</mark>，绘制UML类图的规则以及java类的<u><strong>语法规则</strong></u>就是<mark>约束</mark>。</p>
+<p>同比，在包图中，包就是构件（component），包与包之间的关系就是连接件，包的规则就是约束。</p>
+</blockquote>
+<h6 id="连接件">连接件</h6>
+<blockquote>
+<p>构件之间的连接件详细参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/tianhai110/article/details/6339565?ops_request_misc=%7B%22request_id%22%3A%22165484978516781435484033%22%2C%22scm%22%3A%2220140713.130102334..%22%7D&amp;request_id=165484978516781435484033&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-6339565-null-null.142%5Ev13%5Econtrol,157%5Ev14%5Enew_3&amp;utm_term=UML%E7%B1%BB%E5%9B%BE&amp;spm=1018.2226.3001.4187">(77条消息) UML类图几种关系的总结_挨踢大侠的博客-CSDN博客_类图的六种关系</a></p>
+</blockquote>
+<p>各种关系的强弱程度：</p>
+<p><mark>泛化（继承）=实现&gt;组合&gt;聚合&gt;关联&gt;依赖</mark></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220610183303978.png" alt="image-20220610183303978" style="zoom: 67%;" />
+<blockquote>
+<p>泛化就是继承</p>
+</blockquote>
+<h4 id="软件体系结构具有四个角度">软件体系结构具有四个角度</h4>
+<p>概念角度：<mark>描述</mark>系统的<mark>主要构件</mark>及它们<mark>之间的关系</mark>；</p>
+<p>模块角度：<mark>包含</mark>功能分解与层次结构；</p>
+<p>运行角度：描述了一个<mark>系统的动态结构</mark>；</p>
+<p>代码角度：描述了<mark>各种代码和库函数</mark>在开发环境中<mark>的组织</mark>。</p>
+<h4 id="考过-软件体系结构的优势">==（考过）==软件体系结构的优势</h4>
+<ol>
+<li class="lvl-3">
+<p><u><em><strong>容易理解</strong></em></u></p>
+<ul class="lvl-2">
+<li class="lvl-5">它从一个高层设计的抽象层次来表征一个系统</li>
+<li class="lvl-5">简化了我们理解庞大系统的能力</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><u><em><strong>重用</strong></em></u></p>
+<ul class="lvl-2">
+<li class="lvl-5">重用大的<mark>构件</mark></li>
+<li class="lvl-5">重用一些<mark>集成构件</mark>的<mark>框架</mark></li>
+<li class="lvl-5">特定领域的软件体系结构</li>
+<li class="lvl-5"><mark>设计模式</mark></li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><u><em><strong>控制成本</strong></em></u></p>
+<ul class="lvl-2">
+<li class="lvl-5">系统维护者可以<mark>更好的理解</mark><u><strong>变更</strong></u>带来<mark>的影响</mark>，因而可以<mark>更加精确的估算</mark>变更<mark>所需的成本</mark></li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><u><em><strong>可分析性</strong></em></u></p>
+<ul class="lvl-2">
+<li class="lvl-5">对系统的**<u>一致性检查</u>**<mark>提供高层次的视图</mark></li>
+<li class="lvl-5">研究系统是否<mark>与某种体系结构风格相符合</mark></li>
+<li class="lvl-5">对符合特定风格的<mark>特定领域系统</mark>的<mark>体系结构分析</mark></li>
+<li class="lvl-5"><mark>分析</mark>依赖于其中的<mark>构件</mark></li>
+</ul>
+</li>
+</ol>
+<h2 id="第二章">第二章</h2>
+<h3 id="第二章教学内容-16分">第二章教学内容==（16分）==</h3>
+<ol>
+<li class="lvl-3">
+<p>定义</p>
+</li>
+<li class="lvl-3">
+<p>管道和过滤器</p>
+</li>
+<li class="lvl-3">
+<p>数据抽象和面向对象组织</p>
+</li>
+<li class="lvl-3">
+<p>基于事件的隐式调用</p>
+</li>
+<li class="lvl-3">
+<p>分层系统</p>
+</li>
+<li class="lvl-3">
+<p>仓库系统</p>
+</li>
+<li class="lvl-3">
+<p>过程控制环路</p>
+</li>
+<li class="lvl-3">
+<p>C/S风格</p>
+</li>
+<li class="lvl-3">
+<p>三层C/S风格</p>
+</li>
+<li class="lvl-4">
+<p>B/S风格</p>
+</li>
+</ol>
+<h4 id="经典的体系结构风格">经典的体系结构风格</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>数据流风格</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{数据流风格}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">数据流风格</span></span></span></span>: 批处理序列; 管道/过滤器。</p>
+</li>
+<li class="lvl-2">
+<p>调用/返回风格：主程序/子程序；面向对象风格；层次结构。</p>
+</li>
+<li class="lvl-2">
+<p>独立构件风格：进程通讯；事件系统。</p>
+</li>
+<li class="lvl-2">
+<p>虚拟机风格：解释器；基于规则的系统。</p>
+</li>
+<li class="lvl-2">
+<p>仓库风格：数据库系统；超文本系统；黑板系统。</p>
+</li>
+<li class="lvl-2">
+<p>过程控制环路</p>
+</li>
+<li class="lvl-2">
+<p>C/S风格——客户端<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>服务器</p>
+</li>
+<li class="lvl-2">
+<p>B/S风格——零客户端</p>
+</li>
+</ul>
+<h5 id="管道和过滤器">管道和过滤器</h5>
+<blockquote>
+<p>编译器的组成：语法检查器，目标代码生成器，</p>
+<p><mark>在某些语言中，函数是指有返回类型的方法，过程是指没有返回类型的方法，java中两者之间并无严格区分，统称为方法</mark></p>
+</blockquote>
+<h6 id="概述：">概述：</h6>
+<p>每个构件<strong>都有</strong><mark>一组输入和输出</mark>，构件<strong>读</strong><mark>输入的数据流</mark>，经过<u><strong>内部处理</strong></u>，然后<strong>产生</strong><mark>输出数据流</mark>。</p>
+<p><mark>过滤器风格</mark>的<u>连接件</u>就像<u>是</u>数据流传输的<u>管道</u>，将<u><strong>一个过滤器的输出</strong></u>传到<u><strong>另一个过滤器的输入</strong></u>。</p>
+<h6 id="不变量：">不变量：</h6>
+<p>过滤器虽然可以增量式地处理数据，但是它们是<mark>独立的</mark></p>
+<p>管道和过滤器的正确输出<mark>不依赖其顺序</mark></p>
+<h6 id="实例：">实例：</h6>
+<p>编译器，功能程序，并行程序</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220921201159798.png" alt="image-20220921201159798"></p>
+<h5 id="数据抽象和面向对象组织">数据抽象和面向对象组织</h5>
+<h6 id="概述：">概述：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u>数据</u>的<u>表示方法</u>和它们的<u>相应操作</u>被<mark>封装在</mark>一个<mark>抽象数据类型</mark>或<mark>对象</mark>中</p>
+</li>
+<li class="lvl-2">
+<p>这种风格的构件是**<u>对象或者说是抽象数据类型的实例</u>**</p>
+</li>
+<li class="lvl-2">
+<p>对象通过函数和过程的调用来进行交互</p>
+</li>
+</ul>
+<h5 id="基于事件的隐式调用">基于事件的隐式调用</h5>
+<p><mark>事件源</mark>（Event Source）和<mark>事件处理</mark>（Event Handler）</p>
+<blockquote>
+<p>事件源（Event Source）与事件处理（Event Handler）两者之间通过<code>注册</code>进行连接，<code>注册</code>就是两个构件之间的连接件。</p>
+</blockquote>
+<p><mark>隐式调用</mark>：事件源没有直接与事件处理绑定，而是通过接口实现进行联系，故为<mark>隐式</mark>。</p>
+<blockquote>
+<p>里氏代换原则：父类都可以被子类替代</p>
+</blockquote>
+<h6 id="概述：">概述：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>构件<mark>不直接调用</mark>一个<strong>过程</strong>，而是<mark>触发或广播</mark><u><strong>一个或多个事件</strong></u></p>
+</li>
+<li class="lvl-2">
+<p>系统中的<u>其他构件中的过程在一个或多个事件中注册</u>，<mark>当一个事件被触发</mark>，系统<u>自动调用在这个事件中注册的所有过程</u>。</p>
+</li>
+<li class="lvl-2">
+<p>这种风格的构件是一个模块，这些模块可以是一些过程，又可以是一些事件的集合。</p>
+</li>
+</ul>
+<h6 id="不变量：">不变量：</h6>
+<p>事件的触发者并不知道哪些构件会被这些事件影响（观察者模式-Observer）</p>
+<h6 id="实例：">实例：</h6>
+<p>数据库管理系统，用户界面</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220921203433739.png" alt="image-20220921203433739" style="zoom:50%;" />
+<h5 id="分层系统">分层系统</h5>
+<h6 id="概述：">概述：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>组织成一个<mark>层次结构</mark></p>
+</li>
+<li class="lvl-2">
+<p>每一层都<mark>为上一层</mark>**<u>提供</u>**了相应的<mark>服务</mark>，并且<mark>接受下一层提供的服务</mark></p>
+</li>
+<li class="lvl-2">
+<p>在分层系统的一些层次中<mark>构件实现了虚拟机</mark>的功能</p>
+</li>
+</ul>
+<h6 id="实例：">实例：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u><strong>分层的通信协议</strong></u></p>
+</li>
+</ul>
+<blockquote>
+<p>最经典的分层就是<mark>OSI七层结构</mark></p>
+</blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220921203652505.png" alt="image-20220921203652505" style="zoom:50%;" />
+<h5 id="仓库系统">仓库系统</h5>
+<p>概述：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>构件：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>中心数据结构（仓库）</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{中心数据结构（仓库）}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">中心数据结构（仓库）</span></span></span></span>和一些<mark>独立构件</mark>的集合</p>
+</li>
+<li class="lvl-2">
+<p><mark>仓库</mark>和在系统中很重要的<mark>外部构件</mark>之间的<mark>相互作用</mark></p>
+</li>
+<li class="lvl-2">
+<p>实例：<u><strong>需要使用一些复杂表征的信号处理系统</strong></u></p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220921203825894.png" alt="image-20220921203825894" style="zoom:33%;" />
+<h5 id="过程控制环路">过程控制环路</h5>
+<h6 id="概述：">概述：</h6>
+<p>源自于控制理论中的模型框架，将事务处理看成<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>输入、加工、输出、反馈、再输入</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{输入、加工、输出、反馈、再输入}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">输入、加工、输出、反馈、再输入</span></span></span></span>的一个持续的过程模型。</p>
+<p>通过<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>持续性的加工处理过程将输入数据转换成既定属性的“产品”</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{持续性的加工处理过程将输入数据转换成既定属性的“产品”}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord cjk_fallback" style="color:red;">持续性的加工处理过程将输入数据转换成既定属性的</span><span class="mord" style="color:red;">“</span><span class="mord cjk_fallback" style="color:red;">产品</span><span class="mord" style="color:red;">”</span></span></span></span>，在工控系统、供电、水利甚至可以推广到商务软件体现的管理模型中。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220921204205374.png" alt="image-20220921204205374" style="zoom:50%;" />
+<h5 id="c-s风格">C/S风格</h5>
+<p>C/S体系结构有三个主要组成部分：<mark>数据库服务器</mark>、<mark>客户应用程序</mark>和<mark>网络</mark>。</p>
+<h6 id="服务器主要任务：">服务器主要任务：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>数据库安全性的要求；</p>
+</li>
+<li class="lvl-2">
+<p>数据库访问并发性的控制；</p>
+</li>
+<li class="lvl-2">
+<p>数据库前端的客户应用程序的<mark>全局数据完整性规则</mark>；</p>
+</li>
+<li class="lvl-2">
+<p>数据库的<mark>备份和恢复</mark>。</p>
+</li>
+</ul>
+<h6 id="客户应用程序主要任务：">客户应用程序主要任务：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>提供**<u>用户与数据库</u>**<mark>交互的界面</mark>；</p>
+</li>
+<li class="lvl-2">
+<p>向数据库服务器<mark>提交用户请求</mark>并<mark>接收</mark>来自<mark>数据库服务器的信息</mark>；</p>
+</li>
+<li class="lvl-2">
+<p>利用客户应用程序对存在于客户端的数据执行应用逻辑要求。</p>
+</li>
+</ul>
+<h6 id="三层c-s风格">三层C/S风格</h6>
+<h6 id="优点：">优点：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>允许<mark>合理地划分三层结构</mark>的功能，使之在逻辑上保持相对独立性，能<mark>提高</mark>系统和软件的<mark>可维护性和可扩展性</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>允许<mark>更灵活有效地选用</mark>相应的<mark>平台和硬件系统</mark>，使之在处理负荷能力上与处理特性上分别适应于结构清晰的三层；并且这些<mark>平台和各个组成部分</mark>可以<mark>具有</mark>良好的<mark>可升级性和开放性。</mark></p>
+</li>
+<li class="lvl-2">
+<p>应用的<mark>各层</mark>可以<mark>并行开发</mark>，可以<mark>选择各自最适合的</mark>开发语言。</p>
+</li>
+<li class="lvl-2">
+<p>利用<mark>功能层</mark>有效地<mark>隔离开</mark><strong><u>表示层与数据层</u></strong>，未授权的用户难以绕过功能层而利用数据库工具或黑客手段去非法地访问数据层，为<mark>严格的安全管理</mark>奠定了坚实的基础。</p>
+</li>
+</ul>
+<h6 id="注意点：">注意点：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>三层C/S结构<mark>各层间的通信效率不高</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>设计时必须慎重考虑三层间的<u><strong>通信方法、通信频率及数据量</strong></u>。</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220926200351945.png" alt="image-20220926200351945" style="zoom:33%;" />
+<h5 id="b-s风格">B/S风格</h5>
+<p>B/S体系结构具体为：<mark>浏览器、Web服务器、数据库服务器。</mark></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220926200214748.png" alt="image-20220926200214748" style="zoom:33%;" />
+<h6 id="优点：">优点：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>基于B/S体系结构的软件，系统<u><strong>安装、修改和维护</strong></u>全在<mark>服务器端解决</mark>。用户在使用系统时，仅仅需要<mark>一个浏览器</mark>就可运行<mark>全部的模块</mark>，真正<mark>达到了“零客户端”的功能</mark>，很容易<mark>在运行时自动升级</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>B/S体系结构还<mark>提供了异种机、异种网、异种应用服务器的联机、联网、统一服务</mark>的最现实的<u><strong>开放性基础</strong></u>。</p>
+</li>
+<li class="lvl-2">
+<p><u><strong>降低开发成本</strong></u>。</p>
+</li>
+</ul>
+<h6 id="缺点：">缺点：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>B/S体系结构==<strong>缺乏</strong>对动态页面的支持能力==，<mark>没有集成<strong>有效的</strong>数据库处理功能</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>B/S体系结构的<mark>系统<strong>扩展能力差</strong></mark>，<mark><strong>安全性</strong>难以控制</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>采用B/S体系结构的应用系统，<mark>在<strong>数据查询</strong>等<strong>响应速度上</strong>，要远远低于C/S体系结构。</mark></p>
+</li>
+<li class="lvl-2">
+<p>B/S体系结构的数据提交一般以页面为单位，<mark>数据的<strong>动态交互性</strong>不强，不利于在线事务处理(OLTP)应用。</mark></p>
+</li>
+</ul>
+<blockquote>
+<p><u>交互性强的软件并不适合B/S，应该做成C/S。</u></p>
+<p>考虑安全性和更新便利可以设置为：<strong><u>内网（局域网）B/S</u></strong>，<u><strong>外网则设计为C/S</strong></u>。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>除此之外还有其它的混合方式。</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/05/11/University/junior/course/Software%20Architecture/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-1_2%E7%AB%A0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" rel="tag">课程笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" rel="tag">软件体系结构</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-3%E7%AB%A0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            软件体系结构第3章——统一建模语言UML
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/powerDesign%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">PowerDesigner使用指南</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

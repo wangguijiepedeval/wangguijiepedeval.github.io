@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>测试作业2-代码静态分析 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software testing technology/作业2-代码静态分析"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  测试作业2-代码静态分析
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/11/University/junior/course/Software%20testing%20technology/%E4%BD%9C%E4%B8%9A2-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90/" class="article-date">
+  <time datetime="2023-05-11T03:05:03.044Z" itemprop="datePublished">2023-05-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF/">软件测试技术</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF/%E4%BD%9C%E4%B8%9A/">作业</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">3.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">17 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>测试作业2-代码静态分析</h1>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011943534/article/details/83037496">(77条消息) Intellij IDEA 使用checkstyle、pmd、findbugs检查静态代码质量_码农-文若书生的博客-CSDN博客_idea pmd</a></p>
+<p>FindBugs参考：[(77条消息) IDEA插件系列（3）：FindBugs插件检查项目bug_二木成林的博客-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/cnds123321/article/details/102852177#:~:text=%E6%8F%90%E4%BE%9B%E9%9D%99%E6%80%81%E5%AD%97%E8%8A%82%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%8C%E4%BB%A5%E4%BB%8EIntelliJ,IDEA%E4%B8%AD%E6%9F%A5%E6%89%BEJava%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E9%94%99%E8%AF%AF%E3%80%82">https://blog.csdn.net/cnds123321/article/details/102852177#:~:text=提供静态字节代码分析，以从IntelliJ,IDEA中查找Java代码中的错误。</a> FindBugs是Java的缺陷检测工具，它使用静态分析来查找200多种错误模式，例如空指针取消引用，无限递归循环，对Java库)</p>
+<p>check使用参考：[(77条消息) IDEA下安装与使用CheckStyle_杨林伟的博客-CSDN博客_checkstyle idea](<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_20042935/article/details/112602107#:~:text=IDEA%E4%B8%8B%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8CheckStyle">https://blog.csdn.net/qq_20042935/article/details/112602107#:~:text=IDEA下安装与使用CheckStyle</a> 1 1. 前言 CheckStyle 是 SourceForge 下的一个项目，提供了一个帮助JAVA开发人员遵守某些编码规范的工具。,3. 配置CheckStyle 3.1 新建CheckStyle代码规范文件 首先在本地新建 checkstyle.xml 文件，里面的内容如下： )</p>
+</blockquote>
+<p>分析源代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Example</span>&#123;</span><br><span class="line">        <span class="type">int</span> a;</span><br><span class="line">        <span class="type">int</span> ans;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">Example</span><span class="params">(<span class="type">int</span> m, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        a=m;</span><br><span class="line">        b=n;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">Function_A</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (x&lt;<span class="number">6</span> &amp;y&gt;<span class="number">0</span>)  &#123;</span><br><span class="line">        ans=x+a;</span><br><span class="line">        &#125;    <span class="keyword">else</span> &#123;</span><br><span class="line">        ans=x-a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>  ans;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">Function_B</span><span class="params">(intx)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (x&lt;<span class="number">6</span>)</span><br><span class="line">        ans=x*a;</span><br><span class="line">        <span class="keyword">else</span>   ans=x/b;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="pmd静态分析">PMD静态分析</h3>
+<p>PMD工具下载：</p>
+<p>1、首先在IDEA的setting中找到plugin</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128181742853.png" alt="image-20221128181742853" style="zoom:50%;" />
+<p>2、之后搜索PMD插件并下载：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128181840287.png" alt="image-20221128181840287" style="zoom:50%;" />
+<p>3、之后指定待分析的代码并鼠标右键选择run PMD：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128181440031.png" alt="image-20221128181440031" style="zoom:50%;" />
+<p>4、最后得到分析结果：</p>
+<ol>
+<li class="lvl-3">
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128182440601.png" alt="image-20221128182440601"></p>
+<p>代码第1行的publicclass出现拼写错误。</p>
+</li>
+<li class="lvl-3">
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128182610904.png" alt="image-20221128182610904"></p>
+<p>代码第19行出现变量定义错误：intx。</p>
+</li>
+<li class="lvl-3">
+<p>将以上两个结果修改正确之后，再次run PMD并将结果保存为网页：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128211726932.png" alt="image-20221128211726932"></p>
+</li>
+</ol>
+<h3 id="checkstyle静态分析">Checkstyle静态分析</h3>
+<p>Checkstyle工具下载：</p>
+<p>1、同样下载Checkstyle工具插件：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128182117062.png" alt="image-20221128182117062" style="zoom:50%;" />
+<p>2、添加自定义规则：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128220103772.png" alt="image-20221128220103772"></p>
+<p>3、检测代码得到如下结果：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128215320720.png" alt="image-20221128215320720"></p>
+<p>此外，在使用Checkstyle静态分析时，出现了<code>The source file could not be parsed by Checkstyle</code>的问题，经过网上查阅资料和试错，发现将Checkstyle的version改为8.1版本之下即可。</p>
+<h3 id="总结">总结</h3>
+<p>综上结果，对比两种工具：</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>目的</th>
+<th>检查项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PMD</td>
+<td>检查java源文件中的潜在问题</td>
+<td>空try/catch/finally/switch语句块、未使用的局部变量、参数和private方法、空if/while语句、过于复杂的表达式、复杂类</td>
+</tr>
+<tr>
+<td>Checkstyle</td>
+<td>检查java源文件是否与代码规范相符</td>
+<td>java注释、命名规范、多余的imports、size度量、缺少必要的空格、重复代码</td>
+</tr>
+</tbody>
+</table>
+<h3 id="附录">附录</h3>
+<p>checkstyle.xml文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">module</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//Puppy Crawl//DTD Check Configuration 1.3//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="string">&quot;http://www.puppycrawl.com/dtds/configuration_1_3.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;Checker&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 官方主页：https://checkstyle.sourceforge.io --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 检查文件是否以一个空行结束 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;NewlineAtEndOfFile&quot;</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 文件长度不超过1500行 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;FileLength&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;max&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1500&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 每行不超过120个字 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;LineLength&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;max&quot;</span> <span class="attr">value</span>=<span class="string">&quot;150&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;TreeWalker&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 想严格对文件头进行检查，请把文件头定义在一个外部文件中，如：java_header_file.txt 然后使 用&quot;headerFile&quot;属性：</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;Header&quot;&gt;</span></span><br><span class="line"><span class="comment">            &lt;property name=&quot;headerFile&quot; value=&quot;java_header_file.txt&quot;/&gt;</span></span><br><span class="line"><span class="comment">            &lt;property name=&quot;ignoreLines&quot; value=&quot;1, 5&quot;/&gt;</span></span><br><span class="line"><span class="comment">        &lt;/module&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 忽略掉文件头的几行声明  不指定外部文件时出错，暂不使用</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;Header&quot;&gt;</span></span><br><span class="line"><span class="comment">            &lt;property name=&quot;ignoreLines&quot; value=&quot;1, 5&quot;/&gt;</span></span><br><span class="line"><span class="comment">        &lt;/module&gt;</span></span><br><span class="line"><span class="comment">         --&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- ********************************javadoc的检查********************--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查Javadoc --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;JavadocStyle&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 忽略句号结尾检查 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&#x27;checkFirstSentence&#x27;</span> <span class="attr">value</span>=<span class="string">&#x27;false&#x27;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&#x27;checkEmptyJavadoc&#x27;</span> <span class="attr">value</span>=<span class="string">&#x27;true&#x27;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查所有的interface和class的doc --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;JavadocType&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 注释里允许所有注解 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&#x27;allowUnknownTags&#x27;</span> <span class="attr">value</span>=<span class="string">&#x27;true&#x27;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查所有方法的javadoc 注意方法上的@param XXX后必须跟参数说明检查才能通过 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&#x27;MissingJavadocMethod&#x27;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;allowMissingPropertyJavadoc&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;allowedAnnotations&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Override,Deprecated,ApiOperation&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;ignoreMethodNamesRegex&quot;</span> <span class="attr">value</span>=<span class="string">&quot;main&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;JavadocMethod&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 变量的javadoc --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;JavadocVariable&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 忽略检查的变量名 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&#x27;ignoreNamePattern&#x27;</span> <span class="attr">value</span>=<span class="string">&#x27;.*Business|.*Service|.*Handler|.*Mapper|.*Template|.*Client|.*Util.*|LOG|LOGGER&#x27;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- ********************************import方面的检查*********** --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- import中避免星号&quot;*&quot; --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;AvoidStarImport&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查是否从非法的包中导入了类 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;IllegalImport&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查是否导入了多余的包 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;RedundantImport&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--没用的import检查，比如：1.没有被用到 2.重复的 3.import java.lang的 4.import与该类在同一个package的--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;UnusedImports&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- ********************************命名规则检查****************** --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 包名检查 ^[a-z]+(\.[a-z][a-z0-9]*)*$ --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;PackageName&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;format&quot;</span> <span class="attr">value</span>=<span class="string">&quot;^[a-z]+(\.[a-z][a-z0-9]*)*$&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">message</span> <span class="attr">key</span>=<span class="string">&quot;name.invalidPattern&quot;</span> <span class="attr">value</span>=<span class="string">&quot;包名 &#x27;&#x27;&#123;0&#125;&#x27;&#x27; 要符合 &#x27;&#x27;&#123;1&#125;&#x27;&#x27;格式.&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 类型(Class或Interface)名  ^[A-Z][a-zA-Z0-9]*$--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;TypeName&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;severity&quot;</span> <span class="attr">value</span>=<span class="string">&quot;warning&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">message</span> <span class="attr">key</span>=<span class="string">&quot;name.invalidPattern&quot;</span> <span class="attr">value</span>=<span class="string">&quot;名称 &#x27;&#x27;&#123;0&#125;&#x27;&#x27; 要符合 &#x27;&#x27;&#123;1&#125;&#x27;&#x27;格式.&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 方法名  ^[a-z][a-zA-Z0-9]*$--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;MethodName&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 方法的参数命名 ^[a-z][a-zA-Z0-9]*$--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;ParameterName &quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 非static型变量  ^[a-z][a-zA-Z0-9]*$--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;MemberName&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 常量(static , final 字段)  ^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;ConstantName&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 局部的final变量，包括catch中的参数  ^[a-z][a-zA-Z0-9]*$ --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;LocalFinalVariableName&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 局部的非final型的变量，包括catch中的参数  ^[a-z][a-zA-Z0-9]*$ --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;LocalVariableName&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 仅仅是static型的变量（不包括staticfinal型）  ^[a-z][a-zA-Z0-9]*$ --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;StaticVariableName&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- **************方法的参数个数不超过5个。 并且不对构造方法和重写方法进行检查*******--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;ParameterNumber&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;tokens&quot;</span> <span class="attr">value</span>=<span class="string">&quot;METHOD_DEF&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;ignoreOverriddenMethods&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;max&quot;</span> <span class="attr">value</span>=<span class="string">&quot;5&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- ************************代码行数及行代码长度限制****************** --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 文件长度不超过1500行，放在TreeWalker前面 --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 方法不超过300行 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;MethodLength&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;tokens&quot;</span> <span class="attr">value</span>=<span class="string">&quot;METHOD_DEF&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;max&quot;</span> <span class="attr">value</span>=<span class="string">&quot;300&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 每行不超过120个字</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;LineLength&quot;&gt;</span></span><br><span class="line"><span class="comment">            &lt;property name=&quot;max&quot; value=&quot;150&quot;/&gt;</span></span><br><span class="line"><span class="comment">        &lt;/module&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- ****************************空格限定***************************** --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查约定方法名与左边圆括号之间不许出现空格</span></span><br><span class="line"><span class="comment">            public void wrongStyleMethod ()&#123;</span></span><br><span class="line"><span class="comment">            public void wrongStyleMethod</span></span><br><span class="line"><span class="comment">                                        (String para1, String para2)&#123;</span></span><br><span class="line"><span class="comment">            都是不能通过的，只允许方法名后紧跟左边圆括号&quot;(&quot;--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;MethodParamPad&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 不允许左圆括号右边有空格，也不允许与右圆括号左边有空格</span></span><br><span class="line"><span class="comment">            public void wrongStyleMethod( String para1, String para2 )&#123;</span></span><br><span class="line"><span class="comment">            public void correctStyleMethod(String para1, String para2)&#123;</span></span><br><span class="line"><span class="comment">            都不能通过--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;ParenPad&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 在类型转换时，不允许左圆括号右边有空格，也不允许与右圆括号左边有空格</span></span><br><span class="line"><span class="comment">            Object myObject = ( Object )other;</span></span><br><span class="line"><span class="comment">            不能通过--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;TypecastParenPad&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--  代码中不允许使用&quot;tab&quot;键。(&#x27;\t&#x27;) 因为在不同的编辑器下有的tab占8个空格（如windows记事</span></span><br><span class="line"><span class="comment">                  本），有的占4个（如当前大多数IDE）。</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;TabCharacter&quot;/&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查在某个特定关键字之后应保留空格 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;NoWhitespaceAfter&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查在某个特定关键字之前应保留空格 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;NoWhitespaceBefore&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 操作符换行策略检查 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;OperatorWrap&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查分隔符是否在空白之后 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;WhitespaceAfter&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查分隔符周围是否有空白 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;WhitespaceAround&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- **********************关键字********************************** --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 每个关键字都有正确的出现顺序。比如 public static final XXX 是对一个常量的声明。如果使用</span></span><br><span class="line"><span class="comment">            static public final 就是错误的 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;ModifierOrder&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 过滤多于的关键字--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;RedundantModifier&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- ***********************空白域************************************* --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 不能出现空白区域 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;EmptyBlock&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 所有区域都要使用大括号 if(true)System.out.println(&quot;if 嵌套浓度限定&quot;);不能通过--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;NeedBraces&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 多余的括号 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;AvoidNestedBlocks&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;allowInSwitchCase&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查左大括号位置 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;LeftCurly&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查右大括号位置 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;RightCurly&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- ******************************编码方面的检查 **********************--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查空的代码段</span></span><br><span class="line"><span class="comment">            不许出现空语句</span></span><br><span class="line"><span class="comment">            int a = 0; //正常</span></span><br><span class="line"><span class="comment">            ; // 这里就是一个空的语句</span></span><br><span class="line"><span class="comment">            int b = 0; //正常</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;EmptyStatement&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 如果某个变量一直都没变，那么它就应该是final型的</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;FinalLocalVariable&quot;/&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查在重写了equals方法后是否重写了hashCode方法 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;EqualsHashCode&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 不允许使用switch语句</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;IllegalToken&quot;&gt;</span></span><br><span class="line"><span class="comment">            &lt;property name=&quot;tokens&quot; value=&quot;LITERAL_SWITCH&quot;/&gt;</span></span><br><span class="line"><span class="comment">        &lt;/module&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查switch语句是否有default --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;MissingSwitchDefault&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查局部变量或参数是否隐藏了类中的变量 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;HiddenField&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;tokens&quot;</span> <span class="attr">value</span>=<span class="string">&quot;VARIABLE_DEF&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 内部赋值语句 ：String s = Integer.toString(i = 2); --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;InnerAssignment&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 绝对不能容忍魔法数 ，即数据标识常量化</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;MagicNumber&quot;/&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 循环控制变量不能被修改</span></span><br><span class="line"><span class="comment">        for (int i = 0; i &lt; 1; i++) &#123;</span></span><br><span class="line"><span class="comment">            i++; // 这里是极可能是程序员大意写出来的。</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;ModifiedControlVariable&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 多余的throw</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;RedundantThrows&quot;/&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 未被简化的条件表达式 检查过度复杂的条件表达式，</span></span><br><span class="line"><span class="comment">            比如： (b == true), b || true, !false, 难读且容易出错 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;SimplifyBooleanExpression&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 未被简化的布尔返回值</span></span><br><span class="line"><span class="comment">            if (valid())&#123;</span></span><br><span class="line"><span class="comment">                return false;</span></span><br><span class="line"><span class="comment">            &#125;else&#123;</span></span><br><span class="line"><span class="comment">                return true;</span></span><br><span class="line"><span class="comment">            &#125;</span></span><br><span class="line"><span class="comment">            就可以写成：</span></span><br><span class="line"><span class="comment">            return !valid();</span></span><br><span class="line"><span class="comment">         --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;SimplifyBooleanReturn&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- String的比较不能用!= 和 == --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;StringLiteralEquality&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 限制for循环最多嵌套2层 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;NestedForDepth&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;max&quot;</span> <span class="attr">value</span>=<span class="string">&quot;4&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- if最多嵌套3层 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;NestedIfDepth&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;max&quot;</span> <span class="attr">value</span>=<span class="string">&quot;5&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- try最多被嵌套2层 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;NestedTryDepth&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;max&quot;</span> <span class="attr">value</span>=<span class="string">&quot;5&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--重载方法是否在同个地方--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;OverloadMethodsDeclarationOrder&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查并确认一个类的clone()方法调用了父类的clone() --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;SuperClone&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查并确认一个类的finalize()调用了父类的finalize() --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;SuperFinalize&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 不能catch java.lang.Exception,异常分类处理</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;IllegalCatch&quot;&gt;</span></span><br><span class="line"><span class="comment">            &lt;property name=&quot;illegalClassNames&quot; value=&quot;java.lang.Exception&quot;/&gt;</span></span><br><span class="line"><span class="comment">        &lt;/module&gt;</span></span><br><span class="line"><span class="comment">         --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 确保一个类有package声明 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;PackageDeclaration&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 一个方法中最多有10个return --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;ReturnCount&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;max&quot;</span> <span class="attr">value</span>=<span class="string">&quot;10&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;maxForVoid&quot;</span> <span class="attr">value</span>=<span class="string">&quot;10&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 确保某个class 在被使用时都已经被初始化成默认值(对象是null ,</span></span><br><span class="line"><span class="comment">            数字和字符是0 , boolean 变量是false.)了 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;ExplicitInitialization&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 不许有同样内容的String</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;MultipleStringLiterals&quot;/&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 同一行不能有多个声明 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;MultipleVariableDeclarations&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 不必要的圆括号 检查不必要的圆括号”(,)”。比如， if(((((true))))) --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;UnnecessaryParentheses&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 限制一个布尔表达式中的 &amp;&amp;, || 和^的个数。可以让代码看起来更清晰，容易排错和维护  --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;BooleanExpressionComplexity&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;max&quot;</span> <span class="attr">value</span>=<span class="string">&quot;8&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 一个类中如果使用太多其他的类，是肯定会增加系统复杂度的。使用其他的类越少，耦合度就越少 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;ClassDataAbstractionCoupling&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;max&quot;</span> <span class="attr">value</span>=<span class="string">&quot;50&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 确保函数的分支复杂度没有超出限制</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;CyclomaticComplexity&quot;&gt;</span></span><br><span class="line"><span class="comment">            &lt;property name=&quot;max&quot; value=&quot;20&quot;/&gt;</span></span><br><span class="line"><span class="comment">        &lt;/module&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- NPATH 量度计算了一个函数的可执行的分支个数</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;NPathComplexity&quot;&gt;</span></span><br><span class="line"><span class="comment">            &lt;property name=&quot;max&quot; value=&quot;20&quot;/&gt;</span></span><br><span class="line"><span class="comment">        &lt;/module&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 类设计检查 --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查只有private构造函数的类是否声明为final --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;FinalClass&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查接口是否仅定义类型</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;InterfaceIsType&quot;/&gt;</span></span><br><span class="line"><span class="comment">    	--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查类成员的可见度 检查类成员的可见性。只有static final 成员是public的除非在本检查的protectedAllowed和packagedAllowed属性中进行了设置--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;VisibilityModifier&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;packageAllowed&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;protectedAllowed&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 禁止使用System.out.println --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;Regexp&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;format&quot;</span> <span class="attr">value</span>=<span class="string">&quot;.printStackTrace&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;illegalPattern&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;Regexp&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;format&quot;</span> <span class="attr">value</span>=<span class="string">&quot;System.out.println&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;illegalPattern&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- ************************其他*********************************** --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查并确保所有的常量中的L都是大写的。因为小写的字母l跟数字1太象了 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;UpperEll&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查数组类型的定义是String[] args，而不是String args[] --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;ArrayTypeStyle&quot;</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 不许使用与代码同行的注释</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;TrailingComment&quot;/&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 不许存在TO DO</span></span><br><span class="line"><span class="comment">        &lt;module name=&quot;TodoComment&quot;/&gt;</span></span><br><span class="line"><span class="comment">        --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 除了正常的程序入口之外，所有的main方法都应该被删掉或注释掉 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;UncommentedMain&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;excludedClasses&quot;</span> <span class="attr">value</span>=<span class="string">&quot;.*[Application,Test]$&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 检查并确保所有的常量中的L都是大写的。也就是在常量中没有使用”l”而是用的”L”，比如long型常</span></span><br><span class="line"><span class="comment">            量，都要以”L”结尾。这与Sun编码规范 3.10.1 相一致。小写的字母l 跟数字1 太象了 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">&quot;UpperEll&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/05/11/University/junior/course/Software%20testing%20technology/%E4%BD%9C%E4%B8%9A2-%E4%BB%A3%E7%A0%81%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/" rel="tag">课程作业</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" rel="tag">软件测试</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/11/University/junior/course/Software%20testing%20technology/%E6%B5%8B%E8%AF%9515%E7%BA%A7%E6%A0%B7%E5%8D%B7%E6%80%BB%E7%BB%93/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            15级样卷总结
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/05/11/University/junior/course/Software%20testing%20technology/%E4%BD%9C%E4%B8%9A1-%E7%BB%84%E5%90%88%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95-%E6%AD%A3%E4%BA%A4%E6%B3%95%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">测试作业1-组合分析方法</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

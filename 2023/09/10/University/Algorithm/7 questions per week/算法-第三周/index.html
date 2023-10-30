@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>算法-第三周 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/Algorithm/7 questions per week/算法-第三周"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  算法-第三周
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/09/10/University/Algorithm/7%20questions%20per%20week/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%89%E5%91%A8/" class="article-date">
+  <time datetime="2023-09-10T09:13:51.556Z" itemprop="datePublished">2023-09-10</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a> / <a class="article-category-link" href="/categories/Algorithm/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">算法练习</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">10 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>算法-第三周</h1>
+<blockquote>
+<p>一周7题，每日1题。</p>
+<p>开始：2023年6月12日（周一）</p>
+</blockquote>
+<h3 id="p3368-模板-树状数组-2">P3368 【模板】树状数组 2</h3>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3368">https://www.luogu.com.cn/problem/P3368</a></p>
+</li>
+</ul>
+<p>method1：让树状数组全为0，只记录修改信息，最后将修改信息与原序列相结合得到单点查询</p>
+<p>method2：利用差分后的结果来建树（这里使用method2）</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>建树：用差分后的结果</p>
+</li>
+<li class="lvl-2">
+<p>区间加法：利用差分法，f[x]=a[x]-a[x-1]</p>
+</li>
+<li class="lvl-2">
+<p>查询单点：利用前缀和，a[x]=f[x]+a[x-1]</p>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// P3368 【模板】树状数组 2</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">5e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> tree[N], a[N]; <span class="comment">// 树状数组，原始序列 </span></span><br><span class="line"><span class="comment">// method1：让树状数组全为0，只记录修改信息，最后将修改信息与原序列相结合得到单点查询 </span></span><br><span class="line"><span class="comment">// method2：利用差分后的结果来建树 </span></span><br><span class="line"><span class="comment">// - 建树：用差分后的结果</span></span><br><span class="line"><span class="comment">// - 区间加法：利用差分法，f[x]=a[x]-a[x-1] </span></span><br><span class="line"><span class="comment">// - 查询单点：利用前缀和，a[x]=f[x]+a[x-1] </span></span><br><span class="line"><span class="comment">// （这里使用method2）</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lowbit</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x &amp; -x;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 单点加法 </span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(x&lt;=n)&#123;</span><br><span class="line">		tree[x] += k;</span><br><span class="line">		x += <span class="built_in">lowbit</span>(x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单点查询 </span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">search</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(x)&#123;</span><br><span class="line">		ans += tree[x]; <span class="comment">// 差分还原 </span></span><br><span class="line">		x -= <span class="built_in">lowbit</span>(x); </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="type">int</span> now = <span class="number">0</span>, last = <span class="number">0</span>; <span class="comment">// 初始化为0，方便进行差分 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;now;</span><br><span class="line">		<span class="built_in">add</span>(i, now-last); <span class="comment">// 建树 </span></span><br><span class="line">		last = now;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="type">int</span> op, x, y, k;</span><br><span class="line">	<span class="keyword">while</span>(m--)&#123;</span><br><span class="line">		cin&gt;&gt;op&gt;&gt;x;</span><br><span class="line">		<span class="keyword">if</span>(op==<span class="number">1</span>)&#123; <span class="comment">// 区间加法 </span></span><br><span class="line">			cin&gt;&gt;y&gt;&gt;k;</span><br><span class="line">			<span class="built_in">add</span>(x, k), <span class="built_in">add</span>(y+<span class="number">1</span>, -k); <span class="comment">// 差分实现区间加法 </span></span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			cout&lt;&lt;<span class="built_in">search</span>(x)&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="p1423-小玉在游泳">P1423 小玉在游泳</h3>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1423">https://www.luogu.com.cn/problem/P1423</a></p>
+</li>
+</ul>
+<p>C语言输入double类型数据：在<code>scanf</code>函数中使用<code>%lf</code>格式说明符来读取一个double类型的数值</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">double</span> s;</span><br><span class="line"><span class="type">int</span> ans = <span class="number">1</span>; <span class="comment">// 初始游一步 </span></span><br><span class="line"><span class="type">double</span> x = <span class="number">2</span>, pre = <span class="number">2</span>; <span class="comment">// x：总距离，pre：上一步的距离 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//	cin&gt;&gt;s;</span></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%lf&quot;</span>, &amp;s);</span><br><span class="line">	<span class="keyword">while</span>(x&lt;s)&#123;</span><br><span class="line">		pre = pre*<span class="number">0.98</span>;</span><br><span class="line">		x = x + pre;</span><br><span class="line">		ans++;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="転倒数">転倒数</h3>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/AT_chokudai_S001_j">https://www.luogu.com.cn/problem/AT_chokudai_S001_j</a></p>
+</li>
+</ul>
+<h4 id="树状数组求逆序对">树状数组求逆序对</h4>
+<h5 id="离散化：">离散化：</h5>
+<p>假设我们有一个原始数组 <code>arr</code>，其中包含一些整数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr = &#123;10, 30, 20, 15, 25&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们想要对这个数组进行离散化，将每个元素映射为连续的整数。离散化的目的是在处理一些问题时，将元素的实际值转换为一些连续的索引，便于后续的计算。</p>
+<p>首先，创建一个辅助数组 <code>lsh</code>，大小与原始数组相同。然后，<strong><u>对原始数组进行排序</u></strong>，得到一个有序的数组 <code>sorted</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sorted = &#123;10, 15, 20, 25, 30&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来，遍历有序数组 <code>sorted</code>，并<mark>将每个元素的值与其在原始数组中的对应位置进行映射</mark>，将映射结果存储在 <code>lsh</code> 数组中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lsh[0] = 1   // 10 映射为 1</span><br><span class="line">lsh[1] = 4   // 15 映射为 4</span><br><span class="line">lsh[2] = 2   // 20 映射为 2</span><br><span class="line">lsh[3] = 5   // 25 映射为 5</span><br><span class="line">lsh[4] = 3   // 30 映射为 3</span><br></pre></td></tr></table></figure>
+<p>最终，<code>lsh</code> 数组中的元素表示原始数组中每个元素离散化后的结果。在后续的计算中，我们<mark>可以使用 <code>lsh</code> 数组来代替原始数组</mark>，进行更方便的处理。</p>
+<p>需要注意的是，离散化过程中，如果有多个相同的元素，它们在排序后的数组中的顺序决定了它们在离散化结果中的顺序。</p>
+<blockquote>
+<p><mark>离散化的实质</mark>就是：用原始数组的下标来替换其对应的元素（因为元素可以很大，而下标就想对比较小，且下标一定在定义的范围内），再将原数组下标映射为新的连续自然数<code>lsh[a[i].order]=i</code>，这里的a数组是一个结构体数组，包含<code>order,value</code>两个变量，a数组可以根据具体情况在不同排序规则下进行排序，最后我们只需要使用离散化后的数组lsh代替原始数组进行处理即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="comment">// 结构体数组</span></span><br><span class="line">&gt;<span class="keyword">struct</span> <span class="title class_">Number</span>&#123;</span><br><span class="line"><span class="type">int</span> order;</span><br><span class="line"><span class="type">int</span> value;</span><br><span class="line">&gt;&#125;a[N]; </span><br></pre></td></tr></table></figure>
+</blockquote>
+<h5 id="树状数组：">树状数组：</h5>
+<p>通过排序，并离散化之后，我们<mark>将得到的离散化数组利用桶排序中“桶”的思想代入到树状数组中进行处理</mark>，最后求出逆序对的数量（<strong><u>逆序对</u></strong>：i&lt;j,而a[i]&gt;a[j]，这就是一个逆序对），也就是找到比当前元素大的元素的个数。</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// AT_chokudai_S001_j —— 冒泡排序中有多少逆序对存在 </span></span><br><span class="line"><span class="comment">// 运用树状数组求逆序对</span></span><br><span class="line"><span class="comment">// 输入的原始序列的元素可能会很大，超过定义的树状数组的最大范围，因此需要进行离散化，也就是用原始序列对应的序号来标识对应的元素</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Number</span>&#123;</span><br><span class="line">	<span class="type">int</span> order;</span><br><span class="line">	<span class="type">int</span> value;</span><br><span class="line">&#125;a[N]; </span><br><span class="line"><span class="type">int</span> lsh[N]; <span class="comment">// 离散化数组</span></span><br><span class="line"><span class="type">int</span> tree[N]; <span class="comment">// 树状数组</span></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> ans; <span class="comment">// 逆序对的数量 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lowbit</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x &amp; -x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(x&lt;=n)&#123;</span><br><span class="line">		tree[x] += k;</span><br><span class="line">		x += <span class="built_in">lowbit</span>(x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getSum</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(x)&#123;</span><br><span class="line">		res += tree[x];</span><br><span class="line">		x -= <span class="built_in">lowbit</span>(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;a[i].value;</span><br><span class="line">		a[i].order = i; <span class="comment">// 原始数组的序号 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 升序排序 </span></span><br><span class="line">	<span class="built_in">sort</span>(a+<span class="number">1</span>, a+<span class="number">1</span>+n, [](Number a, Number b)&#123; <span class="comment">// 匿名函数 </span></span><br><span class="line">		<span class="keyword">return</span> a.value&lt;b.value;</span><br><span class="line">	&#125;);</span><br><span class="line">	<span class="comment">// 离散化 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		lsh[a[i].order] = i; <span class="comment">// 实质是：升序排序后，元素对应的新下标(这个新下标用在树状数组中进行计算逆序对) </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123; <span class="comment">// 这里的i控制的是冒泡排序中当前待排序数组的元素总个数 </span></span><br><span class="line">		<span class="built_in">add</span>(lsh[i], <span class="number">1</span>); <span class="comment">// 桶排序思想：&lt;=当前元素的元素个数有多少个</span></span><br><span class="line">		ans += i-<span class="built_in">getSum</span>(lsh[i]); </span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="p5019-noip2018-提高组-铺设道路">P5019 [NOIP2018 提高组] 铺设道路</h3>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5019">https://www.luogu.com.cn/problem/P5019</a></p>
+</li>
+</ul>
+<h4 id="贪心法">贪心法</h4>
+<p>题目里给的样例是4，3，2，5，3，5；</p>
+<p>可以选择一个区间进行“填坑”操作；</p>
+<p>所以我们的贪心策略是：</p>
+<h6 id="若a-i-a-i-1-计数器sum-a-i-a-i-1-辅以差分思想">若a[i]&gt;a[i-1],计数器sum+=a[i]-a[i-1]; （辅以<mark>差分思想</mark>）⭐️</h6>
+<p>那么为什么这样贪心是对的呢？</p>
+<h5 id="贪心证明">贪心证明</h5>
+<p>假设现在有一个坑，但旁边又有一个坑。</p>
+<p>你肯定会选择把两个同时减1；</p>
+<p>那么小的坑肯定会被大的坑“带着”填掉。</p>
+<p>大的坑也会减少a[i]-a[i-1]的深度，可以说是“免费的”；</p>
+<p>所以这样贪心是对的；</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// P5019 [NOIP2018 提高组] 铺设道路</span></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a;</span><br><span class="line"><span class="type">int</span> sum, pre = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;a;</span><br><span class="line">		<span class="keyword">if</span>(a&gt;pre)sum+=a-pre;</span><br><span class="line">		pre = a;</span><br><span class="line">	&#125; </span><br><span class="line">	cout&lt;&lt;sum;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="p4387-深基15-习9-验证栈序列">P4387 【深基15.习9】验证栈序列</h3>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4387">https://www.luogu.com.cn/problem/P4387</a></p>
+</li>
+</ul>
+<p>栈模拟题：</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>可以用数组模拟栈</p>
+</li>
+<li class="lvl-2">
+<p>也可以直接用STL模板</p>
+</li>
+</ul>
+<p><u><em><strong>两个序列 pushed 和 poped 两个序列，验证poped序列是否为pushed序列的出栈序列</strong></em></u></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// P4387 【深基15.习9】验证栈序列</span></span><br><span class="line"><span class="comment">// 利用栈来辅助 </span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n, Q; </span><br><span class="line"><span class="type">int</span> a[N], b[N];</span><br><span class="line">stack&lt;<span class="type">int</span>&gt;st; <span class="comment">// 定义栈</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;Q;</span><br><span class="line">	<span class="keyword">while</span>(Q--)&#123;</span><br><span class="line">		cin&gt;&gt;n;</span><br><span class="line">		<span class="type">int</span> cnt = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123; </span><br><span class="line">			cin&gt;&gt;a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123; </span><br><span class="line">			cin&gt;&gt;b[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">			st.<span class="built_in">push</span>(a[i]);</span><br><span class="line">			<span class="keyword">while</span>(st.<span class="built_in">top</span>()==b[cnt])&#123; <span class="comment">// 相等则弹出栈 </span></span><br><span class="line">				st.<span class="built_in">pop</span>();</span><br><span class="line">				cnt++;</span><br><span class="line">				<span class="keyword">if</span>(st.<span class="built_in">empty</span>())<span class="keyword">break</span>; <span class="comment">// 栈为空则提前结束 </span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(st.<span class="built_in">empty</span>())cout&lt;&lt;<span class="string">&quot;Yes&quot;</span>&lt;&lt;endl;</span><br><span class="line">		<span class="keyword">else</span> cout&lt;&lt;<span class="string">&quot;No&quot;</span>&lt;&lt;endl;</span><br><span class="line">		<span class="keyword">while</span>(!st.<span class="built_in">empty</span>())st.<span class="built_in">pop</span>(); <span class="comment">// 这里是为了下一次查询做处理 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="p1597-语句解析">P1597 语句解析</h3>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1597">https://www.luogu.com.cn/problem/P1597</a></p>
+</li>
+</ul>
+<p><span style="color: red;">分析：</span></p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>一串符合语法的 PASCAL 语言，只有a*,<em>b</em>,*c三个变量，而且只有赋值语句，赋值只能是一个一位的数字或一个变量，未赋值的变量值为 0。</p>
+</li>
+</ul>
+<p>充分利用c语言优势（方便的输入和输出：scanf,printf）</p>
+<p>表达式<code>scanf(&quot;%c:=%c;&quot;, &amp;s1, &amp;s2) == 2</code>：如果<code>scanf</code>函数成功读取了两个字符并且正确赋值给<code>s1</code>和<code>s2</code>，则<mark>返回值为2</mark>（<u><em>表示成功读取了两个数据</em></u>）。如果读取失败或者读取的数据不符合指定的格式，返回值会小于2。</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p><code>&quot;%c&quot;</code>表示的是读取的字符类型数据</p>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// P1597 语句解析</span></span><br><span class="line"><span class="type">int</span> a[<span class="number">3</span>];</span><br><span class="line"><span class="type">char</span> y, x;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%c:=%c;&quot;</span>, &amp;y, &amp;x)==<span class="number">2</span>)&#123; <span class="comment">// 表示成功读取两个数据 </span></span><br><span class="line">		a[y-<span class="string">&#x27;a&#x27;</span>] = (x&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;x&lt;=<span class="string">&#x27;9&#x27;</span>)?x-<span class="string">&#x27;0&#x27;</span>:a[x-<span class="string">&#x27;a&#x27;</span>]; <span class="comment">// 是整数则直接赋值，是变量调用则对应的变量值 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d %d %d&quot;</span>, a[<span class="number">0</span>], a[<span class="number">1</span>], a[<span class="number">2</span>]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="p1424-小鱼的航程-改进版">P1424 小鱼的航程（改进版）</h3>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1424">https://www.luogu.com.cn/problem/P1424</a></p>
+</li>
+</ul>
+<p>简单的一个模拟题，但是要<mark>注意细节</mark></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// P1424 小鱼的航程（改进版）</span></span><br><span class="line"><span class="type">int</span> x, n;</span><br><span class="line"><span class="type">int</span> a[<span class="number">8</span>]; <span class="comment">// 不计0，6，7；只记1-5 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;x&gt;&gt;n;</span><br><span class="line">	a[x%<span class="number">7</span>]++;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;++i)&#123; <span class="comment">// 注意：从周x开始，那么周x自然也算1天，因此循环还有n-1天 </span></span><br><span class="line">		a[(x+i)%<span class="number">7</span>]++;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;<span class="built_in">accumulate</span>(a+<span class="number">1</span>, a+<span class="number">1</span>+<span class="number">5</span>, <span class="number">0</span>)*<span class="number">250</span>; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/09/10/University/Algorithm/7%20questions%20per%20week/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%89%E5%91%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">每日一题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/" rel="tag">算法练习</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/10/15/University/AI/CV/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%B9%BF/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            图像增广
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/09/10/University/AI/CV/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89CV-2/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">计算机视觉CV-2</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>软件体系结构第3章——统一建模语言UML |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software Architecture/软件体系结构-3章"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  软件体系结构第3章——统一建模语言UML
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-3%E7%AB%A0/" class="article-date">
+  <time datetime="2023-05-11T03:31:27.885Z" itemprop="datePublished">2023-05-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">8.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">28 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="第三章-统一建模语言uml-20分">第三章 统一建模语言UML==（20分）==</h2>
+<blockquote>
+<p>软件：powerDesigner 16.6</p>
+</blockquote>
+<h5 id="textcolor-blue-四种交互图："><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="blue"><mtext>四种交互图：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{blue}{四种交互图：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:blue;">四种交互图：</span></span></span></span></h5>
+<blockquote>
+<ol>
+<li class="lvl-3">
+<p>顺序图</p>
+</li>
+<li class="lvl-3">
+<p>通信图（与顺序图同构）</p>
+</li>
+<li class="lvl-3">
+<p>定时图</p>
+</li>
+<li class="lvl-3">
+<p>交互概览图（细化的活动图，采用顺序图来细化）</p>
+</li>
+</ol>
+</blockquote>
+<h5 id="textcolor-blue-面向对象系统的物理方面建模的两种图："><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="blue"><mtext>面向对象系统的物理方面建模的两种图：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{blue}{面向对象系统的物理方面建模的两种图：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:blue;">面向对象系统的物理方面建模的两种图：</span></span></span></span></h5>
+<blockquote>
+<ol>
+<li class="lvl-3">
+<p>组件图</p>
+</li>
+<li class="lvl-3">
+<p>部署图</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="uml结构">UML结构</h3>
+<h6 id="视图-view">视图(View)</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928190818136.png" alt="image-20220928190818136" style="zoom: 50%;" />
+<blockquote>
+<p><u><strong>结构、实现、行为、环境视图</strong></u></p>
+</blockquote>
+<h6 id="图-diagram">图(Diagram)</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928190858031.png" alt="image-20220928190858031" style="zoom:50%;" />
+<blockquote>
+<p>红色和绿色必须完全掌握，黑色的则要能够看懂。</p>
+</blockquote>
+<h6 id="模型元素-model-element">模型元素(Model element)</h6>
+<ol>
+<li class="lvl-3">
+<p>模型元素包括<mark>事物</mark>以及<u>事物与事物之间</u>的<mark>联系</mark></p>
+</li>
+<li class="lvl-3">
+<p>每一个模型元素都有一个与之相对应的<mark>图形元素</mark></p>
+</li>
+<li class="lvl-3">
+<p>同一个模型元素<u><strong>可以在不同的UML图中使用</strong></u></p>
+</li>
+<li class="lvl-3">
+<p>无论在哪个图中，同一个模型元素都保持<mark>相同的意义和符号</mark></p>
+</li>
+</ol>
+<h6 id="通用机制-general-mechanism">通用机制(General mechanism)</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>额外的<strong>注释</strong>、修饰和语义等</p>
+</li>
+<li class="lvl-2">
+<p>包括规格说明、修饰、公共分类和<strong>扩展机制</strong>四种</p>
+</li>
+<li class="lvl-2">
+<p><u>允许用户对UML进行扩展</u></p>
+</li>
+</ul>
+<h5 id="uml的特点-6个特点">UML的特点==（6个特点）==</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>工程化</p>
+</li>
+<li class="lvl-2">
+<p>规范化</p>
+</li>
+<li class="lvl-2">
+<p>可视化——图的可视化</p>
+</li>
+<li class="lvl-2">
+<p>系统化——多种UML图从不同角度描述同一功能</p>
+</li>
+<li class="lvl-2">
+<p>文档化——使文档更易理解</p>
+</li>
+<li class="lvl-2">
+<p>智能化</p>
+</li>
+</ul>
+<h3 id="uml构造需求模型">UML构造需求模型</h3>
+<blockquote>
+<p>重点：用例图、状态图、活动图、顺序图、用例文档</p>
+</blockquote>
+<h4 id="textcolor-red-用例图use-case-diagram"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mo>−</mo><mo>−</mo><mo>−</mo><mtext>用例图</mtext><mi>U</mi><mi>s</mi><mi>e</mi><mi>C</mi><mi>a</mi><mi>s</mi><mi>e</mi><mi>D</mi><mi>i</mi><mi>a</mi><mi>g</mi><mi>r</mi><mi>a</mi><mi>m</mi><mo>−</mo><mo>−</mo><mo>−</mo></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{---用例图Use Case Diagram---}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord" style="color:red;">−</span><span class="mord cjk_fallback" style="color:red;">用例图</span><span class="mord mathnormal" style="margin-right:0.10903em;color:red;">U</span><span class="mord mathnormal" style="color:red;">se</span><span class="mord mathnormal" style="margin-right:0.07153em;color:red;">C</span><span class="mord mathnormal" style="color:red;">a</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">seD</span><span class="mord mathnormal" style="color:red;">ia</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">g</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">r</span><span class="mord mathnormal" style="color:red;">am</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mord" style="color:red;">−</span></span></span></span></h4>
+<h4 id="用例建模">用例建模</h4>
+<blockquote>
+<p>重点：用例图、用例文档</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试：考试时，用例数量在</mtext><mn>10</mn><mtext>个左右</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试：考试时，用例数量在10个左右}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">考试：考试时，用例数量在</span><span class="mord" style="color:red;">10</span><span class="mord cjk_fallback" style="color:red;">个左右</span></span></span></span></p>
+</blockquote>
+<p>主要内容：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>用例图(Use Case Diagram)</p>
+</li>
+<li class="lvl-2">
+<p>用例描述文档 (Use Case Specification)</p>
+</li>
+</ul>
+<p><code>术语表</code>是为开发人员<mark>解释业务专业名词</mark>，而<u>非面向用户</u></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928194250542.png" alt="image-20220928194250542" style="zoom:33%;" />
+<p>用例建模步骤==（5步骤）==</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>识别执行者</p>
+</li>
+<li class="lvl-2">
+<p>识别用例</p>
+</li>
+<li class="lvl-2">
+<p>绘制用例图</p>
+</li>
+<li class="lvl-2">
+<p>书写用例文档</p>
+</li>
+<li class="lvl-2">
+<p>检查用例模型</p>
+</li>
+</ul>
+<h6 id="识别执行者">识别执行者</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928194442951.png" alt="image-20220928194442951" style="zoom: 50%;" />
+<blockquote>
+<p>执行者：直接操作系统的任何事物；</p>
+<p><mark>执行者包含三类：人、其它系统（比如：支付宝支付系统）、自动发生的事件（比如：时间）</mark>；</p>
+<p>功能相同的执行者之间可以合并，但是具有不同执行功能的执行者之间就不能合并，如若合并则会导致真正的业务被覆盖</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928200307684.png" alt="image-20220928200307684" style="zoom:50%;" />
+<p>用户在手机上买票<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>用户是执行者；用户在车站买票<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>用户不是执行者，售票员才是执行者（售票员直接与系统进行交互）。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928200504887.png" alt="image-20220928200504887" style="zoom: 50%;" />
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>执行者与执行者之间只有继承关系</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{执行者与执行者之间只有继承关系}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">执行者与执行者之间只有继承关系</span></span></span></span>：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928200527380.png" alt="image-20220928200527380" style="zoom:33%;" />
+</blockquote>
+<h6 id="识别用例">识别用例</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928200614839.png" alt="image-20220928200614839" style="zoom:50%;" />
+<p><mark>用例要点：</mark></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>有意义的目标</p>
+</li>
+<li class="lvl-2">
+<p>价值结果由系统生成</p>
+</li>
+<li class="lvl-2">
+<p>业务语言——用户观点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>不要有技术语言（MVC，JDBC，分布式集群等等），用户不能理解</p>
+</li>
+<li class="lvl-2">
+<p>注意用例的命名<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mo>⟶</mo></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{\longrightarrow}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel" style="color:red;">⟶</span></span></span></span>用户观点而非系统观点，即在命名用例时要以用户为主语</p>
+</li>
+<li class="lvl-2">
+<p>用例的“粒度”</p>
+</li>
+</ul>
+<p>⭕️<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="blue"><mtext>形式检查</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{blue}{形式检查}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:blue;">形式检查</span></span></span></span></p>
+<blockquote>
+<p><code>执行者</code>通过（使用）系统来<code>用例</code>：</p>
+<p>比如：<code>会员</code>通过（使用）系统来<code>查询商品信息</code>，这句话是通顺的，所以用例（<code>查询商品信息</code>）的取名可行。</p>
+</blockquote>
+<p>1️⃣用例命名：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928201657020.png" alt="image-20220928201657020" style="zoom:50%;" />
+<p>慎用弱动词弱名词：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928201758262.png" alt="image-20220928201758262" style="zoom:50%;" />
+<p>2️⃣用户的“粒度”</p>
+<p>粒度原则：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u>用例要有路径，路径要有步骤</u>。而这一切都是“可观测”的</p>
+<ul class="lvl-2">
+<li class="lvl-4">路径：正常路径+扩展路径</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>用户和系统的<mark>步骤都不能作为用例</mark></p>
+</li>
+</ul>
+<h5 id="执行者之间的关联关系">执行者之间的关联关系</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928203647567.png" alt="image-20220928203647567" style="zoom:50%;" />
+<h5 id="执行者之间的泛化关系-继承">执行者之间的泛化关系（继承）</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928203735811.png" alt="image-20220928203735811" style="zoom:50%;" />
+<h5 id="包含关系">包含关系</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928204022864.png" alt="image-20220928204022864" style="zoom:50%;" />
+<blockquote>
+<p>依赖关系：一个事物使用了另一个事物</p>
+</blockquote>
+<h5 id="扩展关系">扩展关系</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220928204128837.png" alt="image-20220928204128837" style="zoom:50%;" />
+<blockquote>
+<p>比如“现金支付”的扩展点就是“支付”，因此可以围绕“支付”得到新的扩展用例——信用卡支付</p>
+<p><mark>注意：</mark></p>
+<p>“支付”只是一个抽象出来的行为，而不是说两个用例之间一定要有相同的字</p>
+</blockquote>
+<h5 id="泛化关系">泛化关系</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005191535414.png" alt="image-20221005191535414" style="zoom:50%;" />
+<h6 id="实例："><mark>实例：</mark></h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005191739294.png" alt="image-20221005191739294" style="zoom: 33%;" />
+<blockquote>
+<p>分两步：</p>
+<ol>
+<li class="lvl-3">识别执行者</li>
+<li class="lvl-3">识别用例</li>
+</ol>
+<p>要求：不漏掉用例、不产生歧义。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005191937370.png" alt="image-20221005191937370" style="zoom: 33%;" />
+</blockquote>
+<p><u>1️⃣<mark>用例是文本文档</mark>，而非图形</u></p>
+<p>2️⃣用例建模主要是<u>编写文本的活动</u>，而非制图</p>
+<h4 id="书写用例文档">书写用例文档</h4>
+<h5 id="用例的内容">用例的内容</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005193923898.png" alt="image-20221005193923898" style="zoom:33%;" />
+<blockquote>
+<p>红色**<u>（6个必须有）</u>**必须有，其他可以有</p>
+</blockquote>
+<h6 id="实例："><mark>实例：</mark></h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005194018599.png" alt="image-20221005194018599" style="zoom: 50%;" />
+<h6 id="前置-后置条件">前置、后置条件</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005194429632.png" alt="image-20221005194429632" style="zoom:50%;" />
+<p><mark>前置条件必须是系统在用例开始前能检测到的</mark></p>
+<blockquote>
+<p>前置条件、后置条件<strong>必须是系统能检测的</strong>。</p>
+</blockquote>
+<h6 id="涉众利益">涉众利益</h6>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>观众没有参与，但是<mark>用例结果与观众的利益息息相关</mark>。</p>
+<h6 id="基本路径">基本路径</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>只书写“可观测”的（说人话）</p>
+</li>
+<li class="lvl-2">
+<p>使用主动语句</p>
+</li>
+<li class="lvl-2">
+<p>句子必须<u>以执行者或系统作为主语</u></p>
+</li>
+<li class="lvl-2">
+<p>每一句都要朝目标迈进</p>
+</li>
+<li class="lvl-2">
+<p><u>分支和循环</u></p>
+</li>
+<li class="lvl-2">
+<p>不要涉及界面细节</p>
+</li>
+</ul>
+<hr>
+<p>用例交互四步曲：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005200447673.png" alt="image-20221005200447673" style="zoom:33%;" />
+<h6 id="扩展路径">扩展路径</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005200706074.png" alt="image-20221005200706074" style="zoom:50%;" />
+<blockquote>
+<ol>
+<li class="lvl-3">
+<p>替换路径</p>
+</li>
+<li class="lvl-3">
+<p>异常路径</p>
+</li>
+</ol>
+</blockquote>
+<h6 id="补充约束">补充约束</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005200812608.png" alt="image-20221005200812608" style="zoom:50%;" />
+<p>用例实例：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221105112322378.png" alt="image-20221105112322378" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005201238950.png" alt="image-20221005201238950" style="zoom: 50%;" />
+<h4 id="检查用例模型">检查用例模型</h4>
+<p>主要可以从以下几个方面来进行检查：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>功能需求的完备性</p>
+</li>
+<li class="lvl-2">
+<p>模型是否易于理解</p>
+</li>
+<li class="lvl-2">
+<p>是否存在不一致性</p>
+</li>
+<li class="lvl-2">
+<p>避免语义二义性</p>
+</li>
+</ul>
+<p>用例追踪矩阵：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221105112416870.png" alt="image-20221105112416870" style="zoom:50%;" />
+<blockquote>
+<p>用例模型完成之后，需要<mark>对用例模型进行检查</mark>，看看<mark>是否有遗漏或错误之处</mark>。</p>
+</blockquote>
+<h4 id="textcolor-red-状态图statechart-diagram"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mo>−</mo><mo>−</mo><mo>−</mo><mtext>状态图</mtext><mi>S</mi><mi>t</mi><mi>a</mi><mi>t</mi><mi>e</mi><mi>c</mi><mi>h</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi>D</mi><mi>i</mi><mi>a</mi><mi>g</mi><mi>r</mi><mi>a</mi><mi>m</mi><mo>−</mo><mo>−</mo><mo>−</mo></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{---状态图Statechart Diagram---}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord" style="color:red;">−</span><span class="mord cjk_fallback" style="color:red;">状态图</span><span class="mord mathnormal" style="color:red;">St</span><span class="mord mathnormal" style="color:red;">a</span><span class="mord mathnormal" style="color:red;">t</span><span class="mord mathnormal" style="color:red;">ec</span><span class="mord mathnormal" style="color:red;">ha</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">r</span><span class="mord mathnormal" style="color:red;">t</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">D</span><span class="mord mathnormal" style="color:red;">ia</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">g</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">r</span><span class="mord mathnormal" style="color:red;">am</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mord" style="color:red;">−</span></span></span></span></h4>
+<p>定义：用来描述一个特定**<mark>对象</mark><strong>的<u><strong>所有<mark>可能状态</mark></strong></u>及其<u></strong><mark>引起</mark>状态转移的<mark>事件</mark>**</u></p>
+<blockquote>
+<p><u>状态图</u>通常用来<mark>描述单个对象的行为</mark></p>
+<p>只有那些具有重要交互行为的类，才会使用状态图来描述；<u>一个状态图包括一系列对象的状态及状态之间的转换</u>。</p>
+</blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221010192638748.png" alt="image-20221010192638748" style="zoom:50%;" />
+<blockquote>
+<p>状态图中<u>只有一个初始状态，而可以有多个结束状态</u>。</p>
+</blockquote>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221010192712261.png" alt="image-20221010192712261"></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221010192729391.png" alt="image-20221010192729391"></p>
+<blockquote>
+<p>守护条件：<u><strong>事件名[条件]/动作名</strong></u></p>
+</blockquote>
+<h5 id="状态图组成元素">状态图组成元素</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>初始状态</p>
+</li>
+<li class="lvl-2">
+<p>终止状态</p>
+</li>
+<li class="lvl-2">
+<p>状态</p>
+</li>
+<li class="lvl-2">
+<p>转移</p>
+</li>
+<li class="lvl-2">
+<p>守护条件</p>
+</li>
+<li class="lvl-2">
+<p>事件</p>
+</li>
+<li class="lvl-2">
+<p>动作</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221010192855708.png" alt="image-20221010192855708" style="zoom:33%;" />
+<h6 id="状态图高级技巧">状态图高级技巧</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>简单状态：不包含其他状态的状态称为简单状态。</p>
+</li>
+<li class="lvl-2">
+<p>复合状态：又称为<u>组合状态</u>，可以将若干状态组织在一起可以得到一个复合状态，包含在一个复合状态中的状态称为子状态。</p>
+</li>
+</ul>
+<h6 id="复合状态：">复合状态：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221010194319307.png" alt="image-20221010194319307" style="zoom:50%;" />
+<blockquote>
+<p>行驶状态时复合状态，其内有3个简单状态</p>
+</blockquote>
+<h6 id="带同步条的状态图：">带同步条的状态图：</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221010194536450.png" alt="image-20221010194536450"></p>
+<h5 id="状态图的绘制">状态图的绘制</h5>
+<p>在绘制对象的状态图时，要考虑以下因素（5个）：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>对象有哪些<u><strong>有意义的状态；</strong></u></p>
+</li>
+<li class="lvl-2">
+<p>对象的哪<u><strong>些状态之间可以相互转换</strong></u>；</p>
+</li>
+<li class="lvl-2">
+<p>对象状态之间<u><strong>何时发生转换</strong></u>；</p>
+</li>
+<li class="lvl-2">
+<p>对象在不同状态下有哪些行为；</p>
+</li>
+<li class="lvl-2">
+<p>对象的状态图和其他模型之间如何进行映射。</p>
+</li>
+</ul>
+<p>技巧：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>状态图适合用于表述<mark>在不同用例之间的对象行为</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>系统设计中可能有多个对象，但并不需要给出每个对象的状态图，实际的做法是把注意力集中在整体系统或少数关键的对象上，特别是那些<mark>状态比较多的对象</mark>。</p>
+</li>
+</ul>
+<h6 id="状态模式">状态模式</h6>
+<p>状态图与类图相结合共同描述</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221010200716354.png" alt="image-20221010200716354" style="zoom:50%;" />
+<p>增加状态时直接增加子类即可</p>
+<p>状态图实例分析：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221010201202654.png" alt="image-20221010201202654" style="zoom:50%;" />
+<hr>
+<h4 id="textcolor-red-活动图activity-diagram"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mo>−</mo><mo>−</mo><mo>−</mo><mtext>活动图</mtext><mi>A</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>i</mi><mi>t</mi><mi>y</mi><mi>D</mi><mi>i</mi><mi>a</mi><mi>g</mi><mi>r</mi><mi>a</mi><mi>m</mi><mo>−</mo><mo>−</mo><mo>−</mo></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{---活动图Activity Diagram---}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord" style="color:red;">−</span><span class="mord cjk_fallback" style="color:red;">活动图</span><span class="mord mathnormal" style="color:red;">A</span><span class="mord mathnormal" style="color:red;">c</span><span class="mord mathnormal" style="color:red;">t</span><span class="mord mathnormal" style="color:red;">i</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">v</span><span class="mord mathnormal" style="color:red;">i</span><span class="mord mathnormal" style="color:red;">t</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">yD</span><span class="mord mathnormal" style="color:red;">ia</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">g</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">r</span><span class="mord mathnormal" style="color:red;">am</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mord" style="color:red;">−</span></span></span></span></h4>
+<p>定义：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>表示系统中<strong>各种活动的次序</strong></mark>，可用来<u>描述用例的工作流程</u>，也可以用来<u>描述类中<mark>某个方法的操作行为</mark></u>。</p>
+</li>
+<li class="lvl-2">
+<p>活动图<u>依据对象状态的变化</u>来捕获动作（将要执行的工作或活动）与动作的结果。活动图中一个活动结束后将立即进入下一个活动（在状态图中状态的变迁可能需要事件的触发）。</p>
+</li>
+</ul>
+<blockquote>
+<p>In UML,<mark>Activity</mark>  diagramgives a simplified representation of a process,showing <mark>control flows</mark> between actions performed in the system</p>
+<p>control flows：控制流</p>
+</blockquote>
+<p>应用：</p>
+<ol>
+<li class="lvl-3">
+<p>利用文本描述用例的事件流是很有用的，但如果事件流的逻辑复杂且有许多其他事件流，则文本形式可能较难阅读和理解，这时可使用活动图来描述事件流。</p>
+</li>
+<li class="lvl-3">
+<p><u>活动图是UML中的流程图，它是事件流的另一种建模方式</u>。活动图用于以图形化的方式描述一个业务过程或者一个用例的活动的顺序流，它也可以用于建模一个操作要执行的动作，以及那些动作的结果。</p>
+</li>
+<li class="lvl-3">
+<p>活动图是一种描述工作流的方式，它用来描述采取何种动作、做什么（对象状态改变）、何时发生（动作序列）以及在何处发生（泳道）。</p>
+</li>
+</ol>
+<p>作用：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>描述业务流程</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{描述业务流程}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">描述业务流程</span></span></span></span>（主要应用）</p>
+</li>
+<li class="lvl-2">
+<p>描述用例路径</p>
+</li>
+<li class="lvl-2">
+<p>描述方法执行流程（程序流程图）</p>
+</li>
+</ul>
+<p>活动图实例分析：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221010202430272.png" alt="image-20221010202430272"></p>
+<blockquote></blockquote>
+<h6 id="活动图组成元素">活动图组成元素</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>起始活动(Start Activity)</p>
+</li>
+<li class="lvl-2">
+<p>终止活动(End Activity)</p>
+</li>
+<li class="lvl-2">
+<p>活动(Activity)</p>
+</li>
+<li class="lvl-2">
+<p>转移(Transition)或流(Flow)</p>
+</li>
+<li class="lvl-2">
+<p>决策(Decision)</p>
+</li>
+<li class="lvl-2">
+<p>守护条件(Condition)</p>
+</li>
+<li class="lvl-2">
+<p>同步条(Synchronization)</p>
+</li>
+<li class="lvl-2">
+<p>泳道(Swimlane)</p>
+</li>
+</ul>
+<p>守护条件用来约束转移，守护条件为真时转移才可以开始。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221010202855285.png" alt="image-20221010202855285" style="zoom:50%;" />
+<p>在活动图中，<u>对象流</u>使用<u>带箭头的虚线</u>表示，<u>对象用矩形表示</u>，<u>矩形内是该对象的名称</u>，名称下的<u>方括号表示该对象此时的状态</u>。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221010203141748.png" alt="image-20221010203141748" style="zoom: 67%;" />
+<p>B to B实例</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221010203305166.png" alt="image-20221010203305166" style="zoom:50%;" />
+<h6 id="泳道">泳道</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>泳道用于划分活动图，有助于更好地理解执行活动的场所。泳道划分负责活动的对象，<u>明确地表示哪些活动是由哪些对象进行的，<mark>每个活动只能明确地属于一个泳道</mark></u>。</p>
+</li>
+<li class="lvl-2">
+<p>在活动图中，泳道一般用垂直实线绘出，垂直线分隔的区域就是泳道。</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221010203431594.png" alt="image-20221010203431594" style="zoom:50%;" />
+<blockquote>
+<p><mark>泳道的加入不一定能够简化活动图，可能使得活动图更复杂。</mark></p>
+</blockquote>
+<h5 id="活动图的绘制技巧">活动图的绘制技巧</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>使用活动图来<u>描述用例路径更加直观</u>。</p>
+</li>
+<li class="lvl-2">
+<p>对面向对象建模而言，用活动图描述业务流程并不是对每个系统都必不可少的工作。</p>
+</li>
+<li class="lvl-2">
+<p>不要把描述业务流程的活动图看成可编程的模型，它与系统的实际构造情况和执行情况有很大的差距。</p>
+</li>
+<li class="lvl-2">
+<p><u>首先要对主要的业务流建模</u>，然后<u>再标出分支、合并和对象流</u>。</p>
+</li>
+<li class="lvl-2">
+<p><mark>尽量减少交叉线</mark>，如果图形较为复杂，适当使用颜色和注释。</p>
+</li>
+</ul>
+<h6 id="实例："><mark>实例：</mark></h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012191357064.png" alt="image-20221012191357064" style="zoom:50%;" />
+<h4 id="textcolor-red-顺序图sequence-diagram"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mo>−</mo><mo>−</mo><mo>−</mo><mtext>顺序图</mtext><mi>S</mi><mi>e</mi><mi>q</mi><mi>u</mi><mi>e</mi><mi>n</mi><mi>c</mi><mi>e</mi><mi>D</mi><mi>i</mi><mi>a</mi><mi>g</mi><mi>r</mi><mi>a</mi><mi>m</mi><mo>−</mo><mo>−</mo><mo>−</mo></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{---顺序图Sequence Diagram---}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord" style="color:red;">−</span><span class="mord cjk_fallback" style="color:red;">顺序图</span><span class="mord mathnormal" style="margin-right:0.05764em;color:red;">S</span><span class="mord mathnormal" style="color:red;">e</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">q</span><span class="mord mathnormal" style="color:red;">u</span><span class="mord mathnormal" style="color:red;">e</span><span class="mord mathnormal" style="color:red;">n</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">ceD</span><span class="mord mathnormal" style="color:red;">ia</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">g</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">r</span><span class="mord mathnormal" style="color:red;">am</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mord" style="color:red;">−</span></span></span></span></h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012191605666.png" alt="image-20221012191605666" style="zoom: 50%;" />
+<blockquote>
+<p>sequence Diagram</p>
+</blockquote>
+<h6 id="顺序图实例">顺序图实例</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012191958998.png" alt="image-20221012191958998" style="zoom:50%;" />
+<blockquote>
+<p>以上绘制的顺序图不是特别的严谨，因为小王和小张都需要一台电话，但是上图很好的展示了顺序图的时间顺序特点</p>
+</blockquote>
+<h5 id="顺序图组成元素">顺序图组成元素</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012192209175.png" alt="image-20221012192209175" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012192300054.png" alt="image-20221012192300054" style="zoom:33%;" />
+<h6 id="对象">对象</h6>
+<h6 id="生命线">生命线</h6>
+<blockquote>
+<p><u>对象就是一个类对象，或是类型定义的变量；</u></p>
+<p><mark>生命线就是一个代码语句或是函数的从开始执行到结束花费的时间过程。</mark></p>
+</blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012192523494.png" alt="image-20221012192523494" style="zoom:50%;" />
+<h6 id="实例：">实例：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012192601501.png" alt="image-20221012192601501" style="zoom:50%;" />
+<blockquote>
+<p><mark>激活一般随着<code>return</code>结束</mark></p>
+</blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221026184557410.png" alt="image-20221026184557410" style="zoom:50%;" />
+<h6 id="调用消息">调用消息</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012192918606.png" alt="image-20221012192918606" style="zoom:50%;" />
+<blockquote>
+<p>调用消息只能是从左边向右边发送，或者一个对象自己想自己发送调用消息==？==</p>
+<p>在源代码层面上：call 一个函数</p>
+</blockquote>
+<h6 id="自身消息">自身消息</h6>
+<blockquote>
+<p>在源代码层面上：call 一个函数</p>
+</blockquote>
+<h6 id="返回消息">返回消息</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012193649713.png" alt="image-20221012193649713" style="zoom:50%;" />
+<blockquote>
+<p>返回消息必须逐个对象地向左返回，不能出现跨对象的消息返回==？==（不一定，特别是在绘制源代码的顺序图时）</p>
+<p>在源代码层面上：return 结果</p>
+</blockquote>
+<h6 id="发送消息">发送消息</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012193709104.png" alt="image-20221012193709104" style="zoom:50%;" />
+<h6 id="创建消息">创建消息</h6>
+<p>一条生命线的开始</p>
+<blockquote>
+<p>在源代码层面上：new 一个新的对象（当然也不只new，如：<code>Money subTotal = null;</code>也相当于创建了一个对象，Money是一个类型）</p>
+</blockquote>
+<h6 id="销毁消息">销毁消息</h6>
+<p>一条生命线的结束</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012193453795.png" alt="image-20221012193453795"></p>
+<p>绘制方法：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221026202651990.png" alt="image-20221026202651990" style="zoom: 33%;" />
+<blockquote>
+<p><mark>在源代码层面上：对象销毁</mark></p>
+</blockquote>
+<h6 id="同步消息">同步消息</h6>
+<h6 id="异步消息">异步消息</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012193817042.png" alt="image-20221012193817042" style="zoom:50%;" />
+<h5 id="交互片段">交互片段</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012200229504.png" alt="image-20221012200229504" style="zoom:50%;" />
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012200546412.png" alt="image-20221012200546412"></p>
+<blockquote>
+<p>alt：类似于if…else</p>
+<p>opt：表示一个可能存在又可能不存在的消息通信过程</p>
+<p>par：表示对象生命线中并行进行消息通信的部分</p>
+<p>loop：类似于for</p>
+<p>critical：</p>
+</blockquote>
+<h6 id="实例：">实例：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012200722072.png" alt="image-20221012200722072" style="zoom: 50%;" />
+<h5 id="顺序图作用">顺序图作用</h5>
+<ol>
+<li class="lvl-3">
+<p>对于业务人员，顺序图可显示不同的业务对象如何交互，对于交流当前业务如何进行很有用。除记录组织的当前事件外，一个业务级的顺序图能被当作一个需求文件使用，为实现一个未来系统传递需求。</p>
+</li>
+<li class="lvl-3">
+<p>对于需求分析人员，顺序图能通过提供一个深层次的表达，把用例带入下一层次。通常用例被细化为一个或者更多的顺序图。顺序图的主要用途之一，是<u>把用例表达的需求，转化为进一步、更深层次的精细表达</u>。</p>
+</li>
+<li class="lvl-3">
+<p>对于技术人员，顺序图在记录一个未来系统的行为应该如何表现时非常有用。在设计阶段，架构师和开发者能使用顺序图挖掘出<mark>系统对象间的交互</mark>，进一步完善整个系统的设计。</p>
+</li>
+</ol>
+<h5 id="顺序图绘制技巧">顺序图绘制技巧</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u>以<mark>用例为单位</mark>创建顺序图</u>，针对每个用例，考察为完成它所描述的功能需要哪些对象的操作参与执行，并且进一步考察这些操作的执行需要通过消息而引起其他哪些对象操作的执行。把这些对象以及参与交互的执行者组织到一个顺序图中。</p>
+</li>
+<li class="lvl-2">
+<p><u>理论上需要为每一个用例创建一个顺序图</u>，但是如果一个用例的交互对象很简单可以不需要创建顺序图。</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012201012194.png" alt="image-20221012201012194" style="zoom:50%;" />
+<h4 id="用例图-状态图-活动图以及顺序图联系">用例图、状态图、活动图以及顺序图联系</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012201150564.png" alt="image-20221012201150564" style="zoom:50%;" />
+<blockquote>
+<p>顺序图：<u><strong>多个对象的行为（用例中）</strong></u></p>
+<p>状态图：<u><strong>单个对象的行为</strong></u></p>
+<p>活动图：<u><strong>跨用例或跨线程的行为</strong></u></p>
+</blockquote>
+<h6 id="需求分析阶段的顺序图：">需求分析阶段的顺序图：</h6>
+<p>主要用于<u>描述用例中对象之间的交互</u>，可以使用自然语言来绘制，<strong><u>用于细化需求</u></strong>。从业务的角度进行建模，用描述性的文字叙述消息的内容。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012201310859.png" alt="image-20221012201310859" style="zoom:67%;" />
+<h6 id="系统设计阶段的顺序图：">系统设计阶段的顺序图：</h6>
+<p>确切表示系统设计中对象之间的交互，考虑到具体的系统实现，<u>对象之间<mark>通过方法</mark>调用传递消息</u>。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012201320452.png" alt="image-20221012201320452" style="zoom:67%;" />
+<h6 id="实例："><mark>实例：</mark></h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012201607292.png" alt="image-20221012201607292" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012201715385.png" alt="image-20221012201715385" style="zoom:50%;" />
+<h3 id="uml构造设计模型">UML构造设计模型</h3>
+<h5 id="教学内容：">教学内容：</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>类与类图（考试：40分）：类与类之间的关系</p>
+</li>
+<li class="lvl-2">
+<p>正向工程与逆向工程：</p>
+</li>
+<li class="lvl-2">
+<p>包图：包与包之间的关系</p>
+</li>
+<li class="lvl-2">
+<p>组件图：文件与文件之间的关系</p>
+</li>
+<li class="lvl-2">
+<p>部署图</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012202957477.png" alt="image-20221012202957477" style="zoom:50%;" />
+<h6 id="定义属性">定义属性</h6>
+<h6 id="img-src-https-wangguijie-typora-oss-cn-chengdu-aliyuncs-com-img-image-20221012203114976-png-alt-image-20221012203114976-style-zoom-50"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012203114976.png" alt="image-20221012203114976" style="zoom:50%;" /></h6>
+<blockquote>
+<p>+：public</p>
+<p>#：protected</p>
+<p>-：private</p>
+</blockquote>
+<h6 id="定义操作">定义操作</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012203322475.png" alt="image-20221012203322475" style="zoom:50%;" />
+<blockquote>
+<p><u><em><strong>构造函数没有返回类型（连空类型也没有）</strong></em></u></p>
+</blockquote>
+<h6 id="重要的提示："><mark>重要的提示：</mark></h6>
+<ol>
+<li class="lvl-3">
+<p>有抽象方法的类一定是抽象类</p>
+</li>
+<li class="lvl-3">
+<p>抽象类中可以有实体类</p>
+</li>
+</ol>
+<h3 id="textcolor-red-实验日期：10月26日-18：30-21：30"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>实验日期：</mtext><mn>10</mn><mtext>月</mtext><mn>26</mn><mtext>日</mtext><mo>−</mo><mn>18</mn><mtext>：</mtext><mn>30</mn><mtext>——</mtext><mn>21</mn><mtext>：</mtext><mn>30</mn></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{实验日期：10月26日-18：30——21：30}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord cjk_fallback" style="color:red;">实验日期：</span><span class="mord" style="color:red;">10</span><span class="mord cjk_fallback" style="color:red;">月</span><span class="mord" style="color:red;">26</span><span class="mord cjk_fallback" style="color:red;">日</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord" style="color:red;">18</span><span class="mord cjk_fallback" style="color:red;">：</span><span class="mord" style="color:red;">30——21</span><span class="mord cjk_fallback" style="color:red;">：</span><span class="mord" style="color:red;">30</span></span></span></span></h3>
+<h4 id="textcolor-red-类图class-diagram"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mo>−</mo><mo>−</mo><mo>−</mo><mtext>类图</mtext><mi>C</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>s</mi><mi>D</mi><mi>i</mi><mi>a</mi><mi>g</mi><mi>r</mi><mi>a</mi><mi>m</mi><mo>−</mo><mo>−</mo><mo>−</mo></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{---类图Class Diagram---}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord" style="color:red;">−</span><span class="mord cjk_fallback" style="color:red;">类图</span><span class="mord mathnormal" style="margin-right:0.01968em;color:red;">Cl</span><span class="mord mathnormal" style="color:red;">a</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">ssD</span><span class="mord mathnormal" style="color:red;">ia</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">g</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">r</span><span class="mord mathnormal" style="color:red;">am</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mord" style="color:red;">−</span></span></span></span></h4>
+<h5 id="类之间的关系">类之间的关系</h5>
+<p>内容：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>关联关系</p>
+<ul class="lvl-2">
+<li class="lvl-4">双向关联</li>
+<li class="lvl-4">自关联</li>
+<li class="lvl-4">多重性关联</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>聚合关系</p>
+</li>
+<li class="lvl-2">
+<p>组合关系</p>
+</li>
+<li class="lvl-2">
+<p>依赖关系</p>
+</li>
+<li class="lvl-2">
+<p>泛化/继承关系</p>
+</li>
+<li class="lvl-2">
+<p>接口与实现关系</p>
+</li>
+<li class="lvl-2">
+<p>注释(Comment)</p>
+</li>
+</ul>
+<h6 id="关联关系">关联关系</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>关联关系(Association)是类与类之间最常用的一种关系，它是一种结构化关系，用于表示一类对象与另一类对象之间有联系。</p>
+</li>
+<li class="lvl-2">
+<p>在UML类图中，用实线连接有关联的对象所对应的类，在使用Java、C#和C++等编程语言实现关联关系时，通常将<mark>一个类的对象作为另一个类的属性</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>在使用类图表示关联关系时可以在关联线上标注角色名。</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019192539945.png" alt="image-20221019192539945" style="zoom:50%;" />
+<blockquote>
+<p>在LoginFrom类里面实例化了JButton的对象，并将JButton的对象作为自己的属性，所以说：LoginFrom类关联JButton类</p>
+</blockquote>
+<h6 id="双向关联">双向关联</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019192739848.png" alt="image-20221019192739848" style="zoom: 50%;" />
+<h6 id="自关联">自关联</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019192918485.png" alt="image-20221019192918485" style="zoom:50%;" />
+<h6 id="多重性关联-重数性关联关系">多重性关联 （重数性关联关系）</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019193004253.png" alt="image-20221019193004253" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019193329939.png" alt="image-20221019193329939" style="zoom:50%;" />
+<h6 id="聚合关系">聚合关系</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>聚合关系(Aggregation)表示一个整体与部分的关系。通常在定义一个整体类后，再去分析这个整体类的组成结构，从而找出一些成员类，该整体类和成员类之间就形成了聚合关系。</p>
+</li>
+<li class="lvl-2">
+<p>在聚合关系中，成员类是整体类的一部分，即成员对象是整体对象的一部分，但是<u>成员对象<mark>可以脱离整体对象独立存在</mark></u>。在UML中，聚合关系用带<u>空心菱形的直线表示</u>。</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019193526272.png" alt="image-20221019193526272" style="zoom:50%;" />
+<blockquote>
+<p>注入，类似于将多个部分装配在一起，形成整体，但部分可以单独存在。</p>
+</blockquote>
+<h6 id="组合关系">组合关系</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>组合关系(Composition)也表示类之间整体和部分的关系，但是<u>组合关系中部分和整体具有统一的生存期</u>。一旦整体对象不存在，部分对象也将不存在，部分对象与整体对象之间具有<u>同生共死的关系</u>。</p>
+</li>
+<li class="lvl-2">
+<p>在组合关系中，成员类是整体类的一部分，而且整体类可以控制成员类的生命周期，即<u>成员类的存在依赖于整体类</u>。在UML中，组合关系用带实心菱形的直线表示。</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019193703268.png" alt="image-20221019193703268" style="zoom:50%;" />
+<blockquote>
+<p>显然，聚合关系的耦合度要小于组合关系。</p>
+<p>month = new Mouth()，在整体类的构造函数中实例化了成员类的对象</p>
+</blockquote>
+<h6 id="依赖关系">依赖关系</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>依赖关系(Dependency)是一种使用关系，<u>特定事物的改变有可能会影响到使用该事物的其他事物</u>，在需要<mark>表示一个事物使用另一个事物时使用依赖关系</mark>。大多数情况下，<mark>依赖关系体现在某个类的方法使用另一个类的对象作为参数</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>在UML中，依赖关系用带箭头的虚线表示，由依赖的一方指向被依赖的一方。</p>
+</li>
+</ul>
+<p>1️⃣</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019194116349.png" alt="image-20221019194116349" style="zoom:50%;" />
+<blockquote>
+<p>依赖关系体现在某个类的方法使用另一个类的对象作为参数；</p>
+<p>由依赖的一方指向被依赖的地方：Driver依赖Car。</p>
+</blockquote>
+<p>2️⃣</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019194627683.png" alt="image-20221019194627683" style="zoom:50%;" />
+<p>3️⃣</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019200241641.png" alt="image-20221019200241641" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019200205602.png" alt="image-20221019200205602" style="zoom:67%;" />
+<blockquote>
+<p>既有关联又有依赖，此时与聚合关系有些相同</p>
+</blockquote>
+<h6 id="泛化-继承关系">泛化/继承关系</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>泛化关系(Generalization)也就是继承关系，也称为“is-a-kind-of”关系，泛化关系用于描述父类与子类之间的关系，<u>父类</u>又称作<u>基类或超类</u>，<u>子类又称作派生类</u>。在UML中，泛化关系用带空心三角形的直线来表示。</p>
+</li>
+<li class="lvl-2">
+<p>在代码实现时，使用面向对象的继承机制来实现泛化关系，如在Java语言中使用extends关键字、在C++/C#中使用冒号“：”来实现。</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019200429950.png" alt="image-20221019200429950" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019200503026.png" alt="image-20221019200503026" style="zoom:50%;" />
+<blockquote>
+<p>泛化/继承关系是<mark>为了实现扩展</mark></p>
+</blockquote>
+<h6 id="接口与实现关系">接口与实现关系</h6>
+<p>接口之间也可以有与类之间关系类似的继承关系和依赖关系，但是接口和类之间还存在一种<u>实现关系(Realization)</u>，在这种关系中，类实现了接口，类中的操作实现了接口中所声明的操作。在UML中，类与接口之间的实现关系用带空心三角形的虚线来表示。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019200852726.png" alt="image-20221019200852726" style="zoom:50%;" />
+<blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>一个非抽象类需要实现接口的所有方法；</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{一个非抽象类需要实现接口的所有方法；}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">一个非抽象类需要实现接口的所有方法；</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="blue"><mtext>抽象类可以只实现接口中的部分方法，剩下的方法可以由抽象类的子类实现。</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{blue}{抽象类可以只实现接口中的部分方法，剩下的方法可以由抽象类的子类实现。}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:blue;">抽象类可以只实现接口中的部分方法，剩下的方法可以由抽象类的子类实现。</span></span></span></span></p>
+<h5 id="缺省适配器模式：">缺省适配器模式：</h5>
+<p>假设一个接口中的方法很多，可以创建一个抽象类来实现该接口(该抽象类可以没有抽象方法)，然后将其中所有的方法空实现（函数体均为空），之后想要实现该接口中的内容时只需要让子类继承抽象类并覆盖想要实现的方法即可。由此避免了直接实现该接口的所有的方法。</p>
+<h5 id="常量接口模式：">常量接口模式：</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//常量接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">MyConstants</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> <span class="variable">MATH_PI</span> <span class="operator">=</span> <span class="number">3.1415926</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> <span class="variable">MATH_E</span> <span class="operator">=</span> <span class="number">2.71828</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//MyConstants.*的方式进行调用</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Circle</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> r;<span class="comment">//半径</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Circle</span><span class="params">(<span class="type">double</span> r)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.r = r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getCircumference</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span> * r * MyConstants.MATH_PI;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="依赖倒转原则">依赖倒转原则</h6>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Pastthewind/article/details/109576163">(77条消息) 设计模式-依赖倒转原则_Pastthewind的博客-CSDN博客</a></p>
+</blockquote>
+<h5 id="各关系之间的耦合程度">各关系之间的耦合程度</h5>
+<blockquote>
+<p>虚线代表耦合程度低于实线的耦合程度；线型箭头的耦合程度要低于三角箭头的耦合程度。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span><mark>不一定正确</mark></p>
+<ul class="lvl-1">
+<li class="lvl-2">依赖关系：虚线线型箭头</li>
+<li class="lvl-2">关联关系：实线线型箭头</li>
+<li class="lvl-2">接口实现关系：虚线三角箭头</li>
+<li class="lvl-2">泛化/继承关系：实线三角箭头</li>
+<li class="lvl-2">聚合关系：空心菱形实线线型箭头</li>
+<li class="lvl-2">组合关系：实心菱形实线线型箭头</li>
+</ul>
+<p><strong><mark>泛化（继承）=实现&gt;组合&gt;聚合&gt;关联&gt;依赖</mark></strong>（耦合程度？）</p>
+</blockquote>
+<h6 id="注释-comment">注释(Comment)</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019202133822.png" alt="image-20221019202133822" style="zoom:50%;" />
+<h6 id="实例分析">实例分析</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019202428659.png" alt="image-20221019202428659" style="zoom:50%;" />
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019202803274.png" alt="image-20221019202803274"></p>
+<blockquote>
+<p>DTO（Data Transfer Object）：数据传输对象，减少了参数的数量</p>
+<p>UserDAO：实现对数据库的增删查改操作</p>
+</blockquote>
+<h4 id="正向工程与逆向工程">正向工程与逆向工程</h4>
+<h6 id="适配器模式之加密算法适配">适配器模式之加密算法适配</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019203216526.png" alt="image-20221019203216526" style="zoom:50%;" />
+<h4 id="textcolor-red-绘图技巧"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>绘图技巧</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{绘图技巧}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">绘图技巧</span></span></span></span></h4>
+<p>在正向工程生成代码时如果出现错误可以将类中的属性删去，因为类图中的属性与关联图线上的描述出现冲突；</p>
+<h4 id="textcolor-red-包图package-diagram"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mo>−</mo><mo>−</mo><mo>−</mo><mtext>包图</mtext><mi>P</mi><mi>a</mi><mi>c</mi><mi>k</mi><mi>a</mi><mi>g</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>a</mi><mi>g</mi><mi>r</mi><mi>a</mi><mi>m</mi><mo>−</mo><mo>−</mo><mo>−</mo></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{---包图Package diagram---}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord" style="color:red;">−</span><span class="mord cjk_fallback" style="color:red;">包图</span><span class="mord mathnormal" style="margin-right:0.13889em;color:red;">P</span><span class="mord mathnormal" style="color:red;">a</span><span class="mord mathnormal" style="color:red;">c</span><span class="mord mathnormal" style="color:red;">ka</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">g</span><span class="mord mathnormal" style="color:red;">e</span><span class="mord mathnormal" style="color:red;">d</span><span class="mord mathnormal" style="color:red;">ia</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">g</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">r</span><span class="mord mathnormal" style="color:red;">am</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mord" style="color:red;">−</span></span></span></span></h4>
+<p>概念：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>包是一种把元素组织到一起的通用机制</mark>，包可以嵌套于其他包中。</p>
+</li>
+<li class="lvl-2">
+<p>包图用于<mark>描述包与包之间的关系</mark>，包的图标是一个带标签的文件夹。</p>
+</li>
+</ul>
+<blockquote>
+<p>Package diagrams are structural diagrams used to show the <mark>organization and arrangement</mark> of various model elements in the form of packages.</p>
+</blockquote>
+<h6 id="引入关系">引入关系</h6>
+<p>一个包中的类可以被另一个指定包（以及嵌套于其中的那些包）中的类引用。</p>
+<p><u><strong>引入关系是依赖关系的一种</strong></u>，需要在依赖线上增加一个&lt;<import>&gt;衍型，包之间一般依赖关系都属于引入关系。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024191612181.png" alt="image-20221024191612181" style="zoom:50%;" />
+<h6 id="泛化关系">泛化关系</h6>
+<p>表示一个包继承了另一个包的内容，同时又补充自己增加的内容。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024191634328.png" alt="image-20221024191634328" style="zoom:50%;" />
+<h6 id="嵌套关系">嵌套关系</h6>
+<p>一个包中可以包含若干个子包，构成了包的嵌套层次结构。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024191737056.png" alt="image-20221024191737056" style="zoom:50%;" />
+<h5 id="包图绘制技巧">包图绘制技巧</h5>
+<ol>
+<li class="lvl-3">
+<p>两种组包方式：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><u>根据系统分层架构组包</u>（推荐使用）；</li>
+<li class="lvl-5">根据系统业务功能模块组包。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>参照类之间的关系确定包之间的关系；</p>
+</li>
+<li class="lvl-3">
+<p>减少包的嵌套层次，一般不超过三层；</p>
+</li>
+<li class="lvl-3">
+<p>每个包的子包控制在7±2个；</p>
+</li>
+<li class="lvl-3">
+<p>可通过包图来<mark>体现系统的分层架构</mark>。</p>
+</li>
+</ol>
+<h6 id="包图体现体系结构">包图体现体系结构</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024191925576.png" alt="image-20221024191925576" style="zoom: 33%;" />
+<h6 id="包图实例-基于b-s的oa系统">包图实例（基于B/S的OA系统）</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024191954538.png" alt="image-20221024191954538" style="zoom:50%;" />
+<blockquote>
+<p><u><em><strong>包图有利于查看项目的层次</strong></em></u></p>
+</blockquote>
+<h4 id="textcolor-red-组件图component-diagram"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mo>−</mo><mo>−</mo><mo>−</mo><mtext>组件图</mtext><mi>C</mi><mi>o</mi><mi>m</mi><mi>p</mi><mi>o</mi><mi>n</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>D</mi><mi>i</mi><mi>a</mi><mi>g</mi><mi>r</mi><mi>a</mi><mi>m</mi><mo>−</mo><mo>−</mo><mo>−</mo></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{---组件图Component Diagram---}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord" style="color:red;">−</span><span class="mord cjk_fallback" style="color:red;">组件图</span><span class="mord mathnormal" style="margin-right:0.07153em;color:red;">C</span><span class="mord mathnormal" style="color:red;">o</span><span class="mord mathnormal" style="color:red;">m</span><span class="mord mathnormal" style="color:red;">p</span><span class="mord mathnormal" style="color:red;">o</span><span class="mord mathnormal" style="color:red;">n</span><span class="mord mathnormal" style="color:red;">e</span><span class="mord mathnormal" style="color:red;">n</span><span class="mord mathnormal" style="color:red;">t</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">D</span><span class="mord mathnormal" style="color:red;">ia</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">g</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">r</span><span class="mord mathnormal" style="color:red;">am</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mord" style="color:red;">−</span></span></span></span></h4>
+<blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>用于表示文件之间的关系</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{用于表示文件之间的关系}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">用于表示文件之间的关系</span></span></span></span></p>
+<p><mark>存在泛化和依赖关系</mark></p>
+</blockquote>
+<h6 id="组件图定义">组件图定义</h6>
+<p>1、<u><mark>组件图</mark>又称为<mark>构件图</mark>(Component Diagram) 。</u>组件图中通常包括组件、接口，以及各种关系。组件图显示组件以及它们之间的依赖关系，它可以用来显示程序代码如何分解成模块或组件。</p>
+<p>一般来说，组件就是一个实际文件，可以有以下几种类型：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>源代码组件：一个源代码文件或者与一个包对应的若干个源代码文件。</p>
+</li>
+<li class="lvl-2">
+<p>二进制组件：一个目标码文件，一个静态的或者动态的库文件。</p>
+</li>
+<li class="lvl-2">
+<p>可执行组件：在一台处理器上可运行的一个可执行的程序单位，即所谓可执行程序。</p>
+</li>
+</ul>
+<blockquote>
+<p>这里的构件指的就是文件，区别于体系结构三要素中的构件。</p>
+</blockquote>
+<p>2、组件图可以用来显示<u>编译、链接或执行时组件</u>之间的依赖关系，以及<u>组件的接口和调用关系</u>。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024193534495.png" alt="image-20221024193534495" style="zoom: 33%;" />
+<p>3、组件间的关系有两种：<mark>泛化关系和依赖关系</mark>，<u>如果两个不同组件中的类存在泛化关系或依赖关系，那么两个组件之间的关系就表示为泛化关系或依赖关系</u>。</p>
+<p>4、对于由多个组件组成的大系统来说，组件图非常重要。</p>
+<h6 id="实例：">实例：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024194425279.png" alt="image-20221024194425279" style="zoom:50%;" />
+<h6 id="组件图组成元素">组件图组成元素</h6>
+<p>组件：系统中<mark>可以替换的部分</mark>，一般对应一个实际文件，如exe、jar、dll等文件，它遵循并提供了一组接口的实现。</p>
+<p>接口：一组<mark>操作的集合</mark>，它指明了由类或组件所请求或者所提供的服务。</p>
+<p>部件：组件的局部实现。</p>
+<p>端口：<mark>被封装的组件与外界的交互点</mark>，遵循指定接口的组件通过它来收发消息。</p>
+<p>连接件：在特定语境下组件中<mark>两个部件之间或者两个端口之间的通信关系</mark>。</p>
+<h6 id="实例：">实例：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024195659233.png" alt="image-20221024195659233" style="zoom:33%;" />
+<h5 id="组件图绘制技巧">组件图绘制技巧</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024200124495.png" alt="image-20221024200124495" style="zoom:50%;" />
+<h5 id="组件图实例分析">组件图实例分析</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024200242114.png" alt="image-20221024200242114" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024200256001.png" alt="image-20221024200256001" style="zoom: 33%;" />
+<h4 id="textcolor-red-部署图deployment-diagram"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mo>−</mo><mo>−</mo><mo>−</mo><mtext>部署图</mtext><mi>D</mi><mi>e</mi><mi>p</mi><mi>l</mi><mi>o</mi><mi>y</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>D</mi><mi>i</mi><mi>a</mi><mi>g</mi><mi>r</mi><mi>a</mi><mi>m</mi><mo>−</mo><mo>−</mo><mo>−</mo></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{---部署图Deployment Diagram---}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord" style="color:red;">−</span><span class="mord cjk_fallback" style="color:red;">部署图</span><span class="mord mathnormal" style="color:red;">De</span><span class="mord mathnormal" style="margin-right:0.01968em;color:red;">pl</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">oy</span><span class="mord mathnormal" style="color:red;">m</span><span class="mord mathnormal" style="color:red;">e</span><span class="mord mathnormal" style="color:red;">n</span><span class="mord mathnormal" style="color:red;">t</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">D</span><span class="mord mathnormal" style="color:red;">ia</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">g</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">r</span><span class="mord mathnormal" style="color:red;">am</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord" style="color:red;">−</span><span class="mord" style="color:red;">−</span></span></span></span></h4>
+<blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>描述硬件之间的关系</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{描述硬件之间的关系}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">描述硬件之间的关系</span></span></span></span></p>
+</blockquote>
+<h6 id="部署图定义">部署图定义</h6>
+<p>部署图(Deployment Diagram)，也称为<mark>实施图</mark>，它和组件图一样，是<u><em><strong>面向对象系统的物理方面建模的两种图之一</strong></em></u>。组件图是说明组件之间的逻辑关系的，而部署图则是在此基础上更进一步，<mark>描述系统硬件的物理拓扑结构及在此结构上执行的软件</mark>。部署图可以<u>显示计算节点的拓扑结构和通信路径、节点上运行的软件组件</u>。</p>
+<p>在UML中，部署图显示了系统的硬件和安装在硬件上的软件，以及用于连接异构计算机之间的中间件。部署图通常被认为是一个网络图或者物理架构图。</p>
+<h6 id="实例：">实例：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024201102067.png" alt="image-20221024201102067" style="zoom:50%;" />
+<h6 id="部署图组成元素">部署图组成元素</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024201204897.png" alt="image-20221024201204897" style="zoom: 33%;" />
+<blockquote>
+<p>连接是没有箭头的实线，表示的是信息的<mark>双向通信</mark>。</p>
+</blockquote>
+<h5 id="部署图绘制技巧">部署图绘制技巧</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024201237102.png" alt="image-20221024201237102" style="zoom:33%;" />
+<h5 id="部署图实例分析">部署图实例分析</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024201648903.png" alt="image-20221024201648903" style="zoom:50%;" />
+<p>1️⃣</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024201656562.png" alt="image-20221024201656562" style="zoom: 50%;" />
+<p>2️⃣</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024201708537.png" alt="image-20221024201708537" style="zoom: 33%;" />
+<p>3️⃣</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024201750835.png" alt="image-20221024201750835" style="zoom:50%;" />
+<hr>
+<h4 id="更多图-要求能够看懂-：">更多图（要求能够看懂）：</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024202811148.png" alt="image-20221024202811148" style="zoom: 33%;" />
+<hr>
+<h5 id="对象图-object-diagram">对象图(Object diagram)</h5>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031191956313.png" alt="image-20221031191956313"></p>
+<h5 id="组合结构图-combined-structure-diagram">组合结构图(Combined structure diagram)</h5>
+<h6 id="组合结构图的注意事项：">组合结构图的注意事项：</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221024204401865.png" alt="image-20221024204401865"></p>
+<h5 id="通信图-communication-diagram">通信图(Communication diagram)</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>与顺序图同构</mark>（通信图在UML1.0时也称为协作图）</p>
+</li>
+<li class="lvl-2">
+<p>通信图与顺序图可以相互转换</p>
+</li>
+<li class="lvl-2">
+<p>当需要<u><em><strong>了解消息的先后顺序</strong></em></u>时选择<mark>通信图</mark></p>
+</li>
+</ul>
+<blockquote>
+<p>通信图由以下基本元素组成：执行者(Actor)、对象(Object)、连接(Link，也称为链)、消息(Message)和守护条件(Condition)。</p>
+<p>在UML中，使用实线表示两个对象之间的连接；通信图中的消息，由在连接上方的带有标记的箭头表示，同时可以用数字注明消息的次序。</p>
+</blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031192048386.png" alt="image-20221031192048386" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031192157721.png" alt="image-20221031192157721" style="zoom:50%;" />
+<p>守护条件：以“[条件表达式]”格式表示</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031192322425.png" alt="image-20221031192322425" style="zoom:50%;" />
+<h6 id="通信图绘制技巧">通信图绘制技巧</h6>
+<ol>
+<li class="lvl-3">
+<p>通信图中的对象与顺序图中的对象对应；</p>
+</li>
+<li class="lvl-3">
+<p>通信图中无法表示对象的生命线，因此无法显式表示对象的创建和销毁；</p>
+</li>
+<li class="lvl-3">
+<p>通信图中的<mark>消息添加了顺序号</mark>，用于<mark>说明交互过程中消息的时间顺序</mark>；</p>
+</li>
+<li class="lvl-3">
+<p>通信图用于表示对象之间的协作关系，即强调参与交互的对象的组织。</p>
+</li>
+</ol>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031192628451.png" alt="image-20221031192628451" style="zoom:50%;" />
+<h6 id="通信图实例分析">通信图实例分析</h6>
+<blockquote>
+<p>某电梯控制系统：Elevator（电梯）、Queue（命令队列）、Order（指令）、Elevator Control（电梯控制器）、Button（按钮）</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031192920138.png" alt="image-20221031192920138"  />
+</blockquote>
+<h6 id="通信图与领域建模">通信图与领域建模</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031193308758.png" alt="image-20221031193308758"></p>
+<h5 id="定时图-timing-diagram">定时图(Timing diagram)</h5>
+<h6 id="定时图定义">定时图定义</h6>
+<p><u>定时图采用一种<mark>带数字刻度的时间轴</mark>来精确地<mark>描述消息的顺序</mark></u>，而不是像顺序图那样只是指定消息的相对顺序，而且它还允许可视化地表示每条生命线的状态变化，当需要<mark>对实时事件进行建模时</mark>，<u><strong>定时图可以很好地满足要求</strong></u>。</p>
+<p>定时图的焦点集中于<u>生命线内部以及它们之间沿着时间轴的条件变化</u>。</p>
+<p>定时图可以<u>把<mark>状态发生变化的时刻</mark>以及<mark>各个状态所持续的时间</mark>具体地表示出来</u>。如果把多个对象放在一个定时图中，还可以把它们之间发送和接收消息的时刻表示出来。在这方面，定时图与其他几种交互图相比具有独到的优势。</p>
+<p>定时图来自于电子工程领域，在需要明确定时约束一些事件时可以使用它们。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031193915106.png" alt="image-20221031193915106"></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031193950667.png" alt="image-20221031193950667"></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031194032296.png" alt="image-20221031194032296"></p>
+<blockquote>
+<ol>
+<li class="lvl-3">
+<p><mark>增加了生命线的时间刻度</mark>；</p>
+</li>
+</ol>
+</blockquote>
+<h6 id="定时图绘制技巧">定时图绘制技巧</h6>
+<ol>
+<li class="lvl-3">
+<p>定时图用于表示不同对象上状态改变之间的定时约束，如果需要对交互时间进行控制可使用定时图。</p>
+</li>
+<li class="lvl-3">
+<p>对于那些<u>时间指标要求很高或者时序关系复杂而又敏感</u>的系统（例如嵌入式实时系统和通信领域的某些系统）而言，定时图是一种有力的描述手段。</p>
+</li>
+<li class="lvl-3">
+<p>在大部分应用系统的建模中，一般不需要用定时图来描述对象的行为以及它们之间的交互，但是可能需要用它描述系统中某些局部对象的交互情况。</p>
+</li>
+</ol>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031195141690.png" alt="image-20221031195141690"></p>
+<h6 id="定时图练习">定时图练习</h6>
+<p>有一个咖啡壶，它由<u>抽水泵和加热板</u>所组成。它的规则是：在抽水泵打开和加热板打开之间必须至少隔10秒钟。当储水容器变空时，抽水泵就要关闭，而加热板继续保持加热，但不能超过5分钟。试使用定时图来表示上述规则。</p>
+<h5 id="交互概览图-interaction-overview-diagram">交互概览图(Interaction overview diagram)</h5>
+<blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>活动图与顺序图的组合</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{活动图与顺序图的组合}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">活动图与顺序图的组合</span></span></span></span></p>
+</blockquote>
+<h6 id="交互概览图定义">交互概览图定义</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u><em>交互概览图是<mark>交互图（有4种）与活动图</mark>的混合物</em></u>，可以把交互概览图理解为**<u>细化的</u>**<mark>活动图</mark>，在其中的活动都通过一些小型的<mark>顺序图</mark>来表示；也可以将其理解为利用标明控制流的活动图分解过的顺序图。</p>
+</li>
+<li class="lvl-2">
+<p>交互概览图用于将一些零散的顺序图组织在一起，它采用了活动图的构造方式，利用了活动图的各种控制节点，并把活动图的每个活动结点替换为一个交互或者交互使用。<mark>每个交互或者交互使用都使用一个顺序图表示</mark>。</p>
+</li>
+</ul>
+<p>实例之一：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031200433652.png" alt="image-20221031200433652" style="zoom:50%;" />
+<p>实例之二：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031200458992.png" alt="image-20221031200458992" style="zoom:50%;" />
+<h6 id="交互概览图绘制步骤：">交互概览图绘制步骤：</h6>
+<ol>
+<li class="lvl-3">
+<p>选择策略（对工作流建模或对操作建模）</p>
+</li>
+<li class="lvl-3">
+<p>理清主线（绘制活动图）</p>
+</li>
+<li class="lvl-3">
+<p>表述细节（用顺序图来表述详细细节）</p>
+</li>
+</ol>
+<h3 id="uml扩展机制">UML扩展机制</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031201027489.png" alt="image-20221031201027489"></p>
+<h6 id="实例：使用标记值增加模式标注信息">实例：使用<mark>标记值</mark>增加模式标注信息</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031201321773.png" alt="image-20221031201321773"></p>
+<h2 id="图总结">图总结</h2>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031201637614.png" alt="image-20221031201637614"></p>
+<table>
+<thead>
+<tr>
+<th><strong>图名</strong></th>
+<th><strong>概述</strong></th>
+<th><strong>使用频率</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用例图</td>
+<td>描述用户与系统如何交互</td>
+<td>★★★★★</td>
+</tr>
+<tr>
+<td>类图</td>
+<td>描述类、类的特性以及类之间的关系</td>
+<td>★★★★★</td>
+</tr>
+<tr>
+<td>包图</td>
+<td>描述类的层次结构</td>
+<td>★★★★☆</td>
+</tr>
+<tr>
+<td>顺序图</td>
+<td>描述对象之间的交互，重点在于强调顺序</td>
+<td>★★★★☆</td>
+</tr>
+<tr>
+<td>状态图</td>
+<td>描述事件如何改变对象状态</td>
+<td>★★★☆☆</td>
+</tr>
+<tr>
+<td>活动图</td>
+<td>描述过程行为及其并发行为</td>
+<td>★★★☆☆</td>
+</tr>
+<tr>
+<td>组件图</td>
+<td>描述组件的结构与连接</td>
+<td>★★★☆☆</td>
+</tr>
+<tr>
+<td>部署图</td>
+<td>描述各个节点上组件的部署情况及节点间的连接</td>
+<td>★★★☆☆</td>
+</tr>
+<tr>
+<td>通信图</td>
+<td>描述对象之间的交互，重点在于连接</td>
+<td>★★☆☆☆</td>
+</tr>
+<tr>
+<td>对象图</td>
+<td>描述一个时间点上系统中各个对象的一个快照</td>
+<td>★★☆☆☆</td>
+</tr>
+<tr>
+<td>组合结构图</td>
+<td>描述类结构的分解</td>
+<td>★☆☆☆☆</td>
+</tr>
+<tr>
+<td>交互概览图</td>
+<td>顺序图与活动图的混合</td>
+<td>★☆☆☆☆</td>
+</tr>
+<tr>
+<td>定时图</td>
+<td>描述对象之间的交互，重点在于定时</td>
+<td>★☆☆☆☆</td>
+</tr>
+</tbody>
+</table>
+<p><u>活动图：</u></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221031202105651.png" alt="image-20221031202105651"></p>
+<h3 id="uml建模原则">UML建模原则</h3>
+<ol>
+<li class="lvl-3">
+<p>适当增加注释，用于对图形和符号进行说明</p>
+</li>
+<li class="lvl-3">
+<p>画图的目的是简化对系统的理解，而不是增加工作量</p>
+</li>
+<li class="lvl-3">
+<p>注意折衷，既不能将图画得太复杂，同时也不能遗漏重要信息</p>
+</li>
+<li class="lvl-3">
+<p>保持图的一致性</p>
+</li>
+<li class="lvl-3">
+<p>需要什么就画什么，不需要就坚决不画，不要画多余的图</p>
+</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/05/11/University/junior/course/Software%20Architecture/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-3%E7%AB%A0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" rel="tag">课程笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" rel="tag">软件体系结构</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            软件体系结构——面向对象设计的原则
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-1_2%E7%AB%A0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">软件体系结构1-2章</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

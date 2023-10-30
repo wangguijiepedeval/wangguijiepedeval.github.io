@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>简单数论 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/Algorithm/Topic learning/8-简单数论"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  简单数论
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/10/18/University/Algorithm/Topic%20learning/8-%E7%AE%80%E5%8D%95%E6%95%B0%E8%AE%BA/" class="article-date">
+  <time datetime="2023-10-18T07:53:53.581Z" itemprop="datePublished">2023-10-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/">算法</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E4%B8%93%E9%A2%98%E5%AD%A6%E4%B9%A0/">专题学习</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">9 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>简单数论</h1>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2"><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2098/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;name=%E5%88%B7%E9%A2%98%E7%BB%9F%E8%AE%A1">刷题统计 - 蓝桥云课 (lanqiao.cn)</a></li>
+<li class="lvl-2"><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/18397/learning/?id=886970&amp;compatibility=false">快速幂 - 蓝桥云课 (lanqiao.cn)</a></li>
+<li class="lvl-2"><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/603/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;name=RSA%E8%A7%A3%E5%AF%86">RSA解密 - 蓝桥云课 (lanqiao.cn)</a></li>
+<li class="lvl-2"><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/210/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;name=%E6%A0%B8%E6%A1%83%E7%9A%84%E6%95%B0%E9%87%8F">核桃的数量 - 蓝桥云课 (lanqiao.cn)</a></li>
+<li class="lvl-2"><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/520/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;problem_id=520">Hankson 的趣味题 - 蓝桥云课 (lanqiao.cn)</a></li>
+<li class="lvl-2"><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2131/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;problem_id=2131">寻找整数 - 蓝桥云课 (lanqiao.cn)</a></li>
+<li class="lvl-2"><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/527/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;problem_id=527">笨小猴 - 蓝桥云课 (lanqiao.cn)</a></li>
+<li class="lvl-2"><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/18397/learning/?id=894709&amp;compatibility=false">最大最小公倍数 - 蓝桥云课 (lanqiao.cn)</a></li>
+<li class="lvl-2"><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/1557/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;problem_id=1557">质数 - 蓝桥云课 (lanqiao.cn)</a></li>
+<li class="lvl-2"><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/18397/learning/?id=894710&amp;compatibility=false">分解质因数 - 蓝桥云课 (lanqiao.cn)</a></li>
+</ul>
+</blockquote>
+<h3 id="模运算">模运算</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>定义：模运算为a除以m的余数，记为a mod m，有a mod m = a % m。</p>
+</li>
+<li class="lvl-2">
+<p>模运算是大数运算中的常用操作。</p>
+</li>
+<li class="lvl-2">
+<p>如果一个数太大，无法直接输出，或者不需要直接输出，可以把它取模后，缩小数值再输出。</p>
+</li>
+<li class="lvl-2">
+<p>Python虽然能直接计算大数，不用担心数据溢出，但是大数乘法太耗时，所以也常用取模来缩小数值。</p>
+</li>
+<li class="lvl-2">
+<p>一个简单应用，判断奇偶：a%2 == 0，a是偶数；a%2 == 1，a是奇数</p>
+</li>
+</ul>
+<h6 id="刷题统计解法代码：">刷题统计解法代码：</h6>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 刷题统计 </span></span><br><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line">ll a, b, n, ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;a&gt;&gt;b&gt;&gt;n;</span><br><span class="line">	ll sum = a*<span class="number">5</span>+<span class="number">2</span>*b;</span><br><span class="line">	ll ans = (n/sum)*<span class="number">7</span>;</span><br><span class="line">	ll r = n%sum;</span><br><span class="line">	<span class="keyword">if</span>(r&lt;=a*<span class="number">5</span>)&#123;</span><br><span class="line">		ans += r/a+(r%a?<span class="number">1</span>:<span class="number">0</span>);<span class="comment">// 多的部分也要用1天来完成 </span></span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		ans += (r-a*<span class="number">5</span>)/b+((r-a*<span class="number">5</span>)%b?<span class="number">1</span>:<span class="number">0</span>);</span><br><span class="line">		ans += <span class="number">5</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;ans;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="快速幂">快速幂</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>幂运算a<sup>n</sup>，当n很大时，如果一个个地乘，时间是O(n)的，速度很慢，此时可以用快速幂，在O(logn)的时间内算出来。</p>
+</li>
+<li class="lvl-2">
+<p>快速幂的一个解法：分治法，算a<sup>2</sup>，然后再算(a<sup>2</sup>) <sup>2</sup>，…，一直算到a<sup>n</sup>，代码也容易写。</p>
+</li>
+<li class="lvl-2">
+<p>标准的快速幂：用位运算实现。</p>
+</li>
+<li class="lvl-2">
+<p>基于位运算的快速幂，原理是倍增。</p>
+</li>
+</ul>
+<h5 id="快速幂原理">快速幂原理</h5>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230404191246938.png" alt="image-20230404191246938"></p>
+<h6 id="快速幂解法代码：">快速幂解法代码：</h6>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 快速幂</span></span><br><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line">ll b, p, k;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">fastPow</span><span class="params">(ll b, ll p, ll k)</span></span>&#123;</span><br><span class="line">	ll res = <span class="number">1</span>;</span><br><span class="line">	b %= k; <span class="comment">// 防止下方res*b越界 </span></span><br><span class="line">	<span class="keyword">while</span>(p)&#123;<span class="comment">// p为次数 </span></span><br><span class="line">		<span class="keyword">if</span>(p&amp;<span class="number">1</span>)res = (res*b)%k;</span><br><span class="line">		b = b*b%k;<span class="comment">// 对应于a^1,a^2,a^3…… 其中的指数代表的是n二进制中第几位的1（如：1011）</span></span><br><span class="line">		p = p&gt;&gt;<span class="number">1</span>;<span class="comment">// 右移一位 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;b&gt;&gt;p&gt;&gt;k;</span><br><span class="line">	cout&lt;&lt;<span class="built_in">fastPow</span>(b, p, k);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="rsa解密">RSA解密</h3>
+<blockquote>
+<p>实质就是快速幂的计算——由于数据太大，因此建议使用Python处理，思路都是一致的</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lanqiao-603-附</span></span><br><span class="line">n = <span class="number">1001733993063167141</span></span><br><span class="line">d = <span class="number">212353</span></span><br><span class="line">c = <span class="number">20190324</span></span><br><span class="line">p = <span class="number">891234941</span></span><br><span class="line">q = <span class="number">1123984201</span></span><br><span class="line">temp = (p-<span class="number">1</span>)*(q-<span class="number">1</span>)</span><br><span class="line">now = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n+<span class="number">1</span>):</span><br><span class="line">    now = i*temp+<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span>(now%d==<span class="number">0</span>):</span><br><span class="line">        <span class="built_in">print</span>(now//d)<span class="comment"># 输出e</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 快速幂计算</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fastPow</span>(<span class="params">a, n, mod</span>):</span><br><span class="line">    res = <span class="number">1</span></span><br><span class="line">    a %= mod</span><br><span class="line">    <span class="keyword">while</span>(n):</span><br><span class="line">        <span class="keyword">if</span>(n&amp;<span class="number">1</span>):res = (res*a)%mod</span><br><span class="line">        a = a*a%mod</span><br><span class="line">        n = n&gt;&gt;<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"><span class="built_in">print</span>(fastPow(c, now//d, n))</span><br></pre></td></tr></table></figure>
+<h3 id="gcd：定义-性质">GCD：定义、性质</h3>
+<p>1、最大公约数Greatest Common Divisor(GCD)：整数a和b的GCD是指能同时整除a和b的最大整数，记为gcd(a, b)。由于-a的因子和a的因子相同，因此gcd(a, b) = gcd(|a|, |b|)。编码时只关注正整数的最大公约数。</p>
+<p>2、性质：</p>
+<p>（1）gcd(a, b) = gcd(a, a+b) = gcd(a, k·a+b)</p>
+<p>（2）gcd(ka, kb) = k·gcd(a, b)</p>
+<p>（3）定义多个整数的最大公约数：gcd(a, b, c) = gcd(gcd(a, b), c)。</p>
+<p>（4）若gcd(a, b) = d，则gcd(a/d, b/d) = 1，即a/d与b/d互素。<strong><u>这个定理很重要</u></strong>。</p>
+<p>（5）gcd(a+cb, b) = gcd(a, b)</p>
+<h4 id="手写gcd代码">手写gcd代码</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>手写gcd函数，常用<u>欧几里得算法</u>。</p>
+</li>
+<li class="lvl-2">
+<p><mark>辗转相除法</mark>求gcd：<code>gcd(a, b) = gcd(b, a mod b)</code></p>
+</li>
+<li class="lvl-2">
+<p>这是最常用的方法，极为高效。</p>
+</li>
+<li class="lvl-2">
+<p>设a &gt; b，辗转相除法的计算复杂度为O((log<sub>2</sub>a)<sup>3</sup>)。</p>
+</li>
+</ul>
+<h6 id="示例代码：">示例代码：</h6>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span>&#123; 	<span class="keyword">return</span> b? <span class="built_in">gcd</span>(b, a%b):a; &#125;<span class="comment">// 递归实现</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">gcd</span>(<span class="number">15</span>, <span class="number">81</span>)&lt;&lt;<span class="string">&quot;\n&quot;</span>;    <span class="comment">// 输出  3</span></span><br><span class="line">    cout&lt;&lt;<span class="built_in">gcd</span>(<span class="number">0</span>, <span class="number">44</span>)&lt;&lt;<span class="string">&quot;\n&quot;</span>;     <span class="comment">// 输出  44</span></span><br><span class="line">    cout&lt;&lt;<span class="built_in">gcd</span>(<span class="number">0</span>, <span class="number">0</span>)&lt;&lt;<span class="string">&quot;\n&quot;</span>;      <span class="comment">// 输出  0</span></span><br><span class="line">    cout&lt;&lt;<span class="built_in">gcd</span>(<span class="number">-6</span>, <span class="number">-15</span>)&lt;&lt;<span class="string">&quot;\n&quot;</span>;   <span class="comment">// 输出  -3</span></span><br><span class="line">    cout&lt;&lt;<span class="built_in">gcd</span>(<span class="number">-17</span>,<span class="number">289</span>)&lt;&lt;<span class="string">&quot;\n&quot;</span>;   <span class="comment">// 输出  -17</span></span><br><span class="line">    cout&lt;&lt;<span class="built_in">gcd</span>(<span class="number">17</span>,<span class="number">-289</span>)&lt;&lt;<span class="string">&quot;\n&quot;</span>;   <span class="comment">// 输出  17</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="lcm：定义-性质">LCM：定义、性质</h3>
+<p>1、最小公倍数LCM（the Least Common Multiple）。</p>
+<p>2、<em>a</em>和<em>b</em>的最小公倍数lcm(<em>a</em>, <em>b</em>)，从算术基本定理推理得到。</p>
+<p>3、<strong>算术基本定理</strong>：任何大于1的正整数n都可以唯一分解为有限个素数的乘积：n = p1c1p2c2…pmcm，其中ci都是正整数，pi都是素数且从小到大。</p>
+<p>4、推导LCM：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230404225810555.png" alt="image-20230404225810555"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">设：a = p1^c1*p2^c2...pm^cm，b = p1^f1*p2^f2...pm^fm</span><br><span class="line">    </span><br><span class="line">那么：<span class="built_in">gcd</span>(a, b) = p1^min&#123;c1,f1&#125;*p2^min&#123;c2,f2&#125;...pm^min&#123;cm,fm&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">lcm</span>(a, b) = p1^max&#123;c1,f1&#125;*p2^max&#123;c2,f2&#125;...pm^max&#123;cm,fm&#125;</span><br><span class="line"></span><br><span class="line">推出：<span class="built_in">gcd</span>(a, b)*<span class="built_in">lcm</span>(a, b) = a*b</span><br><span class="line"></span><br><span class="line">即：  <span class="built_in">lcm</span>(a, b) = a*b/<span class="built_in">gcd</span>(a, b) = a/<span class="built_in">gcd</span>(a, b)*b。</span><br></pre></td></tr></table></figure>
+<h4 id="lcm-手写代码">lcm()手写代码</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">lcm</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span>&#123;    <span class="comment">//需要的时候把int改成long long  </span></span><br><span class="line">   <span class="keyword">return</span> a / <span class="built_in">gcd</span>(a, b) * b;  <span class="comment">//先做除法再做乘法，防止先做乘法溢出</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="素数的判断">素数的判断</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>素数定义：只能被1和自己整除的正整数。注：1不是素数，最小素数是2。</p>
+</li>
+<li class="lvl-2">
+<p>判断一个数n是不是素数：当n ≤ 10<sup>14</sup>时，用试除法；n &gt; 10<sup>14</sup>时，试除法不够用，需要用高级算法，例如Miller_Rabin算法。</p>
+</li>
+</ul>
+<h5 id="试除法">试除法</h5>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">is_prime</span><span class="params">(<span class="type">long</span> <span class="type">long</span> n)</span></span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(n &lt;= <span class="number">1</span>)   <span class="keyword">return</span> <span class="literal">false</span>;         <span class="comment">//1不是素数</span></span><br><span class="line">     <span class="keyword">for</span>(<span class="type">long</span> <span class="type">long</span> i=<span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(n); i++)  </span><br><span class="line">         <span class="keyword">if</span>(n % i == <span class="number">0</span>)  <span class="keyword">return</span> <span class="literal">false</span>;  <span class="comment">//能整除，不是素数</span></span><br><span class="line">     <span class="keyword">return</span> <span class="literal">true</span>;          <span class="comment">//n=2时返回true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>范围[2,  <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mi>n</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.2397em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8003em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal">n</span></span></span><span style="top:-2.7603em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2397em;"><span></span></span></span></span></span></span></span></span>]内有多少个素数？在1百万以内，约有7.8万个素数；在1亿以内，约有576万个素数。</p>
+</blockquote>
+<h2 id="素数筛">素数筛</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>素数的筛选：给定n，求2~n内所有的素数。</p>
+</li>
+<li class="lvl-2">
+<p>一个个地判断很慢，所以用“筛子”筛所有的整数，把非素数筛掉，剩下的就是素数。</p>
+</li>
+<li class="lvl-2">
+<p>常用两种筛法：<strong><u>埃氏筛、欧拉筛</u></strong>。</p>
+</li>
+</ul>
+<h3 id="埃氏筛">埃氏筛</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230405011722403.png" alt="image-20230405011722403"></p>
+<h5 id="解法代码：">解法代码：</h5>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 埃氏筛</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> prime[N];<span class="comment">// 存储质数 </span></span><br><span class="line"><span class="type">bool</span> bprime[N];<span class="comment">// true标记不是质数 </span></span><br><span class="line"><span class="type">int</span> cnt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getPrime</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(bprime, <span class="literal">false</span>, <span class="built_in">sizeof</span>(bprime));</span><br><span class="line">	bprime[<span class="number">0</span>] = bprime[<span class="number">1</span>] = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!bprime[i])&#123;<span class="comment">// 为质数 </span></span><br><span class="line">			prime[cnt++] = i; <span class="comment">// 存储质数 </span></span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=i*<span class="number">2</span>;j&lt;=n;j+=i)&#123;<span class="comment">// 去除质数i的倍数 </span></span><br><span class="line">				bprime[j] = <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;<span class="comment">// 测试 </span></span><br><span class="line">	<span class="type">int</span> n;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="built_in">getPrime</span>(n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;cnt;++i)&#123;</span><br><span class="line">		cout&lt;&lt;prime[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="欧拉筛">欧拉筛</h3>
+<p>但是埃氏筛法的缺点：例如6会被3整除，6会被2整除，会被筛两次，所以我们再给出<mark>欧氏线性筛法</mark>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 欧拉筛 </span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> prime[N];</span><br><span class="line"><span class="type">bool</span> bprime[N];<span class="comment">// true标记不是质数,表示被筛掉 </span></span><br><span class="line"><span class="type">int</span> cnt; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getPrime</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(bprime, <span class="literal">false</span>, <span class="built_in">sizeof</span>(bprime));</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!bprime[i])&#123;<span class="comment">// 是质数 </span></span><br><span class="line">			prime[cnt++] = i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;cnt&amp;&amp;i*prime[j]&lt;=n;++j)&#123;<span class="comment">// 根据当前的prime数组线性地去除非质数 </span></span><br><span class="line">			bprime[i*prime[j]] = <span class="literal">true</span>;<span class="comment">// 标记不是质数,表示被筛掉</span></span><br><span class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)<span class="keyword">break</span>; </span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="built_in">getPrime</span>(n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;cnt;++i)&#123;</span><br><span class="line">		cout&lt;&lt;prime[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="分解质因子">分解质因子</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230405021119535.png" alt="image-20230405021119535"></p>
+<h3 id="唯一分解定理与约数定理">唯一分解定理与约数定理</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230405102524542.png" alt="image-20230405102524542"></p>
+<h3 id="分类乘法计数原理">分类乘法计数原理</h3>
+<p>分类乘法计数原理是指：如果一个任务可以分解为多个独立的子任务，且每个子任务都有m种不同的方式完成，那么完成整个任务的总方式数就是每个子任务方式数的乘积（即m的n次方，其中n为子任务的数量）。这个原理也叫做乘法原理。</p>
+<p>例如，假设有两个任务A和B，完成任务A有3种不同的方式，完成任务B有4种不同的方式。那么完成这两个任务的总方式数就是3 x 4 = 12种。如果还有一个任务C，完成任务C有2种不同的方式，那么完成这三个任务的总方式数就是3 x 4 x 2 = 24种。</p>
+<p>这个原理常常用于计算排列和组合问题，求解方法通常是将任务分解为子任务，并根据问题要求进行分类。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/10/18/University/Algorithm/Topic%20learning/8-%E7%AE%80%E5%8D%95%E6%95%B0%E8%AE%BA/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" rel="tag">蓝桥杯</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/10/18/University/Algorithm/Topic%20learning/9-%E6%80%9D%E7%BB%B4%E8%AE%AD%E7%BB%83/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            思维训练
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/10/18/University/Algorithm/Topic%20learning/7-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">动态规划</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

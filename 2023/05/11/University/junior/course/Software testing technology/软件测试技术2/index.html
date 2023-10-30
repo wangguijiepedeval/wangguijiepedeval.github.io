@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>软件测试技术笔记2 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software testing technology/软件测试技术2"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  软件测试技术笔记2
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/11/University/junior/course/Software%20testing%20technology/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF2/" class="article-date">
+  <time datetime="2023-05-11T03:06:22.357Z" itemprop="datePublished">2023-05-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF/">软件测试技术</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">5.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">18 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>软件测试技术笔记之二</h1>
+<h2 id="开发人员测试">开发人员测试</h2>
+<h3 id="白盒测试">白盒测试</h3>
+<p>目录：</p>
+<ol>
+<li class="lvl-3">
+<p>白盒测试方法</p>
+</li>
+<li class="lvl-3">
+<p>逻辑覆盖测试法</p>
+</li>
+<li class="lvl-3">
+<p>基本路径测试法</p>
+</li>
+<li class="lvl-3">
+<p>循环测试</p>
+</li>
+<li class="lvl-3">
+<p>测试用例数估算</p>
+</li>
+</ol>
+<h5 id="黑盒测试与白盒测试的比较">黑盒测试与白盒测试的比较</h5>
+<h6 id="黑盒测试：">黑盒测试：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>功能测试</p>
+</li>
+<li class="lvl-2">
+<p>数据驱动测试</p>
+</li>
+</ul>
+<h6 id="白盒测试：">白盒测试：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>结构测试</p>
+</li>
+<li class="lvl-2">
+<p>逻辑驱动测试</p>
+</li>
+</ul>
+<h5 id="静态白盒测试">静态白盒测试</h5>
+<p>在不执行软件的条件下<mark>进行程序设计的审查</mark></p>
+<h5 id="动态白盒测试-结构化测试">动态白盒测试（结构化测试）</h5>
+<p><mark>检查代码</mark>并<mark>观察运行状况</mark></p>
+<h6 id="白盒测试主要方法：">白盒测试主要方法：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>逻辑覆盖测试法</p>
+</li>
+<li class="lvl-2">
+<p>基本路径测试法</p>
+</li>
+<li class="lvl-2">
+<p>循环路径覆盖法</p>
+</li>
+</ul>
+<h5 id="程序控制流图">程序控制流图</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114150337990.png" alt="image-20221114150337990" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114150405720.png" alt="image-20221114150405720" style="zoom:50%;" />
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221205171154097.png" alt="image-20221205171154097"></p>
+<h6 id="基本路径测试：">基本路径测试：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114150538456.png" alt="image-20221114150538456" style="zoom: 33%;" />
+<h5 id="静态符号执行">静态符号执行</h5>
+<h5 id="动态符号执行">动态符号执行</h5>
+<p>以具体的数值作为输入，执行程序代码，在程序实际执行路径的基础上，用符号执行技术对路径进行分析，提取路径的约束表达式。</p>
+<h3 id="textcolor-red-11月4日作业：静态分析"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mn>11</mn><mtext>月</mtext><mn>4</mn><mtext>日作业：静态分析</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{11月4日作业：静态分析}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord" style="color:red;">11</span><span class="mord cjk_fallback" style="color:red;">月</span><span class="mord" style="color:red;">4</span><span class="mord cjk_fallback" style="color:red;">日作业：静态分析</span></span></span></span></h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114150729609.png" alt="image-20221114150729609" style="zoom:50%;" />
+<h4 id="基于逻辑覆盖的测试方法"><mark>基于逻辑覆盖的测试方法</mark></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>语句覆盖（SC）</p>
+</li>
+<li class="lvl-2">
+<p>判定覆盖（DC）</p>
+</li>
+<li class="lvl-2">
+<p>条件覆盖（CC）</p>
+</li>
+<li class="lvl-2">
+<p>判定-条件覆盖（CDC）</p>
+</li>
+<li class="lvl-2">
+<p>条件组合覆盖（MCC）</p>
+</li>
+</ul>
+<h5 id="语句覆盖-sc">语句覆盖（SC）</h5>
+<ol>
+<li class="lvl-3">
+<p>语句覆盖法的基本思想是设计若干测试用例，运行被测程序，<mark>使程序中的每个可执行语句至少被执行一次</mark></p>
+</li>
+<li class="lvl-3">
+<p>如果是顺序结构，就是让测试从头执行到尾</p>
+</li>
+<li class="lvl-3">
+<p>如果有分支、条件和循环，需要利用判定覆盖、条件覆盖等方法，执行足够的测试覆盖全部语句</p>
+</li>
+</ol>
+<blockquote>
+<p>语句覆盖能发现一般语句的错误，但不能发现其中的逻辑错误。</p>
+</blockquote>
+<h5 id="判定-分支-覆盖-dc">判定(分支)覆盖（DC）</h5>
+<ol>
+<li class="lvl-3">
+<p>判定覆盖法的基本思想是设计若干用例，运行被测程序，使得程序中每个判断的取真分支和取假分支至少经历一次，即判断真假值均曾被满足。</p>
+</li>
+<li class="lvl-3">
+<p>一个判定代表着程序的一个分支，所以判定覆盖也被称为分支覆盖。</p>
+</li>
+<li class="lvl-3">
+<p>满足判定覆盖➔满足语句覆盖</p>
+</li>
+</ol>
+<blockquote>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230218154524603.png" alt="image-20230218154524603"></p>
+</blockquote>
+<h5 id="条件覆盖-cc">条件覆盖（CC）</h5>
+<ol>
+<li class="lvl-3">
+<p>条件覆盖的基本思想是设计若干测试用例，执行被测程序以后，要使<u><mark>每个判断中每个条件</mark>的可能取值至少满足一次</u></p>
+</li>
+</ol>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230218154621783.png" alt="image-20230218154621783"></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230218154715833.png" alt="image-20230218154715833"></p>
+<h5 id="判定-条件覆盖-cdc">判定-条件覆盖（CDC）</h5>
+<ol>
+<li class="lvl-3">
+<p>判定-条件覆盖是<mark>判定和条件覆盖</mark>设计方法的<mark>交集</mark>，即设计足够的测试用例，使得判断条件中的<mark>所有条件可能取值</mark>至少<mark>执行一次</mark>，同时，<mark>所有判断的可能结果</mark>至少<mark>执行一次</mark></p>
+</li>
+</ol>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114153711184.png" alt="image-20221114153711184"></p>
+<h5 id="条件组合覆盖-mcc">条件组合覆盖（MCC）</h5>
+<ol>
+<li class="lvl-3">
+<p>条件组合覆盖的基本思想是设计足够的测试用例，使得判断中<mark>每个条件的所有可能组合</mark>至少<mark>出现一次</mark>，并且<mark>每个判断本身的判定结果</mark>也至少<mark>出现一次</mark>。</p>
+</li>
+<li class="lvl-3">
+<p>它与条件覆盖的差别是它不是简单地要求每个条件都出现“真”与“假”两种结果，而是要求让这些结果的所有可能组合都至少出现一次。</p>
+</li>
+<li class="lvl-3">
+<p><u><em>满足条件组合覆盖，一定满足判定覆盖、条件覆盖、条件判定组合覆盖</em></u></p>
+</li>
+</ol>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114154109637.png" alt="image-20221114154109637"></p>
+<h4 id="基本路径测试法-基本路径覆盖-bpc">基本路径测试法|基本路径覆盖（BPC）</h4>
+<h5 id="基本路径覆盖的设计过程">基本路径覆盖的设计过程</h5>
+<ol>
+<li class="lvl-3">
+<p>依据代码绘制流程图（控制流图）</p>
+</li>
+<li class="lvl-3">
+<p>确定控制流图的<mark>圈复杂度</mark>（cyclomaticcomplexity ）</p>
+</li>
+<li class="lvl-3">
+<p>确定<mark>线性独立路径</mark>的基本集合( basis set )</p>
+</li>
+<li class="lvl-3">
+<p>设计测试用例覆盖每条基本路径</p>
+</li>
+</ol>
+<blockquote>
+<p>圈复杂度就确定了基本集合中线性独立路径的数量。</p>
+<p>同时注意<mark>基本集合不一定唯一</mark></p>
+<p>V(G)是一个上界</p>
+</blockquote>
+<h5 id="代码绘制流程图">⭐️代码绘制流程图</h5>
+<h6 id="1-复合条件简化：">1️⃣复合条件简化：</h6>
+<blockquote>
+<p>如果判断中的条件表达式是复合条件，即条件表达式是由一个或多个逻辑运算符（or, and, nor）连接的<u>逻辑表达式</u>，则需要改变复合条件的判断为一系列<mark>只有单个条件的嵌套的判断</mark>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原始代码</span></span><br><span class="line"><span class="keyword">if</span> a <span class="keyword">and</span> b:</span><br><span class="line">    then x;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    then y;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">#复合条件拆分</span></span><br><span class="line"><span class="keyword">if</span> a then:</span><br><span class="line">    <span class="keyword">if</span> b then:</span><br><span class="line">    	then x;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    then y;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h5 id="🌊圈复杂度的计算">🌊圈复杂度的计算</h5>
+<blockquote>
+<p>圈复杂度（Cyclomaticcomplexity）: 代码逻辑复杂度的度量，提供了被测代码的路径数量。复杂度越高，出错的概率越大</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116102954687.png" alt="image-20221116102954687" style="zoom:50%;" />
+<p><mark>对于结点数量：包括起点和终点；所有终点只计算一次，多个return和throw算作一个节点</mark></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116103628905.png" alt="image-20221116103628905" style="zoom:50%;" />
+<p>实例：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116112006475.png" alt="image-20221116112006475" style="zoom: 33%;" />
+<p>​																										<strong>（控制流图）</strong></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230218220149174.png" alt="image-20230218220149174" style="zoom:50%;" />
+<p><u><em><strong>控制流图的几种结构：</strong></em></u></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/e6894c529e158296c77ae8b0c371a736.png" alt="img"></p>
+<h5 id="u-关于流程图中的循环语句代码-u-span-style-color-red-？？？-span"><u><em><strong>关于流程图中的循环语句代码</strong></em></u><span style="color: red;">？？？</span></h5>
+<ol>
+<li class="lvl-3">
+<p>首先在绘制程序流程图的时候要将循环语句设计为判断结点</p>
+</li>
+<li class="lvl-3">
+<p>在计算圈复杂度时，由循环语句呈现的判断结点不算入下面公式的<code>判断结点数目</code>中</p>
+</li>
+</ol>
+</blockquote>
+<h5 id="☁-线性独立路径的基本集合">☁️线性独立路径的基本集合</h5>
+<blockquote>
+<p>由基本集导出的测试用例，<u>保证每行代码语句至少被执行一次</u><mark>基本集合不一定唯一</mark></p>
+<ol>
+<li class="lvl-3">独立路径：至少引入一系列新的处理语句或条件的任何路径</li>
+<li class="lvl-3">基本集：由独立路径构成的集合</li>
+</ol>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116103841143.png" alt="image-20221116103841143" style="zoom:50%;" />
+<p>习题：</p>
+<table>
+<thead>
+<tr>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116110336074.png" alt="image-20221116110336074"></th>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116110300651.png" alt="image-20221116110300651"></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p>以上流程图圈复杂度：9</p>
+<p>⭐️分析：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对于switch</span></span><br><span class="line"><span class="keyword">switch</span>(n)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    	operation1;</span><br><span class="line">    	<span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        operation2;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        operation3;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以转换为if-else的形式</span></span><br><span class="line"><span class="keyword">if</span>(n==<span class="number">1</span>)</span><br><span class="line">    &#123;operation1;&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(n==<span class="number">2</span>)</span><br><span class="line">    &#123;operation2;&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    &#123;operation3;&#125;</span><br><span class="line"><span class="comment">//进一步地可以拓展为以下</span></span><br><span class="line"><span class="keyword">if</span>(n==<span class="number">1</span>)</span><br><span class="line">    &#123;operation1;&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    &#123;operation3;&#125;</span><br><span class="line"><span class="keyword">if</span>(n==<span class="number">2</span>)</span><br><span class="line">    &#123;operation1;&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    &#123;operation3;&#125;</span><br><span class="line"><span class="comment">/*由此可以看出存在两组if-esle结果，因此记判断节点数（或简单可预测节点数）为2*/</span></span><br></pre></td></tr></table></figure>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>总结：基本路径测试并不是测试所有路径的组合，仅仅保证每条基本路径被执行一次</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{总结：基本路径测试并不是测试所有路径的组合，仅仅保证每条基本路径被执行一次}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">总结：基本路径测试并不是测试所有路径的组合，仅仅保证每条基本路径被执行一次</span></span></span></span></p>
+</blockquote>
+<h6 id="测试用例覆盖每条基本路径">测试用例覆盖每条基本路径</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221205173056291.png" alt="image-20221205173056291"></p>
+<h6 id="小结：各覆盖之间的包含关系">小结：<mark>各覆盖之间的包含关系</mark></h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116111415418.png" alt="image-20221116111415418" style="zoom:50%;" />
+<blockquote>
+<p>以上表示的是各种覆盖方法之间子集关系</p>
+</blockquote>
+<h6 id="白盒测试逻辑覆盖习题">白盒测试逻辑覆盖习题</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116100341934.png" alt="image-20221116100341934"></p>
+<h4 id="循环测试">循环测试</h4>
+<blockquote>
+<p>目标:在循环内部及边界上执行测试</p>
+</blockquote>
+<h6 id="简单循环-迭代次数n">简单循环(迭代次数n)</h6>
+<ol>
+<li class="lvl-3">
+<p>完全跳过循环</p>
+</li>
+<li class="lvl-3">
+<p>只经过循环一次</p>
+</li>
+<li class="lvl-3">
+<p>经过循环两次</p>
+</li>
+<li class="lvl-3">
+<p>经过循环m（m &lt; n ）次</p>
+</li>
+<li class="lvl-3">
+<p>分别经过循环n-1, n, n+1 次</p>
+</li>
+</ol>
+<h6 id="嵌套-nested-循环">嵌套（Nested）循环</h6>
+<ol>
+<li class="lvl-3">
+<p>在最里面的循环完成前面所述的简单循环测试，同时设定外部循环的最小迭代次数</p>
+</li>
+<li class="lvl-3">
+<p>逐步向外循环进行</p>
+</li>
+<li class="lvl-3">
+<p>直到所有循环被测试</p>
+</li>
+</ol>
+<h6 id="串行连接的循环">串行连接的循环</h6>
+<ol>
+<li class="lvl-3">
+<p>独立循环➔可以分别看成简单循环测试</p>
+</li>
+<li class="lvl-3">
+<p>依赖性循环➔可以看成是嵌套循环</p>
+</li>
+</ol>
+<h5 id="循环化简">循环化简</h5>
+<blockquote>
+<p>比较简单的小程序实现路径覆盖是可能做到的；如果程序中出现多个判断和多个循环，可能的路径数据急剧增长，以至于实现完全路径覆盖不可能做到。</p>
+</blockquote>
+<ol>
+<li class="lvl-3">
+<p><u>对循环机制进行简化，舍掉一些次要因素</u>，极大地减少路径数量，使得覆盖有限的路径成为可能。</p>
+</li>
+<li class="lvl-3">
+<p><u>循环化简，即限制循环的次数。</u>无论循环的形式和实际执行循环体的次数多少，只考虑循环1次和0次两种情况，即进入循环和跳过循环两种情况。</p>
+</li>
+</ol>
+<h5 id="最少测试用例数估算">最少测试用例数估算</h5>
+<ol>
+<li class="lvl-3">
+<p>顺序型——构成串行操作</p>
+</li>
+<li class="lvl-3">
+<p>选择型——构成分支操作</p>
+</li>
+<li class="lvl-3">
+<p>重复型——构成循环操作</p>
+</li>
+</ol>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116125307022.png" alt="image-20221116125307022" style="zoom:50%;" />
+<blockquote>
+<p>为简化问题，避免出现测试用例极多的组合爆炸，把构成循环操作的重复型结构用选择结构代替。即不指望测试循环体所有的重复执行，而是只对循环体检验一次。</p>
+</blockquote>
+<h5 id="串行分支路径计算方式：">串行分支路径计算方式：</h5>
+<table>
+<thead>
+<tr>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116112145953.png" alt="image-20221116112145953" style="zoom:50%;" /></th>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116112226435.png" alt="image-20221116112226435" style="zoom: 50%;" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<h6 id="复杂实例：">复杂实例：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116112324286.png" alt="image-20221116112324286" style="zoom:50%;" />
+<blockquote>
+<p>上下层之间用乘法：</p>
+<ol>
+<li class="lvl-3">下层（8、9）判断有3条路径</li>
+<li class="lvl-3">上层（6、7）判断的总共3条路径*（2、3、4、5）判断总共5条路径=15条路径，再+（1）判断下Y情况的1条路径=&gt;16条路径</li>
+<li class="lvl-3">最后上下相乘：3*16=48条路径</li>
+</ol>
+</blockquote>
+<h3 id="textcolor-red-考试类型题：画流程图-覆盖"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试类型题：画流程图、覆盖</mtext><mo>…</mo><mo>…</mo></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试类型题：画流程图、覆盖……}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">考试类型题：画流程图、覆盖</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner" style="color:red;">……</span></span></span></span></h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116113018608.png" alt="image-20221116113018608"></p>
+<blockquote>
+<p>问题1：（<mark>判断覆盖必须保证每个判定语句都分别取一次T和一次F</mark>）</p>
+<p>对于语句的100%判定覆盖</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230222190533112.png" alt="image-20230222190533112"></p>
+<p><mark>以上表格中注意到的是year%100 == 0成立则year%4 == 0一定成立，因此year%4 == 0可以省略</mark></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123105856921.png" alt="image-20221123105856921" style="zoom:50%;" />
+<p>问题2：</p>
+<p>V(G)=11</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123110003672.png" alt="image-20221123110003672" style="zoom:50%;" />
+<table>
+<thead>
+<tr>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123110303231.png" alt="image-20221123110303231"></th>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123110324263.png" alt="image-20221123110324263"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230222191357937.png" alt="image-20230222191357937"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>问题3：</p>
+<p>11</p>
+<p>线性无关路径与线性独立路径?</p>
+<p><mark>（每行代码至少被执行一次）</mark></p>
+</blockquote>
+<h4 id="程序插桩">程序插桩</h4>
+<blockquote>
+<p>工具：JaCoCo</p>
+<ul class="lvl-1">
+<li class="lvl-2">java程序覆盖信息收集工具</li>
+</ul>
+</blockquote>
+<h5 id="程序插桩类型">程序插桩类型</h5>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123111429595.png" alt="image-20221123111429595"></p>
+<h4 id="变异测试">变异测试</h4>
+<blockquote>
+<ol>
+<li class="lvl-3">
+<p>变异测试评价测试用例集S</p>
+</li>
+<li class="lvl-3">
+<p>评价之后生成缺陷检测能力更强的测试用例集合S<sup>+</sup></p>
+</li>
+</ol>
+<p>相关参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/TongWee/p/4505289.html">Mutation Testing(变异测试) - Weston233 - 博客园 (cnblogs.com)</a></p>
+<p>CSU参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44997802/article/details/127149008">(77条消息) 变异测试(mutation testing)：一种评估测试用例集错误检测能力的方法_CSU迦叶的博客-CSDN博客_mutation test</a></p>
+</blockquote>
+<h6 id="变异体杀死">变异体杀死</h6>
+<ol>
+<li class="lvl-3">
+<p>当原程序和变异程序存在差异时，测试用例检测到变异程序的缺陷，则变异程序被杀死；</p>
+</li>
+<li class="lvl-3">
+<p>当原程序和变异程序不存在差异时，测试用例检测不到变异程序的缺陷，则变异程序存活；</p>
+</li>
+</ol>
+<h6 id="变异算子">变异算子</h6>
+<ol>
+<li class="lvl-3">
+<p>运算符变异</p>
+</li>
+<li class="lvl-3">
+<p>数值变异</p>
+</li>
+<li class="lvl-3">
+<p>返回变异</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>==定义 4（可杀除变异体）==若存在测试用例 <em>t</em>，在变异体 <em>p</em>′ 和原有程序 <em>p</em> 上的执行结果不一致， 则称该变异体 <em>p</em>′ 相对于测试用例集 <em>T</em> 是可杀除变异体。</p>
+</li>
+<li class="lvl-2">
+<p><mark>定义 5（可存活变异体）</mark> 若不存在任何测试用例t， 在变异体 <em>p</em>′ 和原有程序 <em>p</em> 上的执行结果不一致， 则称该变异体 <em>p</em>′ 相对于测试用例集 <em>T</em> 是可存活变异体。一部分可存活变异体通过设计新的测试用例可以转化成可杀除变异体， 剩余的可存活变异体则可能是等价变异体。本文对等价变异体定义如下。</p>
+</li>
+<li class="lvl-2">
+<p>==定义 6 （等价变异体）==若变异体 <em>p</em>′ 与原有程序 <em>p</em> 在语法上存在差异， 但在语义上与 <em>p</em> 保持一致， 则称<em>p</em>′ 是 <em>p</em> 的等价变异体。</p>
+</li>
+</ul>
+<h6 id="变异得分">变异得分</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123113534268.png" alt="image-20221123113534268" style="zoom:50%;" />
+<blockquote>
+<p>变异得分公式：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/4e5e91983e704f138a2e51c4ec79a69a.png" alt="img"></p>
+</blockquote>
+<h5 id="变异测试习题">变异测试习题</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123113908351.png" alt="image-20221123113908351" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123113957994.png" alt="image-20221123113957994" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123173112188.png" alt="image-20221123173112188" style="zoom:50%;" />
+<h3 id="单元测试">单元测试</h3>
+<h5 id="定义">定义</h5>
+<p>单元测试是对软件基本的组成单元进行独立的测试</p>
+<blockquote>
+<p><mark>单元测试可以由程序员自己完成也可以由专业人员完成</mark></p>
+</blockquote>
+<h5 id="单元测试的目标">单元测试的目标</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u>目标:<mark>单元模块被正确编码</mark></u></p>
+</li>
+<li class="lvl-2">
+<p>信息能否正确地流入和流出单元</p>
+</li>
+<li class="lvl-2">
+<p>在单元工作过程中，其内部数据能否保持其完整性</p>
+<ul class="lvl-2">
+<li class="lvl-4">包括内部数据的形式</li>
+<li class="lvl-4">内容及相互关系不发生错误</li>
+<li class="lvl-4">全局变量在单元中的处理和影响</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>为限制数据加工而设置的边界处，能否正确工作</p>
+</li>
+<li class="lvl-2">
+<p>单元的运行能否做到满足特定的逻辑覆盖</p>
+</li>
+</ul>
+<h5 id="单元测试任务-5个任务"><mark>单元测试任务（5个任务）</mark></h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>模块独立执行路径</mark>测试</p>
+<ul class="lvl-2">
+<li class="lvl-4">检查每一条独立执行路径的测试，并保证每条语句被至少执行一次。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><mark>局部数据结构</mark>测试</p>
+<ul class="lvl-2">
+<li class="lvl-4">检查局部数据结构完整性。
+<ul class="lvl-4">
+<li class="lvl-6"><u>不正确或不一致的数据类型说明；使用尚未赋值或尚未初始化的变量；错误的初始值或错误的缺省值；变量名拼写错或书写错；不一致的数据类型。</u></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><mark>模块接口</mark>测试</p>
+<ul class="lvl-2">
+<li class="lvl-4">检查模块接口的正确性。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><mark>单元边界</mark>条件测试</p>
+<ul class="lvl-2">
+<li class="lvl-4">检查临界数据处理的正确性。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><mark>单元容错</mark>测试</p>
+<ul class="lvl-2">
+<li class="lvl-4">预设的各种出错处理是否正确有效。</li>
+</ul>
+</li>
+</ul>
+<h5 id="单元测试最重要的手段-u-静态测试-u-的运用">单元测试最重要的手段——*<u><strong><mark>静态测试</mark></strong></u>*的运用</h5>
+<h6 id="单元测试三部曲">单元测试三部曲⭐️</h6>
+<ol>
+<li class="lvl-3">
+<p>互审</p>
+</li>
+<li class="lvl-3">
+<p>走审</p>
+</li>
+<li class="lvl-3">
+<p>评审</p>
+</li>
+</ol>
+<p>运行单元程序有时需要<mark>基于</mark>被测单元的<mark>接口</mark>，开发相应的<mark>驱动模块和桩模块</mark>。</p>
+<h6 id="驱动模块-drive"><mark>驱动模块（drive）</mark></h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u><em>对底层或子层模块进行测试所编写的调用这些模块的程序</em></u></p>
+</li>
+<li class="lvl-2">
+<p>调用要测试的模块</p>
+</li>
+</ul>
+<h6 id="桩模块-stub"><mark>桩模块（stub）</mark></h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u><em>对顶层或上层模块进行测试时所编写的替代下层模块的程序</em></u></p>
+</li>
+<li class="lvl-2">
+<p>由被测试模块调用</p>
+</li>
+</ul>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128144227009.png" alt="image-20221128144227009"></p>
+<p>实例：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128144413388.png" alt="image-20221128144413388" style="zoom:50%;" />
+<h3 id="集成测试"><mark>集成测试</mark></h3>
+<blockquote>
+<p><u><mark><em><strong>对概要设计书进行验证</strong></em></mark></u></p>
+</blockquote>
+<h5 id="集成测试模式">集成测试模式</h5>
+<ol>
+<li class="lvl-3">
+<p>渐增式测试模式</p>
+<ul class="lvl-2">
+<li class="lvl-5">把下一个要测试的模块同已经测试好的模块结合起来进行测试，测试完以后再把下一个应该测试的模块结合进来测试</li>
+<li class="lvl-5">测试更彻底</li>
+<li class="lvl-5">需要较多的机器时间</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>非渐增式测试模式</p>
+<ul class="lvl-2">
+<li class="lvl-5">先分别测试每个模块，再把所有模块按设计要求放在一起结合成所要的程序，如大棒模式。</li>
+<li class="lvl-5"><span style="color: red;">可以并行测试</span></li>
+</ul>
+</li>
+</ol>
+<p><u>大棒集成方法</u>：先是对每一个子模块进行测试（单元测试阶段），然后将所有模块一次性的全部集成起来进行集成测试。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>适合在规模较小的应用系统中使用</p>
+</li>
+</ul>
+<p><span style="color: green;">两种模式比较：</span></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128152034802.png" alt="image-20221128152034802"></p>
+<h6 id="集成测试分析">集成测试分析</h6>
+<p>组件之间存在显示/隐形相依性</p>
+<p>相依性关系：关联、聚集、消息、调用、全局变量与公共数据。</p>
+<p>获取相依性关系：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>结构分析</p>
+</li>
+<li class="lvl-2">
+<p>接口分析</p>
+</li>
+<li class="lvl-2">
+<p>模块分析</p>
+</li>
+</ul>
+<h6 id="自顶向下法-top-down-integration">自顶向下法(Top-down Integration)</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128160501703.png" alt="image-20221128160501703"></p>
+<blockquote>
+<p><u><em>自顶向下法需要许多插桩操作</em></u></p>
+</blockquote>
+<h6 id="自底向上法-bottom-up-integration">自底向上法(Bottom-up Integration)</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128160757817.png" alt="image-20221128160757817"></p>
+<blockquote>
+<p>需要驱动模块</p>
+</blockquote>
+<h6 id="混合策略-modified-top-down-integration">混合策略(Modified Top-down Integration)</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>混合法：对软件结构中<mark>较上层</mark>，使用的是“<mark>自顶向下</mark>”法；对软件结构中<mark>较下层</mark>，使用的是“<mark>自底向上</mark>”<br>
+法，<u><strong>两者相结合</strong></u></p>
+</li>
+<li class="lvl-2">
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128160856119.png" alt="image-20221128160856119"></p>
+</li>
+</ul>
+<h6 id="三明治集成方法-sandwich-integration">三明治集成方法(Sandwich Integration)</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128161404502.png" alt="image-20221128161404502"></p>
+<blockquote>
+<p>它<mark>将自顶向下和自底向上的集成方法有机地结合起来</mark>，<u>不需要写桩程序</u>。因为在测试初自底向上集成已经验证了底层模块的正确性。</p>
+</blockquote>
+<p>改善的三明治集成方法</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221128161458069.png" alt="image-20221128161458069"></p>
+<blockquote>
+<p>改进的三明治集成方法，不仅自两头向中间集成，而且<mark>保证每个模块得到单独的测试</mark>，<u>使测试进行得比较彻底</u></p>
+</blockquote>
+<h5 id="持续集成">持续集成</h5>
+<blockquote>
+<p>通常系统集成都会采用持续集成的策略，软件开发中各个模块不是同时完成，根据进度将完成的模块尽可能早的进行集成，有助于尽早发现Bug，避免集成中大量Bug涌现。</p>
+</blockquote>
+<h3 id="面向对象的单元测试">面向对象的单元测试</h3>
+<h4 id="面向对象的测试">面向对象的测试</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>面向对象<mark>分析</mark>的测试</p>
+</li>
+<li class="lvl-2">
+<p>面向对象<mark>设计</mark>的测试</p>
+</li>
+<li class="lvl-2">
+<p>面向对象<mark>编程</mark>的测试</p>
+</li>
+</ul>
+<h5 id="传统单元测试">传统单元测试</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>针对程序的函数、过程或完成某一特定功能的程序块</p>
+</li>
+</ul>
+<h5 id="面向对象软件的单元测试">面向对象软件的单元测试</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>测试类成员函数</mark></p>
+</li>
+</ul>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221207102510192.png" alt="image-20221207102510192"></p>
+<h3 id="系统测试">系统测试</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>功能测试</p>
+</li>
+<li class="lvl-2">
+<p>回归测试</p>
+</li>
+<li class="lvl-2">
+<p>性能测试</p>
+<ul class="lvl-2">
+<li class="lvl-4">负载压力测试</li>
+<li class="lvl-4">性能测试工具LoadRunner的初级使用</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>其他非功能性测试</p>
+</li>
+</ul>
+<h4 id="功能测试">功能测试</h4>
+<h5 id="单元功能测试">单元功能测试</h5>
+<p>•保证所测试的每个独立的模块的功能正确，从输入条件和输出结果来判断是否满足程序的设计要求</p>
+<h5 id="系统功能测试">系统功能测试</h5>
+<p>•考虑模块间的相互作用，考虑系统的应用环境</p>
+<p>•衡量标准是实现产品规格说明书上所要求的功能</p>
+<p>•特别地，模拟用户从头到尾（End-to-End,端到端）的业务测试，确保系统可以完成实现设计的功能，<mark>满足用户实际业务需求</mark></p>
+<h5 id="功能测试要点">功能测试要点</h5>
+<p>•每项功能符合实际要求</p>
+<p>•<mark>功能逻辑</mark>清楚，符合使用者习惯</p>
+<p>•系统的各种状态按照业务流程而变化，并保持稳定</p>
+<p>•<mark>系统的界面</mark>清晰、美观</p>
+<p>•菜单、按钮操作正常、灵活，能处理一些异常<mark>操作</mark></p>
+<p>•能接受正确的<mark>数据输入</mark>，对异常输入的容错处理</p>
+<p>•<mark>数据的输出</mark>结果准确，格式清晰，可以保存和读取</p>
+<p>•程序安装、启动正常，有相应的提示框、错误提示等</p>
+<p>•……</p>
+<h4 id="回归测试">回归测试</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>一旦程序某些区域被修改了，就可能影响其它区域，导致受影响的区域<mark>出现新的缺陷</mark>（回归缺陷）。</p>
+</li>
+<li class="lvl-2">
+<p>回归测试是为了发现回归缺陷而进行的测试。</p>
+</li>
+</ul>
+<h5 id="回归测试定义">回归测试定义</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>定义</mark>：对软件的新版本测试时，<mark>重复执行上一个版本</mark>测试时<mark>的用例</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>回归测试可以在任何测试阶段进行。既有黑盒测试的回归，也有白盒测试的回归。</p>
+</li>
+</ul>
+<h5 id="回归测试策略">回归测试策略</h5>
+<ol>
+<li class="lvl-3">
+<p>再测试全部用例</p>
+</li>
+<li class="lvl-3">
+<p>基于风险选择测试</p>
+</li>
+<li class="lvl-3">
+<p>基于操作剖面选择测试</p>
+</li>
+<li class="lvl-3">
+<p>再测试修改的部分</p>
+</li>
+<li class="lvl-3">
+<p>更智能的选择方法</p>
+</li>
+</ol>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221207105052116.png" alt="image-20221207105052116"></p>
+<h4 id="性能测试">性能测试</h4>
+<h6 id="性能测试的基本流程-10步骤-："><mark>性能测试的基本流程（10步骤）：</mark></h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230218195023212.png" alt="image-20230218195023212"></p>
+<blockquote>
+<p>性能测试用来<mark>保证</mark>产品发布后<mark>系统的性能</mark>能够<mark>满足用户需求</mark></p>
+</blockquote>
+<ol>
+<li class="lvl-3">
+<p>执行效率</p>
+</li>
+<li class="lvl-3">
+<p>资源占用</p>
+</li>
+<li class="lvl-3">
+<p>稳定性</p>
+</li>
+<li class="lvl-3">
+<p>安全性</p>
+</li>
+<li class="lvl-3">
+<p>兼容性</p>
+</li>
+<li class="lvl-3">
+<p>可扩展性</p>
+</li>
+<li class="lvl-3">
+<p>可靠性…</p>
+</li>
+</ol>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221207105358428.png" alt="image-20221207105358428"></p>
+<p><mark>性能测试</mark>（performance test）就是为了<u><em>发现系统性能问题或获取系统性能相关指标而进行的测试</em></u>。一般在<mark>真实环境</mark>、<mark>特定负载（正常或峰值）<mark>条件下，通过</mark>工具模拟</mark>实际软件系统的运行及其操作，同时监控<u><strong>性能各项指标</strong></u>，最后<u>对测试结果进行分析</u>来确定系统的性能状况。</p>
+<h6 id="性能测试目标">性能测试目标</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>获取系统性能某些指标数据</p>
+</li>
+<li class="lvl-2">
+<p>为了验证系统是否达到用户提出的性能指标</p>
+</li>
+<li class="lvl-2">
+<p>发现系统中存在的性能瓶颈，优化系统的性能</p>
+<ul class="lvl-2">
+<li class="lvl-4">
+<p>评价系统当前性能</p>
+</li>
+<li class="lvl-4">
+<p>预测系统未来性能</p>
+</li>
+<li class="lvl-4">
+<p>寻找瓶颈，优化性能</p>
+</li>
+<li class="lvl-4">
+<p>寻找错误</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="性能测试类型">性能测试类型</h5>
+<p><u><em><strong>性能规划测试</strong></em></u></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在多种特定的环境下，获得不同配置的系统的性能指标，从而决定在系统部署时采用什么样的软、硬件配置——预测系统未来性能</p>
+</li>
+</ul>
+<p><u><em><strong>性能基准测试</strong></em></u></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在系统标准配置下获得有关的性能指标数据，作为将来性能改进的基准线</p>
+</li>
+</ul>
+<p><u><em><strong>容量测试</strong></em></u></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>可以看作性能的测试一种，因为系统的容量可以看作是系统性能指标之一</p>
+</li>
+</ul>
+<p><u><em><strong>性能验证测试</strong></em></u></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>验证系统是否达到事先已定义的系统性能指标、能否满足系统的性能需求</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221207111214200.png" alt="image-20221207111214200" style="zoom:67%;" />
+<h6 id="全生命周期性能评估">全生命周期性能评估</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221207111456089.png" alt="image-20221207111456089"></p>
+<h6 id="产品生命周期中负载压力测试计划">产品生命周期中负载压力测试计划</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>需求分析中充分关注负载压力性能</p>
+</li>
+<li class="lvl-2">
+<p>在设计中得到负载压力性能指标</p>
+</li>
+<li class="lvl-2">
+<p>开发阶段创建负载压力性能测试环境</p>
+</li>
+<li class="lvl-2">
+<p>验收阶段在多等级范围内测试并调优</p>
+</li>
+<li class="lvl-2">
+<p>运行阶段持续监控系统负载压力性能</p>
+</li>
+</ul>
+<h5 id="性能测试需求和指标">性能测试需求和指标</h5>
+<blockquote>
+<p>用户对各项指标提出的明确需求；如果用户没有提出性能指标，则根据用户需求、测试设计人员的经验来设计各项测试指标。（需求+经验）</p>
+</blockquote>
+<p><u><em>只有具备了清楚而量化的性能指标，性能测试才能开始实施。</em></u></p>
+<p><strong>主要的性能指标：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>服务器的各项指标（CPU、内存占用率等）</p>
+</li>
+<li class="lvl-2">
+<p>后台数据库的各项指标</p>
+</li>
+<li class="lvl-2">
+<p>网络流量</p>
+</li>
+<li class="lvl-2">
+<p>响应时间</p>
+</li>
+</ul>
+<p><strong>不同角度的关注点：</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>最终用户的体验，如2-5-10原则</p>
+</li>
+<li class="lvl-2">
+<p>商业需求，如“比竞争对手的产品好”</p>
+</li>
+<li class="lvl-2">
+<p>技术需求，如CPU使用率不超过70％</p>
+</li>
+<li class="lvl-2">
+<p>标准要求</p>
+</li>
+</ul>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>响应时间是用户的关注点；</p>
+</li>
+<li class="lvl-2">
+<p>容量和数据吞吐量是（产品市场团队）业务处理方面的关注点；</p>
+</li>
+<li class="lvl-2">
+<p>而系统资源占用率是开发团队的技术关注点。</p>
+</li>
+</ul>
+</blockquote>
+<h6 id="性能的具体指标">性能的具体指标</h6>
+<ol>
+<li class="lvl-3">
+<p>数据传输的吞吐量（Transactions）</p>
+</li>
+<li class="lvl-3">
+<p>数据处理效率（Transactionspersecond）</p>
+</li>
+<li class="lvl-3">
+<p>数据请求的响应时间（Responsetime）</p>
+</li>
+<li class="lvl-3">
+<p>内存和CPU使用率</p>
+</li>
+<li class="lvl-3">
+<p>连接时间（ConnectTime）、发送时间（SentTime）</p>
+</li>
+<li class="lvl-3">
+<p>处理时间（ProcessTime）、页面下载时间</p>
+</li>
+<li class="lvl-3">
+<p>第一次缓冲时间</p>
+</li>
+<li class="lvl-3">
+<p>每秒（SSL）连接数</p>
+</li>
+<li class="lvl-3">
+<p>每秒事务总数、每秒下载页面数</p>
+</li>
+<li class="lvl-4">
+<p>每秒点击次数、每秒HTTP响应数</p>
+</li>
+<li class="lvl-4">
+<p>每秒重试次数</p>
+</li>
+</ol>
+<h6 id="实例参考">实例参考</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221207112712113.png" alt="image-20221207112712113"></p>
+<h5 id="负载压力测试-span-style-color-red-性能测试的重要组成部分-span">负载压力测试|<span style="color: red;">性能测试的重要组成部分</span></h5>
+<p>负载压力测试，在<mark>一定约束条件下</mark>测试系统所能承受的<u>并发用户量</u>、<u>运行时间</u>、<u>数据量</u>，以确定系统能承受的最大负载压力。</p>
+<blockquote>
+<p>在一种需要反常（如长时间的峰值）数量、频率或资源的方式下，<mark>执行可重复的负载测试</mark>，以<mark>检查程序对异常情况的抵抗能力</mark>，找出性能瓶颈或其它不稳定性问题。</p>
+</blockquote>
+<h6 id="负载压力测试类型">负载压力测试类型</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>并发性能测试（重点）</p>
+</li>
+<li class="lvl-2">
+<p>疲劳强度测试</p>
+</li>
+<li class="lvl-2">
+<p>大数据量测试</p>
+</li>
+</ul>
+<h4 id="非功能性测试">非功能性测试</h4>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/05/11/University/junior/course/Software%20testing%20technology/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" rel="tag">课程笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" rel="tag">软件测试</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/%E7%94%A8%E4%BE%8B%E5%9B%BE%E7%BB%98%E5%88%B6%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            用例图绘制注意事项
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/05/11/University/junior/course/Software%20testing%20technology/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">软件测试技术笔记1</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

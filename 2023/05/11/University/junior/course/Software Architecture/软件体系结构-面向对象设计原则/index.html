@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>软件体系结构——面向对象设计的原则 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software Architecture/软件体系结构-面向对象设计原则"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  软件体系结构——面向对象设计的原则
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" class="article-date">
+  <time datetime="2023-05-11T03:31:27.901Z" itemprop="datePublished">2023-05-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">7 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>面向对象设计的原则（10分）</h1>
+<blockquote>
+<p>“Clean Code”——《代码整合之道》</p>
+</blockquote>
+<h3 id="面向对象设计的七大原则">面向对象设计的七大原则</h3>
+<ol>
+<li class="lvl-3">
+<p>单一职责原则</p>
+</li>
+<li class="lvl-3">
+<p>开闭原则</p>
+</li>
+<li class="lvl-3">
+<p>里氏代换原则</p>
+</li>
+<li class="lvl-3">
+<p>依赖倒转原则</p>
+</li>
+<li class="lvl-3">
+<p>接口隔离原则</p>
+</li>
+<li class="lvl-3">
+<p>合成复用原则</p>
+</li>
+<li class="lvl-3">
+<p>迪米特法则（最少知识原则）</p>
+<ul class="lvl-2">
+<li class="lvl-5">降低耦合度</li>
+</ul>
+</li>
+</ol>
+<h5 id="面向对象设计的原则意义：">面向对象设计的原则意义：</h5>
+<ol>
+<li class="lvl-3">
+<p>提高可维护性：指软件能够被理解、改正、适应及扩展的难易程度</p>
+</li>
+<li class="lvl-3">
+<p>提高可复用性：指软件能够被重复使用的难易程度</p>
+</li>
+</ol>
+<h3 id="单一职责原则">单一职责原则</h3>
+<p>单一职责原则是最简单的面向对象设计原则，用于控制类的粒度大小</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221109202250394.png" alt="image-20221109202250394" style="zoom:50%;" />
+<blockquote>
+<p>不同的职责封装到不同的类中</p>
+<p>单一职责原则是实现高内聚、低耦合的指导方针</p>
+</blockquote>
+<h5 id="单一职责原则实例">单一职责原则实例</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221109203444461.png" alt="image-20221109203444461" style="zoom:50%;" />
+<p>使用单一职责原则重构：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221109203533601.png" alt="image-20221109203533601" style="zoom:50%;" />
+<h3 id="开闭原则">开闭原则</h3>
+<p>开闭原则是面向对象的可复用设计的<u>第一块基石</u>，是<mark>最重要的面向对象设计原则</mark></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221109203752430.png" alt="image-20221109203752430" style="zoom:50%;" />
+<blockquote>
+<p>在开闭原则的定义中，软件实体可以是一个软件模块、一个由多个类组成的局部结构或一个独立的类</p>
+<p>开闭原则是指软件实体应尽量在不修改原有代码的情况下进行扩展</p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>抽象化</mark>是开闭原则的<code>关键</code></p>
+</li>
+<li class="lvl-2">
+<p>相对<mark>稳定的抽象层</mark>+ <mark>灵活的具体层</mark></p>
+</li>
+<li class="lvl-2">
+<p>对<mark>可变性封装原则</mark>(Principle of Encapsulation of Variation, EVP)：找到系统的可变因素并将其封装起来</p>
+</li>
+</ul>
+<h3 id="里氏代换原则">里氏代换原则</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114191822905.png" alt="image-20221114191822905" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114191931634.png" alt="image-20221114191931634" style="zoom:50%;" />
+<blockquote>
+<p>如果用基类替换子类对象则会抛出：ClassCastException(类型转换错误)</p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在软件中将一个基类对象替换成它的子类对象，程序将不会产生任何错误和异常，反过来则不成立。如果一个软件实体使用的是一个子类对象的话，那么它不一定能够使用基类对象</p>
+</li>
+<li class="lvl-2">
+<p>在程序中尽量使用基类类型来对对象进行定义，而在运行时再确定其子类类型</p>
+</li>
+</ul>
+<h3 id="依赖倒转原则">依赖倒转原则</h3>
+<p>高层和低层都应该依赖抽象（接口、父类）进行编程</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114192505018.png" alt="image-20221114192505018" style="zoom:50%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>要针对接口（interface）编程，不要针对实现编程</p>
+</li>
+<li class="lvl-2">
+<p>Program to an interface, not an implementation.</p>
+</li>
+<li class="lvl-2">
+<p>在程序代码中传递参数时或在关联关系中，尽量引用层次高的抽象层类，即<u>使用接口和抽象类进行变量类型声明、参数类型声明、方法返回类型声明，以及数据类型的转换</u>等</p>
+</li>
+<li class="lvl-2">
+<p>在程序中尽量使用抽象层进行编程，而将具体类写在配置文件中</p>
+</li>
+<li class="lvl-2">
+<p>针对抽象层编程，将具体类的对象通过依赖注入(Dependency Injection, DI)的方式注入到其他对象</p>
+<ul class="lvl-2">
+<li class="lvl-4">
+<p>构造注入</p>
+</li>
+<li class="lvl-4">
+<p>设值注入（Setter注入）</p>
+</li>
+<li class="lvl-4">
+<p>接口注入</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="依赖倒转原则实例">依赖倒转原则实例</h5>
+<p>原始类图：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114194039193.png" alt="image-20221114194039193" style="zoom:50%;" />
+<p>采用依赖倒转方法之后的类图：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114194557579.png" alt="image-20221114194557579" style="zoom:50%;" />
+<h3 id="接口隔离原则">接口隔离原则</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114195729933.png" alt="image-20221114195729933" style="zoom:50%;" />
+<blockquote>
+<ol>
+<li class="lvl-3">
+<p>“接口”定义(1)：一个类型所提供的所有方法特征的集合。一个接口代表一个角色，每个角色都有它特定的一个接口<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>“角色隔离原则”</p>
+</li>
+<li class="lvl-3">
+<p>“接口”定义(2)：狭义的特定语言的接口。接口仅仅提供客户端需要的行为，客户端不需要的行为则隐藏起来，应当为客户端提供尽可能小的单独的接口，而不要提供大的总接口，每个接口中只包含一个客户端所需的方法<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>“定制服务”</p>
+</li>
+</ol>
+<p><mark>广义的接口指的是API，即一组操作的集合</mark></p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>当一个接口太大时，需要将它分割成一些更细小的接口</p>
+</li>
+<li class="lvl-2">
+<p>使用该接口的客户端仅需知道与之相关的方法即可</p>
+</li>
+<li class="lvl-2">
+<p>每一个接口应该承担一种相对独立的角色，不干不该干的事，该干的事都要干</p>
+</li>
+</ul>
+<h5 id="接口隔离原则实例">接口隔离原则实例</h5>
+<p>原始类图：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114200533784.png" alt="image-20221114200533784" style="zoom:50%;" />
+<p>使用接口隔离原则之后的类图：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114200544474.png" alt="image-20221114200544474" style="zoom: 50%;" />
+<h3 id="合成复用原则">合成复用原则</h3>
+<blockquote>
+<p><mark>继承复用：类B通过继承获得类A的方法</mark></p>
+<p><u>存在的问题：</u></p>
+<ol>
+<li class="lvl-3">
+<p>但是继承复用存在继承了不需要的方法的情况，特别是存在三个及以上的继承链的情况，会继承太多不需要的方法——破坏了封装性</p>
+</li>
+<li class="lvl-3">
+<p>如果类A是final类，此时不能继承类A</p>
+</li>
+<li class="lvl-3">
+<p>静态关系，无法在运行时动态的改变父类，改变父类需要修改源代码——耦合度高</p>
+</li>
+</ol>
+<p>final修饰变量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>常量</p>
+<p>final修饰类<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>最终类（不可被继承）</p>
+<p>final修饰方法<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>不能被子类覆盖</p>
+<p><mark>合成复用</mark>完美解决继承复用存在的问题：</p>
+<ol>
+<li class="lvl-3">
+<p>在类B中定义类A的对象，并通过类A的对象精准调用目标方法</p>
+</li>
+<li class="lvl-3">
+<p>如果类A是final类，不能被继承但是可以被关联，因此可以通过1的方式调用类A的方法</p>
+</li>
+<li class="lvl-3">
+<p>可以通过Adapter（适配器）实现不修改源代码（但可以增加代码）的情况下，实现对类B调用方法的修改，以此符合开闭原则</p>
+<ul class="lvl-3">
+<li class="lvl-5"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114222324757.png" alt="image-20221114222324757"></li>
+<li class="lvl-5">
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114225248369.png" alt="image-20221114225248369" style="zoom:50%;" />
+</li>
+<li class="lvl-5">以上图：通过Adapter类继承类A，并重写m1()方法，同时Adapter类关联类A1，不能够在重写的m1()方法中通过类A1的对象调用了类A中的m3()方法，因此实现了在不改变源代码的情况下完成了对类B调取方法的转换（由调用原来的类A中的m1()方法变为了调用类A1中的m3()方法）</li>
+</ul>
+</li>
+</ol>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>在扩展时使用继承，调用已存在类的方法时使用关联</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{在扩展时使用继承，调用已存在类的方法时使用关联}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">在扩展时使用继承，调用已存在类的方法时使用关联</span></span></span></span></p>
+<p>除了扩展的时候必用继承，其它时候尽量使用关联关系（降低耦合度）</p>
+</blockquote>
+<p>合成复用原则又称为组合/聚合复用原则(Composition/ Aggregate Reuse Principle, CARP)</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114201630080.png" alt="image-20221114201630080" style="zoom:50%;" />
+<blockquote>
+<ol>
+<li class="lvl-3">
+<p><mark>继承复用</mark>：实现简单，易于扩展。破坏系统的封装性；从基类继承而来的实现是静态的，不可能在运行时发生改变，没有足够的灵活性；只能在有限的环境中使用。（“白箱”复用 ）</p>
+</li>
+<li class="lvl-3">
+<p><mark>组合/聚合复用</mark>：耦合度相对较低，有选择性地调用成员对象的操作；可以在运行时动态进行，新对象可以动态地引用与成员对象类型相同的其他对象。（“黑箱”复用 ）</p>
+</li>
+</ol>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>合成复用原则就是在一个新的对象里通过关联关系（包括组合关系和聚合关系）来使用一些已有的对象，使之成为新对象的一部分</p>
+</li>
+<li class="lvl-2">
+<p>新对象通过委派调用已有对象的方法达到复用功能的目的</p>
+</li>
+<li class="lvl-2">
+<p>复用时要尽量使用组合/聚合关系（关联关系），少用继承</p>
+</li>
+</ul>
+<h5 id="合成复用原则实例">合成复用原则实例</h5>
+<p>原始类图：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114202357231.png" alt="image-20221114202357231" style="zoom:50%;" />
+<p>使用合成复用原则之后的类图：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114202538396.png" alt="image-20221114202538396" style="zoom:50%;" />
+<h3 id="迪米特法则-最少知识原则">迪米特法则（最少知识原则）</h3>
+<p>迪米特法则又称为最少知识原则(Least Knowledge Principle, LKP)。引入一个中间类降低对象之间的耦合度，但是因此中间类的功能会很复杂，因此这个中间类是违反了单一职责原则的。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114202705360.png" alt="image-20221114202705360" style="zoom:50%;" />
+<blockquote>
+<p>迪米特法则来自于1987年美国东北大学(Northeastern University)一个名为“Demeter”的研究项目</p>
+<p>迪米特法则要求<u>一个</u>软件<u>实体</u>应当<u>尽可能少地与</u>其他<u>实体发生相互作用</u></p>
+<p>应用迪米特法则可降低系统的耦合度，使类与类之间保持松散的耦合关系</p>
+<p><mark>加入中间类的方式类似于QQ群的机制，降低了对象之间的耦合度</mark></p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>迪米特法则要求在设计系统时，应该尽量减少对象之间的交互</p>
+</li>
+<li class="lvl-2">
+<p>如果两个对象之间不必彼此直接通信，那么这两个对象就不应该发生任何直接的相互作用</p>
+</li>
+<li class="lvl-2">
+<p>如果其中一个对象需要调用另一个对象的方法，可以通过“第三者”转发这个调用</p>
+</li>
+<li class="lvl-2">
+<p>通过引入一个合理的“第三者”来降低现有对象之间的耦合度</p>
+</li>
+</ul>
+<h5 id="迪米特法则实例">迪米特法则实例</h5>
+<p>原始类图：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114203217733.png" alt="image-20221114203217733" style="zoom:50%;" />
+<p>使用迪米特法则之后的类图：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221114203304703.png" alt="image-20221114203304703" style="zoom:50%;" />
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/05/11/University/junior/course/Software%20Architecture/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" rel="tag">课程笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" rel="tag">软件体系结构</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E5%B1%9E%E6%80%A7/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            软件体系结构——软件质量属性
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84-3%E7%AB%A0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">软件体系结构第3章——统一建模语言UML</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

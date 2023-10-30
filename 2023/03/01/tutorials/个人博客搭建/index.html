@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="本文介绍如何使用 Hexo 快速搭建个人博客，并分享一些实用的主题和插件。" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>个人博客搭建流程 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-tutorials/个人博客搭建"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  个人博客搭建流程
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/03/01/tutorials/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time datetime="2023-03-01T14:40:03.375Z" itemprop="datePublished">2023-03-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">4.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">16 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>个人博客搭建</h1>
+<blockquote>
+<p>⭐️ayer主题官方中文参考：<a target="_blank" rel="noopener" href="https://shen-yu.gitee.io/2019/ayer/">https://shen-yu.gitee.io/2019/ayer/</a></p>
+<p>⭐️ayer主题 GitHub仓库：<a target="_blank" rel="noopener" href="https://github.com/shen-yu/hexo-theme-ayer">https://github.com/shen-yu/hexo-theme-ayer</a></p>
+</blockquote>
+<blockquote>
+<p>博客地址：<a href="https://wangguijiepedeval.github.io/">wangguijie.github.io | wangguijiepedeval.github.io</a></p>
+<p>域名地址：<a target="_blank" rel="noopener" href="https://www.wgj.ink/">https://www.wgj.ink/</a></p>
+<p>hexo官方文档：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/index.html">文档 | Hexo</a></p>
+<p>（主要）参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60578464">使用 Hexo+GitHub 搭建个人免费博客教程（小白向） - 知乎 (zhihu.com)</a></p>
+<p>更换Markdown渲染器：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42951560/article/details/123596899">(99条消息) 【Hexo】选择更高级的Markdown渲染器_hexo markdown_Xavier Jiezou的博客-CSDN博客</a></p>
+</blockquote>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/v2-a193a47cf70fe6ecf156e5f3d34920ea_r.jpg" alt="img"></p>
+<h1>博客主题以及博客主题切换</h1>
+<p>本博客采用的是<a target="_blank" rel="noopener" href="https://github.com/shen-yu">shen-yu (Eric Shen) </a>的Ayer主题，Ayer在马来语中是“水”的意思，在西班牙语中是“昨天”的意思。</p>
+<p>Ayer是一个干净且优雅的Hexo主题，自带响应式，加载速度很快，该有的功能都有（比如：文章发布和管理、评论和互动、文章归档和搜索等），可配置项多（包括：<em>封面配置</em>、<em>文章配置</em>、<em>是否启用搜索配置</em>、<em>访问量统计配置</em>等），非常适合作为上传学习笔记的博客主题。</p>
+<p>另一主题：<a target="_blank" rel="noopener" href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak#demo">https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak#demo</a></p>
+<p><code>tranquilpeak</code></p>
+<ol>
+<li class="lvl-3">
+<p>Download the latest <a target="_blank" rel="noopener" href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/archive/main.zip">version</a></p>
+</li>
+<li class="lvl-3">
+<p>Rename the folder in <code>tranquilpeak</code> and place it in the <code>themes</code> folder of your Hexo blog</p>
+</li>
+<li class="lvl-3">
+<p>Modify the theme in Hexo configuration file (<code>_config.yml</code>) by setting <code>theme</code> variable to <code>tranquilpeak</code></p>
+</li>
+<li class="lvl-3">
+<p>Go to the <code>tranquilpeak</code> folder and run <code>npm install &amp;&amp; npm run prod</code></p>
+</li>
+<li class="lvl-3">
+<p>Read <a target="_blank" rel="noopener" href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/blob/main/DOCUMENTATION.md">documentation</a> to configure the theme.</p>
+</li>
+</ol>
+<blockquote>
+<p>⭐️注意使用Windows的Terminal时需要使用<strong>管理员运行</strong>打开，不然会有权限限制问题。</p>
+</blockquote>
+<p>不同的主题对于<strong>hexo的配置文件</strong><code>_config.xml</code>中的参数格式会有不同的要求，因此切换不同主题时注意甄别修改。</p>
+<p>比如<strong>tranquilpeak主题</strong>的keywords要求：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">keywords:</span><br><span class="line">- hexo</span><br><span class="line">- javascript</span><br></pre></td></tr></table></figure>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231016211044507.png" alt="image-20231016211044507"></p>
+<h1>博客页面布局及其设计思路</h1>
+<h3 id="1-主界面">1、主界面</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710013922215.png" alt="image-20230710013922215"></p>
+<p>封面显示博客网站名称，下方通过“打字特效”的方式呈现设定好的文本内容；</p>
+<p>网站左侧边栏显示菜单可选项，包括：主页、归档、分类、标签……。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710014747540.png" alt="image-20230710014747540"></p>
+<p>网站主页下方显示的是最新上传的文章精简信息（包括置顶文章：红色标签“sticky”标记），点击即可进入对应的文章界面。</p>
+<h3 id="2-归档界面">2、归档界面</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710015003143.png" alt="image-20230710015003143"></p>
+<p>根据时间日期降序显示上传文章。</p>
+<h3 id="3-分类界面">3、分类界面</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710015121079.png" alt="image-20230710015121079"></p>
+<p>根据<code>.md</code>文件中<code>Front-matter</code>中的目录结构生成对应的分类结构。</p>
+<h3 id="4-标签界面">4、标签界面</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710015229533.png" alt="image-20230710015229533"></p>
+<p>根据<code>.md</code>文件中<code>Front-matter</code>中的<code>tag</code>结构生成对应的标签。</p>
+<p>比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">title: 个人博客搭建流程</span><br><span class="line">author: Guijie Wang</span><br><span class="line">categories: # 分类</span><br><span class="line">- 教程</span><br><span class="line">tags: # 标签</span><br><span class="line">- 博客搭建</span><br><span class="line">- hexo</span><br><span class="line">description: &quot;本文介绍如何使用 Hexo 快速搭建个人博客，并分享一些实用的主题和插件。&quot;</span><br><span class="line">top: True # 文章置顶（需要安装相关插件）</span><br></pre></td></tr></table></figure>
+<h3 id="5-文档界面">5、文档界面</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710015333186.png" alt="image-20230710015333186"></p>
+<p>文档界面嵌入了PDF阅读器，可以在线阅读上传的PDF文件。</p>
+<h3 id="6-播放器界面">6、播放器界面</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710015436038.png" alt="image-20230710015436038"></p>
+<p>播放界面嵌入了音乐播放器和视频播放器：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>音乐播放器：实现了音乐播放的基本功能（播放、暂停、循环、随机播放等）。</p>
+</li>
+<li class="lvl-2">
+<p>视频播放器：嵌入固定的视频代码，实现视频的播放。</p>
+</li>
+</ul>
+<h3 id="7-个人信息界面">7、个人信息界面</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230710015629863.png" alt="image-20230710015629863"></p>
+<p>个人信息界面主要是展示博客作者的相关信息。</p>
+<h1>博客功能实现及其技术选择</h1>
+<h2 id="git与nodejs的相关配置">Git与Nodejs的相关配置</h2>
+<h4 id="windows下配置与github的连接">Windows下配置与GitHub的连接</h4>
+<p>首先在windows上产生公钥私钥对：</p>
+<ol>
+<li class="lvl-3">
+<p>用Git Bash工具产生（需要安装git）：</p>
+<ol>
+<li class="lvl-6">打开 Git Bash工具 输入命令 <code>ssh-keygen</code></li>
+<li class="lvl-6">输入完命令一直按回车即可</li>
+<li class="lvl-6">在 <code>C:\Users\wgj\.ssh</code> 的目录中生成了两个密钥文件。id_rsa 为私钥，id_rsa.pub 为公钥</li>
+<li class="lvl-6">将id_rsa.pub中的信息写入GitHub中的SSH and GPG keys中：
+<ul class="lvl-4">
+<li class="lvl-8"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301164653254.png" alt="image-20230301164653254"></li>
+<li class="lvl-8"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301164725171.png" alt="image-20230301164725171"></li>
+</ul>
+</li>
+<li class="lvl-6">最后在GitBash中验证即可：
+<ul class="lvl-4">
+<li class="lvl-8"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301164804006.png" alt="image-20230301164804006"></li>
+<li class="lvl-8">验证成功！</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="npm的相关配置">npm的相关配置</h3>
+<blockquote>
+<p>修改npm的config文件：npm config edit</p>
+<ul class="lvl-1">
+<li class="lvl-2"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301214142053.png" alt="image-20230301214142053"></li>
+</ul>
+<p>直接设置npm的config文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置默认global安装的目录</span></span><br><span class="line">npm config set prefix &quot;C:\D\downLoad\node\node_global&quot;   </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置默认的cache文件目录</span></span><br><span class="line">npm config set cache &quot;C:\D\downLoad\node\node_cache&quot;</span><br><span class="line">              </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">PS：新安装的nodejs最好设置以上两个默认路径，否则会默认安装到C盘下</span></span><br><span class="line">              </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置镜像</span></span><br><span class="line">npm config set registry https://registry.npm.taobao.org</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看当前使用的镜像地址命令</span></span><br><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="front-matter使用教程">front-matter使用教程</h3>
+<blockquote>
+<p>网络参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42252518/article/details/99550466">(98条消息) front-matter使用详解_front matter_略略略～的博客-CSDN博客</a></p>
+<p>Hexo官方参考：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter.html">https://hexo.io/zh-cn/docs/front-matter.html</a></p>
+</blockquote>
+<h2 id="hexo">Hexo</h2>
+<h3 id="1-常用命令">1、常用命令</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;name&quot;       # 新建文章</span><br><span class="line">hexo new page &quot;name&quot;  # 新建页面</span><br><span class="line">hexo g                # 生成页面</span><br><span class="line">hexo d                # 部署</span><br><span class="line">hexo g -d             # 生成页面并部署</span><br><span class="line">hexo s                # 本地预览</span><br><span class="line">hexo clean            # 清除缓存和已生成的静态文件</span><br><span class="line">hexo help             # 帮助</span><br></pre></td></tr></table></figure>
+<h3 id="2-日常推送">2、日常推送</h3>
+<p>写好文章之后在博客目录下执行如下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g                # 生成页面</span><br><span class="line">hexo d                # 部署</span><br></pre></td></tr></table></figure>
+<h2 id="文章置顶">文章置顶</h2>
+<p>下载如下插件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-generator-index --save</span><br><span class="line">npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure>
+<h3 id="置顶方法">置顶方法</h3>
+<p>在front-matter中加入<code>top: True</code> 即可</p>
+<h3 id="可选-文章排序规则">（可选）文章排序规则</h3>
+<p>在root config.yml文件中添加或修改以下部分：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">index_generator:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="attr">per_page:</span> <span class="number">10</span></span><br><span class="line">  <span class="attr">order_by:</span> <span class="string">-date</span></span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>path</strong>: Root path for your blogs index page. (default = ‘’)</p>
+</li>
+<li class="lvl-2">
+<p><strong>per_page</strong>: Posts displayed per page. (0 = disable pagination)</p>
+</li>
+<li class="lvl-2">
+<p><strong>order_by</strong>: Posts order. (Order by date descending by default)</p>
+</li>
+</ul>
+<h2 id="插件-可选">插件(可选)</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="https://github.com/netcan/hexo-generator-index-pin-top">hexo-generator-index-pin-top</a> 用于文章置顶</p>
+</li>
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="https://github.com/MikeCoder/hexo-blog-encrypt/blob/master/ReadMe.zh.md">hexo-blog-encrypt</a> 用于文章加密</p>
+</li>
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md">hexo-tag-aplayer</a> 用于播放音乐</p>
+</li>
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="https://github.com/MoePlayer/hexo-tag-dplayer">hexo-tag-dplayer</a> 用于播放视频</p>
+</li>
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">hexo-helper-live2d</a> 二次元看板娘</p>
+</li>
+</ul>
+<p>更多插件请见 <a target="_blank" rel="noopener" href="https://hexo.io/plugins/">hexo 插件市场</a></p>
+<h2 id="valine文章评论功能">valine文章评论功能</h2>
+<h4 id="1-获取app-id-和-app-key">1、获取APP ID 和 APP Key</h4>
+<p>登录LeanCloud创建应用获取APP ID 和 APP Key</p>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://valine.js.org/quickstart.html">快速开始 | Valine 一款快速、简洁且高效的无后端评论系统。</a></p>
+<p>LeanCloud官网：<a target="_blank" rel="noopener" href="https://console.leancloud.cn/apps">LeanCloud</a></p>
+</blockquote>
+<h4 id="2-启用评论功能">2、启用评论功能</h4>
+<p>在博客主题Ayer文件下的_config.yml文件中添加app_id、app_key以及启用相应的功能</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230418223521043.png" alt="image-20230418223521043"></p>
+<h2 id="gitalk文章评论功能">gitalk文章评论功能</h2>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/ayuayue/article/details/109198490">为hexo增加gitalk评论系统-CSDN博客</a></p>
+</blockquote>
+<h4 id="1-创建评论仓库wgj-blog-talk">1、创建评论仓库<code>wgj_blog_talk</code></h4>
+<h4 id="2-创建oauth-apps">2、创建<code>OAuth Apps</code></h4>
+<p>在github的个人settings中左边栏最下main的<code>Developer settings</code>中找到<code>OAuth Apps</code>，填写如下信息进行注册，获得id和secret。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231016214654587.png" alt="image-20231016214654587" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/20200925170806924.png" alt="image" style="zoom:50%;" />
+<p>填写相关信息，完成设置：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231016213353796.png" alt="image-20231016213353796" style="zoom:50%;" />
+<h2 id="博客实现pdf在线预览">博客实现pdf在线预览</h2>
+<h3 id="pdf文件准备">PDF文件准备</h3>
+<ol>
+<li class="lvl-3">
+<p>在<code>wgj-Hexo-Blog\source\</code>目录下新增文件夹用于存储和管理PDF文件：<code>file-pdf/</code></p>
+</li>
+<li class="lvl-3">
+<p>将PDF存放到<code>file-pdf/</code>文件夹之后，再通过以下<mark>方法</mark>在<code>_post/</code>目录下的<code>.md</code>文件中引用即可</p>
+<ul class="lvl-2">
+<li class="lvl-5">⭐️<mark>引用路径格式</mark>：<code>/file-pdf/mytore-course-list(test).pdf</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="方法一-hexo-pdf插件渲染">方法一:hexo-pdf插件渲染</h3>
+<blockquote>
+<p>特点：</p>
+<ul class="lvl-1">
+<li class="lvl-2">专门为hexo博客开发，具有丰富的功能（推荐）</li>
+<li class="lvl-2"><mark>不支持文件名有空格</mark>
+<ul class="lvl-3">
+<li class="lvl-4">（eg:<code>mytore course list(test).pdf</code>❌ | <code>mytore-course-list(test).pdf</code>✔️）</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>下载hexo-pdf插件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-pdf</span><br></pre></td></tr></table></figure>
+<p>在<code>.md</code>文件中引用：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% pdf /file-pdf/mytore-course-list(test).pdf %&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>将以上引用代码插入到<code>.md</code>文件中想要插入的位置即可。</p>
+</blockquote>
+<h3 id="方法二-html的iframe标签">方法二:HTML的iframe标签</h3>
+<blockquote>
+<p>特点：</p>
+<ul class="lvl-1">
+<li class="lvl-2">可以支持文件名有空格（eg:<code>mytore course list(test).pdf</code>）</li>
+<li class="lvl-2"><mark>不好控制显示的pdf的高度</mark></li>
+</ul>
+</blockquote>
+<p>基于Typora(Markdown)支持部分HTML的条件下，采用如下HTML语句实现：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;/file-pdf/mytore-course-list(test).pdf&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100%&quot;</span>&gt;</span>  </span><br><span class="line">    This browser does not support PDFs. Please download the PDF to view it: </span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/file-pdf/mytore-course-list(test).pdf&quot;</span>&gt;</span>Download PDF<span class="tag">&lt;/<span class="name">a</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><u><em><strong>以下参考内容部分有用，部分没用（需仔细甄别）</strong></em></u></p>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43827595/article/details/104574959">(113条消息) 【如何在网页中实现pdf在线预览】10分钟学会如何利用Hexo博客上传本地pdf文件并在线预览pdf_博客可以直接看pdf吗_捡起一束光的博客-CSDN博客</a></p>
+<p>参考2：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2065822">Hexo -18- 添加 PDF 阅读功能-腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+<p>基于PDFjs参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_59464010/article/details/123361053">(113条消息) 如何在hexo博客中在线阅读pdf_hexo的pdf插件_冰山一树Sankey的博客-CSDN博客</a></p>
+</blockquote>
+<h3 id="新建book导航栏">新建book导航栏</h3>
+<p>（1）新建book导航栏</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new page book</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">之后在index.md文件中设置front-matter</span></span><br></pre></td></tr></table></figure>
+<p>（2）在主题配置文件<code>_config.yml</code>中添加</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Book:</span></span><br><span class="line">   <span class="attr">url:</span> <span class="string">/book</span></span><br><span class="line">   <span class="comment"># icon: fas fa-book</span></span><br></pre></td></tr></table></figure>
+<p>（3）然后在book文件夹中的index.md中添加生成的pdf文件链接即可</p>
+<h2 id="博客引入音视频播放器">博客引入音视频播放器</h2>
+<h3 id="使用iframe标签加载视频">使用<code>iframe</code>标签加载视频</h3>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;position: relative; width: 100%; height: 0; padding-bottom: 75%;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;//player.bilibili.com/player.html?aid=975879338&amp;bvid=BV1H44y1t75x&amp;cid=423711758&amp;page=1&quot;</span> <span class="attr">scrolling</span>=<span class="string">&quot;no&quot;</span> <span class="attr">border</span>=<span class="string">&quot;0&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;no&quot;</span> <span class="attr">framespacing</span>=<span class="string">&quot;0&quot;</span> <span class="attr">allowfullscreen</span>=<span class="string">&quot;true&quot;</span> <span class="attr">style</span>=<span class="string">&quot;position: absolute; width: 100%; height: 100%; left: 0; top: 0;&quot;</span> <span class="attr">autoplay</span>=<span class="string">&quot;false&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>更换视频只需要在（以bilibili为例）视频下方的<u><strong>分享</strong></u>处点击<mark>嵌入代码</mark>获取视频的链接，然后将链接替换掉以上代码中的<code>src</code>的链接即可。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>以上代码已经完善了设备布局的<strong>自适应</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>新建<code>播放器</code>导航栏：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page player</span><br></pre></td></tr></table></figure>
+<p>之后在index.md文件中设置front-matter即可</p>
+</blockquote>
+<h3 id="使用aplayer插件加载音乐播放器">使用<code>aplayer</code>插件加载音乐播放器</h3>
+<p>1、安装aplayer插件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-tag-aplayer</span><br></pre></td></tr></table></figure>
+<p>2、在本插件中使用 MetingJS，Hexo配置文件<code>_config.yml</code>中设置：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">aplayer:</span><br><span class="line">  meting: true</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/metowolf/MetingJS">MetingJS</a> 是基于<a target="_blank" rel="noopener" href="https://github.com/metowolf/Meting">Meting API</a> 的 APlayer 衍生播放器，引入 MetingJS 后，播放器将支持对于 QQ音乐、网易云音乐、虾米、酷狗、百度等平台的音乐播放。</p>
+</blockquote>
+<p>3、按照如下格式在.md文件中插入即可</p>
+<p>（1）单个歌曲插入：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% meting &quot;3986040&quot; &quot;netease&quot; &quot;song&quot; &quot;theme:#555&quot; &quot;mutex:true&quot; &quot;listmaxheight:340px&quot; &quot;preload:auto&quot; %&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）歌单插入：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% meting &quot;627070825&quot; &quot;netease&quot; &quot;playlist&quot; &quot;theme:#555&quot; &quot;mutex:true&quot; &quot;listmaxheight:340px&quot; &quot;preload:auto&quot; %&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="ps：获取歌曲或者歌单的id">PS：获取歌曲或者歌单的id</h5>
+<p>登录网页版的音乐网站，点击进入一个歌单便可在URL中看到id：7489569642</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230518204910597.png" alt="image-20230518204910597"></p>
+<p>或者点击<u><strong>分享</strong></u>，复制链接：</p>
+<p><a target="_blank" rel="noopener" href="https://i.y.qq.com/n2/m/share/details/taoge.html?id=7489569642&amp;hosteuin=">https://i.y.qq.com/n2/m/share/details/taoge.html?id=7489569642&amp;hosteuin=</a></p>
+<blockquote>
+<p>注意如果要修改歌曲或者歌单</p>
+<ul class="lvl-1">
+<li class="lvl-2"><strong>data-id</strong>：单曲ID / 歌单ID</li>
+<li class="lvl-2"><strong>data-server</strong>：音乐平台</li>
+</ul>
+</blockquote>
+<h5 id="参数表">参数表</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">是否必须</th>
+<th style="text-align:left">默认值</th>
+<th style="text-align:left">描述&amp;可选值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">data-id</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">单曲ID / 歌单ID / 专辑ID / 搜索关键词</td>
+</tr>
+<tr>
+<td style="text-align:left">data-server</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">音乐平台：<code>netease</code>,<code>tencent</code>,<code>kugou</code>,<code>xiami</code>,<code>baidu</code></td>
+</tr>
+<tr>
+<td style="text-align:left">data-type</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">音乐类型：<code>song</code>,<code>playlist</code>,<code>album</code>,<code>search</code>,<code>artist</code></td>
+</tr>
+<tr>
+<td style="text-align:left">data-mode</td>
+<td style="text-align:left"><strong>已弃用</strong></td>
+<td style="text-align:left"><code>circulation</code></td>
+<td style="text-align:left">播放模式：<code>circulation</code>,<code>random</code>,<code>single</code>,<code>order</code> 使用 <code>data-loop</code> <code>data-order</code> 字段代替</td>
+</tr>
+<tr>
+<td style="text-align:left">data-autoplay</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><code>false</code></td>
+<td style="text-align:left">是否自动播放，移动端浏览器不支持该选项</td>
+</tr>
+<tr>
+<td style="text-align:left">data-mutex</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><code>true</code></td>
+<td style="text-align:left">播放时是否暂停其他<code>APlayer</code>对象</td>
+</tr>
+<tr>
+<td style="text-align:left">data-listmaxheight</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><code>340px</code></td>
+<td style="text-align:left">播放列表最高高度</td>
+</tr>
+<tr>
+<td style="text-align:left">data-preload</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><code>auto</code></td>
+<td style="text-align:left">音乐预加载模式：<code>none</code>, <code>metadata</code>, <code>auto</code></td>
+</tr>
+<tr>
+<td style="text-align:left">data-theme</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><code>#2980b9</code></td>
+<td style="text-align:left">主题色</td>
+</tr>
+<tr>
+<td style="text-align:left">data-mini</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><code>false</code></td>
+<td style="text-align:left">是否开启迷你模式</td>
+</tr>
+<tr>
+<td style="text-align:left">data-loop</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><code>all</code></td>
+<td style="text-align:left">循环方式：<code>all</code>, <code>one</code>, <code>none</code></td>
+</tr>
+<tr>
+<td style="text-align:left">data-order</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><code>list</code></td>
+<td style="text-align:left">播放顺序：<code>list</code>, <code>random</code></td>
+</tr>
+<tr>
+<td style="text-align:left">data-lrc</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><code>false</code></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">data-list-folded</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><code>false</code></td>
+<td style="text-align:left">歌单列表初始时是否折叠</td>
+</tr>
+<tr>
+<td style="text-align:left">data-volume</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left"><code>0.7</code></td>
+<td style="text-align:left">用户未自定义前的默认初始化音量</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44093867/article/details/104166514">(113条消息) hexo博客插入图片与视频方法_可以插入视频的 博客_多才coder的博客-CSDN博客</a></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/hushhw/article/details/88092728">(113条消息) Hexo主题插入音乐之aplayer音乐播放器_hexo-tag-aplayer_hushhw的博客-CSDN博客</a></p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p><a target="_blank" rel="noopener" href="https://tianma8023.github.io/post/hexo-embed-aplayer/">Hexo 折腾：音乐播放 | Tianma (tianma8023.github.io)</a></p>
+</li>
+</ul>
+</blockquote>
+<h2 id="gravatar全球通用头像">Gravatar全球通用头像</h2>
+<blockquote>
+<p>Gravatar官网：<a target="_blank" rel="noopener" href="https://en.gravatar.com/">Gravatar - Globally Recognized Avatars</a></p>
+</blockquote>
+<h3 id="简述：">简述：</h3>
+<p>Gravatar的概念首先是在国外的独立WordPress博客中兴起的，当你到任何一个支持Gravatar的网站留言时，这个网站都会根据你所提供的Email地址为你显示出匹配的头像。当然，这个头像，是需要你事先到Gravatar的网站注册并上传的，否则，在这个网站上，就只会显示成一个默认的头像。</p>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Cappuccino_jay/article/details/105466276">(109条消息) Gravatar了解与学习_Cappuccino-jay的博客-CSDN博客</a></p>
+</blockquote>
+<h3 id="头像配置">头像配置</h3>
+<p>登录或注册<a target="_blank" rel="noopener" href="http://cn.gravatar.com/">Gravatar</a>，然后修改自己的头像。</p>
+<p>评论的时候，留下在<a target="_blank" rel="noopener" href="http://cn.gravatar.com/">Gravatar</a>注册时所使用的邮箱即可显示自己设置的头像。</p>
+<blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>注意：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{注意：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">注意：</span></span></span></span>如果你修改了头像后发现没有更新，请不要慌张，因为<code>gravatar.cat.net</code> 有七天的缓存期，安静的等待吧~</p>
+</blockquote>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://valine.js.org/avatar.html">头像配置 | Valine 一款快速、简洁且高效的无后端评论系统。</a></p>
+</blockquote>
+<h1>博客制作过程中遇到的问题及其解决方法</h1>
+<h2 id="遇到的问题">遇到的问题</h2>
+<h4 id="1-关于git-bash无法打开的错误-闪退">1、关于Git Bash无法打开的错误（闪退）</h4>
+<p>解决：</p>
+<ol>
+<li class="lvl-3">
+<p>配置环境变量：<code>C:\Program Files\Git\bin</code></p>
+</li>
+<li class="lvl-3">
+<p>在Windows Terminal中配置C:\Program Files\Git\bin目录下的bash.exe快捷启动方式;</p>
+<ul class="lvl-2">
+<li class="lvl-5"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230301162808194.png" alt="image-20230301162808194"></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012724595/article/details/114740935">(98条消息) windows下git bash安装与环境变量设置_git bash 环境变量_sning999的博客-CSDN博客</a></p>
+</blockquote>
+<h4 id="2-hexo部署出现错误err-spawn-failed">2、Hexo部署出现错误err: Spawn failed</h4>
+<p>解决：</p>
+<ol>
+<li class="lvl-3">
+<p>删去博客目录下的.deploy_git文件</p>
+</li>
+<li class="lvl-3">
+<p>再次运行<code>npm install hexo-deployer-git</code>命令下载发布插件</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果npm需要更新则现将npm进行更新</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>最后<code>hexo g &amp;&amp; hexo d</code>即可</p>
+</li>
+</ol>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41256398/article/details/117994899?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-117994899-blog-106876940.235%5Ev32%5Epc_relevant_default_base3&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-117994899-blog-106876940.235%5Ev32%5Epc_relevant_default_base3&amp;utm_relevant_index=2">(113条消息) Hexo部署出现错误err: Error: Spawn failed解决方式_wei-xiansen的博客-CSDN博客</a></p>
+</blockquote>
+<h2 id="注意事项">注意事项</h2>
+<ol>
+<li class="lvl-3">
+<p>编写md文件时注意不要在代码块前设置排序，否则部署上去后会出现文本格式混乱</p>
+</li>
+</ol>
+<h2 id="博客搭建相关资源">博客搭建相关资源</h2>
+<h3 id="logo设计">LOGO设计</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.logosc.cn/">LOGO设计神器；公司logo在线设计生成器 - 标小智LOGO神器 (logosc.cn)</a></p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.logosc.cn/logo/monogram?s=w">w字母图标生成器 | 汉字徽章图标一键生成 - 标小智LOGO神器 (logosc.cn)</a></p>
+</blockquote>
+<h3 id="iconfinder：丰富的图标库">iconfinder：丰富的图标库</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.iconfinder.com/">7,400,000+ free and premium vector icons, illustrations and 3D illustrations (iconfinder.com)</a></p>
+</blockquote>
+<h3 id="获取网站logo">获取网站Logo</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6987258296881119262">下载网站 favicon 图标的 3 种方法 - 掘金 (juejin.cn)</a></p>
+</blockquote>
+<p>最常用的方法：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>格式为 <code>域名/favicon.ico</code>，比如：<code>https://www.google.com/favicon.ico</code></p>
+</li>
+</ul>
+<h3 id="front-matter编写教程">front-matter编写教程</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42252518/article/details/99550466">(98条消息) front-matter使用详解_front matter_略略略～的博客-CSDN博客</a></p>
+<p>Hexo官方参考：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter.html">https://hexo.io/zh-cn/docs/front-matter.html</a></p>
+</blockquote>
+<p>编写实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World # 标题</span><br><span class="line">date: 2019/3/26 hh:mm:ss # 时间</span><br><span class="line">type: tags		# 帮助脚本识别这是一个用来创建tags的文档</span><br><span class="line">layout: tag 	# 我的tags模版标签叫tag你可以根据你的模版名称输入对应的名称</span><br><span class="line">categories: # 分类（严格的顺序结构）</span><br><span class="line">- first		# 第一级</span><br><span class="line">- second	# 第二级</span><br><span class="line">- third		# 第三级</span><br><span class="line">- fourth	# 第四级</span><br><span class="line">- ……</span><br><span class="line">tags: # 标签（多个标签均为并列关系，不存在父子关系）</span><br><span class="line">- math</span><br><span class="line">- games</span><br><span class="line">- physics</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h4 id="front-matter包含的内容">front-matter包含的内容</h4>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230302004708972.png" alt="参数list"></p>
+<h1>总结</h1>
+<p>本次博客搭建目的是为了方便本人分享大学课程知识、科研内容以及编程笔记等计算机相关内容，目的是为了方便总结归纳所学知识以及为有需要的“同志”提供个人的学习心得作为参考，充分体现互联网的共享互助精神。</p>
+<p>通过搭建个人博客，</p>
+<p>对<u><strong>域名注册</strong></u>、<u><strong>网站建设</strong></u>、<u><strong>前端设计</strong></u>、<u><strong>搜索引擎优化</strong></u>等有了一定的了解和掌握；</p>
+<p>对<u><strong>网站开发技术</strong></u>，如HTML、CSS、JavaScript等技术进一步熟悉并运用；</p>
+<p>对<u><strong>一定阶段内的自我学习成果</strong></u>进行总结和归纳。</p>
+<blockquote>
+<h5 id="1-seo相关术语">1、SEO相关术语。</h5>
+<p>SEO (Search Engine Optimization)，译为<mark>搜索引擎优化</mark></p>
+<p>SEO相关术语：</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>PV (Page View)：<u><em>PV是用户访问网站时所浏览的总网页数</em></u></p>
+</li>
+<li class="lvl-2">
+<p>百度快照：<u><em>百度蜘蛛在爬取网页内容时，将网页文本内容独立创建一个文本文件，保存在百度数据库中的网页的“照片”。</em></u></p>
+</li>
+<li class="lvl-2">
+<p>SEO黑帽（SEO black hat）：<u><em>简单来说，SEO黑帽就是采用了搜索引擎所禁止的方法（作弊），对网站在搜索引擎的排名进行优化，在短时间内排到搜索引擎前列。</em></u></p>
+</li>
+<li class="lvl-2">
+<p>SEO白帽（SEO white hat）：<u><em>白帽所指的是采用合理的SEO行为优化网站，提高用户的体验，合理与其他网站互联，从而达到网站在搜索引擎排名的稳步提升。</em></u></p>
+</li>
+<li class="lvl-2">
+<p>跳出率：<u><em>是指来到网站只浏览了一个页面就离开的用户占网站总浏览用户的百分比。</em></u></p>
+</li>
+<li class="lvl-2">
+<p>沙盒效应(Sandbox)：<u><em>指一个新建立的网站在刚上线的一个或几个月内，在搜索引擎上很难有好的排名，甚至没有排名。</em></u></p>
+</li>
+<li class="lvl-2">
+<p>SPAM(Specially Processed Assorted Meat): <u><em>指专门针对那些欺骗搜索引擎的技术。搜索引擎垃圾技术是利用不道德的技巧去提高自己搜索引擎上的排名</em></u></p>
+</li>
+</ul>
+<h5 id="2-seo常用的技术">2、SEO常用的技术。</h5>
+<ol>
+<li class="lvl-3">
+<p>网页title的优化</p>
+</li>
+<li class="lvl-3">
+<p>关键词的选取</p>
+</li>
+<li class="lvl-3">
+<p>关键词的优化</p>
+</li>
+<li class="lvl-3">
+<p>元标签及网页描述的优化</p>
+</li>
+<li class="lvl-3">
+<p>网站结构和URL优化</p>
+</li>
+<li class="lvl-3">
+<p>robots.txt文件</p>
+</li>
+<li class="lvl-3">
+<p>网页链接的优化</p>
+</li>
+<li class="lvl-3">
+<p>Heading标签的优化</p>
+</li>
+<li class="lvl-3">
+<p>图片优化</p>
+</li>
+<li class="lvl-4">
+<p>网页减肥</p>
+</li>
+</ol>
+<p>SEO常用作弊方法：</p>
+<ol>
+<li class="lvl-3">
+<p>桥页(Doorway Pages)</p>
+</li>
+<li class="lvl-3">
+<p>关键词堆砌(Keyword Stuffing)</p>
+</li>
+<li class="lvl-3">
+<p>隐藏文字(Hidden Text)</p>
+</li>
+<li class="lvl-3">
+<p>隐藏链接(Hidden Link)</p>
+</li>
+<li class="lvl-3">
+<p>隐藏页面(Cloaked Page)</p>
+</li>
+</ol>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/03/01/tutorials/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag">博客搭建</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/03/01/test/My-New-Post/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            My New Post
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/03/01/test/hello-world/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Hello World</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

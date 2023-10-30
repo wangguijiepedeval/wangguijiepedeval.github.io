@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>第一章（项目管理概述） |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software Project Organization Management/1-项目管理概述"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  第一章（项目管理概述）
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/1-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E6%A6%82%E8%BF%B0/" class="article-date">
+  <time datetime="2023-07-09T10:33:40.975Z" itemprop="datePublished">2023-07-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/">软件项目组织管理</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">4 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>项目管理概述</h1>
+<h5 id="人类活动特点：">⭐️人类活动特点：</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>目的性：为了达到预期的目的而活动。</p>
+</li>
+<li class="lvl-2">
+<p>依存性：分工越来越细，依存越来越紧密 。</p>
+</li>
+<li class="lvl-2">
+<p>知识性：在实践与经验中学习，形成知识体系。</p>
+</li>
+</ul>
+<p>⭐️作业（Operations 运作 运营）：连续不断、周而复始的活动，如企业日常的生产产品的活动、财务人员的日常记账工作等。</p>
+<p>⭐️项目（Projects）：临时性的、一次性的活动，如企业新产品开发、企业的技术改造活动企业信息系统的开发等。</p>
+<h6 id="项目是实现企业发展战略的载体">项目是实现企业发展战略的载体</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230427160706301.png" alt="image-20230427160706301" style="zoom:50%;" />
+<h5 id="span-style-color-red-项目与作业的区别-span"><span style="color: red;">⭐️项目与作业的区别</span></h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230427160339987.png" alt="image-20230427160339987" style="zoom:50%;" />
+<h3 id="项目的定义：">项目的定义：</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>项目都是有明确且具体的目标；</p>
+</li>
+<li class="lvl-2">
+<p>项目是指为完成特定目标所需要完成的任务，具有一次性；</p>
+</li>
+<li class="lvl-2">
+<p>项目都有须明确界定的工作范围；</p>
+</li>
+<li class="lvl-2">
+<p>项目是一项有待完成的任务，有特定的环境与要求；</p>
+</li>
+<li class="lvl-2">
+<p>项目是指一个过程，而不是指过程终结后所形成的结果；</p>
+</li>
+<li class="lvl-2">
+<p>在一定的组织机构、利用有限的人力、物力、财力在规定的时间内完成任务；</p>
+</li>
+<li class="lvl-2">
+<p>任务要满足一定的性能、质量、数量、技术指标等要求；</p>
+</li>
+</ul>
+<h4 id="项目的三维约束">项目的三维约束</h4>
+<p><u><strong>范围</strong></u>、<u><strong>时间</strong></u>和<u><strong>成本</strong></u></p>
+<h3 id="管理的概念">管理的概念</h3>
+<p>管理是社会组织中，为了实现预期目标，以人为中心进行的<u><strong>协调活动</strong></u>。</p>
+<h5 id="管理五个重要观点：">管理五个重要观点：</h5>
+<p>1）管理的目的是为了实现预期目标</p>
+<p>2）管理的本质是协调</p>
+<p>3）协调产生于社会组织中</p>
+<p>4）协调的中心是人</p>
+<p>5）协调的方法是多种多样性</p>
+<h3 id="项目管理">项目管理</h3>
+<h4 id="项目管理的定义">项目管理的定义</h4>
+<p>⭐️项目管理就是把各种知识、技能、手段和技术应用于项目活动之中，以达到项目的要求。</p>
+<p><u><em><strong><mark>项目经理</mark>是负责实现项目目标的个人</strong></em></u></p>
+<p>不存在项目与项目之间的比较，因为每个项目都是独一无二的，目标不均衡的，所以无法进行比较，但作业可以。——根据项目与作业之间的区别</p>
+<h5 id="项目管理与其它管理学科的关系">项目管理与其它管理学科的关系</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230504162203916.png" alt="image-20230504162203916" style="zoom:50%;" />
+<h4 id="项目管理知识体系">⭐️项目管理知识体系</h4>
+<blockquote>
+<p>指要使用的<u><em><strong>理论、方法和工具</strong></em></u>等一系列内容的总称。</p>
+</blockquote>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230504160415769.png" alt="image-20230504160415769"></p>
+<p>三部分组成：</p>
+<ol>
+<li class="lvl-3">
+<p>项目干系人</p>
+</li>
+<li class="lvl-3">
+<p>10大知识领域</p>
+</li>
+<li class="lvl-3">
+<p>工具与技术</p>
+</li>
+</ol>
+<h5 id="项目管理过程">项目管理<mark>过程</mark></h5>
+<p>项目从开始到结束是通过一系列项目管理活动进行的，即项目管理过程</p>
+<h3 id="软件的定义">软件的定义</h3>
+<p>软件（software）是计算机系统中与硬件(hardware)相互依存的另一部分，它是<u><strong>程序(program)、数据(data)和文档(document)</strong></u>的完整集合。</p>
+<p><u><em><strong><span style="color: red;">项目管理、项目群管理和项目组合管理对企业发展起到了什么作用或贡献？三者之间有什么联系？</span></strong></em></u></p>
+<blockquote>
+<p>项目管理：单个的项目管理</p>
+<p>项目群管理：将相互之间关联的项目协同起来一起管理</p>
+<p>项目组合管理：对由<strong>项目</strong>和<strong>项目群</strong>有机组合的整体所开展的管理</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p><mark>战术目标：项目管理</mark></p>
+</li>
+<li class="lvl-2">
+<p><mark>战略目标：项目组合管理</mark></p>
+</li>
+<li class="lvl-2">
+<p>控制成本：项目与项目群管理有利于控制项目成本</p>
+</li>
+<li class="lvl-2">
+<p>提升效率：优化工作流程，提高协助能力</p>
+</li>
+<li class="lvl-2">
+<p>创新：提升企业竞争力</p>
+</li>
+<li class="lvl-2">
+<p>降低风险：</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="项目群-program">⭐️项目群（program）</h4>
+<p>项目群（program）：<strong>多个相互关联项目的集合</strong></p>
+<p>基本特征：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>相互关联</p>
+</li>
+<li class="lvl-2">
+<p>每个项目相互间有一定的相似性</p>
+</li>
+</ul>
+<h3 id="项目群管理-program-management">项目群管理（program Management）</h3>
+<p>项目群管理（program Management）：一组相互关联的项目，使用<strong>协同方法进行管理来获得收益和进行控制</strong>，而这种收益和控制在单独管理这些项目时是不易获得的。</p>
+<p>项目群管理强调：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>集成（如IT项目的弱电集成项目）</p>
+</li>
+<li class="lvl-2">
+<p>协同与资源优化</p>
+</li>
+</ul>
+<h3 id="项目组合管理">⭐️项目组合管理</h3>
+<p>项目组合管理——<strong>对由项目和项目群有机组合的整体所开展的管理。</strong></p>
+<p>项目组合的目的——<strong>实现组织战略和愿景</strong>，也称战略项目组合。</p>
+<p>项目组合管理强调：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>战略目标（宏观）</p>
+</li>
+<li class="lvl-2">
+<p>项目组合的投资回报</p>
+</li>
+<li class="lvl-2">
+<p>资源约束下的项目选择</p>
+</li>
+</ul>
+<h6 id="项目管理和项目组合管理的不同之处：">项目管理和项目组合管理的不同之处：</h6>
+<p>最主要的区别在各自致力于达到的目标上，<mark>战术目标</mark>还是<mark>战略目标</mark>。（战术目标<u><strong>更具体,时间短</strong></u>；战略目标重点强调一组织的长期目标）</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230504161858259.png" alt="image-20230504161858259" style="zoom:50%;" />
+<h5 id="项目经理的作用">项目经理的作用</h5>
+<p><u><em><strong>项目经理是为项目的成功策划和执行负总责的人</strong></em></u></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>管理能力</p>
+</li>
+<li class="lvl-2">
+<p>领导能力</p>
+</li>
+</ul>
+<h6 id="主要职责">主要职责</h6>
+<p>项目经理<mark>首要职责</mark>是在<strong>预算范围内按时优质地领导项目小组完成全部项目工作内容，并使客户满意</strong></p>
+<blockquote>
+<p>项目经理最终要的是：“沟通”。</p>
+</blockquote>
+<h2 id="课堂讨论与测试">课堂讨论与测试</h2>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230504164316034.png" alt="image-20230504164316034" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230504164329941.png" alt="image-20230504164329941" style="zoom: 33%;" />
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/1-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E6%A6%82%E8%BF%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" rel="tag">课堂笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/" rel="tag">软件项目组织管理</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/2-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E4%B8%8E%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E7%8E%AF%E5%A2%83/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            第二章（项目管理与信息技术环境）
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/11-%E9%A1%B9%E7%9B%AE%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">第十一章（# 项目风险管理）</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

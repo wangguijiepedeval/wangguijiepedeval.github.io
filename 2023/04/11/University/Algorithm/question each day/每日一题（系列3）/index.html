@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>算法每日一题3 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/Algorithm/question each day/每日一题（系列3）"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  算法每日一题3
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/04/11/University/Algorithm/question%20each%20day/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%EF%BC%88%E7%B3%BB%E5%88%973%EF%BC%89/" class="article-date">
+  <time datetime="2023-04-11T06:44:55.686Z" itemprop="datePublished">2023-04-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/">算法</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">每日一题</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">11 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>每日一题</h1>
+<blockquote>
+<p>每日一题系列旨在督促本人坚持算法练习，并期望将之养成一个习惯。</p>
+</blockquote>
+<h3 id="1-跳石头">1、跳石头</h3>
+<blockquote>
+<p>lanqiao-364：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/364/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;name=%E8%B7%B3%E7%9F%B3%E5%A4%B4">跳石头 - 蓝桥云课 (lanqiao.cn)</a></p>
+<p><u><strong>完成时间：2023年4月1日23:43:05</strong></u></p>
+<p>tags：二分法</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p>注意题目中的至多移走m块石头，那么当移走的石头越多，那么最短跳跃距离就越大，反之则越小；</p>
+</li>
+<li class="lvl-3">
+<p>所以我们必须保证小于m而尽可能大于接近于m，<mark>实质是</mark>在所有可能的最小值中，找最大的那个，就是“最小值最大化”</p>
+</li>
+<li class="lvl-3">
+<p>所以应该求得是：在单调递增序列d中查找&lt;=x的数中最大的一个（即x或x的前趋）；</p>
+</li>
+<li class="lvl-3">
+<p>这里<mark>转换成了</mark>由当前d得到的可以移动的石头数量num与至多可以移动的数量m之间的比较。</p>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span>;</span><br><span class="line"><span class="type">int</span> len, n, m;<span class="comment">// 分别为起点到终点的距离，起点和终点之间的岩石数，以及组委会至多移走的岩石数 </span></span><br><span class="line"><span class="type">int</span> stone[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> d)</span></span>&#123;<span class="comment">// 验证最短跳跃距离d是否满足条件 </span></span><br><span class="line">	<span class="type">int</span> pos = <span class="number">0</span>;<span class="comment">// 当前位置 </span></span><br><span class="line">	<span class="type">int</span> num = <span class="number">0</span>;<span class="comment">// 移去石头的数量 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(stone[i] - pos &lt; d)&#123;</span><br><span class="line">			num++;<span class="comment">// 符合要求可以去掉石头 </span></span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			pos = stone[i];<span class="comment">// 更新当前位置，表示的是在前一个[pos,pos+d]内已经去除了最多的石头数 </span></span><br><span class="line">		&#125; </span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">if</span>(num&lt;=m)<span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">// 满足至多移去m个石头 </span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;len&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;stone[i];<span class="comment">// 初始化石头到起点的距离 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 在单调递增序列a中查找&lt;=x的数中最大的一个（即x或x的前趋）</span></span><br><span class="line">	<span class="type">int</span> L = <span class="number">0</span>, R = len;</span><br><span class="line">	<span class="keyword">while</span>(L&lt;R)&#123;</span><br><span class="line">		<span class="type">int</span> mid = (L + R + <span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">check</span>(mid))&#123;<span class="comment">// 如果成立，那么表明当前的mid小了点，应该增大 </span></span><br><span class="line">			L = mid;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;		<span class="comment">// 否则表明当前的mid大了点，应该减小  </span></span><br><span class="line">			R = mid - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;L;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-完全背包问题">2、完全背包问题</h3>
+<blockquote>
+<p>AcW-3：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/3/">3. 完全背包问题 - AcWing题库</a></p>
+<p><u><strong>完成时间：2023年4月2日</strong></u></p>
+<p>tags：动态规划、背包问题</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p>每种物品都有无限件可用；</p>
+</li>
+<li class="lvl-3">
+<p>普通做法（采用二维数组）；</p>
+</li>
+<li class="lvl-3">
+<p>空间压缩（采用一维数组、对容量顺序遍历）；</p>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 完全背包问题 </span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> dp[N][N], v[N], w[N];<span class="comment">// v体积，w价值 </span></span><br><span class="line"><span class="type">int</span> n, V, res;</span><br><span class="line"><span class="type">int</span> f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;V;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;v[i]&gt;&gt;w[i];</span><br><span class="line">	&#125;</span><br><span class="line">	res = <span class="number">0</span>;</span><br><span class="line">	dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//	for(int i=1;i&lt;=n;++i)&#123;</span></span><br><span class="line"><span class="comment">//		for(int j=0;j&lt;=V;++j)&#123;</span></span><br><span class="line"><span class="comment">//			dp[i][j] = dp[i-1][j];</span></span><br><span class="line"><span class="comment">//			if(j&gt;=v[i])&#123;</span></span><br><span class="line"><span class="comment">//				dp[i][j] = max(dp[i][j], dp[i][j-v[i]]+w[i]);</span></span><br><span class="line"><span class="comment">//			&#125;</span></span><br><span class="line"><span class="comment">//			res = max(res, dp[i][j]);</span></span><br><span class="line"><span class="comment">//		&#125;</span></span><br><span class="line"><span class="comment">//	&#125;</span></span><br><span class="line">	<span class="comment">//空间压缩</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=V;++j)&#123;<span class="comment">// 完全背包问题顺序遍历 </span></span><br><span class="line">			<span class="keyword">if</span>(j&gt;=v[i])&#123;</span><br><span class="line">				f[j] = <span class="built_in">max</span>(f[j], f[j-v[i]]+w[i]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//	cout&lt;&lt;res;</span></span><br><span class="line">	cout&lt;&lt;f[V];</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-多重背包问题-i">3、多重背包问题 I</h3>
+<blockquote>
+<p>AcW-4：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/4/">4. 多重背包问题 I - AcWing题库</a></p>
+<p><u><strong>完成时间：2023年4月2日</strong></u></p>
+<p>tags：动态规划、背包问题</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p>转换为01背包问题解决；</p>
+</li>
+<li class="lvl-3">
+<p>在01背包的基础上添加数量条件限制（注意：状态转移方程有些许不同——<code>dp[i][j] = max(dp[i][j], dp[i-1][j-k*v[i]]+k*w[i]),k必须从0开始</code>）；</p>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 多重背包问题 ——添加附加数量限制条件 </span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> dp[N][N], v[N], w[N], s[N];<span class="comment">// v体积，w价值，s数量 </span></span><br><span class="line"><span class="type">int</span> n, V;</span><br><span class="line"><span class="type">int</span> f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;V;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;v[i]&gt;&gt;w[i]&gt;&gt;s[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=V;++j)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;=s[i];++k)&#123;<span class="comment">// 这里的k必须从0开始,k=0时有dp[i-1][j] </span></span><br><span class="line">				<span class="keyword">if</span>(j&gt;=k*v[i])&#123;</span><br><span class="line">					dp[i][j] = <span class="built_in">max</span>(dp[i][j], dp[i<span class="number">-1</span>][j-k*v[i]]+k*w[i]);<span class="comment">// 在01-背包问题的基础上作次数限制 </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//空间压缩</span></span><br><span class="line"><span class="comment">//	for(int i=1;i&lt;=n;++i)&#123;</span></span><br><span class="line"><span class="comment">//		for(int j=V;j&gt;=v[i];--j)&#123;</span></span><br><span class="line"><span class="comment">//			for(int k=1;k*v[i]&lt;=j&amp;&amp;k&lt;=s[i];++k)&#123;</span></span><br><span class="line"><span class="comment">//				f[j] = max(f[j], f[j-k*v[i]]+k*w[i]);</span></span><br><span class="line"><span class="comment">//			&#125;</span></span><br><span class="line"><span class="comment">//		&#125;</span></span><br><span class="line"><span class="comment">//	&#125;</span></span><br><span class="line">	cout&lt;&lt;dp[n][V];</span><br><span class="line"><span class="comment">//	cout&lt;&lt;f[V];</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-快乐司机">4、 快乐司机</h3>
+<blockquote>
+<p>lanqiao-1513：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/18397/learning/?id=886638&amp;compatibility=false">第十四届蓝桥杯省赛冲刺营【第二期】 - 【课后练习】快乐司机 - 蓝桥云课 (lanqiao.cn)</a></p>
+<p><u><strong>完成时间：2023年4月3日</strong></u></p>
+<p>tags：贪心算法</p>
+</blockquote>
+<p>【题目描述】话说现在当司机光有红心不行，还要多拉快跑。多拉不是超载，是要让所载货物价值最大，特别是在当前油价日新月异的时候。司机所拉货物为<mark>散货</mark>，如大米、面粉、沙石、泥土⋯现在知道了汽车核载重量为w，可供选择的物品的数量n。每个物品的重量为gi, 价值为pi。求汽车可装载的最大价值。（n&lt;10000,w&lt;10000,0&lt;gi≤100,0≤pi≤100)。</p>
+<p>【输入描述】输入第一行为由空格分开的两个整数n,w。第二行到第n+1行，每行有两个整数，由空格分开，分别表示gi和pi。</p>
+<p>【输出描述】最大价值（保留一位小数）。</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p>因为所拉货物为<mark>散货</mark>，因此可以装一部分，由此我们需要计算每种货物的单位价值（pi/gi）；</p>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e4</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">	<span class="type">double</span> v, w, scale;<span class="comment">// 分别为价值、重量、单位价值 </span></span><br><span class="line">&#125;; </span><br><span class="line">node product[N];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">double</span> W;</span><br><span class="line"><span class="type">double</span> res = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">comp</span><span class="params">(node&amp;a, node&amp;b)</span></span>&#123;<span class="comment">// 降序排序 </span></span><br><span class="line">	<span class="keyword">return</span> a.scale&gt;b.scale;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;W;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;product[i].w&gt;&gt;product[i].v;</span><br><span class="line">		product[i].scale = product[i].v/product[i].w;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(product+<span class="number">1</span>, product+<span class="number">1</span>+n, comp);<span class="comment">// 针对scale排序 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(W&gt;=product[i].w)&#123;</span><br><span class="line">			res += product[i].v;<span class="comment">// 价值增加 </span></span><br><span class="line">			W -= product[i].w;<span class="comment">// 重量减少 </span></span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			res += W*product[i].scale;<span class="comment">// 剩余重量与单位价值之积 </span></span><br><span class="line">			<span class="keyword">break</span>;<span class="comment">// 结束 </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%.1f&quot;</span>, res);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-防御力">5、防御力</h3>
+<blockquote>
+<p>lanqiao-226：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/226/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;name=%E9%98%B2%E5%BE%A1%E5%8A%9B">防御力 - 蓝桥云课 (lanqiao.cn)</a></p>
+<p><u><strong>完成时间：2023年4月3日</strong></u></p>
+<p>tags：贪心算法</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p>要求字典序最小的使用道具的方式；</p>
+</li>
+<li class="lvl-3">
+<p>根据分析知道A从小到大排序，B从大到小排序；</p>
+</li>
+<li class="lvl-3">
+<p>PS：这道题编码简单，但是<mark>为什么是这样做的值得认真思考和证明！</mark></p>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 根据分析知道A从小到大排序，B从大到小排序</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n1, n2;</span><br><span class="line">string s;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span>&#123;</span><br><span class="line">	<span class="type">int</span> id;</span><br><span class="line">	<span class="type">int</span> delta;</span><br><span class="line">&#125;;</span><br><span class="line">vector&lt;node&gt;A;</span><br><span class="line">vector&lt;node&gt;B;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">comp1</span><span class="params">(node &amp;a, node &amp;b)</span></span>&#123;<span class="comment">// 升序排序 </span></span><br><span class="line">	<span class="keyword">if</span>(a.delta!=b.delta)<span class="keyword">return</span> a.delta&lt;b.delta;<span class="comment">// 优先根据增值排序，再根据字典序排序 </span></span><br><span class="line">	<span class="keyword">return</span> a.id&lt;b.id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">comp2</span><span class="params">(node &amp;a, node &amp;b)</span></span>&#123;<span class="comment">// 降序排序 </span></span><br><span class="line">	<span class="keyword">if</span>(a.delta!=b.delta)<span class="keyword">return</span> a.delta&gt;b.delta;<span class="comment">// 优先根据增值排序，再根据字典序排序 </span></span><br><span class="line">	<span class="keyword">return</span> a.id&lt;b.id;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n1&gt;&gt;n2;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n1;++i)&#123;</span><br><span class="line">		<span class="type">int</span> tmp;</span><br><span class="line">		cin&gt;&gt;tmp, A.<span class="built_in">push_back</span>(&#123;i, tmp&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n2;++i)&#123;</span><br><span class="line">		<span class="type">int</span> tmp;</span><br><span class="line">		cin&gt;&gt;tmp, B.<span class="built_in">push_back</span>(&#123;i, tmp&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(A.<span class="built_in">begin</span>(), A.<span class="built_in">end</span>(), comp1);<span class="comment">// 升序排序 </span></span><br><span class="line">	<span class="built_in">sort</span>(B.<span class="built_in">begin</span>(), B.<span class="built_in">end</span>(), comp2);<span class="comment">// 降序排序 </span></span><br><span class="line">	cin&gt;&gt;s;</span><br><span class="line">	<span class="type">int</span> indexA = <span class="number">0</span>, indexB = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.<span class="built_in">size</span>();++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(s[i]==<span class="string">&#x27;1&#x27;</span>)&#123;</span><br><span class="line">			cout&lt;&lt;<span class="string">&quot;B&quot;</span>&lt;&lt;B[indexB++].id&lt;&lt;endl;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			cout&lt;&lt;<span class="string">&quot;A&quot;</span>&lt;&lt;A[indexA++].id&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;E&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-最少硬币问题">6、最少硬币问题</h3>
+<blockquote>
+<p>题目：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230403212121650.png" alt="image-20230403212121650" style="zoom:50%;" />
+<p><u><strong>完成时间：2023年4月3日</strong></u></p>
+<p>tags：动态规划</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p>状态转移方程：<code>dp[j] = min(dp[j], dp[j-price[i]]+1);</code></p>
+</li>
+<li class="lvl-3">
+<p>别忘了初始化dp[0] = 0；</p>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;<span class="comment">// 输入支付的金额 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">solve</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;price = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line">	vector&lt;<span class="type">int</span>&gt;<span class="built_in">dp</span>(n+<span class="number">1</span>, INT_MAX);<span class="comment">// 动规求最小值</span></span><br><span class="line">	dp[<span class="number">0</span>] = <span class="number">0</span>;<span class="comment">// 初始化 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=price[i];j&lt;=n;++j)&#123;</span><br><span class="line">			dp[j] = <span class="built_in">min</span>(dp[j], dp[j-price[i]]+<span class="number">1</span>);<span class="comment">// 求最小硬币数量 </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dp[n]; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="type">int</span> res = <span class="built_in">solve</span>(n);</span><br><span class="line">	cout&lt;&lt;res;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7-小明的背包-1">7、小明的背包 1</h3>
+<blockquote>
+<p>lanqiao-1174：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/18397/learning/?id=893781&amp;compatibility=false">第十四届蓝桥杯省赛冲刺营【第二期】 - 【课后练习】小明的背包 1 - 蓝桥云课 (lanqiao.cn)</a></p>
+<p><u><strong>完成时间：2023年4月3日</strong></u></p>
+<p>tags：动态规划、01-背包问题</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p>经典的01-背包问题；</p>
+</li>
+<li class="lvl-3">
+<p>采用滚动数组进行空间压缩时需要注意重量j从大到小遍历；</p>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e3</span>+<span class="number">10</span>;<span class="comment">// V&lt;=1000</span></span><br><span class="line"><span class="type">int</span> n, V;</span><br><span class="line"><span class="type">int</span> dp[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;V;</span><br><span class="line"><span class="comment">//	for(int i=0;i&lt;n;++i)cout&lt;&lt;dp[i]&lt;&lt;&quot; &quot;;cout&lt;&lt;endl;// dp默认初始化为全0 </span></span><br><span class="line">	<span class="type">int</span> w, v;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;w&gt;&gt;v;<span class="comment">// 分别为体积和价值</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=V;j&gt;=w;--j)&#123;</span><br><span class="line">			dp[j] = <span class="built_in">max</span>(dp[j], dp[j-w]+v); </span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;dp[V];</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/04/11/University/Algorithm/question%20each%20day/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%EF%BC%88%E7%B3%BB%E5%88%973%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">每日一题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" rel="tag">蓝桥杯</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/04/11/University/Algorithm/question%20each%20day/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%EF%BC%88%E7%B3%BB%E5%88%974%EF%BC%89/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            算法每日一题4
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/04/11/University/Algorithm/question%20each%20day/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%EF%BC%88%E7%B3%BB%E5%88%972%EF%BC%89/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">算法每日一题2</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

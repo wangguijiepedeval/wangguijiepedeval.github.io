@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>第七章（项目成本管理） |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software Project Organization Management/7-项目成本管理"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  第七章（项目成本管理）
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/7-%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9C%AC%E7%AE%A1%E7%90%86/" class="article-date">
+  <time datetime="2023-07-09T10:33:41.087Z" itemprop="datePublished">2023-07-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/">软件项目组织管理</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">9 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>项目成本管理</h1>
+<h3 id="学习目标">学习目标</h3>
+<blockquote>
+<ol>
+<li class="lvl-3">
+<p>理解项目成本管理的重要性</p>
+</li>
+<li class="lvl-3">
+<p>解释基本的项目成本管理的原理、概念和术语</p>
+</li>
+<li class="lvl-3">
+<p>描述成本计划、==成本估算、成本预算和<strong>成本控制</strong>==过程⭐️</p>
+</li>
+<li class="lvl-3">
+<p>解释<strong>成本估算</strong>的<u>不同类型</u></p>
+</li>
+<li class="lvl-3">
+<p>理解软件项目的<strong>成本估算</strong>所包含的<u>内容</u></p>
+</li>
+<li class="lvl-3">
+<p><mark>掌握挣值分析的计算方法</mark>⭐️</p>
+</li>
+<li class="lvl-3">
+<p>理解<u>应用挣值分析</u>的好处</p>
+</li>
+<li class="lvl-3">
+<p>描述软件如何辅助项目成本管理</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="1-项目成本管理的重要性">1 项目成本管理的重要性</h2>
+<h5 id="成本管理中的误区-计划阶段">成本管理中的误区—计划阶段</h5>
+<p>导致：</p>
+<ol>
+<li class="lvl-3">
+<p>项目技术经济分析失去客观依据，影响项目决策</p>
+</li>
+<li class="lvl-3">
+<p>建设成本最小化，不等于项目盈利最大</p>
+</li>
+</ol>
+<h3 id="it项目中成本管理存在的问题">IT项目中成本管理存在的问题</h3>
+<p>①很多软件项目的原始成本估算不准确。</p>
+<p>②由于没有经过实际验证，认为成本增长和失败将是预料中的事。</p>
+<p>③项目经理与项目组对项目成本估算和控制不相关。</p>
+<p>④项目组成员对项目成本的理解和把握不准确。</p>
+<h4 id="失控原因">失控原因</h4>
+<p>（1）对工程项目认识不足</p>
+<p>（2）组织制度不健全</p>
+<p>（3）方法问题</p>
+<p>（4）技术的制约</p>
+<p>（5）需求管理不当</p>
+<h2 id="2-基本概念">2 基本概念</h2>
+<h4 id="成本-项目成本-生命周期成本">成本、项目成本、生命周期成本</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601162250691.png" alt="image-20230601162250691" style="zoom:50%;" />
+<h4 id="成本类型">成本类型</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601162438428.png" alt="image-20230601162438428" style="zoom:50%;" />
+<h5 id="成本控制基线">⭐️成本控制基线</h5>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>应急储备（在成本控制基线内，<mark>受到项目经理的控制</mark>）——已知的未知</p>
+</li>
+<li class="lvl-2">
+<p>管理储备（不在成本）——未知的未知</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="利润-利润率-现金流分析">利润、利润率、现金流分析</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>利润：收益减去支出的值。</p>
+</li>
+<li class="lvl-2">
+<p>利润率：利润与收益的比率。</p>
+</li>
+<li class="lvl-2">
+<p>现金流分析：对现金及现金等价物的流入与流出量的分析。<strong>确定一个项目预计的年度成本、收益和每年发生的现金流。</strong></p>
+</li>
+</ul>
+<h4 id="学习曲线理论-储备金">学习曲线理论、储备金</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601163743180.png" alt="image-20230601163743180" style="zoom:50%;" />
+<h4 id="应急储备-管理储备-成本基准">应急储备、管理储备、成本基准</h4>
+<p>应急储备：为一些可以部分预计的未来情况（已知的未知）做准备。在成本基准中，PM可控制</p>
+<p>管理储备：考虑到未来不可预测的情况（未知的未知）。不在成本基准中 PM无权控制，需要向管理层申请 。</p>
+<p><em><strong>成本基准</strong></em>：<u>是经批准的<mark>按时间安排</mark>的成本支出计划，并随时反映了经批准的项目变更（所增加或减少的资金项目），被用于度量和监督项目的实际执行成本。</u></p>
+<h3 id="项目成本管理">⭐️项目成本管理</h3>
+<p><mark>项目成本管理</mark>（包含用来确保项目团队在批准的预算内<span style="color: red;">完成一个项目</span>的必要过程）包括为使项目在批准的预算内完成而对成本进行规划、估算、预算和控制的各个过程，从而确保项目在批准的预算内完工。</p>
+<p>目的：确保项目在批准的预算内完成，实现<u><strong>项目价值最大化</strong></u>。</p>
+<h2 id="3-项目成本的构成">3 项目成本的构成</h2>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601164105764.png" alt="image-20230601164105764" style="zoom:50%;" />
+<h2 id="4-项目成本的影响因素">4 项目成本的影响因素</h2>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601164131513.png" alt="image-20230601164131513" style="zoom:50%;" />
+<h2 id="5-项目成本管理">5 项目成本管理</h2>
+<p>①<mark>项目成本管理</mark>:主要<mark>目标是</mark>在批准的预算范围内，保质、保量、按时完成项目任务。</p>
+<p>②确定预算:项目经理必须确信他们的项目有恰当的定义、精确的时间和成本估算、以及他们参与同意的和切合实际的预算。</p>
+<p>③责任:努力减少和控制成本，满足项目干系人的期望，这是项目经理的责任。</p>
+<h3 id="项目成本管理定义">项目成本管理定义</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601164246451.png" alt="image-20230601164246451" style="zoom:50%;" />
+<h3 id="项目成本管理的构成">项目成本管理的构成</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601164311528.png" alt="image-20230601164311528" style="zoom:50%;" />
+<h3 id="项目成本管理的过程">项目成本管理的过程</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601164459234.png" alt="image-20230601164459234" style="zoom:50%;" />
+<h2 id="6-规划成本管理">6 规划成本管理</h2>
+<p><mark>规划成本管理</mark>是项目管理计划的组成部分，描述将<u><strong>如何规划、安排和控制</strong></u>项目成本。</p>
+<h6 id="主要包括如下信息：">主要包括如下信息：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>计量单位</p>
+</li>
+<li class="lvl-2">
+<p>准确度</p>
+</li>
+<li class="lvl-2">
+<p>控制临界值</p>
+</li>
+<li class="lvl-2">
+<p>绩效测量规则：定义评估规则，例如跟踪实际成本的频率和详细程度。</p>
+</li>
+<li class="lvl-2">
+<p>组织程序链接：将用于成本核算的WBS的组成部分作为控制账户，每个控制账户都有唯一的编码或账号， 直接与执行组织的会计制度相联系。</p>
+</li>
+<li class="lvl-2">
+<p>报告格式：描述项目所需的成本报告的格式和频率。</p>
+</li>
+<li class="lvl-2">
+<p>过程描述：描述如何执行所有的成本管理过程。</p>
+</li>
+</ul>
+<h2 id="7-成本估计">7 成本估计</h2>
+<p><mark>估算成本</mark>是对<u>完成项目工作所需资源成本</u>进行<strong>近似估算</strong>的过程。</p>
+<p>本过程的<mark>主要作用</mark>是确定完成项目所需的成本数额。</p>
+<p>本过程应根据需要在整个项目期间定期开展。</p>
+<blockquote>
+<p><u><em><strong><span style="color: red;">成本估算在WBS一级进行</span></strong></em></u></p>
+</blockquote>
+<h4 id="估算成本包括：">估算成本包括：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>直接成本：人、材料、设备等</p>
+</li>
+<li class="lvl-2">
+<p>间接成本：不好直接分摊的成本，间接率</p>
+</li>
+<li class="lvl-2">
+<p>不可预见费  10%</p>
+</li>
+<li class="lvl-2">
+<p>储备金：价差预备费、应急储备金和管理储备金</p>
+</li>
+</ul>
+<h3 id="估算的类型与主要输出">估算的类型与主要输出</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601170639704.png" alt="image-20230601170639704" style="zoom:50%;" />
+<h3 id="构成">构成</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601170820779.png" alt="image-20230601170820779" style="zoom:50%;" />
+<h3 id="成本估计方法">成本估计方法</h3>
+<p><em><strong>类比估算法</strong></em>：也叫<mark>自上而下估算法</mark>，它是使用以前的、相似项目的实际成本作为目前项目成本估算的根据。</p>
+<p><em><strong>自下而上估计法</strong></em>：首先对项目工作分解结构（WBS）中的具体工作包或者活动所需要的资源进行估算，然后逐级累加，并最终汇总成为项目的总成本。</p>
+<p><em><strong>参数模型估算法</strong></em>：根据项目的特征参数建立一个数学模型，利用这个数学模型来计算（预测）项目的成本。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601171616894.png" alt="image-20230601171616894" style="zoom:50%;" />
+<h2 id="8-成本预算">8 成本预算</h2>
+<p><mark>成本预算</mark>：汇总所有单个活动或工作包的估算成本，建立一个经批准的成本基准的过程。目的是为了确定测量项目实际绩效的基准计划，而<mark>把整个成本估算</mark><u><strong>按照时间段</strong></u>分配到具体工作包或者活动上去。</p>
+<h4 id="两个要点">两个要点</h4>
+<p><strong>（1）把成本估算分配到项目生命期中的==每一个活动（或工作包）==中。</strong></p>
+<p><strong>（2）建立<mark>成本控制基准线</mark>（ＢＣＷＳ或ＰＶ）－用来度量项目执行清况。</strong></p>
+<p>成本基准：是一个阶段性的预算，<u>项目经理</u>使用它来<strong>衡量并监测成本的执行情况</strong>。</p>
+<p>项目预算：由<u>成本基准</u>加上<u><mark>管理</mark>储备金</u>组成。</p>
+<p>控制账户：是<u>工作包成本估算</u>加上<u><mark>应急</mark>储备金</u>。</p>
+<p>工作包成本估算：是<u>活动成本估算</u>加上<u>活动应急储备金</u>。</p>
+<h3 id="成本预算主要工作">成本预算主要工作</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>确定项目总的预算（估算加储备）</p>
+</li>
+<li class="lvl-2">
+<p>确定项目各项活动的预算</p>
+</li>
+<li class="lvl-2">
+<p>确定项目各项活动预算的投入时间</p>
+</li>
+<li class="lvl-2">
+<p>给出项目成本预算的“S”曲线</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601172730955.png" alt="image-20230601172730955" style="zoom:50%;" />
+<h3 id="成本预算的过程">成本预算的过程</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601173642987.png" alt="image-20230601173642987" style="zoom:50%;" />
+<h3 id="理解成本预算与成本估算间的关系和区别？">理解成本预算与成本估算间的关系和区别？</h3>
+<p>成本估算是基于已有的信息和经验进行的，通常包括对项目资源、劳动力、材料和其他相关费用的估计。</p>
+<p>成本预算是根据已经确定的项目范围、成本估算和时间计划，编制出的一个具体的成本计划。</p>
+<p>成本估算是对项目成本的初步估计，而成本预算是在项目实施阶段进行的具体成本计划。一前一后的关系</p>
+<h2 id="9-成本控制-挣值管理">9 成本控制（挣值管理）⭐️</h2>
+<h3 id="概念">概念</h3>
+<p>是指在项目管理过程中，根据成本管理计划对项目成本进行管理，尽量保证项目成本控制在预算范围内，它对项目的资金支出进行核算和监控。成本控制是在成本预算的基础上开展的。</p>
+<p>控制成本是监督项目状态，以更新项目成本和管理成本基准变更的过程。</p>
+<p><mark>主要作用</mark>是，在整个项目期间保持对成本基准的维护。需要在整个项目期间开展。</p>
+<p>成本控制将各项工作的<u>实际费用与计划费用（即预算）进行比较</u>，对成本费用进行评价，并对未完成项目进行预测，使成本控制在预算范围内。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>它涉及<u><strong>成本变化因素中的控制（</strong></u>事前）、<u><strong>实施过程中的控制</strong></u>（事中）、<u><strong>实际发生的变动的控制</strong></u>（事后）。</p>
+</li>
+</ul>
+<p>①项目成本控制：是保证各项工作在它们各自的预算范围内进行。</p>
+<p>②依据：成本预算是成本控制的基础。费用基线、项目实施报告、变更请求是成本控制的依据。</p>
+<h3 id="成本控制主要包括">成本控制主要包括</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230605142339256.png" alt="image-20230605142339256" style="zoom:50%;" />
+<h3 id="项目成本控制内容-项目成本变更控制系统">项目成本控制内容/项目成本变更控制系统</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230605142609069.png" alt="image-20230605142609069" style="zoom:50%;" />
+<h3 id="成本控制过程">成本控制过程</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230605142746829.png" alt="image-20230605142746829" style="zoom:50%;" />
+<h3 id="成本控制-挣值分析">成本控制-挣值分析</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230605142952158.png" alt="image-20230605142952158" style="zoom: 80%;" />
+<h4 id="基本概念">基本概念</h4>
+<p>⭐️挣值方法是<mark>对项目范围、进度和成本进行综合控制的一种有效方法</mark>。它对于计划完成的工作、实际挣得的利益、实际花费的成本进行比较，以确定成本和进度是否按计划进行。</p>
+<p>项目挣值：指已完成作业量的计划成本的中间变量。</p>
+<p>⭐️挣值方法**<u>核心要素</u>**：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>三个<span style="color: red;">关键变量</span>：<em><strong>PV、AC、EV（挣值）</strong></em></p>
+</li>
+<li class="lvl-2">
+<p>两个<mark>偏差</mark>：<em><strong>CV、SV</strong></em></p>
+</li>
+<li class="lvl-2">
+<p>两个<mark>绩效指标</mark>：<em><strong>CPI、SPI</strong></em></p>
+</li>
+</ul>
+<h4 id="示例">示例</h4>
+<p>假设现在有一个项目，为期4个月，总预算4000美元，每月任务为总量的1／4，预算也是总预算的1／4。现在一个月过去了，完成了本月任务的80％，花费了900美元。下表以这个情景说明挣值的术语和含义。</p>
+<h5 id="基本术语">基本术语</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230605143938441.png" alt="image-20230605143938441" style="zoom:67%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230605144005430.png" alt="image-20230605144005430" style="zoom: 67%;" />
+<blockquote>
+<p>公式：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mi>P</mi><mi>I</mi><mo>=</mo><mfrac><mrow><mi>E</mi><mi>V</mi></mrow><mrow><mi>A</mi><mi>C</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">CPI=\frac{EV}{AC}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>E</mi><mi>A</mi><mi>C</mi><mo>=</mo><mfrac><mrow><mi>B</mi><mi>A</mi><mi>C</mi></mrow><mrow><mi>C</mi><mi>P</mi><mi>I</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">EAC=\frac{BAC}{CPI}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+</blockquote>
+<h5 id="挣值法的四个评价指标：">挣值法的四个评价指标：</h5>
+<p><mark>费用偏差CV（Cost Variance)</mark>。 CV是指检查期间BCWP与ACWP之间的差异。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mi>V</mi><mo>=</mo><mi>B</mi><mi>C</mi><mi>W</mi><mi>P</mi><mtext>–</mtext><mi>A</mi><mi>C</mi><mi>W</mi><mi>P</mi><mo>=</mo><mi>E</mi><mi>V</mi><mo>−</mo><mi>A</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">CV = BCWP – ACWP = EV - AC
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">–</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span></p>
+<p><mark>进度偏差SV（Schedule Variance)</mark>。 SV是指检查期间BCWP与BCWS 之间的差异。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>S</mi><mi>V</mi><mo>=</mo><mi>B</mi><mi>C</mi><mi>W</mi><mi>P</mi><mtext>–</mtext><mi>B</mi><mi>C</mi><mi>W</mi><mi>S</mi><mo>=</mo><mi>E</mi><mi>V</mi><mo>−</mo><mi>P</mi><mi>V</mi></mrow><annotation encoding="application/x-tex"> SV = BCWP – BCWS = EV - PV
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">–</span><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></span></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>SV=对应预算的实际工作量—对应预算的预算工作量</p>
+</li>
+</ul>
+<p><mark>费用执行指标CPI （Cost Performed Index)</mark>。 CPI是指预算费用与实际费用之比（或工时值之比）。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mi>P</mi><mi>I</mi><mo>=</mo><mi>B</mi><mi>C</mi><mi>W</mi><mi>P</mi><mi mathvariant="normal">/</mi><mi>A</mi><mi>C</mi><mi>W</mi><mi>P</mi><mo>=</mo><mi>E</mi><mi>V</mi><mi mathvariant="normal">/</mi><mi>A</mi><mi>C</mi></mrow><annotation encoding="application/x-tex"> CPI = BCWP / ACWP = EV / AC
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">/</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">/</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span></p>
+<p><mark>进度执行指标SPI （ Schedule Performed Index)</mark>。 SPI是指项目挣得值与计划值之比。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>S</mi><mi>P</mi><mi>I</mi><mo>=</mo><mi>B</mi><mi>C</mi><mi>W</mi><mi>P</mi><mi mathvariant="normal">/</mi><mi>B</mi><mi>C</mi><mi>W</mi><mi>S</mi><mo>=</mo><mi>E</mi><mi>V</mi><mi mathvariant="normal">/</mi><mi>P</mi><mi>V</mi></mrow><annotation encoding="application/x-tex">SPI = BCWP / BCWS = EV / PV
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">SP</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></span></p>
+<h4 id="挣值法参数分析与对应措施表">⭐️挣值法参数分析与对应措施表</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230605150836031.png" alt="image-20230605150836031" style="zoom: 50%;" />
+<h4 id="挣值分析绘图">⭐️挣值分析绘图</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>要会绘制图，并且必须在图中标记相应的参数</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230605151223763.png" alt="image-20230605151223763" style="zoom:50%;" />
+<h2 id="课堂快速测试">课堂快速测试</h2>
+<ol>
+<li class="lvl-3">
+<p>成本</p>
+</li>
+<li class="lvl-3">
+</li>
+</ol>
+<p><u><em><strong>案例分析第二个需要掌握</strong></em></u></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/7-%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9C%AC%E7%AE%A1%E7%90%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" rel="tag">课堂笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/" rel="tag">软件项目组织管理</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/8-%E9%A1%B9%E7%9B%AE%E8%B4%A8%E9%87%8F%E7%AE%A1%E7%90%86/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            第八章（项目质量管理）
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/6-%E9%A1%B9%E7%9B%AE%E8%BF%9B%E5%BA%A6(%E6%97%B6%E9%97%B4)%E7%AE%A1%E7%90%86/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">第六章（项目进度管理）</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

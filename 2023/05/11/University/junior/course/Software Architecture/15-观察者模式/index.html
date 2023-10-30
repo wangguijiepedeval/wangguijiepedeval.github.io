@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>15-观察者模式 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software Architecture/15-观察者模式"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  15-观察者模式
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/15-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2023-05-11T03:31:27.739Z" itemprop="datePublished">2023-05-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">6 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>观察者模式</h1>
+<h4 id="分析">分析</h4>
+<blockquote>
+<h6 id="交通信号灯与汽车示意图">交通信号灯与汽车示意图</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221219202301412.png" alt="image-20221219202301412"></p>
+<p>联动：两类对象之间的变化的联动</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>一对一的联动</p>
+</li>
+<li class="lvl-2">
+<p>一对多的联动</p>
+</li>
+</ul>
+<h6 id="分析">分析</h6>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>交通信号灯<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>↔</mo></mrow><annotation encoding="application/x-tex">\leftrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">↔</span></span></span></span>观察目标</p>
+</li>
+<li class="lvl-2">
+<p>汽车（汽车驾驶员）<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>↔</mo></mrow><annotation encoding="application/x-tex">\leftrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">↔</span></span></span></span>观察者</p>
+</li>
+</ul>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221219202439035.png" alt="image-20221219202439035"></p>
+<p><mark>一对多关系</mark></p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>一个观察目标</p>
+</li>
+<li class="lvl-2">
+<p>多个观察者</p>
+</li>
+</ul>
+<ol>
+<li class="lvl-3">
+<p><strong>软件系统：</strong><mark>一个对象的状态或行为的变化将导致其他对象的状态或行为也发生改变</mark>，它们之间将<mark>产生联动</mark></p>
+</li>
+<li class="lvl-3">
+<p><strong>观察者模式：</strong></p>
+<ul class="lvl-3">
+<li class="lvl-5">
+<p>定义了对象之间一种<mark>一对多</mark>的依赖关系，让一个对象的改变能够影响其他对象</p>
+</li>
+<li class="lvl-5">
+<p>发生改变的对象称为<mark>观察目标</mark>，被通知的对象称为<mark>观察者</mark></p>
+</li>
+<li class="lvl-5">
+<p><u><em>一个观察目标可以对应多个观察者</em></u></p>
+</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h3 id="观察者模式的定义">观察者模式的定义</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221219202955876.png" alt="image-20221219202955876"></p>
+<blockquote>
+<p><mark>对象行为型模式</mark></p>
+<h6 id="别名"><mark>别名</mark></h6>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>发布-订阅(Publish/Subscribe)模式</p>
+<ul class="lvl-3">
+<li class="lvl-4">比如：用户关注同一个公众号</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>模型-视图(Model/View)模式</p>
+<ul class="lvl-3">
+<li class="lvl-4">Model（观察目标）中的数据改变会导致View也发生变化（观察者）</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>源-监听器(Source/Listener)模式</p>
+<ul class="lvl-3">
+<li class="lvl-4">事件源（观察目标）</li>
+<li class="lvl-4">监听器（观察者）</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>从属者(Dependents)模式</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="观察者模式结构">观察者模式结构</h4>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221219203409264.png" alt="image-20221219203409264"></p>
+<p>以上类图中两个部分不必要：</p>
+<ol>
+<li class="lvl-3">
+<p>具体观察目标（ConcreteSubject）不必要</p>
+</li>
+<li class="lvl-3">
+<p>具体观察者反向调用ConcreteSubject的关联关系不必要</p>
+</li>
+</ol>
+<blockquote>
+<p><u><em><strong>对于不同的观察者子类的update方法实现不同</strong></em></u></p>
+<p><mark>最简单的观察者模式不需要ConcreteSubject类，即可实现一对多的关系！</mark></p>
+<p>观察者在某些时候需要反向调用具体观察目标（ConcreteSubject）的状态数据等：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221219204003009.png" alt="image-20221219204003009"></p>
+</blockquote>
+<h5 id="观察者模式包含以下4个角色：">观察者模式包含以下4个角色：</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Subject（目标）</p>
+</li>
+<li class="lvl-2">
+<p>ConcreteSubject（具体目标）</p>
+</li>
+<li class="lvl-2">
+<p>Observer（观察者）</p>
+</li>
+<li class="lvl-2">
+<p>ConcreteObserver（具体观察者）</p>
+</li>
+</ul>
+<h5 id="典型的抽象目标类代码">典型的抽象目标类代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Subject</span> &#123;</span><br><span class="line">    <span class="comment">//定义一个观察者集合用于存储所有观察者对象</span></span><br><span class="line">    <span class="keyword">protected</span> ArrayList&lt;Observer&gt; observers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Observer&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//注册方法，用于向观察者集合中增加一个观察者</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">attach</span><span class="params">(Observer observer)</span> &#123;</span><br><span class="line">        observers.add(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//注销方法，用于在观察者集合中删除一个观察者</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">detach</span><span class="params">(Observer observer)</span> &#123;</span><br><span class="line">        observers.remove(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//声明抽象通知方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">notify</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="典型的具体目标类代码">典型的具体目标类代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteSubject</span> <span class="keyword">extends</span> <span class="title class_">Subject</span> &#123;</span><br><span class="line">    <span class="comment">//实现通知方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">notify</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//遍历观察者集合，调用每一个观察者的响应方法</span></span><br><span class="line">        <span class="keyword">for</span>(Object obs:observers) &#123;</span><br><span class="line">            ((Observer)obs).update();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="典型的抽象观察者代码">典型的抽象观察者代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">    <span class="comment">//声明响应方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="典型的具体观察者代码">典型的具体观察者代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteObserver</span> <span class="keyword">implements</span> <span class="title class_">Observer</span> &#123;</span><br><span class="line">    <span class="comment">//实现响应方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//具体响应代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="说明：">说明：</h6>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>有时候在具体观察者类ConcreteObserver中需要使用到具体目标类ConcreteSubject中的状态（属性），会存在关联或依赖关系</p>
+</li>
+<li class="lvl-2">
+<p>如果在具体层之间具有关联关系，系统的扩展性将受到一定的影响，增加新的具体目标类有时候需要修改原有观察者的代码，<mark>在一定程度上违背了开闭原则</mark>，<u>但是如果原有观察者类无须关联新增的具体目标，则系统扩展性不受影响</u></p>
+</li>
+</ul>
+</blockquote>
+<h5 id="典型的客户端代码片段">典型的客户端代码片段</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">……</span><br><span class="line"><span class="type">Subject</span> <span class="variable">subject</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcreteSubject</span>();</span><br><span class="line"><span class="type">Observer</span> <span class="variable">observer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcreteObserver</span>();</span><br><span class="line">subject.attach(observer); <span class="comment">//注册观察者</span></span><br><span class="line">subject.notify();</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+<h6 id="实例类图">实例类图</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221221191510214.png" alt="image-20221221191510214"></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221221191543280.png" alt="image-20221221191543280"></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221221191551207.png" alt="image-20221221191551207"></p>
+<p><u>广播通信：一对多</u></p>
+<p><u><em><strong>以上实例实现了一次<mark>一对一</mark>的联动，一次<mark>一对多</mark>的联动</strong></em></u></p>
+<blockquote>
+<p>(1) AllyControlCenter：指挥部（战队控制中心）类，充当抽象目标类</p>
+<p>(2) ConcreteAllyControlCenter：具体指挥部类，充当具体目标类</p>
+<p>(3) Observer：抽象观察者类</p>
+<p>(4) Player：战队成员类，充当具体观察者类</p>
+<p>(5) Client：客户端测试类</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221221191936537.png" alt="image-20221221191936537"></p>
+</blockquote>
+<h4 id="jdk对观察者模式的支持">JDK对观察者模式的支持</h4>
+<p>java.util.Observer以及java.util.Observable</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221221192633066.png" alt="image-20221221192633066"></p>
+<blockquote>
+<p><u><em>Observable的Vector类型属性便于实现一对多的操作。</em></u></p>
+</blockquote>
+<h4 id="观察者模式与java事件处理">观察者模式与Java事件处理</h4>
+<ol>
+<li class="lvl-3">
+<p><mark>事件源</mark>对象充当观察目标角色，<mark>事件监听器</mark>充当抽象观察者角色，<mark>事件处理对象</mark>充当具体观察者角色</p>
+</li>
+<li class="lvl-3">
+<p>如果事件源对象的某个事件触发，则调用事件处理对象中的事件处理程序来对事件进行处理</p>
+</li>
+</ol>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221221192901167.png" alt="image-20221221192901167"></p>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>事件源(Event Source) ：<strong>Subject</strong></p>
+<ul class="lvl-3">
+<li class="lvl-4">例如：JButton，addActionListener()：注册方法；fireXXX()： 通知方法</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>事件监听器(Event Listener)：<strong>Observer</strong></p>
+<ul class="lvl-3">
+<li class="lvl-4">例如：ActionListener，actionPerformed()：响应方法</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>事件处理类(Event Handling Class)：<strong>ConcreteObserver</strong></p>
+<ul class="lvl-3">
+<li class="lvl-4">例如：LoginHandling：实现ActionListener接口</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221221193014582.png" alt="image-20221221193014582"></p>
+<h4 id="观察者模式与mvc">观察者模式与MVC</h4>
+<h5 id="mvc-model-view-controller-架构">MVC(Model-View-Controller）架构</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>模型(Model)，视图(View)和控制器(Controller)</p>
+</li>
+<li class="lvl-2">
+<p>模型可对应于观察者模式中的观察目标，而视图对应于观察者，控制器可充当两者之间的中介者</p>
+</li>
+<li class="lvl-2">
+<p>当模型层的数据发生改变时，视图层将自动改变其显示内容</p>
+</li>
+</ul>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221221193704264.png" alt="image-20221221193704264"></p>
+<blockquote>
+<p>模型层的数据就是观察目标，View就是观察者。当数据改变时，View中的图标也会跟随变化。</p>
+</blockquote>
+<h3 id="模式优点">模式优点</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>可以实现<mark>表示层和数据逻辑层的分离</mark></p>
+</li>
+<li class="lvl-2">
+<p>在观察目标和观察者之间<mark>建立一个抽象的耦合</mark></p>
+<ul class="lvl-2">
+<li class="lvl-4"><u>观察目标不一定需要抽象层，但观察者必须有抽象层</u></li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>支持<mark>广播通信</mark>，<u>简化了一对多系统设计</u>的难度</p>
+</li>
+<li class="lvl-2">
+<p><mark>符合开闭原则</mark>，增加新的具体观察者无须修改原有系统代码，在具体观察者与观察目标之间<mark>不存在关联关系的情况下</mark>，<u>增加新的观察目标也很方便</u></p>
+<ul class="lvl-2">
+<li class="lvl-4">建立在具体层的关联关系可能会破坏开闭原则</li>
+<li class="lvl-4"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221221194310474.png" alt="image-20221221194310474"></li>
+</ul>
+</li>
+</ul>
+<h3 id="模式缺点">模式缺点</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>将所有的观察者都通知到会<mark>花费很多时间</mark></p>
+</li>
+<li class="lvl-2">
+<p>如果存在<u><strong>循环依赖时可能导致系统崩溃</strong></u></p>
+</li>
+<li class="lvl-2">
+<p><mark>没有相应的机制让观察者知道所观察的目标对象是怎么发生变化</mark>的，而只是知道观察目标发生了变化</p>
+<ul class="lvl-2">
+<li class="lvl-4">形象来说：老鼠知道猫在叫，所以老鼠要跑，但是老鼠不知道猫为什么叫</li>
+</ul>
+</li>
+</ul>
+<h3 id="模式适用环境">模式适用环境</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u><strong>一个抽象模型有两个方面</strong></u>，其中<mark>一个方面依赖于另一个方面</mark>，将这两个方面封装在独立的对象中使它们<mark>可以各自独立地改变和复用</mark></p>
+</li>
+<li class="lvl-2">
+<p><mark>一个对象的改变将导致一个或多个其他对象发生改变</mark>，且并不知道具体有多少对象将发生改变，也不知道这些对象是谁</p>
+<ul class="lvl-2">
+<li class="lvl-4">一对一多的广播机制（一对多的联动）</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>需要在系统中<mark>创建一个触发链</mark></p>
+<ul class="lvl-2">
+<li class="lvl-4"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221221194810325.png" alt="image-20221221194810325"></li>
+<li class="lvl-4"><strong><u><em>中间的对象将会即是观察者又是观察目标</em></u></strong></li>
+</ul>
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/05/11/University/junior/course/Software%20Architecture/15-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" rel="tag">课程笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" rel="tag">软件体系结构</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/16-%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F%EF%BC%88%E8%87%AA%E5%AD%A6%EF%BC%89/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            16-状态模式
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/14-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">14-命令模式</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

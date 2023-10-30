@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>计算机视觉CV-2 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/AI/CV/计算机视觉CV-2"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  计算机视觉CV-2
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/09/10/University/AI/CV/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89CV-2/" class="article-date">
+  <time datetime="2023-09-10T09:11:27.184Z" itemprop="datePublished">2023-09-10</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/">格物致知</a> / <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a> / <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">7 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>Convolution、ReLU and Maximum Pooling</h1>
+<img src="https://storage.googleapis.com/kaggle-media/learn/images/U0n5xjU.png" alt="The parts of a convnet: image, base, head, class; input, extract, classify, output." style="zoom:50%;" />
+<p>base执行的特征提取包括三个基本操作：</p>
+<ol>
+<li class="lvl-3">
+<p>Filter：过滤图像的特定特征（卷积convolution）</p>
+</li>
+<li class="lvl-3">
+<p>Detect：检测过滤图像中的该特征 (ReLU)</p>
+</li>
+<li class="lvl-3">
+<p>Condense：压缩图像以增强特征（最大池化maximum pooling）</p>
+</li>
+</ol>
+<img src="https://storage.googleapis.com/kaggle-media/learn/images/IYO9lqp.png" alt="An example of the feature extraction process." style="zoom: 33%;" />
+<p>通常，网络将对单个图像并行执行多次提取。</p>
+<h2 id="filter-with-convolution">Filter with Convolution</h2>
+<h3 id="weights">Weights</h3>
+<p>卷积核（kernel，也叫：内核）：</p>
+<img src="https://storage.googleapis.com/kaggle-media/learn/images/uJfD9r9.png" alt="A 3x3 kernel." style="zoom: 50%;" />
+<p>卷积核通过扫描图像并生成像素值的加权和来进行操作。卷积核的数量（Filters）也称为通道数（channels）。</p>
+<img src="https://storage.googleapis.com/kaggle-media/learn/images/j3lk26U.png" alt="A kernel acts as a kind of lens." style="zoom: 33%;" />
+<p>通过kernel_size=3的卷积核（kernel）对输入数据进行卷积操作。</p>
+<blockquote>
+<p><code>kernels = [edge, bottom_sobel, emboss, sharpen]</code></p>
+<ol>
+<li class="lvl-3"><code>edge</code>：这是一个卷积核，通常用于边缘检测。它可以帮助找到图像中的边界和轮廓。</li>
+<li class="lvl-3"><code>bottom_sobel</code>：这是一个卷积核，也用于边缘检测，特别是检测垂直方向上的边缘。</li>
+<li class="lvl-3"><code>emboss</code>：这是一个卷积核，通常用于图像浮雕效果。它可以使图像看起来有立体感，突出显示图像中的细节。</li>
+<li class="lvl-3"><code>sharpen</code>：这是一个卷积核，用于增强图像的锐度。它可以使图像中的边缘更加清晰。</li>
+</ol>
+</blockquote>
+<h3 id="activations">Activations</h3>
+<p>网络中的激活我们称为特征图。它们是我们对图像应用滤镜时的结果；它们包含卷积核提取的视觉特征。</p>
+<p>不同卷积核得到的不同特征图：</p>
+<img src="https://storage.googleapis.com/kaggle-media/learn/images/JxBwchH.png" alt="Three kernels and the feature maps they produce." style="zoom:67%;" />
+<p>一般来说，卷积在其输入中强调的内容将与内核中正数的形状相匹配。上面的左侧和中间的内核都会过滤水平形状。</p>
+<blockquote>
+<p>使用<code>filters</code>参数，你可以告诉卷积层你希望它创建多少个特征图作为输出。</p>
+</blockquote>
+<h2 id="detect-with-relu">Detect with ReLU</h2>
+<p>ReLU（修正线性单元）作为激活函数。</p>
+<p>ReLU是深度学习中常用的激活函数，它<mark>将负输入值置为零</mark>，而<mark>保留正输入值不变</mark>。这有助于引入非线性性质，使模型能够学习复杂的特征映射。</p>
+<img src="https://storage.googleapis.com/kaggle-media/learn/images/DxGJuTH.png" alt="Graph of the ReLU activation function." style="zoom:50%;" />
+<p>ReLU 激活表明负值并不重要，因此将它们设置为 0。（“所有不重要的事情都同样不重要。”）</p>
+<p>将ReLU应用到以下特征图中：</p>
+<img src="https://storage.googleapis.com/kaggle-media/learn/images/dKtwzPY.png" alt="ReLU applied to feature maps." style="zoom: 67%;" />
+<p>与其他激活函数一样，ReLU 函数是<mark>非线性的</mark>。</p>
+<h2 id="condense-with-maximum-pooling">Condense with Maximum Pooling</h2>
+<p>MaxPool2D 层与 Conv2D 层非常相似，不同之处在于它使用简单的最大值函数而不是内核，其中 <code>pool_size</code> 参数类似于 <code>kernel_size</code>。然而，MaxPool2D 层不像其内核中的卷积层那样具有任何可训练权重。</p>
+<img src="https://storage.googleapis.com/kaggle-media/learn/images/IYO9lqp.png" alt="An example of the feature extraction process." style="zoom:50%;" />
+<p>请注意，应用 ReLU 函数（检测）后，特征图最终会出现大量“死区”，即<u><strong>仅包含 0 的大区域（图像中的黑色区域）</strong></u>。必须在整个网络中携带这些 0 激活会增加模型的大小，而不会添加太多有用的信息。相反，我们希望压缩特征图以仅保留最有用的部分——特征本身。</p>
+<img src="https://storage.googleapis.com/kaggle-media/learn/images/hK5U2cd.png" alt="Maximum pooling replaces a patch with the maximum value in that patch." style="zoom:50%;" />
+<h4 id="平移不变性">平移不变性</h4>
+<p><code>zero-pixels</code>区域携带了位置信息，当使用池化操作去除这些pixels时，也就去除了特征图中存在的位置信息。</p>
+<p>这赋予了卷积网络一种称为<mark>平移不变性</mark>的属性。意味着具有最大池化的卷积网络往往不会根据特征在图像中的位置来区分特征。</p>
+<p><img src="https://storage.googleapis.com/kaggle-media/learn/images/97j8WA1.png" alt="Pooling tends to destroy positional information."></p>
+<p>经过反复池化后，原始图像中的两个点变得无法区分。换句话说，池化破坏了他们的一些位置信息。由于网络无法再在特征图中区分它们，因此它也无法在原始图像中区分它们：它对于位置的差异来说是不变的。。</p>
+<p><img src="https://storage.googleapis.com/kaggle-media/learn/images/kUMWdcP.png" alt="But only over small distances. Two dots far apart stay separated"></p>
+<p>事实上，池化只会在网络中产生小距离的平移不变性，就像图像中的两个点一样。开始相距较远的特征在合并后仍将保持明显；仅丢失了部分位置信息，但并非全部。</p>
+<h2 id="典型代码">典型代码</h2>
+<p>获取图片并处理图片数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.rc(<span class="string">&#x27;figure&#x27;</span>, autolayout=<span class="literal">True</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;axes&#x27;</span>, labelweight=<span class="string">&#x27;bold&#x27;</span>, labelsize=<span class="string">&#x27;large&#x27;</span>,</span><br><span class="line">       titleweight=<span class="string">&#x27;bold&#x27;</span>, titlesize=<span class="number">18</span>, titlepad=<span class="number">10</span>)</span><br><span class="line">plt.rc(<span class="string">&#x27;image&#x27;</span>, cmap=<span class="string">&#x27;magma&#x27;</span>)</span><br><span class="line"></span><br><span class="line">image_path = <span class="string">&#x27;../input/computer-vision-resources/car_feature.jpg&#x27;</span></span><br><span class="line">image = tf.io.read_file(image_path)</span><br><span class="line">image = tf.io.decode_jpeg(image)</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line">plt.imshow(tf.squeeze(image), cmap=<span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show();</span><br></pre></td></tr></table></figure>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/__results___7_0.png" alt="img" style="zoom:25%;" />
+<p>定义卷积核：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">kernel = tf.constant([</span><br><span class="line">    [-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>],</span><br><span class="line">    [-<span class="number">1</span>,  <span class="number">8</span>, -<span class="number">1</span>],</span><br><span class="line">    [-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>],</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line">show_kernel(kernel)</span><br></pre></td></tr></table></figure>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/__results___9_0.png" alt="img" style="zoom:50%;" />
+<p>定义卷积层：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">image_filter = tf.nn.conv2d(</span><br><span class="line">    <span class="built_in">input</span>=image,</span><br><span class="line">    filters=kernel,</span><br><span class="line">    <span class="comment"># we&#x27;ll talk about these two in lesson 4!</span></span><br><span class="line">    strides=<span class="number">1</span>,</span><br><span class="line">    padding=<span class="string">&#x27;SAME&#x27;</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line">plt.imshow(tf.squeeze(image_filter))</span><br><span class="line">plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show();</span><br></pre></td></tr></table></figure>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/__results___13_0.png" alt="img" style="zoom: 50%;" />
+<p>ReLU 函数的检测步骤：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">image_detect = tf.nn.relu(image_filter)</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line">plt.imshow(tf.squeeze(image_detect))</span><br><span class="line">plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show();</span><br></pre></td></tr></table></figure>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/__results___15_0.png" alt="img" style="zoom: 50%;" />
+<p>池化操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">image_condense = tf.nn.pool(</span><br><span class="line">    <span class="built_in">input</span>=image_detect, <span class="comment"># image in the Detect step above</span></span><br><span class="line">    window_shape=(<span class="number">2</span>, <span class="number">2</span>),</span><br><span class="line">    pooling_type=<span class="string">&#x27;MAX&#x27;</span>,</span><br><span class="line">    <span class="comment"># we&#x27;ll see what these do in the next lesson!</span></span><br><span class="line">    strides=(<span class="number">2</span>, <span class="number">2</span>),</span><br><span class="line">    padding=<span class="string">&#x27;SAME&#x27;</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>, <span class="number">6</span>))</span><br><span class="line">plt.imshow(tf.squeeze(image_condense))</span><br><span class="line">plt.axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show();</span><br></pre></td></tr></table></figure>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/__results___5_0.png" alt="img" style="zoom:50%;" />
+<h3 id="global-average-pooling">Global Average Pooling</h3>
+<h5 id="globalavgpool2d方法">GlobalAvgPool2D方法</h5>
+<p>在卷积网络的头部广泛使用的一种平均池化方法——全局平均池化。 GlobalAvgPool2D 层通常用作网络头部部分或全部隐藏 Dense 层的替代。</p>
+<ol>
+<li class="lvl-3">
+<p><strong>GlobalAveragePooling2D</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>工作方式</strong>：<code>GlobalAveragePooling2D</code> 是一种池化操作，它在整个特征图上计算平均值。具体来说，对于每个特征通道，它计算特征通道内所有值的平均值，然后<u><strong>输出每个特征通道的平均值作为结果</strong></u>。这个操作会将特征图的高度和宽度维度降为 1x1。</li>
+<li class="lvl-5"><strong>效果</strong>：<code>GlobalAveragePooling2D</code> 有助于捕获整个特征图中的全局信息，因此在一些图像分类任务中表现良好。它可以减少模型的参数数量，降低过拟合风险，并提高模型的泛化能力。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p><strong>Flatten</strong>：</p>
+<ul class="lvl-2">
+<li class="lvl-5"><strong>工作方式</strong>：<code>Flatten</code> 操作将特征图的所有元素拉平成一个一维向量，不进行任何池化或平均操作。它将特征图的高度、宽度和通道维度都展平成一个长向量。</li>
+<li class="lvl-5"><strong>效果</strong>：<code>Flatten</code> 操作不捕获全局信息，它将特征图中的每个像素都视为独立的特征。通常在卷积层之后，用于连接全连接层之前，以将特征图转换为全连接层可以处理的格式。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>如果你的任务是<mark>图像分类</mark>，<code>GlobalAveragePooling2D</code> 是一个较好的选择，因为它有助于捕获全局信息并减少参数数量。而如果你的任务是<mark>对象检测或图像分割</mark>等需要空间信息的任务，你可能需要保留特征图的空间结构，可以选择使用 <code>Flatten</code> 将特征图展平，然后连接到全连接层进行进一步处理。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow <span class="keyword">import</span> keras</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras <span class="keyword">import</span> layers</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.preprocessing <span class="keyword">import</span> image_dataset_from_directory</span><br><span class="line"></span><br><span class="line"><span class="comment"># Load VGG16</span></span><br><span class="line">pretrained_base = tf.keras.models.load_model(</span><br><span class="line">    <span class="string">&#x27;../input/cv-course-models/cv-course-models/vgg16-pretrained-base&#x27;</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">model = keras.Sequential([</span><br><span class="line">    pretrained_base,</span><br><span class="line">    <span class="comment"># Attach a global average pooling layer after the base</span></span><br><span class="line">    layers.GlobalAvgPool2D(),</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Load dataset</span></span><br><span class="line">ds = image_dataset_from_directory(</span><br><span class="line">    <span class="string">&#x27;../input/car-or-truck/train&#x27;</span>,</span><br><span class="line">    labels=<span class="string">&#x27;inferred&#x27;</span>,</span><br><span class="line">    label_mode=<span class="string">&#x27;binary&#x27;</span>,</span><br><span class="line">    image_size=[<span class="number">128</span>, <span class="number">128</span>],</span><br><span class="line">    interpolation=<span class="string">&#x27;nearest&#x27;</span>,</span><br><span class="line">    batch_size=<span class="number">1</span>,</span><br><span class="line">    shuffle=<span class="literal">True</span>,</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">ds_iter = <span class="built_in">iter</span>(ds)</span><br></pre></td></tr></table></figure>
+<p>VGG16 库产生 512 个特征图。我们可以将每个特征图视为代表原始图像中的一些高级视觉特征——可能是车轮或窗户。池化地图为我们提供了一个数字，我们可以将其视为该功能的分数：如果该功能存在则较大，如果不存在则较小。汽车往往在一组功能上得分较高，而卡车则在另一组功能上得分较高。现在，头部不必尝试将原始特征映射到类，而只需处理 GlobalAvgPool2D 生成的这些分数，这对它来说是一个更容易解决的问题。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/09/10/University/AI/CV/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89CV-2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/" rel="tag">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CV/" rel="tag">CV</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/09/10/University/Algorithm/7%20questions%20per%20week/%E7%AE%97%E6%B3%95-%E7%AC%AC%E4%B8%89%E5%91%A8/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            算法-第三周
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/09/10/University/AI/CV/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89CV-1/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">计算机视觉CV-1</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

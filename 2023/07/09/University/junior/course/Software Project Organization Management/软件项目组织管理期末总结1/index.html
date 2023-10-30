@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>软件项目组织管理期末总结1 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software Project Organization Management/软件项目组织管理期末总结1"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  软件项目组织管理期末总结1
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86%E6%9C%9F%E6%9C%AB%E6%80%BB%E7%BB%931/" class="article-date">
+  <time datetime="2023-07-09T10:33:53.475Z" itemprop="datePublished">2023-07-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/">软件项目组织管理</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">8.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">28 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>软件项目组织管理期末总结1</h1>
+<blockquote>
+<p>选择：概念+小计算；</p>
+<p>填空题：跟课堂测试差不多；</p>
+<p>论述题（简答）：记忆（比如：什么与什么的区别之类的）</p>
+<p>最后两道大题：挣值分析、网络图和关键路径分析法。</p>
+</blockquote>
+<h2 id="一-走进项目管理">一 走进项目管理</h2>
+<h3 id="it-项目？失败的原因？软件项目管理？">IT 项目？失败的原因？软件项目管理？</h3>
+<h4 id="it-项目？">IT 项目？</h4>
+<p>（1） 信息的定义：是<strong>有一定含义的数据</strong>，是<strong>加工处理后的数据</strong>，是对<strong>决策或行为产生影响的数据</strong>。即，<mark><strong>有价值的数据集合</strong></mark>。</p>
+<p>（2） IT 项目的定义：包括<mark>使用</mark><strong>硬件、软件或者网络</strong>来创造一件独特的<u>产品</u>、一项<u>服务</u>或者一种<u>结果</u>的<mark>一次性努力</mark>。</p>
+<h4 id="失败的原因？">失败的原因？</h4>
+<p><mark>软件项目失败的原因</mark>：一是<strong>软件项目的复杂性</strong>，二是<strong>缺乏合格的软件项目管理人才</strong>。缺乏**<u>有效的项目管理</u><strong>是导致软件项目<mark>失控</mark>的</strong>直接原因**。</p>
+<blockquote>
+<p>为了完成项目既定目标，需要通过软件项目管理过程来对软件任务进行组织、计划、实施、管理和评估，以明确和满足范围、时间、成本、质量等方面的约束限制。</p>
+</blockquote>
+<h4 id="软件项目管理？">软件项目管理？</h4>
+<blockquote>
+<p>软件项目管理<mark>属于IT管理范畴</mark>，它是IT项目管理的一个<strong>核心部分</strong>。</p>
+<p>软件项目管理的<mark>对象</mark>——<strong>软件项目</strong>。</p>
+<p>20世纪70年代中期美国提出的软件项目管理，引起人们的关注。</p>
+</blockquote>
+<p><mark>软件项目管理</mark>是<u>为了使</u>软件项目能够<mark>按照</mark><strong><u>预定的范围、成本、进度、质量</u></strong><mark>顺利完成</mark>，而对范围、费用、时间、质量、<u>人力资源、风险、采购</u>等<u><em><strong>进行分析和管理</strong></em></u>的活动。</p>
+<h3 id="活动的3个基本特点？人类有组织的活动分为那两种类型-有什么区别？">活动的3个基本特点？人类有组织的活动分为那两种类型，有什么区别？</h3>
+<p><strong>（1）</strong> 人类活动的特点：<strong>目的性</strong>、<strong>依存性</strong>、<strong>知识性</strong></p>
+<p>（2） 人类<strong>有组织的活动</strong>分为 <strong>2</strong> 类，分别是<strong>作业</strong>和<strong>项目</strong>。<mark>作业是<strong>连续不断、周而复始</strong>的，而项目是<strong>临时的、一次性的</strong>。</mark></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230619110300783.png" alt="image-20230619110300783"></p>
+<h3 id="什么是项目-项目的特征？项目的组成要素-3个-？">什么是项目?项目的特征？项目的组成要素（3个）？</h3>
+<p>（1） 项目的定义：<mark>项目是为</mark><strong>创造一件独特的产品</strong>、<strong>一项服务</strong>或者<strong>一种结果</strong>而进行的**<u>临时性努力</u>**。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>项目都有明确且具体的<strong>目标</strong>，是指完成<strong>特定目标</strong>需要完成的任务，具有<u>一次性</u>。</p>
+</li>
+<li class="lvl-2">
+<p>项目都有明确界定的<strong>工作范围</strong>，是一项<u>有待完成的任务</u>，有着<u>特定的</u><strong>环境和要求</strong>。</p>
+</li>
+</ul>
+<p><strong>（2）</strong> 项目的特点：<strong>目的性</strong>、<strong>一次性</strong>、<strong>整体性</strong>、<strong>临时性</strong>、<strong>不确定性</strong>、<strong>多变性</strong>（资源）、<strong>过程性</strong>、<strong>具有发起人</strong>、<strong>需要资源</strong></p>
+<p>（3） 项目的<mark>组成要素</mark>：<u><em><strong><mark>范围、时间、成本</mark></strong></em></u></p>
+<h3 id="什么是项目管理？">什么是项目管理？</h3>
+<p>1.项目管理的基本概念：<u>管理指的是<strong>社会组织中</strong>，为了实现<strong>预期目标</strong>，以<strong>人</strong>为中心进行的<strong>协调</strong>活动</u>。有效的管理者=<strong>理论掌握</strong>+<strong>技巧运用</strong>+<strong>思想化</strong></p>
+<p>（1） 项目管理的定义：分为两类，第一种指的是一种<strong>管理活动</strong>，即一种<strong>有意识</strong>地<mark>按照</mark>项目的<strong>特点和规律</strong>，对项目<u><strong>进行组织管理</strong></u>的活动；第二种指的是一种<strong>管理学科</strong>，即<mark>以</mark><u>项目管理活动</u><mark>为研究对象</mark>的一门学科，它是探求<strong>项目活动</strong><u>科学组织管理</u>的理论与方法。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>⭐️<mark>项目管理</mark>就是把<strong>各种<u>知识、技能、手段（工具）和技术</u></strong><mark>应用于</mark><u>项目活动</u>之中，以<mark>达到</mark><u>项目的要求</u>。</p>
+</li>
+</ul>
+<p>（2） 项目管理的<mark>特点</mark>：</p>
+<p>①项目管理的日常活动通常围绕<strong>项目计划</strong>、<strong>项目组织</strong>、<strong>质量管理</strong>、<strong>费用控制</strong>、<strong>进度控制</strong>等五项任务来展开。（<strong>计划</strong>、<strong>组织</strong>、<strong>指导</strong>、<strong>控制</strong>＆<strong>协调</strong>）——围绕五项任务</p>
+<p>②项目管理与传统的部门管理相比最大的区别是<u><strong>注重于综合性管理</strong>，并且<strong>强调时间期限</strong></u>。</p>
+<p>③项目管理必须通过<strong>不完全确定的过程</strong>，在**<u>确定的期限内</u><strong>生产出</strong>不完全确定的产品<strong>或完成</strong>不完全确定的任务**。——不完全过程、产品（任务）</p>
+<p>（3） 项目管理的内容：</p>
+<p>①对象：<strong>项目</strong></p>
+<p>②目的：满足或超出干系人对项目的需求与期望</p>
+<p>③全过程：<strong>贯穿着系统工程的思想</strong></p>
+<p>④组织：<strong>临时性</strong>、<strong>柔性</strong>（组织）</p>
+<p>⑤体制：一种基于团队管理的<strong>个人负责制</strong></p>
+<p>⑥方式：<strong>目标管理</strong></p>
+<p>⑦要点：创造和保持一种使<strong>项目能顺利进行的环境</strong></p>
+<p>⑧方法和手段：<strong>计划</strong>、<strong>组织</strong>、<strong>指导</strong>、<strong>控制</strong>＆<strong>协调</strong></p>
+<p>⑨实现过程：运用<strong>知识</strong>、<strong>技能</strong>、<strong>工具</strong>和<strong>技术</strong></p>
+<p>（4） <mark>项目管理关注<strong>创新性</strong>，追求的是<strong>效果</strong>；作业管理关注<strong>惯例性</strong>，追求的是<strong>效率</strong>。</mark></p>
+<h3 id="什么是利益相关者？">什么是利益相关者？</h3>
+<p><mark>利益相关者</mark>：指的是<u>所有<strong>参与项目</strong>或者<strong>受到项目影响</strong>的<strong>个人或组织</strong></u>，也叫做<strong>项目干系人</strong>。主要有<strong>项目经理</strong>、<strong>客户</strong>、<strong>执行组织</strong>、<strong>开发团队成员</strong>、<strong>发起人</strong>和<strong>出资方</strong>。</p>
+<h3 id="项目管理和作业管理的区别？">项目管理和作业管理的区别？</h3>
+<p>项目管理——<u>创新性</u>、追求<mark>效果</mark></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>充满了<u><strong>不确定因素</strong></u></p>
+</li>
+<li class="lvl-2">
+<p><u><strong>跨越部门</strong></u>的界限</p>
+</li>
+<li class="lvl-2">
+<p>有严格的<u><strong>时间期限要求</strong></u></p>
+</li>
+</ul>
+<p>作业管理——<u>惯例性</u>、追求<mark>效率</mark></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>注重对<u>效率和质量的考核</u></p>
+</li>
+<li class="lvl-2">
+<p>注重<u>当前执行情况与前期进行比较</u></p>
+</li>
+</ul>
+<h3 id="项目管理知识体系-10大知识领域">项目管理知识体系（10大知识领域）</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230619110622803.png" alt="image-20230619110622803"></p>
+<p><strong>项目管理知识体系</strong>（<strong>PMBOK</strong>）：一共有 <strong>10 个知识领域</strong>，<strong>42 个管理过程</strong>。10 个知识领域分为 <strong>4 个核心</strong>（范围，时间，成本，质量）+<strong>5</strong> <strong>个辅助</strong>（人力资源，沟通，风险，采购，干系人）+<strong>项目管理整合</strong></p>
+<p><strong>（1）</strong> 过程的表示：<strong>输入→工具与技术→输出</strong></p>
+<p><strong>（2）</strong> 项目管理的改革：传统项目管理看重<strong>项目实施的环节</strong>，现代的看重<strong>人的因素</strong></p>
+<h3 id="项目管理九大知识领域">项目管理九大知识领域</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230619110737796.png" alt="image-20230619110737796"></p>
+<p><u><em><strong>时间、范围、成本、质量、人力资源、沟通、风险、采购、综合（集成）管理（项目管理整合）</strong></em></u></p>
+<h3 id="项目管理工具和技术">项目管理工具和技术</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>能够帮助项目经理和其团队实施9大知识领域的所有工作</p>
+</li>
+</ul>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230619110930640.png" alt="image-20230619110930640"></p>
+<h3 id="it项目管理知识体系">IT项目管理知识体系</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230619110953333.png" alt="image-20230619110953333"></p>
+<p>三维结构模型：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>面向对象</p>
+</li>
+<li class="lvl-2">
+<p>面向流程</p>
+</li>
+<li class="lvl-2">
+<p>面向职能</p>
+</li>
+</ul>
+<h3 id="什么是项目群？特征？">什么是项目群？特征？</h3>
+<h4 id="项目群-program">⭐️项目群（program）</h4>
+<p>项目群（program）：<strong>多个相互关联项目的集合</strong></p>
+<p>基本特征：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>相互关联</p>
+</li>
+<li class="lvl-2">
+<p>每个项目<u>相互间有一定的<strong>相似性</strong></u></p>
+</li>
+</ul>
+<h3 id="什么是项目群管理？项目群管理强调什么？">什么是项目群管理？项目群管理强调什么？</h3>
+<p>项目群管理（program Management）：一组相互关联的项目，<mark>使用</mark><strong><u>协同方法</u>进行管理来<mark>获得收益和进行控制</mark></strong>，而这种收益和控制在单独管理这些项目时是不易获得的。</p>
+<p>项目群管理强调：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>集成</strong>（如IT项目的弱电集成项目）</p>
+</li>
+<li class="lvl-2">
+<p><u>协同与资源优化</u></p>
+</li>
+</ul>
+<h3 id="什么是项目组合管理？目的是什么？项目管理和项目组合管理的不同之处？">什么是项目组合管理？目的是什么？项目管理和项目组合管理的不同之处？</h3>
+<h4 id="项目组合管理">⭐️项目组合管理</h4>
+<p>项目组合管理——<strong>对由项目和项目群<mark>有机组合的整体</mark>所开展的管理。</strong></p>
+<p>项目组合的目的——<strong>实现组织战略和愿景</strong>，也称战略项目组合。（实现战略目标）</p>
+<p>项目组合管理<mark>强调</mark>：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u><strong>战略目标</strong></u>（宏观）</p>
+</li>
+<li class="lvl-2">
+<p>项目组合的<strong>投资回报</strong></p>
+</li>
+<li class="lvl-2">
+<p><u>资源约束下</u>的<strong>项目选择</strong></p>
+</li>
+</ul>
+<p>不同之处：项目管理实现<strong>战术目标</strong>，项目组合管理实现<strong>战略目标</strong>（战术目标<u><strong>更具体,时间短</strong></u>；战略目标重点<mark>强调</mark>一组织的<u>长期目标</u>）</p>
+<h3 id="项目经理的作用？职责？应掌握的技能？">项目经理的作用？职责？应掌握的技能？</h3>
+<h5 id="项目经理的作用">项目经理的作用</h5>
+<p><u><em><strong>项目经理是为项目的成功策划和执行负总责的人</strong></em></u></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>管理能力</p>
+</li>
+<li class="lvl-2">
+<p>领导能力</p>
+</li>
+</ul>
+<h6 id="主要职责">主要职责</h6>
+<p>项目经理<mark>首要职责</mark>是在**<u>预算范围内</u><mark>按时优质地领导</mark>项目小组完成<u>全部项目工作内容</u>，<u>并使客户满意</u>**</p>
+<h4 id="应掌握的技能">应掌握的技能</h4>
+<blockquote>
+<p>项目经理最重要的是：“<mark>沟通</mark>”。</p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>项目管理知识体系</mark></p>
+</li>
+<li class="lvl-2">
+<p>应用领域相关知识、标准和规则</p>
+</li>
+<li class="lvl-2">
+<p><mark>项目环境知识</mark></p>
+</li>
+<li class="lvl-2">
+<p><mark>一般管理知识和技能</mark></p>
+<ul class="lvl-2">
+<li class="lvl-4">财务管理，融资，销售，营销，合同，物流后勤，人事管理，健康，安全实践等。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p><mark>软技能/人际关系技能</mark></p>
+<ul class="lvl-2">
+<li class="lvl-4">有效沟通，影响组织完成任务、领导、激励、谈判、冲突管理、问题解决等。</li>
+</ul>
+</li>
+</ul>
+<h3 id="项目管理发展阶段？">项目管理发展阶段？</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230621021424103.png" alt="image-20230621021424103"></p>
+<h2 id="二-把控环境-控制过程">二 把控环境 控制过程</h2>
+<h3 id="项目管理工作需要采用系统的方法？包括哪三个方面？">项目管理工作需要采用系统的方法？包括哪三个方面？</h3>
+<p>系统：是由若干个可以<u><strong>相互区别、相互联系而又相互作用</strong></u>的要素所组成, 在一定的层次结构形式中分布, 在给定的环境约束下, 为达到**<u>整体的目的</u>**而存在的<u><strong>有机集合体</strong></u>。</p>
+<h4 id="系统方法">系统方法</h4>
+<p>描述一种<u>在解决复杂问题时</u>所需的<u><strong>整体性和分析性</strong></u>的方法</p>
+<p>包括三部分</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><em><strong><u>系统哲学</u></strong></em> - 将事情作为系统考虑的整体模型</p>
+</li>
+<li class="lvl-2">
+<p><u><em><strong>系统分析</strong></em></u> - 解决问题的方法（需要定义系统的范围、将其分解为各个组成部分，然后<u>识别和估计</u>问题、机会、约束和需求）</p>
+</li>
+<li class="lvl-2">
+<p><u><em><strong>系统管理</strong></em></u> - 解决与<mark>系统的创建</mark>、<mark>维持和变更</mark>相关的<u><mark>业务上</mark>（费用）、<mark>技术上</mark>和<mark>组织上</mark></u>的问题</p>
+</li>
+</ul>
+<h3 id="什么是组织环境？">什么是组织环境？</h3>
+<blockquote>
+<p>1)环境:<u>组织外部</u>存在的<strong>一切客观因素和条件</strong>。⭐️</p>
+<p>2)组织:按照一定<u><strong>目的、任务和形式</strong></u><mark>加以编制</mark>的群体。</p>
+</blockquote>
+<p>存在于组织外部，和组织密切联系，决定组织存在和发展的自然、经济、技术、政治、社会的各种因素和条件的总和。任何一个组织都离不开外部因素和条件而独立存在。</p>
+<h3 id="组织的四个框架？">组织的四个框架？</h3>
+<h5 id="四个框架">四个框架</h5>
+<table>
+<thead>
+<tr>
+<th>结构框架</th>
+<th>人力资源框架</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用来解决组织结构化的问题<strong>着眼于不同部门的角色、责任</strong>，以满足最高管理层设定的目标和政策， <br /><span style="color: red;"> 重点用于协调、控制  </span></td>
+<td>重点在于<strong>促成组织需求和个人需求</strong>之间的<span style="color: red;">平衡与协调</span></td>
+</tr>
+<tr>
+<td><strong>政治框架</strong></td>
+<td><strong>标志框架</strong></td>
+</tr>
+<tr>
+<td><strong>处理组织和人的政治问题</strong>  假定组织是由各种人和利益集团组成的联合体 <br /><span style="color: red;">冲突和权力是中心问题</span></td>
+<td>主要指<strong>与事件相关的符号和含义</strong> <br /><span style="color: red;">文化很重要  </span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="组织的结构？">组织的结构？</h3>
+<h4 id="组织结构">⭐️组织结构</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u><em><strong>职能型</strong></em></u> – 职能经理向CEO汇报</p>
+</li>
+<li class="lvl-2">
+<p><u><em><strong>项目型</strong></em></u> – 项目经理对CEO负责</p>
+</li>
+<li class="lvl-2">
+<p><u><em><strong>矩阵型</strong></em></u> --介于职能型组织和项目型组织之间. <u>需要向<strong>两个或多个上级</strong>汇报</u>, <u><strong>弱矩阵、平衡矩阵和强矩阵</strong></u></p>
+</li>
+</ul>
+<h5 id="组织结构对项目的影响">组织结构对项目的影响</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230504173431442.png" alt="image-20230504173431442" style="zoom:50%;" />
+<h3 id="项目生命周期？项目的4个阶段？各阶段主要任务？">项目生命周期？项目的4个阶段？各阶段主要任务？</h3>
+<h4 id="项目生命周期">项目生命周期</h4>
+<p>生命周期：项目都需要<mark>经历</mark>一个从**<u>开始到结束的时间过程</u>**，项目工作在这一过程中呈现出一定的<u><strong>阶段性</strong></u>的特征。</p>
+<h4 id="项目阶段">项目阶段</h4>
+<p>阶段：几个基本的阶段包括:</p>
+<p>1）概念 Conceive     2) 开发 Develop</p>
+<p>3）实施 Execute        4) 收尾 Finish</p>
+<p>(简称C ．Ｄ．Ｅ．Ｆ阶段)</p>
+<p>说明：前两个阶段(概念和开发)主要工作是<mark>做计划</mark>，称做<strong>项目可行性阶段</strong>。后两个阶段(实施和收尾)主要是<mark>开展实际工作</mark>，称做<strong>项目获取阶段</strong>。</p>
+<h4 id="各阶段主要任务">各阶段主要任务</h4>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230508142544919.png" alt="项目生命周期基本框架"></p>
+<h3 id="什么是管理评审？管理评审的重要性？">什么是管理评审？管理评审的重要性？</h3>
+<p><mark>管理评审</mark>被称为<strong>阶段出口</strong>或<strong>终止点</strong>，发生在<u>每个项目阶段结束后</u>。</p>
+<h4 id="管理评审的重要性">管理评审的重要性</h4>
+<p><em><strong>评审</strong></em>：每个项目在继续<u>进入下一个阶段之前都必</u>须<mark>顺利通过</mark>前面的<strong>每一个项目阶段</strong></p>
+<p><em><strong>标志</strong></em>：顺利通过前面的每一个项目阶段的标志是通过<strong>本阶段</strong>和<strong>前面的每一个项目阶段</strong>的管理评审</p>
+<p><em><strong>目的</strong></em>：项目管理评审的目的是要<strong>判断项目是否应该继续、重新定位或终止</strong>，每个阶段的管理评审，对后阶段的工作起指导性的作用，务必严格执行</p>
+<h3 id="虚拟团队">虚拟团队</h3>
+<p>虚拟团队：是<strong>虚拟组织</strong>中的一种新型的<u>工作组织形式</u>，是一些人由于具有共同理想、目标或利益，结合在一起的团队，只需要通过<u><em>虚拟方式</em></u>讨论交换文档就可以分工完成一份事先拟定好的工作。</p>
+<h3 id="什么是过程？项目管理过程组？各过程组所需时间和活动水平？-实施-最需要资源和时间-计划-监控-启动和收尾-要求资源和时间最少">什么是过程？项目管理过程组？各过程组所需时间和活动水平？ <mark>实施（最需要资源和时间）</mark>、计划、监控、<mark>启动和收尾（要求资源和时间最少）</mark></h3>
+<p><strong>过程</strong>–是为<u>实现某个特定目标</u>而进行的**<u>一系列活动</u>**。</p>
+<p>**项目管理过程组：**是从启动到计划、执行（实施）、监控和收尾的<u><strong>一系列活动</strong></u>。</p>
+<h5 id="五大过程组：">五大过程组：</h5>
+<ol>
+<li class="lvl-3">
+<p>启动过程：是**<u>识别、评价、确定、开始</u>**一个新的项目或者<u><strong>开始一个项目的一个新阶段</strong></u>的过程。</p>
+</li>
+<li class="lvl-3">
+<p>计划过程：包括制订和维护一个可执行的计划，以保证项目满足组织的要求。</p>
+</li>
+<li class="lvl-3">
+<p>实施（执行）过程：包括协调人力和其他资源来执行项目的计划，以产生项目或者项目阶段的产品、服务或者结果。</p>
+</li>
+<li class="lvl-3">
+<p>监控过程：包括有规律地<u><strong>测量和监视项目进程</strong></u>以保证项目团队能够满足项目目标。（<u><em><strong>根据项目目标来衡量项目进度，并采取纠正措施</strong></em></u>）</p>
+</li>
+<li class="lvl-3">
+<p>收尾/终止过程：包括<u><strong>对项目或者项目阶段的正式验收</strong></u>，并有效地终止，使项目或项目阶段任务有序、圆满的完成。</p>
+</li>
+</ol>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230508153258223.png" alt="image-20230508153258223" style="zoom: 80%;" />
+<blockquote>
+<p><mark>实施过程</mark>和<mark>监控过程</mark>贯穿整个过程⭐️</p>
+</blockquote>
+<h3 id="各过程组的成果？">各过程组的成果？</h3>
+<p>（1） 项目开始阶段启动过程主要成果：形成一个<strong>项目章程</strong>和选择一位<strong>项目经理</strong>。项目一个新阶段启动过程主要成果：对阶段进入条件的<strong>评估与确认</strong></p>
+<p>（2） 计划过程组的成果包括：<strong>工作分解结构</strong>，<strong>范围说明书</strong>，<strong>项目进度</strong>和<strong>项目成本估计</strong>（记忆：质量、范围、时间、成本）。研究表明实现最佳实践的公司至少花 20%的时间在<strong>启动</strong>和<strong>计划</strong>过程。</p>
+<p>（3） 执行过程组的主要成果：按计划完成项目工作，即项目<strong>实际工作的交付</strong>（实际交付成果）</p>
+<p><strong>（4）</strong> 监控过程的理想产出：<strong>通过交付满足时间</strong>、<strong>成本</strong>和<strong>质量约束的项目来成功地完成项目</strong></p>
+<p>（5） 收尾过程组的关键结果：工作的<strong>正式验收</strong>和<strong>项目审计和项目经验总结报告</strong>等一些总结性文件。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>验收报告和项目经验总结报告等总结性文件</mark></p>
+</li>
+</ul>
+<h3 id="项目管理过程组和9大知识领域的联系-计划过程组-九九归一">项目管理过程组和9大知识领域的联系。（计划过程组） 九九归一</h3>
+<h4 id="过程组与知识领域之间的关系">过程组与知识领域之间的关系</h4>
+<p>⭐️<u><mark>计划过程</mark>与<mark>监控过程</mark>贯穿全部知识领域</u>（详见：以下的关系表）</p>
+<p>⭐️<mark>项目集成管理</mark>包含了全部5个过程组</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230511160523275.png" alt="image-20230511160523275" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230511160625082.png" alt="image-20230511160625082" style="zoom: 50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230619120818054.png" alt="image-20230619120818054" style="zoom:50%;" />
+<h2 id="三-整合项目资源">三 整合项目资源</h2>
+<h3 id="什么是项目集成管理？">什么是项目集成管理？</h3>
+<p><mark>项目集成管理</mark>是指为<mark>确保项目各项工作</mark>能够<u>有机地</u><strong>协调和配合</strong>所开展的<strong>综合性和全局性</strong>的<mark>项目管理<strong>工作与过程</strong></mark>，是实现<strong>整体项目成功</strong>的关键。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>项目集成管理任务是在项目生命周期中<strong>协调</strong>所有<u>其他项目管理知识领域所涉及的过程</u>。</p>
+</li>
+<li class="lvl-2">
+<p>项目集成管理围绕<strong>项目计划</strong>进行，主要过程有<u><strong>计划制定</strong>、<strong>计划执行</strong>和<strong>计划变更控制</strong>。</u></p>
+</li>
+</ul>
+<h3 id="包括7个主要过程？-制定项目章程-创建初步的项目范围说明书-制定项目管理计划-指导和管理项目实施-监控项目工作-整体变更控制-项目收尾">包括7个主要过程？ 制定项目章程、创建初步的项目范围说明书、 制定项目管理计划、指导和管理项目实施、监控项目工作、 整体变更控制、 项目收尾</h3>
+<p>(1) <u><strong>制定项目章程</strong></u>。它是指与<u>项目利益相关者一起合作</u>，制定<u>正式批准项目</u>的文件——章程。</p>
+<p>(2) <u><strong>创建初步的项目范围说明书</strong></u>。它是指通过<u>与项目利益相关者的合作</u>，尤其是与项目产品、服务或其他产出的用户合作，开发出<u>总体的范围要求</u>。这个过程的目的便是建立初步的项目范围说明书。</p>
+<p>(3) <u><strong>制定项目管理计划</strong></u>。这个阶段涉及协调所有<u>计划要付出的努力</u>，创建一份一致、连贯的文件——项目管理计划。</p>
+<p>(4) <u><strong>指导和管理项目实施</strong></u>。这涉及通过实施项目管理计划中的活动，来<u>执行项目管理计划</u>。这个阶段主要完成交付物、变更请求、工作绩效信息、被实施的变更请求、纠正措施、预防措施和缺陷修复。</p>
+<p>(5) <u><strong>监控项目工作</strong></u>。这涉及监督项目工作是否符合项目的绩效目标。这个阶段主要<u>完成惩治和预防措施建议</u>、<u>缺陷修复建议</u>以及<u>变更请求</u>。</p>
+<p>(6) <u><strong>整体变更控制</strong></u>。它涉及对影响项目交付物和组织运营资产的所有变更做好协调工作。这个阶段的任务<u>包括被批准和被拒绝的变更请求</u>、被批准的纠正和预防措施、被批准和生效的缺陷修复、交付物、项目管理计划和项目范围说明书的更新。</p>
+<p>(7) <u><strong>项目收尾</strong></u>。它涉及完成所有的项目活动，从而式<u>结束项目</u>。这个阶段包括最终产品、服务或者成果，行政上和合同上的终止于续，以及对组织运营资产的更新。</p>
+<blockquote>
+<p>助记：联系五大过程组</p>
+<p>(1)、(2)为启动；</p>
+<p>(3)为计划；</p>
+<p>(4)为实施；</p>
+<p>(5)、(6)为监控；</p>
+<p>(7)为收尾</p>
+</blockquote>
+<h3 id="用于战略计划的swot-方法？">用于战略计划的SWOT 方法？</h3>
+<p>&quot;SWOT&quot;是一种商业分析工具，其名称代表着Strengths（优势）、Weaknesses（劣势）、Opportunities（机会）和Threats（威胁）。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>SWOT 即基于内外部竞争环境和竞争条件下的态势分析，就是将<mark>与研究对象密切相关的</mark>各种主要<u><strong>内部优势、劣势和外部的机会和威胁</strong></u>等，通过调查<mark>列举出来</mark>，并<mark>依照</mark><u><strong>矩阵形式排列</strong></u>，然后<mark>用</mark><u><strong>系统分析</strong></u>的思想，把<u>各种因素相互匹配起来</u><mark>加以分析</mark>，从中得出一系列相应的结论，而结论通常带有一定的决策性。</p>
+</li>
+<li class="lvl-2">
+<p>运用这种方法，可以对研究对象所处的情景进行<u><strong>全面、系统、准确</strong></u>的研究，从而根据研究结果制定相应的<u><strong>发展战略、计划以及对策</strong></u>等。</p>
+</li>
+</ul>
+<h3 id="筛选信息技术项目过程？财务分析：净现值-投资回报率-投资回收期">筛选信息技术项目过程？财务分析：净现值、投资回报率、投资回收期</h3>
+<h4 id="筛选信息技术项目过程-重点">⭐️筛选信息技术项目过程（重点⭐️）</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230515141208580.png" alt="筛选信息技术项目过程" style="zoom:50%;" />
+<p>⭐️<u>识别</u>潜在项目<u>之后</u>，还必须<mark>进行筛选</mark>，下面是4种筛选方法：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>注重<u><strong>整个组织的需求</strong></u>；——标准：“<mark>需求、资金和意愿</mark>”。</p>
+</li>
+<li class="lvl-2">
+<p>将IT<u><strong>项目进行分类</strong></u>；——依据：优先级、时间、动机</p>
+</li>
+<li class="lvl-2">
+<p>进行净现值等<u><strong>财务分析</strong></u>；</p>
+</li>
+<li class="lvl-2">
+<p>运用<u><strong>加权评分模</strong></u>型。</p>
+</li>
+</ul>
+<h4 id="对it项目进行分类">⭐️对IT项目进行分类</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>基于<mark>优先级</mark>的分类：将待选项目按高、中、低三个次序进行整体综合排序，首先进行最重要的项目。</p>
+</li>
+<li class="lvl-2">
+<p>基于<mark>时间</mark>的分类：基于时间的考虑筛选项目，可能是完成项目所需的工期时间，也可能是项目必须满足的截止日期；</p>
+</li>
+<li class="lvl-2">
+<p>基于<mark>动机</mark>的分类</p>
+<ul class="lvl-2">
+<li class="lvl-4"><mark>问题、机会、（上级）指令</mark></li>
+<li class="lvl-4">机会：评价项目是否可以<u><strong>解决某个问题</strong></u>，或是<u><strong>抓住某种机会</strong></u>，或迎合某个<u><strong>指示要求</strong></u>；</li>
+</ul>
+</li>
+</ul>
+<h4 id="净现值分析">净现值分析⭐️</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>净现值分析( net present value analysis)是计算项目<u><strong><mark>预期</mark>净货币收益和损失</strong></u>的方法，将当前时间点之后的所有未来预期现金流入和流出都做折现计算。</p>
+</li>
+<li class="lvl-2">
+<p>只考虑那些能产生<u><strong>正净现值的项目</strong></u>（项目回报超过了资金成本）</p>
+<ul class="lvl-2">
+<li class="lvl-4">优先选择净现值大的项目</li>
+</ul>
+</li>
+</ul>
+<p>折现因子：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mi>t</mi></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{(1+r)^t}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3651em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight"><span class="mclose mtight">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7253em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>第t年现金流：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">A_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p><span style="color: red;">净现值(NPV)：</span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munder><mo>∑</mo><mrow><mi>t</mi><mo>=</mo><mn>1...</mn><mi>n</mi></mrow></munder><mfrac><msub><mi>A</mi><mi>t</mi></msub><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mi>t</mi></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum_{t=1...n} \frac{A_t}{(1+r)^t}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.6274em;vertical-align:-1.2671em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8829em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">=</span><span class="mord mtight">1...</span><span class="mord mathnormal mtight">n</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2671em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7196em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><mark>折现率</mark>( discount rate)是用来将未来现金流折现的利率，也称作资本化率或资本机会成本。</p>
+<h4 id="投资回报率-投资回报">投资回报率/投资回报</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>选择项目时候另外一个重要的财务考虑因素便是投资回报。</p>
+</li>
+<li class="lvl-2">
+<p>投资回报率/投资回报(retum on investment , ROI) 是项目的收益减去成本后，再除以成本的结果。</p>
+</li>
+</ul>
+<p><span style="color: red;">投资回报率（ROI）：</span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mtext>总的折现收益</mtext><mo>−</mo><mtext>总的折现成本</mtext></mrow><mtext>总的折现成本</mtext></mfrac></mrow><annotation encoding="application/x-tex">\frac{总的折现收益-总的折现成本}{总的折现成本}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">总的折现成本</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">总的折现收益</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord cjk_fallback">总的折现成本</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><span style="color: red;">投资回收期：</span></p>
+<p>项目从投产年算起，用每年的净收益将初始全部投资收回的时间。（投资回收期是指项目从开始投资到回收全部投资成本所需要的时间）</p>
+<p>计算方法：假设第x年时收入的金额&gt;=每年投入金额的总和，那么投资回收期就是：x-投产年+1</p>
+<h5 id="例题：">例题：</h5>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230619121911732.png" alt="image-20230619121911732"></p>
+<h3 id="什么是项目章程？包括哪些信息？">⭐️什么是项目章程？包括哪些信息？</h3>
+<p><strong>项目章程</strong>是一份<mark>正式认可项目</mark>的文件，并**<u>为项目目标和管理</u>**<mark>提供方向</mark></p>
+<p>项目章程的<mark>主要内容</mark>：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230515143838763.png" alt="image-20230515143838763" style="zoom:50%;" />
+<h3 id="一个项目管理计划包括：整体介绍-组织描述-管理程序-技术程序-任务范围-时间进度-经费预算等">一个<mark>项目管理计划</mark>包括：整体介绍、组织描述、管理程序、技术程序、任务范围、时间进度、经费预算等。</h3>
+<p>（范围：任务范围、时间：时间进度、成本：经费预算）</p>
+<h3 id="集成变更控制：在整个项目的生命周期中识别-估计和管理变更">集成变更控制：在整个项目的生命周期中<mark>识别、估计和管理变更</mark>。</h3>
+<h3 id="集成变更控制的目的？">集成变更控制的目的？</h3>
+<p>⭐️集成变更控制的<mark>主要目的是</mark>:</p>
+<p>(1)<strong>控制</strong>可能造成变更的<strong>因素</strong>，以<strong>确保</strong>变更都是<strong>有益的</strong>。——识别</p>
+<p>(2)<strong>确认</strong>变更已经<strong>发生</strong>。——估计</p>
+<p>(3)<strong>管理</strong>发生的<strong>变更</strong>。——管理</p>
+<h3 id="变更控制系统">变更控制系统</h3>
+<p>变更控制系统：是一个<strong>正式的</strong>、<strong>文档化的</strong>过程，描述了正式的项目文件可能改变的时间和方式，主要有<mark>三个控制要素</mark>：<strong>建立变更控制组织</strong>、<strong>优化配置管理</strong>、<strong>及时进行沟通</strong>。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230515151747652.png" alt="image-20230515151747652" style="zoom:50%;" />
+<h2 id="四-控制项目范围">四 控制项目范围</h2>
+<h3 id="软件企业与it项目应用企业信息化成功的基本保证是对项目范围的确切圈定-为此必须强调：三类人的获取和三要素的把握？">软件企业与IT项目应用企业信息化成功的基本保证是对<mark>项目范围</mark>的确切圈定，为此必须强调：三类人的获取和三要素的把握？</h3>
+<h5 id="三类人的获取">三类人的获取</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><em><strong>需求专家</strong></em></p>
+</li>
+<li class="lvl-2">
+<p><em><strong>咨询专家</strong></em></p>
+</li>
+<li class="lvl-2">
+<p><em><strong>概要设计专家</strong></em></p>
+</li>
+</ul>
+<h5 id="三要素的把握">三要素的把握</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><em><strong>企业需求</strong></em></p>
+</li>
+<li class="lvl-2">
+<p><em><strong>管理理论</strong></em></p>
+</li>
+<li class="lvl-2">
+<p><em><strong>竞争压力</strong></em></p>
+</li>
+</ul>
+<blockquote>
+<h5 id="成功的三要素">成功的三要素</h5>
+<p>对于<u><strong>企业需求</strong></u>、<u><strong>管理理论</strong></u>、<u><strong>竞争压力</strong></u>（<u><strong>核心竞争力</strong></u>）三要素的有效把握才是<mark>成功地定义软件需求和确定项目范围</mark>的基本保证！</p>
+</blockquote>
+<h3 id="什么是范围？什么项目范围管理？">什么是范围？什么项目范围管理？</h3>
+<p><mark>范围</mark>是指开展<u><strong>项目产品</strong></u>所包括的<mark>所有工作</mark>及产生这些产品经过的<mark>所有过程</mark>。</p>
+<p>项目范围管理<strong>是指对项目<mark>包括什么与不包括什么</mark>的定义与控制过程。</strong></p>
+<h3 id="项目范围管理的作用？-两个实施方面-一个最终交付方面">项目范围管理的作用？ （两个实施方面，一个最终交付方面）</h3>
+<h5 id="项目范围管理的作用">⭐️项目范围管理的作用</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>为项目实施<u>提供任务范围的<mark>框架</mark></u></p>
+</li>
+<li class="lvl-2">
+<p>对项目的实施<u>提供有效的<mark>控制</mark></u></p>
+</li>
+<li class="lvl-2">
+<p>为<u>项目最终交付</u>提供<mark>依据</mark></p>
+</li>
+</ul>
+<blockquote>
+<p><em><strong>用于确保项目组和项目干系人对作为项目结果的项目产品以及生产这些产品所用到的过程有一个共同的理解。</strong></em></p>
+</blockquote>
+<h3 id="项目范围管理的过程？-各过程？范围规划-范围定义-工作结构分解-范围验证-范围控制">项目范围管理的过程？ 各过程？范围规划 范围定义 工作结构分解 范围验证 范围控制</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230518162905237.png" alt="image-20230518162905237" style="zoom:50%;" />
+<ol>
+<li class="lvl-3">
+<p>范围规划：项目范围管理计划</p>
+</li>
+<li class="lvl-3">
+<p>需求收集：明确需求</p>
+</li>
+<li class="lvl-3">
+<p>范围定义：项目范围说明书</p>
+</li>
+<li class="lvl-3">
+<p>工作分解结构：WBS词典、范围差异</p>
+</li>
+<li class="lvl-3">
+<p>范围验证：要收可交付成果</p>
+</li>
+<li class="lvl-3">
+<p>范围控制：<mark>监督</mark>项目和产品的范围状态、<mark>管理</mark><strong><u>范围基准</u></strong><mark>变更</mark></p>
+</li>
+</ol>
+<h3 id="什么是工作分解结构？作用？特点？建立方法？">什么是工作分解结构？作用？特点？建立方法？</h3>
+<p><mark>工作分解结构</mark>是一种<u><strong>以结果为导向</strong></u>的<u>分析方法</u>，<mark>用于分析</mark>项目所涉及到的工作，<strong>所有这些工作</strong>构成了项目的<strong>整个范围</strong>。它将主要的**<u>项目可交付成果</u>**分解成<mark>更小和更易管理</mark>的部分。</p>
+<p><mark>WBS 的作用</mark>如下图所示，考试如果考到就把这个图表述一遍：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230518171731036.png" alt="image-20230518171731036" style="zoom:50%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>参与者快速定位</p>
+</li>
+<li class="lvl-2">
+<p>防止范围遗漏</p>
+</li>
+<li class="lvl-2">
+<p>对全局进行把控</p>
+</li>
+<li class="lvl-2">
+<p>帮助成员<u>集中重点区域</u></p>
+</li>
+<li class="lvl-2">
+<p>防止项目变更</p>
+</li>
+<li class="lvl-2">
+<p>了解自己的工作对项目的影响</p>
+</li>
+<li class="lvl-2">
+<p>促进团队和项目干系人的沟通与合作</p>
+</li>
+</ul>
+<p><mark>WBS 的特点</mark>是通常以<strong>图表</strong>的形式表示，每一项元素通常被赋予<strong>唯一的标识</strong>，最低一层元素一般被称为<strong>工作包</strong>，<strong>WBS</strong> <strong>字典</strong>是描述 WBS <strong><u>每项条目详细信息</u><strong>的文件，一般包含</strong>工作包的描述</strong>。</p>
+<blockquote>
+<p>⭐️<u><em><strong>WBS有层次，没有层次的不是WBS</strong></em></u></p>
+</blockquote>
+<p><mark>WBS 的建立方法</mark>有<strong>类比法</strong>和<strong>分解法</strong>，前者考虑<u><strong>取类似项目参考</strong></u>，后者考虑<u><strong>自上而下或自下而上分解</strong></u>。</p>
+<h3 id="范围基线？">范围基线？</h3>
+<p>范围基线：<u><strong>项目范围说明书</strong></u>及<u><strong>相关的WBS</strong></u>、<u><strong>WBS词典</strong></u>构成，是<mark>实现</mark>**<u>项目范围目标的绩效</u>**的依据。</p>
+<h2 id="五-保障项目进度">五 保障项目进度</h2>
+<h3 id="什么是项目计划？什么是进度计划？">什么是项目计划？什么是进度计划？</h3>
+<p>项目计划：是<mark>指导项目实施和控制</mark>的一系列纲领性文件，是经高层管理批准的项目正式文档。</p>
+<p>进度计划：是表达项目中各项工作（活动）的<u><strong>开展顺序</strong></u>、<u><strong>开始及完成时间</strong></u>及<u><strong>相互衔接关系</strong></u>的计划。进度计划是进度控制和管理的依据；同时引导项目其他类型的计划工作。</p>
+<h3 id="项目时间管理？主要过程：活动定义-活动排序-活动资源估算-活动历时估算-项目进度计划编制-以及进度跟踪与控制过程">项目时间管理？主要过程：活动定义、活动排序、活动资源估算、活动历时估算、项目进度计划编制、以及进度跟踪与控制过程。</h3>
+<p>采用一定的方法，对项目范围所包括的==<strong>活动</strong>及其相互关系进行分析==，对各项活动<mark>所需的资源和时间进行估算</mark>，并在<strong>项目的时间期限内</strong><mark>合理地安排和控制</mark><strong>活动的开始和结束时间</strong></p>
+<ol>
+<li class="lvl-3">
+<p>活动定义</p>
+</li>
+<li class="lvl-3">
+<p>活动排序</p>
+</li>
+<li class="lvl-3">
+<p>活动资源估算</p>
+</li>
+<li class="lvl-3">
+<p>活动历时估算</p>
+</li>
+<li class="lvl-3">
+<p><mark>项目进度计划</mark>编制</p>
+</li>
+<li class="lvl-3">
+<p>进度跟踪与控制过程</p>
+</li>
+</ol>
+<h3 id="什么是活动？活动清单-活动属性-里程碑-？？？">什么是活动？活动清单、活动属性、里程碑 ？？？</h3>
+<p><u><strong>活动或任务</strong></u>：是项目进行期间需要完成的<u><strong>工作单元</strong></u>，它们有预期的<u><strong>历时、成本和资源要求</strong></u>。</p>
+<p>①<strong>活动清单</strong>：项目将要进行的<mark>所有计划活动</mark>，可以看作是 <u>WBS 的进一步延伸</u>。</p>
+<p>②<strong>活动属性</strong>：每项<u><strong>活动</strong></u>的<mark>具体描述</mark>，属性随时间会演进</p>
+<p>③<strong>里程碑清单</strong>：项目中的<strong>重要时间点</strong>或者<strong>时间</strong>，每个里程碑是<strong>强制性的</strong>，里程碑事件的<mark>工期是 <strong>0</strong></mark>，因为是一个时间点。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230522153130633.png" alt="image-20230522153130633" style="zoom:50%;" />
+<h3 id="分解用于活动定义时-最后结果是activities；分解用于范围定义时-最后结果为deliverables">分解用于活动定义时，最后结果是Activities；分解用于范围定义时，最后结果为Deliverables</h3>
+<p>⭐️分解用于<u><strong>活动定义</strong></u>时，最后结果是Activities(活动)；分解用于<u><strong>范围定义</strong></u>时，最后结果为Deliverables(可交付成果)——联系WBS概念</p>
+<h3 id="依赖关系">依赖关系</h3>
+<h5 id="依赖关系-四种">依赖关系（四种）</h5>
+<p><mark>依赖关系或关系</mark>反映了项目活动或任务的<mark>顺序</mark>。一个<u><strong>没有明确活动之间关系</strong></u>的项目是不可能成功的。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u><strong>强制依赖关系（硬逻辑关系）</strong></u>是项目工作<mark>固有的特性</mark>(行业逻辑）。</p>
+</li>
+<li class="lvl-2">
+<p><u><strong>自由依赖关系（软逻辑关系）</strong></u>是由项目<mark>团队来定义的</mark>(是否签字）。</p>
+</li>
+<li class="lvl-2">
+<p><u><strong>外部依赖关系</strong></u> 涉及<mark>项目活动与非项目活动之间</mark>的关系（操作系统供应商）。</p>
+</li>
+<li class="lvl-2">
+<p><u><strong>内部依赖关系</strong></u> 涉及<mark>项目活动之间</mark>的关系（在项目团队控制之内）。</p>
+</li>
+</ul>
+<h3 id="活动排序的工具：双代号网络图-前导图">活动排序的工具：双代号网络图、前导图</h3>
+<h5 id="箭线图法-adm-双代号网络-aoa">⭐️箭线图法(ADM)-双代号网络(AOA)</h5>
+<p>①项目网络图 ：项目网络图是<u><strong>项目活动之间的逻辑关系或排序</strong></u>的<em><strong>图形显示</strong></em>。</p>
+<p>②表示方法：使用<u><strong>箭线图法(ADM)</strong></u>或<u><strong>双代号网络图法(AOA)</strong></u>编制的网络图如图所示。 AOA是用箭线表示活动，用节点的连接点反映活动顺序的网络制图技术。<mark>节点</mark>简单的<u><strong>表示活动的<mark>开始和结束</mark></strong></u>。</p>
+<p><u><em><strong>双代号网络图法(AOA)示例</strong></em></u>：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525162032690.png" alt="双代号网络图法(AOA)示例"></p>
+<blockquote>
+<p><mark>缺点：</mark></p>
+<ul class="lvl-1">
+<li class="lvl-2">只能表示FS一种活动依赖关系</li>
+</ul>
+</blockquote>
+<h6 id="虚活动">⭐️虚活动</h6>
+<p>作用：<em><strong>辅助排序使用</strong></em></p>
+<table>
+<thead>
+<tr>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525162511167.png" alt="image-20230525162511167" style="zoom: 33%;" /></th>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525162559410.png" alt="image-20230525162559410" style="zoom:33%;" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<blockquote>
+<p><u><em><strong>只有双代号网络图法（AOA）中采用“虚活动”。</strong></em></u></p>
+</blockquote>
+<h5 id="前导图法-pdm-单代号网络-aon">⭐️前导图法(PDM)-单代号网络(AON)</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525162941631.png" alt="image-20230525162941631" style="zoom:50%;" />
+<table>
+<thead>
+<tr>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525163017244.png" alt="image-20230525163017244"></th>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525163026046.png" alt="image-20230525163026046"></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<blockquote>
+<p><mark>PDM法的优点：</mark></p>
+<p>①大多数<strong>项目管理软件</strong>使用PDM法</p>
+<p>②PDM法<u><strong>避免了使用虚活动</strong></u>(没有历时、不占用资源的活动)</p>
+<p>③PDM法<u><strong>反映了任务之间的各种依赖关系</strong></u></p>
+</blockquote>
+<h5 id="pdm-与-adm-的区别：">PDM 与 ADM 的区别：</h5>
+<p>①PDM 没有虚活动，ADM 涉及到虚活动</p>
+<p>②PDM 活动在节点内，ADM 活动在箭线上</p>
+<p>③PDM 涉及到 4 种依赖类型，ADM 只有 FS 一种类型</p>
+<h3 id="活动间的4种关系">活动间的4种关系</h3>
+<h5 id="四种依赖关系类型">四种依赖关系类型</h5>
+<p>四种依赖关系类型：确定了活动之间存在某种依赖关系（强制的，自由的，或者外部的等）之后，接下来必须确定依赖关系的类型。活动之间存在<u><strong>四种依赖关系类型</strong></u>：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>完成-开始（FS-Finished Start）：==从活动（紧前活动）==必须完成后，==到活动（紧后活动）==才能开始。</p>
+</li>
+<li class="lvl-2">
+<p>开始-开始（SS）：从活动开始后，到活动才能开始。</p>
+</li>
+<li class="lvl-2">
+<p>完成-完成（FF）：到活动完成前，从活动必须完成。</p>
+</li>
+<li class="lvl-2">
+<p>开始-完成（SF）：从活动必须开始后，到活动才能完成。</p>
+</li>
+</ul>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230619150827131.png" alt="image-20230619150827131"></p>
+<h3 id="进度安排的的工具？甘特图-跟踪甘特图-关键路径分析-关键链进度安排-计划评审技术分析">进度安排的的工具？甘特图（跟踪甘特图）、关键路径分析、关键链进度安排、计划评审技术分析</h3>
+<h5 id="跟踪甘特图与网络图的区别">⭐️跟踪甘特图与网络图的区别</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>跟踪甘特图：<u>显示计划和实际的项目进度信息</u></p>
+</li>
+<li class="lvl-2">
+<p>跟踪甘特图注重展示**<u>任务的时间轴和进度安排</u>**，而网络图则强调<u><strong>任务之间的依赖关系和流程</strong></u></p>
+</li>
+</ul>
+<h3 id="浮动时间-最大机动时间">浮动时间（最大机动时间）</h3>
+<p>一个活动在不影响项目完成时间的情况下，可以延迟的时间量。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525170128574.png" alt="image-20230525170128574" style="zoom:50%;" />
+<h3 id="关键路径分析的特点-应用">关键路径分析的特点、应用</h3>
+<p><mark>关键路径法（CPM）</mark>：这种<mark>进度网络分析技术</mark><u><strong>在不考虑任何资源限制的情况下</strong></u>，<mark>根据</mark>制定的<u><strong>网络顺序逻辑关系</strong></u>和<u><strong>单一历时估算</strong></u>，<mark>沿</mark><u>进度网络路径</u>使用<u><strong>顺推与逆推法</strong></u>，计算出所有活动的<u>最早开始ES、最早结束EF、最晚开始LS和最晚完成LF日期</u>。<mark>用来</mark><u><em>预测整个项目的持续时间</em></u>。</p>
+<blockquote>
+<p><mark>其核心</mark>是<u><strong>计算浮动时间</strong></u>，确定哪些活动的进度安排灵活性最小。</p>
+</blockquote>
+<p><mark>关键路径</mark>：指<mark>决定</mark><u><strong>项目最早完成时间</strong></u>的一系列活动，是<u><strong>通过网络图的最长路径</strong></u>，其<u><strong>浮动时间最少</strong></u>。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><em><strong>关键路径是可以变化的</strong></em>，如果对路径进行压缩可能会导致最终的项目完成时间减少，从而导致<u>最长时间路径</u>（关键路径）改变。</p>
+</li>
+<li class="lvl-2">
+<p>是项目完成的最短完成时间</p>
+</li>
+</ul>
+<p>⭐️<mark>计算关键路径</mark>：把通过网络图的每个路径上的所有<u>活动持续时间累加起来</u>，最长的路径就是关键路径。</p>
+<h4 id="关键路径的特点">关键路径的特点</h4>
+<p>①关键路径是<mark>最长的路径（图中时间累和最多的路径）</mark>。（见PDM图）</p>
+<p>②关键路径反映了<mark>项目所花费的最短的时间</mark>。</p>
+<p>③关键路径上的活动超时，总体进度就要拖延。</p>
+<p>④关键路径只与项目的时间有关与关键活动无关。</p>
+<p>⑤关键路径它与选择最短的路径无关。</p>
+<p>⑥一个项目可能会<mark>有超过一条的关键路径</mark>。</p>
+<p>⑦一个项目的<mark>关键路径可能会发生变化</mark>。</p>
+<h4 id="关键路径法的应用">关键路径法的应用</h4>
+<p>① <mark>利用</mark>关键路径<mark>分析平衡</mark><u><strong>进度计划</strong></u></p>
+<p>② <u><strong>缩短</strong></u><mark>关键路径</mark>上的<u><strong>活动历时</strong></u> （重点在关键路径）</p>
+<p>③ <mark>关注与及时更新</mark>关键路径数据</p>
+<h3 id="缩短项目工期方法">缩短项目工期方法</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>可以采用<mark>赶工</mark>（Crashing,<u><strong>通过增加资源</strong></u>）</p>
+</li>
+<li class="lvl-2">
+<p>或<mark>快速跟进</mark>（Fast tracking,<u><strong>通过并行施工</strong></u>）等方法。</p>
+</li>
+</ul>
+<blockquote>
+<p><mark>赶工</mark>：通过增加资源，是<u>为了以最少的成本代价获得最大限度的进度压缩。</u>（关键路径上）</p>
+<p><mark>快速跟进</mark>：并行执行那些通常以顺序方式执行的活动。</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86%E6%9C%9F%E6%9C%AB%E6%80%BB%E7%BB%931/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" rel="tag">期末复习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/" rel="tag">软件项目组织管理</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86%E6%9C%9F%E6%9C%AB%E6%80%BB%E7%BB%932/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            软件项目组织管理期末总结2
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/10-%E9%A1%B9%E7%9B%AE%E6%B2%9F%E9%80%9A%E7%AE%A1%E7%90%86/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">第十章（项目沟通管理）</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

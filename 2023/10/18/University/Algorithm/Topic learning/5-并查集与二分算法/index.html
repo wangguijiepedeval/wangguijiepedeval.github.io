@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>并查集与二分算法 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/Algorithm/Topic learning/5-并查集与二分算法"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  并查集与二分算法
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/10/18/University/Algorithm/Topic%20learning/5-%E5%B9%B6%E6%9F%A5%E9%9B%86%E4%B8%8E%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2023-10-18T07:53:53.541Z" itemprop="datePublished">2023-10-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/">算法</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/%E8%93%9D%E6%A1%A5%E6%9D%AF/">蓝桥杯</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E4%B8%93%E9%A2%98%E5%AD%A6%E4%B9%A0/">专题学习</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">7 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>并查集与二分算法</h1>
+<h2 id="并查集">并查集</h2>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>合根植物：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/110/learning/">合根植物 - 蓝桥云课 (lanqiao.cn)</a></p>
+</li>
+</ul>
+</blockquote>
+<h3 id="并查集的基本概念">并查集的基本概念</h3>
+<p>并查集（Disjoint Set）是一种非常常用的数据结构，主要用来处理一些不相交集合（Disjoint Set）的合并及查询问题。它支持以下两种操作：</p>
+<ol>
+<li class="lvl-3">
+<p>查找（Find）：确定某个元素属于哪个子集。它可以被用来确定两个元素是否属于同一个子集。</p>
+</li>
+<li class="lvl-3">
+<p>合并（Union）：将两个子集合并成同一个集合。</p>
+</li>
+</ol>
+<p>并查集可以使用数组或者树实现，其中<mark>数组实现较为简单</mark>，但是效率稍低；树实现较为复杂，但是效率较高。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>并查集是大量的树（单个节点也，算是树）经过合并生成一系列家族森林的过程。</p>
+</li>
+<li class="lvl-2">
+<p>每个集合也就是每棵树都是由根节点确定，也可以理解为每个家族的族长就是根节点。</p>
+</li>
+</ul>
+<blockquote>
+<p>我们维护一个parent数组，每个元素初始化为对应的数组下标，代表自己是独立的一棵树，且是树根。以第一棵树为例，在后续数据处理过程中，我们把与所有与&quot;2&quot;同属一个连通分量的元素都连到&quot;2&quot;上，并把数组对应下标的元素赋值为2，其中&quot;5&quot;先连接到了&quot;1&quot;上，&quot;1&quot;又连接到了&quot;2&quot;上。最后，数组每个元素都代表其指向的父节点。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/2021011323472737.png" alt="img" style="zoom: 50%;" />
+</blockquote>
+<h5 id="并查集的存储：">并查集的存储：</h5>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parent.<span class="built_in">resize</span>(n);</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">    parent[i] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="并查集的查询：">并查集的查询：</h5>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(parent[x] == x)</span><br><span class="line">    	<span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	<span class="keyword">return</span> <span class="built_in">find</span>(parent[x]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="并查集的路径压缩：">并查集的路径压缩：</h5>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 彻底的路径压缩</span></span><br><span class="line"><span class="comment">// 查找元素x所在的集合编号</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x != parent[x]) &#123;</span><br><span class="line">        parent[x] = <span class="built_in">find</span>(parent[x]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> parent[x];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>图解：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/2021011323505828.png" alt="img"></p>
+<h5 id="并查集的集合合并：">并查集的集合合并：</h5>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 合并元素x和元素y所在的集合</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">unionSet</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> rootX = <span class="built_in">find</span>(x);</span><br><span class="line">    <span class="type">int</span> rootY = <span class="built_in">find</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (rootX != rootY) &#123;</span><br><span class="line">        parent[rootX] = rootY;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>图解：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/20210113234942677.png" alt="img"></p>
+<p>以下是使用C++数组实现的并查集存储，查询和合并操作：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 并查集类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UnionFind</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造函数，传入集合中元素数量n</span></span><br><span class="line">    <span class="built_in">UnionFind</span>(<span class="type">int</span> n) &#123;</span><br><span class="line">        parent.<span class="built_in">resize</span>(n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            parent[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查找元素x所在的集合编号</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">find</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x != parent[x]) &#123;</span><br><span class="line">            parent[x] = <span class="built_in">find</span>(parent[x]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> parent[x];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 合并元素x和元素y所在的集合</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">unionSet</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> rootX = <span class="built_in">find</span>(x);</span><br><span class="line">        <span class="type">int</span> rootY = <span class="built_in">find</span>(y);</span><br><span class="line">        <span class="keyword">if</span> (rootX != rootY) &#123;</span><br><span class="line">            parent[rootX] = rootY;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; parent; <span class="comment">// 存储每个元素所在的集合编号</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>其中，<code>parent</code> 数组用来存储每个元素所在的集合编号。初始化时，每个元素的父节点都是自己。查询操作使用了路径压缩优化，将树高度降低，加速后续查询操作。合并操作只需要将元素 x 所在的集合的根节点指向元素 y 所在集合的根节点即可。</p>
+<p>使用该并查集类可以进行以下操作：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">UnionFind <span class="title">uf</span><span class="params">(<span class="number">10</span>)</span></span>; <span class="comment">// 创建一个包含10个元素的并查集</span></span><br><span class="line"></span><br><span class="line">    uf.<span class="built_in">unionSet</span>(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">    uf.<span class="built_in">unionSet</span>(<span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">    uf.<span class="built_in">unionSet</span>(<span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line">    uf.<span class="built_in">unionSet</span>(<span class="number">6</span>, <span class="number">7</span>);</span><br><span class="line">    uf.<span class="built_in">unionSet</span>(<span class="number">8</span>, <span class="number">9</span>);</span><br><span class="line">    uf.<span class="built_in">unionSet</span>(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">    uf.<span class="built_in">unionSet</span>(<span class="number">4</span>, <span class="number">6</span>);</span><br><span class="line">    uf.<span class="built_in">unionSet</span>(<span class="number">0</span>, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; uf.<span class="built_in">find</span>(<span class="number">1</span>) &lt;&lt; endl; <span class="comment">// 输出：2</span></span><br><span class="line">    cout &lt;&lt; uf.<span class="built_in">find</span>(<span class="number">5</span>) &lt;&lt; endl; <span class="comment">// 输出：6</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码实现了一个包含10个元素的并查集，先将几个元素单独构成集合，然后再将一些集合合并起来。最后输出了两个元素属于哪个集合。</p>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>主要参考：ChatGPT</p>
+</li>
+<li class="lvl-2">
+<p>部分参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_25933249/article/details/112597361">(107条消息) 图解并查集_1加一的博客-CSDN博客</a></p>
+</li>
+</ul>
+</blockquote>
+<h2 id="二分算法">二分算法</h2>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>跳石头：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/364/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;name=%E8%B7%B3%E7%9F%B3%E5%A4%B4">跳石头 - 蓝桥云课 (lanqiao.cn)</a></p>
+</li>
+</ul>
+</blockquote>
+<h3 id="二分的基本思想">二分的基本思想</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230401231716660.png" alt="image-20230401231716660"></p>
+<p>图解：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230401231758840.png" alt="image-20230401231758840" style="zoom: 25%;" />
+<h5 id="二分法的两种实现代码：">二分法的两种实现代码：</h5>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在单调递增序列a中查找&gt;=x的数中最小的一个（即x或x的后继） </span></span><br><span class="line"><span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">    <span class="type">int</span> mid = (low + high)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[mid]&gt;=x)&#123;</span><br><span class="line">        high = mid;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        low = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 在单调递增序列a中查找&lt;=x的数中最大的一个（即x或x的前趋）</span></span><br><span class="line"><span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">    <span class="type">int</span> mid = (low + high + <span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(a[mid]&lt;=x)&#123;</span><br><span class="line">        low = mid;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        high = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230401233132876.png" alt="image-20230401233132876" style="zoom:25%;" />
+</blockquote>
+<h4 id="实数二分">实数二分</h4>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230402001352903.png" alt="image-20230402001352903"></p>
+<blockquote>
+<p>根据前面的知识，我们要找到一个具有单调性的数列，去二分。这个题的关键是我们要去二分什么，这里可以二分的是 a^M 中的 a ，所以我们要先想办法设计出用于处理实数二分的代码。——也就是判断 N 与 a^M 的大小关系</p>
+</blockquote>
+<p>实数二分的算法模板：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模版一：实数域二分，设置eps法</span></span><br><span class="line"><span class="comment">// 令eps为小于题目精度一个数即可。比如题目说保留4位小数，0.0001这种的。那么eps就可以设置为五位小数的任意一个数0.00001-0.00009等等都可以。</span></span><br><span class="line"><span class="comment">// 一般为了保证精度我们选取精度/100的那个小数，即设置eps=0.0001/100=1e-6</span></span><br><span class="line"><span class="keyword">while</span> (l+eps&lt;r)&#123;</span><br><span class="line">    <span class="type">double</span> mid = (l+r)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">pd</span>(mid))</span><br><span class="line">    	r = mid;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	l = mid;<span class="comment">// 注意这里和传统的二分法不同</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模版二：实数域二分，规定循环次数法</span></span><br><span class="line"><span class="comment">// 通过循环一定次数达到精度要求，这个一般1og2N&lt;精度即可。N为循环次数，在不超过时间复杂度的情况下，可以选择给N乘一个系数使得精度更高。</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)&#123;</span><br><span class="line">    <span class="type">double</span> mid = (l+r)/<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">pd</span>(mid))</span><br><span class="line">    	r = mid;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	l = mid;<span class="comment">// 注意这里和传统的二分法不同</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>核心pd算法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">pd</span><span class="params">(<span class="type">double</span> a,<span class="type">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> c = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(m&gt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        c = c*a;</span><br><span class="line">        m--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(c&gt;=n)</span><br><span class="line">    	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 实数二分题 </span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m;<span class="comment">// 分别为实数n与m次根号下，即求m次根号下的n的值为多少？ </span></span><br><span class="line"><span class="type">double</span> eps = <span class="number">1e-8</span>; <span class="comment">// 因为题目中要求保留7位小数 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">pd</span><span class="params">(<span class="type">double</span> a, <span class="type">int</span> m)</span></span>&#123;<span class="comment">// 用 a^m 与 n 进行比较</span></span><br><span class="line">	<span class="type">int</span> c = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(m&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		c = c*a;</span><br><span class="line">		m--;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">if</span>(c&gt;=n)<span class="comment">// a^m大于n，那么表明a大了，应该减小一点 </span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="type">double</span> L = <span class="number">0</span>, R = n;</span><br><span class="line">	<span class="keyword">while</span>(L + eps &lt; R)&#123;<span class="comment">// 以eps精度进行二分处理 </span></span><br><span class="line">		<span class="type">double</span> mid = (L+R)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">pd</span>(mid, m))&#123;</span><br><span class="line">			R = mid;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			L = mid;<span class="comment">// 注意这里和传统的二分法不同</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%.7f&quot;</span>, L);<span class="comment">// 涉及到输入输出精度的使用C的标准输入输出更好 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二分法习题"><mark>二分法习题</mark></h3>
+<table>
+<thead>
+<tr>
+<th>题目+编号</th>
+<th>题目+编号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>扫地机器人   199</td>
+<td>区间移位      111</td>
+</tr>
+<tr>
+<td>求立方根    1217</td>
+<td>高精度开根    909</td>
+</tr>
+<tr>
+<td>“123”       1591</td>
+<td>二分法查找数组元素  1389</td>
+</tr>
+<tr>
+<td>A  Careful Approach   1390</td>
+<td>求阶乘       2145</td>
+</tr>
+<tr>
+<td>最少刷题数    2143</td>
+<td>最大子矩阵   2147</td>
+</tr>
+<tr>
+<td>青蛙过河      2097</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/10/18/University/Algorithm/Topic%20learning/5-%E5%B9%B6%E6%9F%A5%E9%9B%86%E4%B8%8E%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" rel="tag">蓝桥杯</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/10/18/University/Algorithm/Topic%20learning/6-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            贪心算法
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/10/18/University/Algorithm/Topic%20learning/4-%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">搜索算法</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

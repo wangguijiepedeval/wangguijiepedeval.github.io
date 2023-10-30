@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>CCF算法笔记 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/Algorithm/Basic knowledge of C++/CCF算法笔记"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  CCF算法笔记
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/04/16/University/Algorithm/Basic%20knowledge%20of%20C++/CCF%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2023-04-16T08:27:26.292Z" itemprop="datePublished">2023-04-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/">算法</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">12 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>CCF算法笔记</h1>
+<blockquote>
+<p>本篇笔记是本人复习CCF-CSP考试的过程中编写的，方便复习与巩固。</p>
+</blockquote>
+<h2 id="c-c-算法">C/C++算法</h2>
+<h3 id="c-string判断大小写以及数字">C++string判断大小写以及数字</h3>
+<p>可以使用C++中的isupper()、islower()和isdigit()函数来判断字符串中的大小写字母和数字。</p>
+<p>可以使用<code>isalpha()</code>函数判断是否为字母。</p>
+<p>isalpha()、isupper()、islower()和isdigit()函数的返回值都是bool型。</p>
+<h3 id="c-erase-函数">C++ erase()函数</h3>
+<p><u><em><strong>erase()函数</strong></em></u>可以用于以下类型的容器：<code>string</code>、<code>vector</code>、<code>list</code>、<code>deque</code>、<code>set</code>、<code>map</code>等。</p>
+<p><code>std::vector</code> 的 <code>erase</code> 函数可以用来从向量中删除一个或多个元素。该函数有两种重载形式：</p>
+<ol>
+<li class="lvl-3">
+<p>通过位置删除元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iterator erase (const_iterator position);</span><br><span class="line">iterator erase (const_iterator first, const_iterator last);</span><br></pre></td></tr></table></figure>
+<p>第一种形式用于删除一个单独的元素，该元素由迭代器 <code>position</code> 指定。这将使其后面的所有元素向前移动一个位置，并且向量的大小会减小1。</p>
+<p>第二种形式用于删除一系列连续的元素，这些元素被迭代器对 <code>[first, last)</code> 区间指定。这将使所有在删除范围之后的元素向前移动，并且向量的大小会减小删除的元素数量。</p>
+</li>
+<li class="lvl-3">
+<p>通过值删除元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iterator erase (const T&amp; value);</span><br></pre></td></tr></table></figure>
+<p>这个版本的 <code>erase</code> 用于删除向量中的所有等于给定值 <code>value</code> 的元素。它返回一个迭代器，指向被删除元素的下一个位置。</p>
+</li>
+</ol>
+<p>需要注意的是，这些函数只适用于可变的（即非常量）向量。</p>
+<h3 id="c-unique-函数">C++ unique()函数</h3>
+<p>C++ STL中的<code>unique()</code>函数是一个常用的算法，用于删除容器中相邻的重复元素。它接受两个迭代器表示容器范围，并<mark>返回一个指向新末尾的迭代器（也就是最后一个不重复元素的下一个位置）</mark>，该迭代器之前的所有元素都是唯一的。</p>
+<p><code>unique()</code>函数的语法如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">ForwardIt</span>&gt;</span><br><span class="line"><span class="function">ForwardIt <span class="title">unique</span><span class="params">(ForwardIt first, ForwardIt last)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">ForwardIt</span>, <span class="keyword">class</span> <span class="title class_">BinaryPredicate</span>&gt;</span><br><span class="line"><span class="function">ForwardIt <span class="title">unique</span><span class="params">(ForwardIt first, ForwardIt last, BinaryPredicate p)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>其中，参数<code>first</code>和<code>last</code>指定了要处理的容器中的元素范围；<code>p</code>是一个可选的二元谓词，用于比较两个元素是否相等。如果省略了第二个参数，则默认使用<code>operator==</code>进行比较。</p>
+<p><code>unique()</code>函数的基本思想是：遍历容器中的每一个元素，将它与前一个元素进行比较。如果它们相等，就将后一个元素删除，并继续往后比较，直到找到不相等的元素为止。这样遍历整个容器，最后得到的就是一个没有相邻重复元素的新容器。</p>
+<h3 id="c-equel-range-函数">C++ equel_range()函数</h3>
+<p>equel_range() 函数定义在<code>&lt;algorithm&gt;</code>头文件中，用于在指定范围内查找等于目标值的所有元素。</p>
+<h6 id="返回值">返回值</h6>
+<p>该函数会返回一个 pair 类型值，其包含 2 个正向迭代器。</p>
+<p>当<mark>查找成功</mark>时：</p>
+<ol>
+<li class="lvl-3">
+<p>第 1 个迭代器指向的是 [first, last) 区域中第一个等于 val 的元素；</p>
+</li>
+<li class="lvl-3">
+<p>第 2 个迭代器指向的是 [first, last) 区域中第一个大于 val 的元素。</p>
+</li>
+</ol>
+<p>反之如果<mark>查找失败</mark>，则这 2 个迭代器要么都指向大于 val 的第一个元素（如果有），要么都和 last 迭代器指向相同。</p>
+<h6 id="特点">特点</h6>
+<ol>
+<li class="lvl-3">
+<p>map、multimap、unordered_map的equel_range()都是查找的<code>key</code>，或者说是<code>.first</code>;</p>
+</li>
+</ol>
+<blockquote>
+<p>注：</p>
+<ul class="lvl-1">
+<li class="lvl-2">equal_range.first和lower_bound返回值是一样的，都是指向第一个相等元素（可以这样认为）的迭代器，无论最后找到或者找不到匹配的关键字，它们都相等。</li>
+<li class="lvl-2">同理，equal_range.second和upper_bound的返回值一样，都是指向最后一个相等元素的后一个元素的迭代器，如果找不到关键字，那么将会得到一个安全的关键字插入位置。</li>
+</ul>
+</blockquote>
+<h3 id="c-迭代器-stl迭代器-iterator">C++迭代器（STL迭代器）iterator</h3>
+<h6 id="定义">定义</h6>
+<p>迭代器按照定义方式分成以下四种。</p>
+<p>\1) 正向迭代器，定义方法如下：</p>
+<p>容器类名::iterator 迭代器名;</p>
+<p>\2) 常量正向迭代器，定义方法如下：</p>
+<p>容器类名::const_iterator 迭代器名;</p>
+<p>\3) 反向迭代器，定义方法如下：</p>
+<p>容器类名::reverse_iterator 迭代器名;</p>
+<p>\4) 常量反向迭代器，定义方法如下：</p>
+<p>容器类名::const_reverse_iterator 迭代器名;</p>
+<h6 id="用法">用法</h6>
+<p>通过迭代器可以读取它指向的元素，<code>*迭代器名</code>就表示迭代器指向的元素。通过非常量迭代器还能修改其指向的元素。</p>
+<p>迭代器都可以进行<code>++</code>操作。反向迭代器和正向迭代器的区别在于：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>对正向迭代器进行<code>++</code>操作时，迭代器会指向容器中的后一个元素；</p>
+</li>
+<li class="lvl-2">
+<p>而对反向迭代器进行<code>++</code>操作时，迭代器会指向容器中的前一个元素。</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v;  <span class="comment">//v是存放int类型变量的可变长数组，开始时没有元素</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> n = <span class="number">0</span>; n&lt;<span class="number">5</span>; ++n)</span><br><span class="line">        v.<span class="built_in">push_back</span>(n);  <span class="comment">//push_back成员函数在vector容器尾部添加一个元素</span></span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;::iterator i;  <span class="comment">//定义正向迭代器</span></span><br><span class="line">    <span class="keyword">for</span> (i = v.<span class="built_in">begin</span>(); i != v.<span class="built_in">end</span>(); ++i) &#123;  <span class="comment">//用迭代器遍历容器——end成员函数返回的不是指向最后一个元素的迭代器，而是指向最后一个元素后面的位置的迭代器</span></span><br><span class="line">        cout &lt;&lt; *i &lt;&lt; <span class="string">&quot; &quot;</span>;  <span class="comment">//*i 就是迭代器i指向的元素</span></span><br><span class="line">        *i *= <span class="number">2</span>;  <span class="comment">//每个元素变为原来的2倍</span></span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    <span class="comment">//用反向迭代器遍历容器</span></span><br><span class="line">    <span class="keyword">for</span> (vector&lt;<span class="type">int</span>&gt;::reverse_iterator j = v.<span class="built_in">rbegin</span>(); j != v.<span class="built_in">rend</span>(); ++j)</span><br><span class="line">        cout &lt;&lt; *j &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//rbegin成员函数返回指向容器中最后一个元素的迭代器，rend成员函数返回指向容器中第一个元素前面的位置的迭代器</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">程序的输出结果是：</span><br><span class="line">0 1 2 3 4</span><br><span class="line">8 6 4 2 0</span><br></pre></td></tr></table></figure>
+<h3 id="c-begin-和end-容器">C++begin()和end()容器⭐️</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/7376.html">C++ STL begin()和end()函数用法 (biancheng.net)</a></p>
+</blockquote>
+<p><u><em><strong>begin()和end()容器：</strong></em></u></p>
+<ol>
+<li class="lvl-3">
+<p>可以对向量、集合、map……等有用；</p>
+</li>
+<li class="lvl-3">
+<p>也对数组有相同的作用；</p>
+<ul class="lvl-2">
+<li class="lvl-5">将指定数组传给 begin() 函数，其会返回一个指向该数组<mark>首个元素的指针</mark>；将指定数组传给 end() 函数，其会返回一个指向数组中<mark>最后一个元素之后位置的指针</mark>。</li>
+</ul>
+</li>
+</ol>
+<h3 id="c-set容器">C++set容器</h3>
+<h4 id="set-count-type-target">set.count(type target)</h4>
+<p>计算目标值的个数</p>
+<h3 id="c-数组">C++数组</h3>
+<h4 id="定义数组作形参的函数">定义数组作形参的函数</h4>
+<h6 id="静态数组作参数：">静态数组作参数：</h6>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一种——对数组的引用</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">convert_matrix</span><span class="params">(<span class="type">double</span> (&amp;M)[<span class="number">8</span>][<span class="number">8</span>],<span class="type">int</span> i,<span class="type">int</span> j)</span></span>&#123;</span><br><span class="line">	<span class="comment">//函数体</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//第二种——数组传值</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">convert_matrix</span><span class="params">(<span class="type">double</span> M[][<span class="number">8</span>],<span class="type">int</span> i,<span class="type">int</span> j)</span></span>&#123;</span><br><span class="line">	<span class="comment">//函数体</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//第三种——数组传值</span></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">convert_matrix</span><span class="params">(<span class="type">double</span> M[<span class="number">8</span>][<span class="number">8</span>],<span class="type">int</span> i,<span class="type">int</span> j)</span></span>&#123;</span><br><span class="line">	<span class="comment">//函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>动态数组作参数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> N;</span><br><span class="line"><span class="type">int</span> counts = <span class="number">0</span>;<span class="comment">// 计数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">N_queens</span><span class="params">(<span class="type">int</span> i, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp;M, <span class="type">int</span> col[], <span class="type">int</span> L[], <span class="type">int</span> R[])</span></span>&#123;<span class="comment">// 动态数组作参数</span></span><br><span class="line">    <span class="comment">// 实现代码</span></span><br><span class="line">	<span class="keyword">return</span> counts;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;N;</span><br><span class="line">	vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;<span class="built_in">M</span>(N, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(N, <span class="number">0</span>));<span class="comment">// 采用int M[N][N]，不方便给函数传参，这里要用vector动态数组 </span></span><br><span class="line">	<span class="type">int</span> col[N]=&#123;<span class="number">0</span>&#125;, L[<span class="number">2</span>*N]=&#123;<span class="number">0</span>&#125;, R[<span class="number">2</span>*N]=&#123;<span class="number">0</span>&#125;;<span class="comment">// 1则表明存储皇后 </span></span><br><span class="line">	<span class="type">int</span> n = <span class="built_in">N_queens</span>(<span class="number">0</span>, M, col, L, R);</span><br><span class="line">	cout&lt;&lt;n;<span class="comment">// 可行解数量 </span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="c-获取数组长度-元素个数">C++获取数组长度（元素个数）</h4>
+<p>在 C++ 中，可以通过以下两种方式来获取数组的长度：</p>
+<ol>
+<li class="lvl-3">
+<p>使用 sizeof 操作符</p>
+</li>
+</ol>
+<p>使用 sizeof 操作符可以返回数组所占用的总字节数，除以每个元素所占用的字节数即可得到数组的长度。例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="type">int</span> len = <span class="built_in">sizeof</span>(arr) / <span class="built_in">sizeof</span>(arr[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+<p>其中，sizeof(arr) 返回整个数组占用的字节数，sizeof(arr[0]) 返回数组中第一个元素所占用的字节数。因此，sizeof(arr) / sizeof(arr[0]) 即为数组的长度。</p>
+<ol start="2">
+<li class="lvl-3">
+<p>使用模板函数</p>
+</li>
+</ol>
+<p>C++11 引入了 std::extent 模板函数，可以直接获取数组的长度。例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="type">int</span> len = std::extent&lt;<span class="keyword">decltype</span>(arr)&gt;::value;</span><br></pre></td></tr></table></figure>
+<p>其中，decltype(arr) 返回数组类型，std::extent&lt;decltype(arr)&gt;::value 返回数组的长度。</p>
+<h2 id="数学算法">数学算法</h2>
+<h3 id="向量的内积和叉乘">向量的内积和叉乘</h3>
+<h5 id="内积">内积</h5>
+<blockquote>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230312000752499.png" alt="image-20230312000752499"></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230312000632698.png" alt="image-20230312000632698"></p>
+</blockquote>
+<h5 id="叉乘">叉乘</h5>
+<blockquote>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230312000739739.png" alt="image-20230312000739739"></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230312000659502.png" alt="image-20230312000659502"></p>
+</blockquote>
+<h3 id="欧几里得算法">欧几里得算法</h3>
+<p><strong>gcd(a,b) = gcd(b,a mod b)</strong></p>
+<p>形象记忆：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a % b = c</span><br><span class="line">	b % c = d</span><br><span class="line">		c % d = e</span><br><span class="line">			d % e = f</span><br><span class="line">				......</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>欧几里得算法拓展：</p>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43872728/article/details/107289833">(77条消息) 扩展欧几里得算法超详解_Aloof__的博客-CSDN博客_扩展欧几里得原理</a></p>
+</blockquote>
+<p><strong>给予二整数 a 与 b, 必存在有整数 x 与 y 使得ax + by = gcd(a,b)</strong></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221011195717705.png" alt="image-20221011195717705" style="zoom: 67%;" />
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1=(-7)*47+(11)*30</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">gcd(a,b)可以表示为a,b的整洗数线性组合，例如：gcd(6,14)=2,而2=(-2)*6+1*14.</span><br></pre></td></tr></table></figure>
+<h3 id="绝对值函数abs"><mark>绝对值</mark>函数abs()</h3>
+<p>实例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span><span class="comment">//C语言是math.h</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> a=<span class="number">1</span>,b=<span class="number">10</span>;</span><br><span class="line">	<span class="type">float</span> c=<span class="number">1</span>,d=<span class="number">10</span>;</span><br><span class="line">	<span class="type">double</span> e=<span class="number">1</span>,f=<span class="number">10</span>;</span><br><span class="line"> </span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;b-a=&quot;</span>&lt;&lt;<span class="built_in">abs</span>(b-a)&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;c-d=&quot;</span>&lt;&lt;<span class="built_in">abs</span>(c-d)&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;e-f=&quot;</span>&lt;&lt;<span class="built_in">abs</span>(e-f)&lt;&lt;endl;</span><br><span class="line">	cin.<span class="built_in">get</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出：</span></span><br><span class="line">b-a=<span class="number">9</span></span><br><span class="line">c-d=<span class="number">9</span></span><br><span class="line">e-f=<span class="number">9</span></span><br></pre></td></tr></table></figure>
+<h3 id="c-实现四舍五入的几种方法">C++实现<mark>四舍五入</mark>的几种方法</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Xavier_97/article/details/126931927">(101条消息) C<ins>实现四舍五入的几种方法_c</ins>四舍五入_Xaiver_97的博客-CSDN博客</a></p>
+<ol>
+<li class="lvl-3">函数round()实现四舍五入</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">double</span> a = <span class="number">1.4999999</span>;</span><br><span class="line">  <span class="type">double</span> b = <span class="number">1.5000001</span>;</span><br><span class="line">  <span class="type">double</span> n_a = <span class="number">-1.4999999</span>;    </span><br><span class="line">  <span class="type">double</span> n_b = <span class="number">-1.5000001</span>; </span><br><span class="line">  cout &lt;&lt; <span class="built_in">round</span>(a) &lt;&lt; endl;    <span class="comment">// 1</span></span><br><span class="line">  cout &lt;&lt; <span class="built_in">round</span>(b) &lt;&lt; endl;    <span class="comment">// 2</span></span><br><span class="line">  cout &lt;&lt; <span class="built_in">round</span>(n_a) &lt;&lt; endl;    <span class="comment">// -1</span></span><br><span class="line">  cout &lt;&lt; <span class="built_in">round</span>(n_b) &lt;&lt; endl;    <span class="comment">// -2</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>round()函数原理为：<code>x=(int)(x+0.5)</code>公式，故可以自己写出round()函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">round</span><span class="params">(<span class="type">double</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (<span class="type">int</span>)(x+<span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="fisher-yates-洗牌算法">Fisher-Yates 洗牌算法</h4>
+<blockquote>
+<p>可以参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/334553072">Fisher-Yates洗牌算法！来自算法理论的创始人！ - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<h6 id="正向洗牌与反向洗牌算法：">正向洗牌与反向洗牌算法：</h6>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">shuffle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (origin.<span class="built_in">empty</span>()) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">shuffled</span><span class="params">(origin)</span></span>;</span><br><span class="line">    <span class="type">int</span> n = origin.<span class="built_in">size</span>();</span><br><span class="line"><span class="comment">// 可以使用反向或者正向洗牌，效果相同。</span></span><br><span class="line"><span class="comment">// 反向洗牌：</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(shuffled[i], shuffled[<span class="built_in">rand</span>() % (i + <span class="number">1</span>)]);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 正向洗牌：</span></span><br><span class="line"><span class="comment">// for (int i = 0; i &lt; n; ++i) &#123;</span></span><br><span class="line"><span class="comment">// int pos = rand() % (n - i);</span></span><br><span class="line"><span class="comment">// swap(shuffled[i], shuffled[i+pos]);</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line">	<span class="keyword">return</span> shuffled;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="knuth-morris-pratt-kmp-算法">Knuth-Morris-Pratt（KMP）算法</h4>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/KMP%E7%AE%97%E6%B3%95">KMP算法 - 维基百科，自由的百科全书 (wikipedia.org)</a></p>
+</blockquote>
+<h2 id="c-位运算及其应用">C++位运算及其应用</h2>
+<h3 id="c-异或运算及其应用">C++ 异或运算及其应用</h3>
+<h4 id="前置知识：">前置知识：</h4>
+<p><strong>1.一个整数自己跟自己异或，结果为0。//因为异或的法则为，相同为0，不同为1，注意这里所说的都是二进制位。</strong></p>
+<p><strong>2.任意一个整数跟0异或，结果为本身。//因为1异或0得1,0异或0,得0，所以1还是1,0还是0，没发生变化。</strong></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/1685178-20191127204008258-1599418865.png" alt="img"></p>
+<blockquote>
+<p>通过异或运算不用临时变量的情况下进行两个变量的值交换。</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1>C++编程技巧</h1>
+<h4 id="关闭c-与c之间标准输入输出之间的同步-提升效率">关闭C++与C之间标准输入输出之间的同步，提升效率</h4>
+<p>在C<ins>中，<code>ios::sync_with_stdio(false);</code>是一条语句，用于关闭C</ins>标准库输入输出与C标准库输入输出之间的同步，从而提高程序的输入输出效率。默认情况下，C++标准库与C标准库之间会进行缓冲区同步，这会导致程序在读入或输出数据时的速度较慢。</p>
+<p>当你需要在C<ins>中进行大量的输入输出操作时，特别是对时间敏感的代码，使用该语句可以显著提升程序的运行速度。但是要注意的是，在关闭同步后，就不能再同时使用cin和scanf等函数了，因为它们分别属于不同的输入输出流，并且不同输入输出流之间可能会发生数据竞争问题。所以在关闭同步之后，应该只使用C</ins>标准库的输入输出函数，比如cout和cin。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/04/16/University/Algorithm/Basic%20knowledge%20of%20C++/CCF%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CCF-CSP/" rel="tag">CCF-CSP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" rel="tag">算法笔记</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/04/25/University/junior/course/multi-media-tech/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            多媒体期末复习总结
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/04/16/University/Algorithm/Basic%20knowledge%20of%20C++/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">程序设计竞赛笔记</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

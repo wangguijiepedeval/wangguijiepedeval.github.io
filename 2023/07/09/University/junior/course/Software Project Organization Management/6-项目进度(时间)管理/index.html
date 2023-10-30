@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>第六章（项目进度管理） |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software Project Organization Management/6-项目进度(时间)管理"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  第六章（项目进度管理）
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/6-%E9%A1%B9%E7%9B%AE%E8%BF%9B%E5%BA%A6(%E6%97%B6%E9%97%B4)%E7%AE%A1%E7%90%86/" class="article-date">
+  <time datetime="2023-07-09T10:33:41.071Z" itemprop="datePublished">2023-07-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/">软件项目组织管理</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">4.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">14 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>项目进度管理</h1>
+<blockquote>
+<p>考点：</p>
+<ul class="lvl-1">
+<li class="lvl-2"><u><strong>关键路径</strong></u>分析方法</li>
+<li class="lvl-2">运用<u><strong>网络图</strong></u>和活动间的依赖关系进行活动排序
+<ul class="lvl-3">
+<li class="lvl-4">双代号网络图</li>
+</ul>
+</li>
+<li class="lvl-2">制定项目进度计划的过程</li>
+</ul>
+</blockquote>
+<p>工程类项目：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>质量</p>
+</li>
+<li class="lvl-2">
+<p>时间</p>
+</li>
+<li class="lvl-2">
+<p>投资</p>
+</li>
+</ul>
+<h5 id="时间的四项独特性">时间的四项独特性</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>供给毫无弹性：无法开源</p>
+</li>
+<li class="lvl-2">
+<p>无法蓄积：无法节流</p>
+</li>
+<li class="lvl-2">
+<p>无法取代：任何一项活动都有赖于时间的堆砌，时间是<u><strong>任何活动不可或缺</strong></u>的<u>基本资源</u>。</p>
+</li>
+<li class="lvl-2">
+<p>无法失而复得</p>
+</li>
+</ul>
+<h2 id="项目进度计划的重要性">项目进度计划的重要性</h2>
+<p>大多数项目都有一个规定的交付日期，这是因为<u><strong>需求、市场环境</strong></u></p>
+<h3 id="项目生命周期内冲突的强度">项目生命周期内冲突的强度</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230522151334399.png" alt="image-20230522151334399" style="zoom:50%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>项目需要在<u><strong>一定的时间和预算成本</strong></u>内完成实现一定的可交付物的工作,并使客户满意,因此项目的重要特征之一是<u><strong>具有具体的时间期限</strong></u>。</p>
+</li>
+<li class="lvl-2">
+<p>为了使项目能够按时完成,在项目开始之前编制一份<u><strong>项目活动的进度计划</strong></u>是非常有必要的。进度计划就是使项目的每项活动的<u><strong>开始及结束时间具体化</strong></u>的计划。</p>
+</li>
+</ul>
+<h3 id="项目进度管理">项目进度管理</h3>
+<p><mark>项目进度管理</mark>就是要采用一定的方法,对项目范围所包括的<u><strong>活动及其相互关系</strong></u>进行分析,对各项活动所需要的<u><strong>时间和资源</strong></u>进行估算,并在项目的时间期限内<u><strong>合理地安排和控制活动的开始和结束时间</strong></u>。 显然, <mark>项目时间管理的意义</mark>就是<u><strong>保证项目按照时间期限在预算成本内完成项目全部可交付物工作。</strong></u></p>
+<p><span style="color: red;">项目计划 </span></p>
+<p>是指导项目实施和控制的一系列纲领性文件，是经高层管理批准的项目正式文档。</p>
+<p><span style="color: red;">进度计划 </span></p>
+<p>是表达项目中<u><strong>各项工作（活动）的开展顺序、开始及完成时间及相互衔接关系</strong></u>的计划。进度计划是进度控制和管理的依据；同时引导项目其他类型的计划工作。</p>
+<p><span style="color: red;">项目进度计划制定 </span></p>
+<p>是根据项目的目标，在项目确定的范围内、依据确定的需求和质量标准、并在项目成本预算许可下，<u><strong>制定出一个周密的项目活动安排的过程</strong></u>。</p>
+<h4 id="项目进度管理过程">项目进度管理过程</h4>
+<p><mark>进度跟踪与控制</mark>：在项目的执行和实施过程中，经常检查实际进度是否按计划要求进行，若出现偏差，便要及时找出原因，采取必要的补救措施或调整、修改原计划，直至项目完成的过程。</p>
+<p><mark>项目进度管理</mark>包括为确保项目按时完成所需要的各个过程：</p>
+<p><u><strong>规划进度管理</strong></u>、<u><strong>定义活动</strong></u>、<u><strong>活动排序</strong></u>、<u><strong>估算活动持续时间</strong></u>、<u><strong>项目进度计划编制</strong></u>、以及<u><strong>进度跟踪与控制过程</strong></u>等。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230522152251879.png" alt="image-20230522152251879" style="zoom:50%;" />
+<h2 id="1规划进度管理">1规划进度管理</h2>
+<p><mark>规划进度管理</mark>：确定将用于计划、执行和控制项目进度的<u><strong>政策、流程和文档</strong></u>。</p>
+<p>进度管理计划一般包括以下信息：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u>项目进度模型的开发</u>：包括持续时间的估算、依赖关系和其他用来生成项目进度的信息。</p>
+</li>
+<li class="lvl-2">
+<p><u>准确度和计量单位</u>：小时、天等</p>
+</li>
+<li class="lvl-2">
+<p><u>控制阈值</u>：建立偏差阈值</p>
+</li>
+<li class="lvl-2">
+<p>绩效评估规则</p>
+</li>
+<li class="lvl-2">
+<p>报告格式</p>
+</li>
+<li class="lvl-2">
+<p>过程描述：如何执行所有的进度管理过程</p>
+</li>
+</ul>
+<h2 id="2定义活动">2定义活动</h2>
+<p><mark>定义活动</mark>是<u><strong>识别和记录</strong></u>为完成<u><strong>项目可交付成果</strong></u>而须<u><strong>采取的具体行动的过程</strong></u>。</p>
+<h5 id="主要作用">主要作用</h5>
+<p>本过程的<mark>主要作用</mark>是，将工作包分解为进度活动，作为对项目工作进行进度估算、规划、执行、监督和控制的基础。</p>
+<p>①<u><strong>活动或任务</strong></u>：是项目进行期间需要完成的<u><strong>工作单元</strong></u>，它们有预期的<u><strong>历时、成本和资源要求</strong></u>。</p>
+<p>②<u><strong>定义活动的目标</strong></u>：是确保对项目范围有**<u>一个完整的理解</u>**。</p>
+<p>③<u><strong>定义活动的主要依据</strong></u>：是<u><strong>项目章程、范围说明书、WBS和项目预算信息</strong></u>。</p>
+<p>示例：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230522153130633.png" alt="image-20230522153130633" style="zoom:50%;" />
+<blockquote>
+<p><mark>活动定义过程</mark>识别处于WBS最下层叫做<u><strong>工作包的可交付成果</strong></u></p>
+<ul class="lvl-1">
+<li class="lvl-2"><em><strong>活动是对wbs的可交付成果的进一步划分</strong></em></li>
+</ul>
+</blockquote>
+<h5 id="导致结果">导致结果</h5>
+<p>①定义活动通常导致<u><strong>制定更加详细的工作分解结构</strong></u>。</p>
+<p>②定义活动产生一些<u><strong>辅助性的详细资料</strong></u>，它将重要的产品信息、与具体活动相关的假设和约束条件形成相应的文件。</p>
+<p>③在转移到活动排序过程以前，项目团队应该与项目干系人一起，<u><strong>审查修订</strong></u>的工作分解结构和依据资料。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230522153620213.png" alt="image-20230522153620213" style="zoom:50%;" />
+<blockquote>
+<p>⭐️分解用于<u><strong>活动定义</strong></u>时，最后结果是Activities(活动)；分解用于<u><strong>范围定义</strong></u>时，最后结果为Deliverables(可交付成果)</p>
+</blockquote>
+<p><mark>滚动式规划</mark>：在项目生命周期的不同阶段，工作的详细程度会有所不同。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在早期的战略规划阶段，信息尚不够明确，工作只能分解到已知的详细水平；随着了解到更多的信息，近期即将实施的工作包就可以分解到具体的活动。</p>
+</li>
+</ul>
+<h5 id="span-style-color-red-u-输出-u-span"><span style="color: red;"><u><em><strong>输出</strong></em></u></span></h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>活动清单：包括项目将要进行的所有计划活动。</p>
+</li>
+<li class="lvl-2">
+<p>活动属性：每项活动所具有的多种属性，用来扩充对活动的描述，活动属性随时间演进。</p>
+</li>
+<li class="lvl-2">
+<p>里程碑清单：项目中重要时点或者事件，列出了所有项目里程碑，并指明每个里程碑是强制性的。</p>
+</li>
+</ul>
+<h2 id="3活动排序">3活动排序</h2>
+<p><mark>活动排序</mark>涉及详细审查WBS中的活动、详细的产品说明书、假设和约束条件，以决定活动之间的相互关系。它也涉及评价活动之间依赖关系的原因、及各种依赖关系。</p>
+<h5 id="依赖关系-四种">依赖关系（四种）</h5>
+<p><mark>依赖关系或关系</mark>反映了项目活动或任务的顺序。一个<u><strong>没有明确活动之间关系</strong></u>的项目是不可能成功的。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u><strong>强制依赖关系（硬逻辑关系）</strong></u>是项目工作固有的特性(行业逻辑）。</p>
+</li>
+<li class="lvl-2">
+<p><u><strong>自由依赖关系（软逻辑关系）</strong></u>是由项目团队来定义的(是否签字）。</p>
+</li>
+<li class="lvl-2">
+<p><u><strong>外部依赖关系</strong></u> 涉及项目与非项目活动之间的关系（操作系统供应商）。</p>
+</li>
+<li class="lvl-2">
+<p><u><strong>内部依赖关系</strong></u> 涉及项目活动之间的关系（在项目团队控制之内）。</p>
+</li>
+</ul>
+<h5 id="四种依赖关系类型">四种依赖关系类型</h5>
+<p>四种依赖关系类型：确定了活动之间存在某种依赖关系（强制的，自由的，或者外部的等）之后，接下来必须确定依赖关系的类型。活动之间存在<u><strong>四种依赖关系类型</strong></u>：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>完成-开始（FS-Finished Start）：==从活动（紧前活动）==必须完成后，==到活动（紧后活动）==才能开始。</p>
+</li>
+<li class="lvl-2">
+<p>开始-开始（SS）：从活动开始后，到活动才能开始。</p>
+</li>
+<li class="lvl-2">
+<p>完成-完成（FF）：到活动完成前，从活动必须完成。</p>
+</li>
+<li class="lvl-2">
+<p>开始-完成（SF）：从活动必须开始后，到活动才能完成。</p>
+</li>
+</ul>
+<h5 id="活动排序概念">活动排序概念</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>排列活动顺序是<mark>识别和记录</mark><u><strong>项目活动之间的关系</strong></u>的过程。</p>
+</li>
+<li class="lvl-2">
+<p>是<u><strong>识别项目活动清单中各项活动的依赖关系</strong></u>，它的<mark>主要依据</mark>是<u><strong>已识别的活动清单</strong></u>。根据<u><strong>活动清单和依赖关系</strong></u>，<u>安排项目活动的顺序和先后关系</u>。</p>
+</li>
+<li class="lvl-2">
+<p><mark>本过程的主要作用</mark>是<u><strong>定义工作之间的逻辑顺序</strong></u>，以便在既定的所有项目制约因素下获得最高的效率。</p>
+</li>
+</ul>
+<h5 id="提前量和滞后量">提前量和滞后量</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>提前量是相对于紧前活动，紧后活动可以<u>提前的时间量</u>。</p>
+</li>
+<li class="lvl-2">
+<p>滞后量是相对于紧前活动，紧后活动需要<u>推迟的时间量</u>。</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525161844959.png" alt="image-20230525161844959" style="zoom:33%;" />
+<h4 id="项目网络图">⭐️项目网络图</h4>
+<h5 id="箭线图法-adm-双代号网络-aoa">⭐️箭线图法(ADM)-双代号网络(AOA)</h5>
+<p>①项目网络图 ：项目网络图是<u><strong>项目活动之间的逻辑关系或排序</strong></u>的<em><strong>图形显示</strong></em>。</p>
+<p>②表示方法：使用<u><strong>箭线图法(ADM)</strong></u>或<u><strong>双代号网络图法(AOA)</strong></u>编制的网络图如图所示。 AOA是用箭线表示活动，用节点的连接点反映活动顺序的网络制图技术。<mark>节点</mark>简单的<u><strong>表示活动的<mark>开始和结束</mark></strong></u>。</p>
+<p><u><em><strong>双代号网络图法(AOA)示例</strong></em></u>：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525162032690.png" alt="双代号网络图法(AOA)示例"></p>
+<blockquote>
+<p><mark>缺点：</mark></p>
+<ul class="lvl-1">
+<li class="lvl-2">只能表示FS一种活动依赖关系</li>
+</ul>
+</blockquote>
+<h6 id="虚活动">⭐️虚活动</h6>
+<p>作用：辅助排序使用</p>
+<table>
+<thead>
+<tr>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525162511167.png" alt="image-20230525162511167" style="zoom: 33%;" /></th>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525162559410.png" alt="image-20230525162559410" style="zoom:33%;" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<blockquote>
+<p><u><em><strong>只有双代号网络图法（AOA）中采用“虚活动”。</strong></em></u></p>
+</blockquote>
+<h5 id="前导图法-pdm-单代号网络-aon">⭐️前导图法(PDM)-单代号网络(AON)</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525162941631.png" alt="image-20230525162941631" style="zoom:50%;" />
+<table>
+<thead>
+<tr>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525163017244.png" alt="image-20230525163017244"></th>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525163026046.png" alt="image-20230525163026046"></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<blockquote>
+<p><mark>PDM法的优点：</mark></p>
+<p>①大多数项目管理软件使用PDM法</p>
+<p>②PDM法<u><strong>避免了使用虚活动</strong></u>(没有历时、不占用资源的活动)</p>
+<p>③PDM法<u><strong>反映了任务之间的各种依赖关系</strong></u></p>
+</blockquote>
+<p><mark>附：活动资源估计</mark>（本过程必须放在<u><strong>活动持续时间估计</strong></u>之前）</p>
+<p><em><strong><u>分析和识别项目的资源需求，确定项目所需<mark>投入资源的种类</mark>、估计<mark>资源的数量</mark>和<mark>资源投入的时间</mark>。</u></strong></em></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525163533034.png" alt="image-20230525163533034" style="zoom:33%;" />
+<h2 id="4估算活动持续时间">4估算活动持续时间</h2>
+<p><mark>估算活动持续时间</mark>是<em><strong>根据资源估算</strong></em>的结果，<u>估算</u><u><strong>完成单项活动所需工作时段数</strong></u>的过程。</p>
+<p><mark>本过程的主要作用是</mark>，确定<u><strong>完成每个活动所需花费的时间量</strong></u>。</p>
+<p><u><strong>历时估算</strong></u>：估算完成项目<u><strong>每项活动所需要的时间</strong></u>（hour，day， week）。<mark>历时</mark>包括活动消耗的<u><strong>实际时间</strong></u>，加上<u><strong>间歇时间</strong></u>。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525163832654.png" alt="image-20230525163832654" style="zoom:50%;" />
+<h5 id="历时">历时</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525163856653.png" alt="image-20230525163856653" style="zoom:33%;" />
+<h4 id="三点估算-一个选择题">三点估算（一个选择题）</h4>
+<p>是一种<u><strong>期望平均工期法</strong></u>。</p>
+<p><mark>PERT方法</mark>对每个活动的工期有3种估计：</p>
+<p>1）乐观的</p>
+<p>2）最可能的</p>
+<p>3）悲观的</p>
+<p>并假设<em><strong>活动工期</strong></em>服从贝塔分布。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525164138805.png" alt="image-20230525164138805" style="zoom:33%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525164202234.png" alt="image-20230525164202234" style="zoom:50%;" />
+<h2 id="5制定进度计划">5制定进度计划</h2>
+<p><mark>制定进度计划</mark>是<u><strong>分析活动顺序</strong></u>、<u><strong>持续时间</strong></u>、<u><strong>资源需求</strong></u>和<u><strong>进度制约因素</strong></u>，创建进度模型，从而落实<u><strong>项目执行和监控</strong></u>的过程。</p>
+<p><mark>本过程的主要作用</mark>是，为完成项目活动而制定<u><strong>具有计划日期的进度模型</strong></u>。</p>
+<p>制定进度计划的最终目标是：建立一个<em><strong>现实的</strong></em>项目进度计划，为<u><strong>监控项目的时间进展情况</strong></u>提供一个基础。</p>
+<p>制定进度计划的方法是：<u><strong>应用定义、排序、历时估算</strong></u>等过程得到的结果，制定进度计划，<u>决定项目的开始日期和完成日期</u>。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525170143217.png" alt="image-20230525170143217" style="zoom:50%;" />
+<blockquote>
+<p>⭐️关键路径法（掌握）</p>
+</blockquote>
+<h5 id="进度计划编制">进度计划编制</h5>
+<p><mark>进度计划编制</mark>：就是根据进度管理前几个过程的结果所进行的分析和项目计划的编制，<mark>产生经批准的<u>项目进度计划</u></mark>，以便<u><strong>作为项目进度管理的基线</strong></u>。</p>
+<blockquote>
+<p>项目计划要确定项目活动的起始时间和完成时间。同时要考虑其它因素的影响。</p>
+<p><u><em><strong>进度计划中的几个时间参数和相关术语</strong></em></u>：</p>
+<ul class="lvl-1">
+<li class="lvl-4">
+<p>ES：最早开始</p>
+</li>
+<li class="lvl-4">
+<p>EF：最早完成</p>
+</li>
+<li class="lvl-4">
+<p>LS：最晚开始</p>
+</li>
+<li class="lvl-4">
+<p>LF：最晚完成</p>
+</li>
+</ul>
+</blockquote>
+<h5 id="浮动时间">浮动时间</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525170128574.png" alt="image-20230525170128574" style="zoom:50%;" />
+<p><u><strong>进度压缩</strong></u>：在<u><strong>不缩减项目范围的前提下</strong></u>，<u>缩短或加快进度工期</u>，以满足进度制约因素、强制日期和其他进度目标。</p>
+<h3 id="关键路径法">⭐️关键路径法</h3>
+<p><mark>关键路径法（CPM）</mark>：这种进度网络分析技术<u><strong>在不考虑任何资源限制的情况下</strong></u>，根据制定的<u><strong>网络顺序逻辑关系</strong></u>和<u><strong>单一历时估算</strong></u>，沿进度网络路径使用<u><strong>顺推与逆推法</strong></u>，计算出所有活动的<u>最早开始ES、最早结束EF、最晚开始LS和最晚完成LF日期</u>。用来<u><em>预测整个项目的持续时间</em></u>。</p>
+<blockquote>
+<p><mark>其核心</mark>是<u><strong>计算浮动时间</strong></u>，确定哪些活动的进度安排灵活性最小。</p>
+</blockquote>
+<p><mark>关键路径</mark>：指决定项目最早完成时间的一系列活动，是<u><strong>通过网络图的最长路径</strong></u>，其<u><strong>浮动时间最少</strong></u>。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><em><strong>关键路径是可以变化的</strong></em>，如果对路径进行压缩可能会导致最终的项目完成时间减少，从而导致<u>最长时间路径</u>（关键路径）改变。</p>
+</li>
+<li class="lvl-2">
+<p>是项目完成的最短完成时间</p>
+</li>
+</ul>
+<p>⭐️<mark>计算关键路径</mark>：把通过网络图的每个路径上的所有<u>活动持续时间累加起来</u>，最长的路径就是关键路径。</p>
+<h4 id="关键路径的特点">关键路径的特点</h4>
+<p>①关键路径是<mark>最长的路径（图中时间累和最多的路径）</mark>。（见PDM图）</p>
+<p>②关键路径反映了项目所花费的最短的时间。</p>
+<p>③关键路径上的活动超时，总体进度就要拖延。</p>
+<p>④关键路径只与项目的时间有关与关键活动无关。</p>
+<p>⑤关键路径它与选择最短的路径无关。</p>
+<p>⑥一个项目可能会有超过一条的关键路径。</p>
+<p>⑦一个项目的关键路径可能会发生变化。</p>
+<h4 id="正推法">正推法</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525171126367.png" alt="image-20230525171126367" style="zoom:50%;" />
+<blockquote>
+<p>DU：持续时间</p>
+</blockquote>
+<h4 id="逆推法">逆推法</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525171556192.png" alt="image-20230525171556192" style="zoom:50%;" />
+<h4 id="关键路径来缩短项目进度">关键路径来缩短项目进度</h4>
+<p>在进度计划制订后，可能项目结束日期不满足要求，需要进一步缩短进度计划的项目工期。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>可以采用<mark>赶工</mark>（Crashing,<u><strong>通过增加资源</strong></u>）</p>
+</li>
+<li class="lvl-2">
+<p>或<mark>快速跟进</mark>（Fast tracking,<u><strong>通过并行施工</strong></u>）等方法。</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230525173658694.png" alt="image-20230525173658694" style="zoom:50%;" />
+<blockquote>
+<p><mark>赶工</mark>：通过增加资源，是为了以最少的成本代价获得最大限度的进度压缩。（关键路径上）</p>
+<p><mark>快速跟进</mark>：并行执行那些通常以顺序方式执行的活动。</p>
+</blockquote>
+<h4 id="关键路径法的应用">关键路径法的应用</h4>
+<p>① 利用关键路径分析<u><strong>平衡进度计划</strong></u></p>
+<p>② <u><strong>缩短</strong></u><mark>关键路径</mark>上的<u><strong>活动历时</strong></u> （重点在关键路径）</p>
+<p>③ 关注与及时更新关键路径数据</p>
+<h3 id="跟踪甘特图">跟踪甘特图</h3>
+<blockquote>
+<p>补充：</p>
+<p><mark>跟踪甘特图</mark>：用于显示项目的实际时间</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>显示计划和实际的项目进度信息</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="关键链进度计划">关键链进度计划</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>是一种进度计划方式，在创建项目进度时候，考虑资源的限制性，并且为了保护项目的完成日期，将缓冲也包括进来。</p>
+</li>
+<li class="lvl-2">
+<p>稀有资源的可用性。</p>
+</li>
+</ul>
+<h2 id="6进度控制">6进度控制</h2>
+<p><mark>控制进度</mark>是<strong>监督项目状态</strong>，以<strong>更新项目进度和管理进度基准变更</strong>的过程。</p>
+<p><mark>本过程的主要作用</mark>是在整个项目期间<u><strong>保持对进度基准的维护</strong></u>，且需要在整个项目期间开展。</p>
+<p>有效和有力的<u>控制项目进度计划的变更</u>，应重点注意：</p>
+<p>​	①保证项目进度计划是<u><strong>现实的</strong></u>、<u><strong>可行的</strong></u>、<strong><u>可操作的</u></strong>。</p>
+<p>​	②有纪律并加强领导来<u><strong>强调</strong></u>达到项目进度计划的<u><strong>重要性</strong></u>。</p>
+<p>​	③<u><strong>及时督促和检查</strong></u>项目进度计划的<u><strong>执行与变更</strong></u>。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230529142523464.png" alt="image-20230529142523464"></p>
+<h4 id="进度计划变更控制的三个基础">进度计划变更控制的三个基础</h4>
+<p>①<mark>关键的干系人</mark><u><strong>参与制定和一致认可</strong></u>项目进度计划，是<em><strong>计划可控</strong></em>的基础。</p>
+<p>②<u><strong>建立现实的项目进度计划</strong></u>是<em><strong>计划可行</strong></em>的基础。</p>
+<p>③<u><strong>项目经理清楚而诚实地汇报项目的状态</strong></u>是<em><strong>计划可用</strong></em>的基础。</p>
+<blockquote>
+<p>对这三项工作的<u><strong>检查与判断</strong></u>，是项目进度计划变更控制的<strong>基本保证</strong>。</p>
+</blockquote>
+<h4 id="项目经理-处理人问题">项目经理（处理人问题）</h4>
+<p><mark>项目经理的主要工作</mark>是领导项目所涉及的人，以控制进度计划变更 。为此要利用领导技能来发挥大家的作用：</p>
+<p>① <strong>授权</strong> — 授权项目团队成员对他们的活动负责。</p>
+<p>② <strong>激励</strong> — 用激励手段来鼓励人们达到进度期望。</p>
+<p>③ <strong>纪律</strong> — 必须使用纪律来控制项目进度 。</p>
+<p>④ <strong>谈判</strong> — 学习、掌握和传授良好的谈判技巧。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230529143013602.png" alt="image-20230529143013602" style="zoom:50%;" />
+<h4 id="使用软件进行时间管理">使用软件进行时间管理</h4>
+<p>①<strong>理解</strong>项目管理的概念在软件中的<strong>体现方式</strong>。</p>
+<p>②**<u>准确</u><strong>、</strong><u>及时</u><strong>、</strong><u>完整</u>**的输入<mark>基础数据与信息</mark>。</p>
+<p>③ 将<u>实际工作</u>与<u>熟练的掌握</u><u><strong>软件功能和操作技巧紧密结合</strong></u>。</p>
+<h4 id="进度控制概括来说"><mark>进度控制概括来说</mark></h4>
+<blockquote>
+<p>事前：对影响因素进行控制</p>
+<p>事中：对具体过程进行控制</p>
+<p>事后：改进或更新，采取补救措施</p>
+</blockquote>
+<h2 id="本章小结">本章小结</h2>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230529143842947.png" alt="image-20230529143842947" style="zoom:50%;" />
+<h2 id="课堂快速测试">课堂快速测试</h2>
+<ol>
+<li class="lvl-3">
+<p>活动属性</p>
+</li>
+<li class="lvl-3">
+<p>FS</p>
+</li>
+<li class="lvl-3">
+<p>跟踪甘特图</p>
+</li>
+<li class="lvl-3">
+</li>
+</ol>
+<h2 id="课堂讨论">课堂讨论</h2>
+<h5 id="1-为什么定义活动是项目进度管理而不是项目范围管理的过程">1、 为什么定义活动是项目进度管理而不是项目范围管理的过程</h5>
+<blockquote>
+<p>从项目进度管理和项目范围管理的定义和作用以及定义活动的作用来分析</p>
+</blockquote>
+<h5 id="2-解释活动工期估计和人工量估计之间的差异">2、解释活动工期估计和人工量估计之间的差异</h5>
+<blockquote>
+<p>活动工期估计和人工量估计之间的主要差异在于它们关注的方面不同。活动工期估计关注的是时间，即每个活动完成所需的时间量。它强调的是项目的时间计划和进度安排。人工量估计则关注的是资源，即项目所需的人力资源数量。它强调的是项目的资源需求和资源管理。</p>
+</blockquote>
+<h2 id="课堂作业">课堂作业</h2>
+<h3 id="网络图与甘特图的区别">网络图与甘特图的区别</h3>
+<blockquote>
+<p>网络图更侧重于活动之间的逻辑关系和复杂性，而甘特图更侧重于时间计划和可视化效果。</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/6-%E9%A1%B9%E7%9B%AE%E8%BF%9B%E5%BA%A6(%E6%97%B6%E9%97%B4)%E7%AE%A1%E7%90%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" rel="tag">课堂笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/" rel="tag">软件项目组织管理</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/7-%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9C%AC%E7%AE%A1%E7%90%86/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            第七章（项目成本管理）
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/5-%E9%A1%B9%E7%9B%AE%E8%8C%83%E5%9B%B4%E7%AE%A1%E7%90%86/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">第五章（项目范围管理）</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

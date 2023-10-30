@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 103 132" width="103" height="132" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;">
+  <defs>
+    <clipPath id="__lottie_element_227">
+      <rect width="103" height="132" x="0" y="0"></rect>
+    </clipPath>
+    <image xlink:href="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/avatar/The%20face%20of%20yixi.png"></image>
+    <clipPath id="__lottie_element_229">
+      <path d="M0,0 L692,0 L692,924 L0,924z"></path>
+    </clipPath>
+    <mask id="__lottie_element_232" mask-type="alpha">
+      <g transform="matrix(2.998891592025757,0,0,2.998891592025757,-1031.4945068359375,635.91796875)" opacity="1" style="display: block;">
+        <g opacity="1" transform="matrix(1,0,0,1,456,-74)">
+          <path fill="rgb(254,61,61)" fill-opacity="1" d=" M0,-74 C40.840599060058594,-74 74,-40.840599060058594 74,0 C74,40.840599060058594 40.840599060058594,74 0,74 C-40.840599060058594,74 -74,40.840599060058594 -74,0 C-74,-40.840599060058594 -40.840599060058594,-74 0,-74z"></path>
+        </g>
+      </g>
+    </mask>
+  </defs>
+  <g clip-path="url(#__lottie_element_227)">
+    <g clip-path="url(#__lottie_element_229)" transform="matrix(0.17499999701976776,0,0,0.17499999701976776,-6.424999237060547,-11.349998474121094)" opacity="1" style="display: block;">
+      <g transform="matrix(1,0,0,1,346,462)" opacity="1" style="display: block;">
+        <g opacity="1" transform="matrix(1,0,0,1,0,0)">
+          <path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="4" stroke="rgb(254,61,61)" stroke-opacity="1" stroke-width="6" d=" M-4.416999816894531,-298.8970031738281 C-16.148000717163086,-299.1570129394531 -28.06999969482422,-298.14801025390625 -40,-295.5 C-40,-295.5 -40,-295.5 -40,-295.5 C-153.59500122070312,-270.2900085449219 -209.25,-179.75 -212.25,-171.25 C-215.25,-162.75 -217.25,-122.75 -217.25,-122.75 C-217.25,-122.75 -207.625,-106.875 -207.625,-106.875 C-207.625,-106.875 -215,-105 -215,-96.9990005493164 C-215,192.00100708007812 -33,292 -33,292 C-33,292 8.211000442504883,296.1409912109375 19,289.75 C222,169.5 202,-102.25 202,-102.25 C202,-102.25 196.25,-111.75 196.25,-111.75 C196.25,-111.75 202.5,-118 202.5,-118 C202.5,-118 205,-161.75 202.75,-166.75 C191.1479949951172,-192.53199768066406 151,-232.5 151,-232.5 C151,-232.5 78.00599670410156,-297.0639953613281 -4.416999816894531,-298.8970031738281"></path>
+        </g>
+      </g>
+      <g mask="url(#__lottie_element_232)" style="display: block;">
+        <g transform="matrix(1,0,0,1,127,266)" opacity="1">
+          <image width="423px" height="278px" preserveAspectRatio="xMidYMid slice" xlink:href="https://assets.papegames.com/nikkiweb/bmqx/bmqxhome/_next/static/media/img_0.65e61168.png"></image>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

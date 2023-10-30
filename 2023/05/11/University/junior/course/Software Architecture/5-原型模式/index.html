@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>5-原型模式 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software Architecture/5-原型模式"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  5-原型模式
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/5-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2023-05-11T03:31:27.547Z" itemprop="datePublished">2023-05-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">5 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>原型模式</h1>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123192538698.png" alt="image-20221123192538698" style="zoom:50%;" />
+<blockquote>
+<p>第一个对象的创建：</p>
+<ul class="lvl-1">
+<li class="lvl-2">new创建</li>
+<li class="lvl-2">工厂创建</li>
+<li class="lvl-2">反射创建</li>
+</ul>
+<p>第二个对象及之后的对象创建：</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>克隆创建</p>
+<ul class="lvl-3">
+<li class="lvl-4">浅克隆
+<ul class="lvl-5">
+<li class="lvl-6"><mark>引用对象</mark>的内存不复制</li>
+</ul>
+</li>
+<li class="lvl-4">深克隆
+<ul class="lvl-5">
+<li class="lvl-6"><mark>引用对象</mark>的内存被复制</li>
+</ul>
+</li>
+<li class="lvl-4"><mark>浅克隆与深克隆都会创建全新的内存，新对象都会是独立的。</mark></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="原型模式的定义">原型模式的定义</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123193316513.png" alt="image-20221123193316513" style="zoom:50%;" />
+<blockquote>
+<p>对象创建型模式</p>
+<ol>
+<li class="lvl-3">工作原理：将一个原型对象传给要发动创建的对象（即客户端对象），这个要发动创建的对象<mark>通过请求原型对象复制自己来实现创建过程</mark></li>
+<li class="lvl-3">创建新对象（也称为克隆对象）的<mark>工厂就是原型类自身</mark>，<mark>工厂方法</mark>由负责复制原型对象的<mark>克隆方法</mark>来实现</li>
+<li class="lvl-3">通过<mark>克隆方法</mark>所创建的对象是<mark>全新的对象</mark>，它们在内存中拥有新的地址，<mark>每一个克隆对象都是独立的</mark></li>
+</ol>
+</blockquote>
+<h4 id="原型模式结构">原型模式结构</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123193905923.png" alt="image-20221123193905923" style="zoom:50%;" />
+<blockquote>
+<p>clone()方法可能不同，所以由子类实现。</p>
+</blockquote>
+<h5 id="原型模式包含以下角色">原型模式包含以下角色</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Prototype（抽象原型类）</p>
+</li>
+<li class="lvl-2">
+<p>ConcretePrototype（具体原型类）</p>
+</li>
+<li class="lvl-2">
+<p>Client（客户类）</p>
+</li>
+</ul>
+<h3 id="浅克隆与深克隆">浅克隆与深克隆</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>浅克隆(Shallow Clone)：当原型对象被复制时，只复制它本身和其中包含的值类型的成员变量，而引用类型的成员变量并没有复制</p>
+<ul class="lvl-2">
+<li class="lvl-4">
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123194306144.png" alt="image-20221123194306144" style="zoom:50%;" />
+</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>深克隆(Deep Clone)：<mark>除了对象本身被复制外，对象所包含的所有成员变量也将被复制</mark></p>
+<ul class="lvl-2">
+<li class="lvl-4">
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123194358754.png" alt="image-20221123194358754" style="zoom:50%;" />
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>java内置了浅克隆</p>
+</blockquote>
+<h4 id="通用的克隆实现方法">通用的克隆实现方法</h4>
+<table>
+<thead>
+<tr>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123194954934.png" alt="image-20221123194954934"  /></th>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123195016487.png" alt="image-20221123195016487" style="zoom:50%;" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<h6 id="类prototype与concreteprototype：">类Prototype与ConcretePrototype：</h6>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Prototype</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Prototype <span class="title function_">clone</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcretePrototype</span> <span class="keyword">implements</span> <span class="title class_">Prototype</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String attr; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAttr</span><span class="params">(String attr)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.attr = attr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getAttr</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.attr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//克隆方法</span></span><br><span class="line">    <span class="keyword">public</span> Prototype <span class="title function_">clone</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">ConcretePrototype</span> <span class="variable">prototype</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcretePrototype</span>(); <span class="comment">//创建新对象</span></span><br><span class="line">        prototype.setAttr(<span class="built_in">this</span>.attr);</span><br><span class="line">        <span class="keyword">return</span> prototype;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="客户端client：">客户端Client：</h6>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">……</span><br><span class="line"><span class="type">ConcretePrototype</span> <span class="variable">prototype</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcretePrototype</span>();</span><br><span class="line">prototype.setAttr(<span class="string">&quot;Sunny&quot;</span>);</span><br><span class="line"><span class="type">ConcretePrototype</span> <span class="variable">copy</span> <span class="operator">=</span> (ConcretePrototype)prototype.clone();</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+<h5 id="java语言中的clone-方法和cloneable接口">Java语言中的clone()方法和Cloneable接口</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在Java语言中，提供了一个clone()方法用于实现浅克隆，该方法使用起来很方便，直接调用<code>super.clone()方法</code>即可实现克隆</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123200112603.png" alt="image-20221123200112603" style="zoom:50%;" />
+<blockquote>
+<p><u><mark>需要将Object进行类型转换</mark></u></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//客户端代码操作</span></span><br><span class="line"><span class="type">Prototype</span> <span class="variable">prototype</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ConcretePrototype</span>();</span><br><span class="line"><span class="type">Prototype</span> <span class="variable">copy</span> <span class="operator">=</span> prototype.clone();</span><br></pre></td></tr></table></figure>
+<h5 id="实例类图1：">实例类图1：</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123200500730.png" alt="image-20221123200500730" style="zoom:50%;" />
+<h6 id="浅克隆的实现方案：">浅克隆的实现方案：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123200510033.png" alt="image-20221123200510033" style="zoom:50%;" />
+<blockquote>
+<p><mark>浅克隆</mark></p>
+<p>工作周报对象被成功复制，但是附件对象并没有复制，实现了浅克隆；</p>
+<p>附件Attachment类要先new创建之后再注入到WeeklyLog中。存在Attachment的对象attachment为WeeklyLog<strong>类的属性</strong>并且存在attachment的<strong>注入</strong>，所以是<mark>聚合关系</mark>。</p>
+</blockquote>
+<h6 id="深克隆的实现方案：">深克隆的实现方案：</h6>
+<p>工作周报类WeeklyLog和附件类Attachment实现==<code>Serializable接口</code>==</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123201320535.png" alt="image-20221123201320535" style="zoom:50%;" />
+<p><strong><u>通过序列化和反序列化的方式获得深克隆对象</u></strong></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>（具体的代码参考书</mtext><mi>P</mi><mn>100</mn><mtext>）</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{（具体的代码参考书P100）}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">（具体的代码参考书</span><span class="mord mathnormal" style="margin-right:0.13889em;color:red;">P</span><span class="mord" style="color:red;">100</span><span class="mord cjk_fallback" style="color:red;">）</span></span></span></span></p>
+<blockquote>
+<p><mark>深克隆</mark></p>
+<p>工作周报对象和附件对象都成功复制，实现了深克隆</p>
+</blockquote>
+<blockquote>
+<p>节点流：操纵内存、硬盘等</p>
+<p>过滤流：连接</p>
+<p>输入流与输出流：以程序为参照物</p>
+<ol>
+<li class="lvl-3">
+<p>程序输出到文件为<mark>输出流</mark><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>写文件；</p>
+</li>
+<li class="lvl-3">
+<p>文件输入到程序为<mark>输入流</mark><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>读文件；</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="原型管理器">原型管理器</h3>
+<p>原型管理器(Prototype Manager)将多个原型对象存储在一个集合中供客户端使用，它是一个专门负责克隆对象的工厂，其中定义了一个集合用于存储原型对象，如果需要某个原型对象的一个克隆，可以通过复制集合中对应的原型对象来获得。</p>
+<h5 id="原型管理器结构">原型管理器结构</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221123202928444.png" alt="image-20221123202928444" style="zoom:50%;" />
+<h6 id="代码实现：">代码实现：</h6>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PrototypeManager</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Hashtable prototypeTable=<span class="keyword">new</span> <span class="title class_">Hashtable</span>();  <span class="comment">//使用Hashtable存储原型对象</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PrototypeManager</span><span class="params">()</span> &#123;</span><br><span class="line">        prototypeTable.put(<span class="string">&quot;A&quot;</span>, <span class="keyword">new</span> <span class="title class_">ConcretePrototypeA</span>());</span><br><span class="line">        prototypeTable.put(<span class="string">&quot;B&quot;</span>, <span class="keyword">new</span> <span class="title class_">ConcretePrototypeB</span>());</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(String key, Prototype prototype)</span> &#123;</span><br><span class="line">        prototypeTable.put(key,prototype);</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Prototype <span class="title function_">get</span><span class="params">(String key)</span> &#123;</span><br><span class="line">        <span class="type">Prototype</span> <span class="variable">clone</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        clone = ((Prototype) prototypeTable.get(key)).clone(); <span class="comment">//通过克隆方法创建新对象</span></span><br><span class="line">        <span class="keyword">return</span> clone;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="模式优点">模式优点</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>简化对象的创建过程</strong>，通过复制一个已有实例可以提高新实例的创建效率</p>
+</li>
+<li class="lvl-2">
+<p>扩展性较好</p>
+<ul class="lvl-2">
+<li class="lvl-4"><mark>符合开闭原则</mark></li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>提供了简单的创建结构，原型模式中产品的复制是通过封装在原型类中的克隆方法实现的，<strong>无须专门的工厂类来创建产品</strong></p>
+<ul class="lvl-2">
+<li class="lvl-4"><mark>自己创建自己</mark></li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>可以使用<u>深克隆的方式保存对象的状态</u>，以便在需要的时候使用，<mark>可辅助实现撤销操作</mark></p>
+<ul class="lvl-2">
+<li class="lvl-4">实现ctrl+C、ctrl+Z操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="模式缺点">模式缺点</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>需要为每一个类配备一个克隆方法，而且该克隆方法位于一个类的内部，<mark>当对已有的类进行改造时，需要修改源代码，违背了开闭原则</mark></p>
+</li>
+<li class="lvl-2">
+<p>在<mark>实现深克隆时</mark>需要<mark>编写较为复杂的代码</mark>，而且当对象之间存在多重的嵌套引用时，为了实现深克隆，每一层对象对应的类都必须支持深克隆（每一层的对应的类都需要实现<mark>Serializable接口</mark>），实现起来可能会比较麻烦</p>
+</li>
+</ul>
+<h3 id="模式适用环境">模式适用环境</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>创建新对象成本较大</mark>，新对象可以通过复制已有对象来获得，<strong><u>如果是相似对象，则可以对其成员变量稍作修改</u></strong></p>
+</li>
+<li class="lvl-2">
+<p>系统要保存对象的状态，而<mark>对象的状态变化很小</mark></p>
+</li>
+<li class="lvl-2">
+<p>需要<mark>避免使用分层次的工厂类</mark>来创建分层次的对象</p>
+</li>
+<li class="lvl-2">
+<p>Ctrl + C<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>Ctrl + V</p>
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/05/11/University/junior/course/Software%20Architecture/5-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" rel="tag">课程笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" rel="tag">软件体系结构</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/6-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            6-单例模式
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/4-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F%EF%BC%88%E8%87%AA%E5%AD%A6%EF%BC%89/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">4-建造者模式</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

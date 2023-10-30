@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>电商实验记录（个人） |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/electronic_commerce/电商实验记录"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  电商实验记录（个人）
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/11/University/junior/course/electronic_commerce/%E7%94%B5%E5%95%86%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95/" class="article-date">
+  <time datetime="2023-05-11T02:34:37.132Z" itemprop="datePublished">2023-05-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E7%94%B5%E5%AD%90%E5%95%86%E5%8A%A1%E5%BA%94%E7%94%A8/">电子商务应用</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">3.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">13 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>电商实验记录</h1>
+<h2 id="阶段一-二">阶段一、二</h2>
+<h3 id="算法流程">算法流程</h3>
+<ol>
+<li class="lvl-3">
+<p>首先通过dataPreprocess函数读取查询记录：user_tag_query.train文件，之后将搜索信息一行一行地存储到1_raws_words文件中；</p>
+</li>
+<li class="lvl-3">
+<p>之后通过dataCleanWord函数读取1_raws_words文件中的数据，一行一行地判断是否是汉字，将所有字母数字以及特殊字符全部去除，只留下了中文汉字，将得到的结果按行存在2_without_useless_words文件中；（<mark>这里只保留汉字的做法是不对的，我之后会改</mark><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>去除链接）</p>
+</li>
+<li class="lvl-3">
+<p>然后通过函数findRelatedWords读取2_without_useless_words文件中的数据，并根据种子关键词挑选出于种子关键词相关的搜索条目，同样按行存储在文件3_related_words中；</p>
+</li>
+<li class="lvl-3">
+<p>又通过函数dataSegmention读取3_related_words中一行一行的数据，然后调用jieba库采用jieba的精确模式（jieba.cut()）对每一行中文文本信息进行分词，并存储到4_seg_words文件中；</p>
+</li>
+<li class="lvl-3">
+<p>然后通过函数dataStopWord读取4_seg_words中的数据，并根据事先设定好的停用词列表，去除4_seg_words中的停用词，之后将结果存储在5_without_stopped_words文件中；</p>
+</li>
+<li class="lvl-3">
+<p>之后就可以通过函数dataWordCounter对5_without_stopped_words文件中的数据进行词频统计，并按照降序方式存储到文件6_counts_words中；</p>
+</li>
+<li class="lvl-3">
+<p>然后就能根据函数findMediKeywords找到权重最大（词频数最大）的前10个词作为中介关键词，并将结果按词频数降序存储到7_mediation_words文件中；</p>
+</li>
+<li class="lvl-3">
+<p>最后就是计算竞争性comp测度：</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-4">
+<p>通过dataCompkey函数读取7_mediation_words文件中的数据，然后利用for循环将每一个中介关键词产生的与种子关键词具有竞争性的竞争关键词的候选集合以及竞争测度计算出来</p>
+<ul class="lvl-2">
+<li class="lvl-6">从2_without_useless_words文件中读取数据，然后对数据进行分析，找到包含中介关键词的搜索条目，并存储到8_with_mediation_words文件中；</li>
+<li class="lvl-6">然后对得到的8_with_mediation_words文件内容进行分词、去除停用词、词频统计；</li>
+<li class="lvl-6">最后从得到的11_with_counts_words文件中挑选出既不含种子关键词，也不含中介关键词同时保证词长度大于等于2的竞争关键词；</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>设定a、ka、sa并统计相应的搜索量，然后根据竞争度计算公式进行计算得到最后的竞争度；</p>
+</li>
+<li class="lvl-4">
+<p>之后重复循环直到完成10个中介关键词的所有相关竞争关键词竞争度的计算，然后降序排序存入对应的文件中。</p>
+</li>
+</ul>
+<h3 id="进一步优化">进一步优化</h3>
+<p>当前存在的缺陷：</p>
+<ol>
+<li class="lvl-3">
+<p>在数据处理阶段采用了一刀切的方式将除了汉字之外的所有的符号、链接等全部去除，但是就一般来说，有些字母符号以及英文缩写对分析是十分重要的；</p>
+</li>
+<li class="lvl-3">
+<p>现有的分词方法采用的是jieba库，对于新词和歧义词的辨识较差；</p>
+</li>
+<li class="lvl-3">
+<p>停用词列表有待扩充，现阶段只是设计了简单的单个词以及少量的两个词和三个词，但是实际情况应该是多字词都可能存在停用的可能<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span><mark>自动化词库</mark></p>
+<ul class="lvl-2">
+<li class="lvl-5">
+<pre><code class="language-Python">stop_word_list = &#123;'\n', '\t', '\r', '为什么', '怎么办', '哪个', '之', '多少', '可以', '的', '与', '了', &quot;在&quot;,
+                          '是', &quot;我&quot;, &quot;和&quot;, &quot;就&quot;, &quot;不&quot;, &quot;都&quot;, &quot;一&quot;, &quot;一个&quot;, &quot;上&quot;, &quot;也&quot;, &quot;很&quot;, &quot;到&quot;, &quot;说&quot;, &quot;要&quot;, &quot;去&quot;,
+                          &quot;你&quot;, &quot;会&quot;, &quot;着&quot;, &quot;没有&quot;, &quot;看&quot;, &quot;好&quot;, &quot;自己&quot;, &quot;这&quot;, '呢', '怎样', '如何', '什么', '', ' ',
+                          '怎么', '吗', '有'&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   - </span><br><span class="line"></span><br><span class="line">```Python</span><br><span class="line"># 一些分词的事例</span><br><span class="line">三国演义	小说	百度	云</span><br><span class="line">陈赫	玩	王者	荣耀</span><br></pre></td></tr></table></figure>
+
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<p>优化的方向和方法：</p>
+<ol>
+<li class="lvl-3">
+<p>考虑根据词性进行分词操作，分析是否能够提升效率以及降低成本</p>
+</li>
+<li class="lvl-3">
+<p>jieba库支持用户自己添加的词典：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span><mark>自动化词库</mark></p>
+<ul class="lvl-2">
+<li class="lvl-5">
+<p>在分词前通过<code>jieba.load_userdict(file_name)</code>来加载分词字典</p>
+</li>
+<li class="lvl-5">
+<p>在每次启动项目时都需要重新加载个人词典（在对应的搜索类型上加载对应的词库即可）</p>
+</li>
+<li class="lvl-5">
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yoyowin/p/12856964.html">python使用结巴分词(jieba)创建自己的词典/词库 - cknds - 博客园 (cnblogs.com)</a></p>
+<p>参考之二：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29202513/article/details/85236995">(77条消息) 解决jieba分词 load_userdict 加载自定义词库太慢的问题_10086_的博客-CSDN博客_jieba.load_userdict</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># jieba的缓存位置</span><br><span class="line">C:\Users\wgj\AppData\Local\Temp\jieba.cache</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>变体词识别和替换</p>
+<ul class="lvl-2">
+<li class="lvl-5">
+<p>定义：网络书写具有随意性、非正规性等特点。变体词就是网络语言作为一种不规范语言的显著特色, 人们往往出于避免审查、表达情感、讽刺、娱乐等需求将相对严肃、规范、敏感的词用相对不规范、不敏感的词来代替, 用来代替原来词的新词就叫做<strong>变体词(Morph)</strong> 。</p>
+</li>
+<li class="lvl-5">
+<p>由于变体词的隐喻，导致需要将变体词的还原成本来的词语，避免对文义分析产生偏差</p>
+</li>
+<li class="lvl-5">
+<p>例如：<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221021114639593.png" alt="image-20221021114639593"></p>
+</li>
+<li class="lvl-5">
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wyq_wyj/article/details/81837353">(77条消息) 文本信息过滤中的变体词识别（一）_wuyijian_ml的博客-CSDN博客_变体词</a></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>不同搜索类型</p>
+<ul class="lvl-2">
+<li class="lvl-5">
+<p>可以为用户提供不同的关键词搜索类型，不同的搜索类型将使用不同的常用词库来进行分词，提高种子关键词的相关竞争性关键词的准确率</p>
+<ul class="lvl-4">
+<li class="lvl-8">例如：用户选择饮食相关的搜索类型时可以使用对应的常用词库（**词条样例：**土豆、火锅、意大利面、果佳、猴头菇……），如此提高结果的准确率</li>
+</ul>
+</li>
+<li class="lvl-5">
+<p>搜索类型：</p>
+<ul class="lvl-4">
+<li class="lvl-8">饮食</li>
+<li class="lvl-8">汽车</li>
+<li class="lvl-8">电商</li>
+<li class="lvl-8">医学</li>
+<li class="lvl-8">法律</li>
+<li class="lvl-8">动植物</li>
+<li class="lvl-8">地域（中国、意大利、德国……）</li>
+</ul>
+</li>
+<li class="lvl-5">
+<blockquote>
+<p>词库参考：<a target="_blank" rel="noopener" href="http://thuocl.thunlp.org/#%E5%9C%A8%E7%BA%BF%E6%BC%94%E7%A4%BA">THUOCL：清华大学开放中文词库 (thunlp.org)</a></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>jieba库支持4种分词模式（扩展分词模式的选择？）</p>
+<ul class="lvl-2">
+<li class="lvl-5">精确模式：试图将句子最精确地切开，适合文本分析；</li>
+<li class="lvl-5">全模式：把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义</li>
+<li class="lvl-5">搜索引擎模式：在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词</li>
+<li class="lvl-5">paddle模式：利用PaddlePaddle深度学习框架，训练序列标注（双向GRU）网络模型实现分词。同时支持词性标注。（应该是百度提供的分词模型）</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><u>老师建议</u>：词库要做成自动化的；<mark>每一个中介关键词都会产生多个竞争性关键词，不能简单地只取其中词频数最多的作为竞争关键词。</mark></p>
+</blockquote>
+<h2 id="阶段三">阶段三</h2>
+<blockquote>
+<p>关键词工具参考：</p>
+<ol>
+<li class="lvl-3">谷歌关键词工具：kwfinder、keywordtool</li>
+<li class="lvl-3">网站流量、关键词分析：semrush</li>
+</ol>
+</blockquote>
+<p>内容：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>软件系统概述</p>
+<ul class="lvl-2">
+<li class="lvl-4">竞争性关键词推荐系统</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>软件系统结构设计</p>
+<ul class="lvl-2">
+<li class="lvl-4">子系统之一：用户服务子系统</li>
+<li class="lvl-4">子系统之二：分词算法子系统</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>功能模块设计</p>
+<ul class="lvl-2">
+<li class="lvl-4">
+<p>用户服务子系统</p>
+<ul class="lvl-4">
+<li class="lvl-6">用户管理模块（用户的登录注册以及信息修改等）</li>
+<li class="lvl-6">文档管理模块（用于管理推荐输出的文档，可以查看历史文档并下载等、问卷的填写和问卷数据的查看）</li>
+<li class="lvl-6">分词管理模块（用户可以选择多种分词方法，同时能够根据不同分词方法得到的结果进行比较；用户根据需要选择不同的搜索类型，提高结果的精确度）</li>
+<li class="lvl-6">图表展示模块（用户能够查看得到的算法的效率曲线图、分词结果的反映竞争性程度的柱状图、展示的关键词的区域热度图）</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>分词算法子系统</p>
+<ul class="lvl-4">
+<li class="lvl-6">数据预处理模块（将原始数据处理成一行一行的形式存储到指定文件1中）</li>
+<li class="lvl-6">分词处理模块（包含了从上一模块（预处理）的文件中查找包含了种子关键词的所有搜索条目并存储到指定文件2中、对文件2中的所有搜索条目进行分词处理并存储到文件3中）</li>
+<li class="lvl-6">清洗与统计模块（包含将得到的文件3中所有词进行清除停用词处理以及变体词识别和替换处理、统计得到的所有词并按词频降序存入指定文件中、根据词频统计结果找到中介关键词）</li>
+<li class="lvl-6">竞争度计算模块（计算comp测度，计算出每一个输入种子关键词的所有通过对应中介关键词联系起来的竞争关键词，并最后根据对应的竞争度降序输出呈现在前端）</li>
+</ul>
+</li>
+<li class="lvl-4">
+<p>补充：</p>
+<ul class="lvl-4">
+<li class="lvl-6">
+<p>停用词和常用词库会存在文件服务器上，数据库中存储相应的路径信息，管理员可以修改停用词和常用词库以达到更新的目的，用户可以增加自己的个人词典并提交存储到文件服务器上</p>
+<ul class="lvl-6">
+<li class="lvl-8">
+<p><u>常用词库和自建个人词典的意义在于</u>：分词会将例如王者荣耀四个字分为王者和荣耀，在我们的认知中这四个字最好是作为一个整体，所以通过添加自建词典可以避免这样的问题；</p>
+<ul class="lvl-8">
+<li class="lvl-10">
+<pre><code class="language-python"># 一些分词的事例
+三国演义	小说	百度	云
+陈赫	玩	王者	荣耀
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>数据库设计</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221104101304242.png" alt="image-20221104101304242" style="zoom:50%;" />
+<blockquote>
+<p>系统设计参考：<a target="_blank" rel="noopener" href="https://www.4xseo.com/thinking/3867/">一个完整推荐系统的设计实现-以百度关键词搜索推荐为例 - 思享SEO博客 (4xseo.com)</a></p>
+<p>详细参考：<a target="_blank" rel="noopener" href="http://www.semocean.com/">Semocean – 和自己赛跑的人</a></p>
+</blockquote>
+<p>在实践中， 一个完整的推荐系统会主要由3部分组成：</p>
+<ol>
+<li class="lvl-3">
+<p>User Profile</p>
+</li>
+<li class="lvl-3">
+<p>基础推荐挖掘算法</p>
+</li>
+<li class="lvl-3">
+<p>Ranking</p>
+</li>
+</ol>
+<p>user profile主要是用户（注册）信息，以及对用户反馈的信息进行处理，聚合，用于描述用户的特征； 是后续推荐和排序的基石。</p>
+<h3 id="变体词的识别和替换实现思路">变体词的识别和替换实现思路</h3>
+<blockquote>
+<p>参考之一：<a target="_blank" rel="noopener" href="https://www.codetd.com/article/2877964">文本信息过滤中的变体词识别（一） - 代码天地 (codetd.com)</a></p>
+<p>参考之二：<a target="_blank" rel="noopener" href="https://www.codetd.com/article/5172418">文本信息过滤中的变体词识别（二） - 代码天地 (codetd.com)</a></p>
+</blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/20180819114636399" alt="img" style="zoom:50%;" />
+<h2 id="阶段四">阶段四</h2>
+<h5 id="基本功能：">基本功能：</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>去停用词</p>
+</li>
+<li class="lvl-2">
+<p>分词</p>
+</li>
+<li class="lvl-2">
+<p>找到竞争关键词</p>
+<ul class="lvl-2">
+<li class="lvl-4">每个中介关键词会对应多个竞争性关键词</li>
+</ul>
+</li>
+</ul>
+<h5 id="拓展功能：">拓展功能：</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>多样化搜索类型（……）✔️</p>
+<ul class="lvl-2">
+<li class="lvl-4"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221110162141456.png" alt="image-20221110162141456"></li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>将拼音转换为汉字（还原原始数据信息的完善性）</p>
+<blockquote>
+<ul class="lvl-3">
+<li class="lvl-2">参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/acheng1011/p/15822080.html#">Python 将拼音和汉字互相转换 - Acheng1011 - 博客园 (cnblogs.com)</a></li>
+</ul>
+</blockquote>
+</li>
+<li class="lvl-2">
+<p>中文繁简体互转✔️</p>
+<blockquote>
+<ul class="lvl-3">
+<li class="lvl-2">参考：<a target="_blank" rel="noopener" href="https://github.com/berniey/hanziconv">berniey/hanziconv: Hanzi Converter for Traditional and Simplified Chinese (github.com)</a></li>
+<li class="lvl-2">参考之二：<a target="_blank" rel="noopener" href="https://github.com/skydark/nstools/tree/master/zhtools">nstools/zhtools at master · skydark/nstools (github.com)</a></li>
+</ul>
+</blockquote>
+</li>
+<li class="lvl-2">
+<p>变体词的识别和替换？？？——<mark>可能无法实现，资源太少了</mark>❌</p>
+</li>
+</ul>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221110162243614.png" alt="image-20221110162243614"></p>
+<ol>
+<li class="lvl-3">
+<p><u>在数据清洗时就将变体词识别并替换掉</u>✔️</p>
+</li>
+</ol>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wyq_wyj/article/details/81837353">(77条消息) 文本信息过滤中的变体词识别（一）_wuyijian_ml的博客-CSDN博客_变体词</a></p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>别名的识别（包含了<u>数据的清洗以及繁体转简体功能</u>）——<mark>作为变体词的阉割功能</mark></p>
+<blockquote>
+<ul class="lvl-3">
+<li class="lvl-2">参考：<a target="_blank" rel="noopener" href="https://github.com/blmoistawinde/HarvestText/blob/master/examples/entity_discover/entity_discover.ipynb">HarvestText/entity_discover.ipynb at master · blmoistawinde/HarvestText (github.com)</a></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><strong><u>可以考虑的功能：</u></strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>人名信息抽取</p>
+<blockquote>
+<ul class="lvl-3">
+<li class="lvl-2"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221110171300648.png" alt="image-20221110171300648"></li>
+<li class="lvl-2">参考：<a target="_blank" rel="noopener" href="https://github.com/fighting41love/cocoNLP">fighting41love/cocoNLP: A Chinese information extraction tool. (github.com)</a></li>
+</ul>
+</blockquote>
+</li>
+<li class="lvl-2">
+<p>智能客户</p>
+<blockquote>
+<ul class="lvl-3">
+<li class="lvl-2"><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221110170821923.png" alt="image-20221110170821923"></li>
+<li class="lvl-2">参考：<a target="_blank" rel="noopener" href="https://github.com/wangguijiepedeval/funNLP">wangguijiepedeval/funNLP: 中英文敏感词、语言检测 (github.com)</a></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h5 id="性能方面的优化：">性能方面的优化：</h5>
+<p>提前缓存：读结果</p>
+<p>多线程</p>
+<h2 id="关键词推荐系统设计">关键词推荐系统设计</h2>
+<h3 id="功能方面：">功能方面：</h3>
+<ol>
+<li class="lvl-3">
+<p>搜索（多种选择-分类搜索、多种分词方法、数据量选择、多线程、词库选择（系统或是用户：变体词库、常用词库、停用库、各种领域的词库）、是否考虑繁体中文（即：是否将繁体转换为简体））</p>
+<ul class="lvl-2">
+<li class="lvl-5">分类搜索：（动物、财经、交通、成语、地名、食物、IT、法律、历史名人、医疗、诗词）
+<ul class="lvl-4">
+<li class="lvl-7">首先在项目内部的/static/tmp下寻找是否有对应的词库，如果有则直接使用本地词库即可，如果没有说明是系统新增词库，这时再执行从文件服务器上下载词库的操作——<mark>提高效率</mark></li>
+</ul>
+</li>
+<li class="lvl-5">多种分词方法（目前是jieba、ltp、HanTP）</li>
+<li class="lvl-5">数据量选择（单位是……行）</li>
+<li class="lvl-5">多线程（线程数选择）</li>
+<li class="lvl-5">词库选择（变体词库、常用词库、停用库、各种领域的词库）</li>
+<li class="lvl-5">是否考虑繁体中文（是否将繁体转换为简体）</li>
+<li class="lvl-5">对字母不区分大小写（如：QQ与qq相同）</li>
+<li class="lvl-5">用户指定一个中介关键词产生竞争性关键词的数量</li>
+<li class="lvl-5">
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>呈现结果（结果：以列表形式呈现，如果之前已经搜索过就直接从文件服务器上获取，用户自行设置是否发送文件到邮箱？）</p>
+<ul class="lvl-2">
+<li class="lvl-5">将所有文件放到文件服务器中，直接对文件服务器上的文件进行读写操作</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>查看词库（以列表形式呈现基本信息，用户可以选择下载-别人提供的词库等）</p>
+</li>
+<li class="lvl-3">
+<p>上传用户词库（填表单（后端拿userid，用户填词库名称、词库的类型-自定义、词库的简介、是否共享），然后上传文件）</p>
+</li>
+<li class="lvl-3">
+<p>展示分词方法的信息板块-丰富系统内容</p>
+</li>
+<li class="lvl-3">
+<p>呈现所有的用户得到的结果（列表形式展现结果文件信息，可以选择下载）</p>
+</li>
+</ol>
+<h3 id="性能优化方面：">性能优化方面：</h3>
+<ol>
+<li class="lvl-3">
+<p>提前缓存：读已有结果（其他用户搜索过的结果）</p>
+</li>
+<li class="lvl-3">
+<p>多线程</p>
+</li>
+</ol>
+<h2 id="分词方法">分词方法</h2>
+<blockquote>
+<p>python分词中文分词包—分别是snownlp,thulac和pynlpir，最后再结合pyecharts以词云的方式显示最终分词结果</p>
+</blockquote>
+<h3 id="jieba✔">jieba✔️</h3>
+<h3 id="ltp✔">ltp✔️</h3>
+<blockquote>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://pyltp.readthedocs.io/zh_CN/latest/api.html#id2">使用 pyltp — pyltp 0.2.0 文档</a></p>
+</blockquote>
+<h3 id="hantp✔">HanTP✔️</h3>
+<blockquote>
+<p>官网参考：<a target="_blank" rel="noopener" href="https://www.hanlp.com/">HanLP官网</a></p>
+<p>GitHub：<a target="_blank" rel="noopener" href="https://github.com/hankcs/HanLP">hankcs/HanLP: 中文分词 词性标注 命名实体识别 依存句法分析 成分句法分析 语义依存分析 语义角色标注 指代消解 风格转换 语义相似度 新词发现 关键词短语提取 自动摘要 文本分类聚类 拼音简繁转换 自然语言处理 (github.com)</a></p>
+<p>官方演示文档：<a target="_blank" rel="noopener" href="https://hanlp.hankcs.com/demos/tok.html">中文分词 | 在线演示 (hankcs.com)</a></p>
+<p>申请免费密钥：<a target="_blank" rel="noopener" href="https://bbs.hanlp.com/t/hanlp2-1-restful-api/53">https://bbs.hanlp.com/t/hanlp2-1-restful-api/53</a></p>
+<p>pyhanlp ：<a target="_blank" rel="noopener" href="https://pypi.org/project/pyhanlp/0.1.26/">pyhanlp · PyPI</a></p>
+</blockquote>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116002211509.png" alt="image-20221116002211509"></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116002331227.png" alt="image-20221116002331227"></p>
+<h3 id="none"></h3>
+<blockquote></blockquote>
+<h2 id="django框架">Django框架</h2>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/django/django-intro.html">Django 简介 | 菜鸟教程 (runoob.com)</a></p>
+</blockquote>
+<h3 id="工厂设计模式">工厂设计模式</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Burgess_zheng/article/details/86762248">(77条消息) Python之23种设计模式_Burgess_zheng的博客-CSDN博客_python 设计模式</a></p>
+</blockquote>
+<p>重写（Override）是<mark>父类与子类之间多态性</mark>的一种表现。如果在<u>子类中定义某方法与其父类有相同的名称和参数</u>，我们说该方法被重写 (Override)。子类的对象使用这个方法时，将调用子类中的定义，对它而言，父类中的定义如同被“屏蔽”了。</p>
+<p>重载（Overload）是<mark>一个类中多态性</mark>的一种表现。如果在<u>一个类中定义了多个同名的方法，它们参数列表不同</u>，则称为方法的重载(Overload)</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/05/11/University/junior/course/electronic_commerce/%E7%94%B5%E5%95%86%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%B5%E5%AD%90%E5%95%86%E5%8A%A1/" rel="tag">电子商务</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/" rel="tag">课程实验</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/11/University/junior/course/electronic_commerce/16%E7%BA%A7%E8%AF%95%E5%8D%B7%E6%80%BB%E7%BB%93/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            16级电子商务试卷总结（部分）
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/04/27/University/junior/course/software-metrics/2023%E8%BD%AF%E4%BB%B6%E5%BA%A6%E9%87%8F%E8%80%83%E7%82%B9/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">2023软件度量考点</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

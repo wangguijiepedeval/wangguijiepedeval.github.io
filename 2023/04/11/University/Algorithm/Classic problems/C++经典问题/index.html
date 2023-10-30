@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>C++经典问题 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/Algorithm/Classic problems/C++经典问题"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  C++经典问题
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/04/11/University/Algorithm/Classic%20problems/C++%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2023-04-11T09:03:11.709Z" itemprop="datePublished">2023-04-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/">算法</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98/">经典问题</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">3.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">14 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>C++经典问题</h1>
+<h3 id="求整数的两个质数因子">求整数的两个质数因子</h3>
+<blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>关键理论：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{关键理论：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">关键理论：</span></span></span></span></p>
+<p><mark>质数分解唯一性</mark>是一个重要的数论概念，它指出任何一个大于1的正整数都可以被唯一地表示成若干个质数的积。</p>
+<p>具体来说，对于一个大于1的正整数n，它可以写成以下形式的质因数积：</p>
+<p>n = p1^k1 * p2^k2 * … * pn^kn</p>
+<p>其中p1, p2, …, pn为质数，k1, k2, …, kn为正整数。这个表示方式称为n的质因数分解式，也称为n的标准分解式。</p>
+<p>质数分解唯一性指出：<u>任何一个正整数n都<mark>有且仅有一种</mark>质因数分解式</u>。也就是说，不管用什么方法，只要将n分解成若干个质数的积，得到的分解式都是唯一的。</p>
+<p>这个性质在数论和其它领域中都有广泛的应用。例如，在密码学中，**<u>RSA公钥加密算法</u>**就是<mark>基于质数分解唯一性</mark>的安全性原理而设计的。</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算两个质数p，q</span></span><br><span class="line"><span class="keyword">for</span>(ll i=<span class="number">2</span>;i&lt;<span class="built_in">sqrt</span>(n);++i) &#123;<span class="comment">// &quot;质数分解唯一性&quot;:一个数有且只有1种质因数分解式</span></span><br><span class="line">    <span class="keyword">if</span>(n%i==<span class="number">0</span>)&#123;</span><br><span class="line">        p = i, q = n/i;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;p&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;q;</span><br></pre></td></tr></table></figure>
+<h3 id="求整数的所有因子">求整数的所有因子</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= n; k++)</span><br><span class="line">	<span class="keyword">if</span> (n % k == <span class="number">0</span>)</span><br><span class="line">		cout &lt;&lt; k &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="背包问题">背包问题</h3>
+<ol>
+<li class="lvl-3">
+<p>01背包问题（每种物品只能选一次）</p>
+</li>
+<li class="lvl-3">
+<p>完全背包问题（每种物品都可以选无限次）</p>
+</li>
+<li class="lvl-3">
+<p>多重背包问题（每种物品具有不同的选择上限）</p>
+<ul class="lvl-2">
+<li class="lvl-5">可以转换为01背包问题；</li>
+<li class="lvl-5">或是添加附加数量限制条件；</li>
+</ul>
+</li>
+</ol>
+<h4 id="3-多重背包问题">3.多重背包问题</h4>
+<h5 id="转换为01背包问题">转换为01背包问题</h5>
+<p>解法代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 按照别人AC的代码写的居然死活过不了？？？</span></span><br></pre></td></tr></table></figure>
+<h5 id="添加附加数量限制条件">添加附加数量限制条件</h5>
+<p>解法代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 多重背包问题 ——添加附加数量限制条件 </span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> dp[N][N], v[N], w[N], s[N];<span class="comment">// v体积，w价值，s数量 </span></span><br><span class="line"><span class="type">int</span> n, V;</span><br><span class="line"><span class="type">int</span> f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;V;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;v[i]&gt;&gt;w[i]&gt;&gt;s[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=V;++j)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;=s[i];++k)&#123;<span class="comment">// 这里的k必须从0开始,k=0时有dp[i-1][j] </span></span><br><span class="line">				<span class="keyword">if</span>(j&gt;=k*v[i])&#123;</span><br><span class="line">					dp[i][j] = <span class="built_in">max</span>(dp[i][j], dp[i<span class="number">-1</span>][j-k*v[i]]+k*w[i]);<span class="comment">// 在01-背包问题的基础上作次数限制 </span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//空间压缩</span></span><br><span class="line"><span class="comment">//	for(int i=1;i&lt;=n;++i)&#123;</span></span><br><span class="line"><span class="comment">//		for(int j=V;j&gt;=v[i];--j)&#123;</span></span><br><span class="line"><span class="comment">//			for(int k=1;k*v[i]&lt;=j&amp;&amp;k&lt;=s[i];++k)&#123;</span></span><br><span class="line"><span class="comment">//				f[j] = max(f[j], f[j-k*v[i]]+k*w[i]);</span></span><br><span class="line"><span class="comment">//			&#125;</span></span><br><span class="line"><span class="comment">//		&#125;</span></span><br><span class="line"><span class="comment">//	&#125;</span></span><br><span class="line">	cout&lt;&lt;dp[n][V];</span><br><span class="line"><span class="comment">//	cout&lt;&lt;f[V];</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>01背包与完全背包问题可以参考<code>PDF:LeetCode 101</code>;</p>
+</blockquote>
+<h3 id="判断闰年">判断闰年</h3>
+<p>如果一个年份能够被4整除但不能被100整除，或者能够被400整除，则该年份是闰年。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(year%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;year%<span class="number">100</span>!=<span class="number">0</span>)||(year%<span class="number">400</span>==<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="lcs">LCS</h3>
+<p>在C++中，LCS是<u><strong>最长公共子序列</strong></u>（Longest Common Subsequence）的缩写，它是一种经典的计算机科学问题，通常用于比较两个字符串或序列之间的相似性。给定两个序列X和Y，LCS问题的目标是找到一个最长的序列Z，使得Z既是X的子序列又是Y的子序列。</p>
+<p>LCS问题在自然语言处理、生物信息学、数据压缩等领域都有广泛应用。C++提供了许多实现LCS问题的算法，包括动态规划、贪心算法、分治算法等。</p>
+<p>下面是一个使用动态规划算法实现LCS问题的C++代码示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lcs</span><span class="params">(string X, string Y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> m = X.<span class="built_in">length</span>();</span><br><span class="line">    <span class="type">int</span> n = Y.<span class="built_in">length</span>();</span><br><span class="line">    <span class="type">int</span> L[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span> || j == <span class="number">0</span>) &#123;</span><br><span class="line">                L[i][j] = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (X[i - <span class="number">1</span>] == Y[j - <span class="number">1</span>]) &#123;</span><br><span class="line">                L[i][j] = L[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                L[i][j] = <span class="built_in">max</span>(L[i - <span class="number">1</span>][j], L[i][j - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> L[m][n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string X = <span class="string">&quot;AGGTAB&quot;</span>;</span><br><span class="line">    string Y = <span class="string">&quot;GXTXAYB&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Length of LCS is &quot;</span> &lt;&lt; <span class="built_in">lcs</span>(X, Y);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该程序使用二维数组<code>L[m+1][n+1]</code>存储最长公共子序列长度的计算结果。在计算<code>L[i][j]</code>时，如果字符串X的第i个字符等于字符串Y的第j个字符，则<code>L[i][j]</code>的值为<code>L[i-1][j-1]+1</code>；否则，<code>L[i][j]</code>的值为<code>L[i-1][j]</code>和<code>L[i][j-1]</code>中的较大值。最终，函数返回<code>L[m][n]</code>的值，即X和Y的最长公共子序列的长度。</p>
+<h3 id="lis">LIS</h3>
+<p>C++ LIS 是指<u><strong>最长上升子序列</strong></u>（Longest Increasing Subsequence）的算法实现，它是一种常用的动态规划算法。在一个序列中找到一个最长的子序列使得这个子序列中的所有元素都按照顺序递增排列，这个子序列就被称为最长上升子序列。</p>
+<p>C++ 中可以使用动态规划来解决最长上升子序列问题，具体实现步骤如下：</p>
+<ol>
+<li class="lvl-3">
+<p>定义一个长度为 n 的数组 dp，dp[i] 表示以第 i 个元素结尾的最长上升子序列的长度。</p>
+</li>
+<li class="lvl-3">
+<p>初始化 dp 数组，将每个元素的最长上升子序列长度初始化为 1。</p>
+</li>
+<li class="lvl-3">
+<p>遍历数组，对于每个元素 i，从头开始遍历到 i - 1，如果发现一个元素 j 比 i 小，并且 dp[j] + 1 &gt; dp[i]，则更新 dp[i] 的值为 dp[j] + 1。</p>
+</li>
+<li class="lvl-3">
+<p>最后遍历整个 dp 数组，找到最大的 dp[i] 值即可。</p>
+</li>
+</ol>
+<p>C++ LIS 算法的时间复杂度为 O(n^2)，因此，在处理较长的序列时，该算法可能会比较耗时。</p>
+<p>下面是 C++ 实现最长上升子序列（LIS）的典型代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lis</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> dp[n];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        dp[i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &lt; arr[i]) &#123;</span><br><span class="line">                dp[i] = <span class="built_in">max</span>(dp[i], dp[j] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> max_len = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        max_len = <span class="built_in">max</span>(max_len, dp[i]);</span><br><span class="line">    <span class="keyword">return</span> max_len;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> arr[n];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        cin &gt;&gt; arr[i];</span><br><span class="line">    cout &lt;&lt; <span class="built_in">lis</span>(arr, n) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在该实现中，<code>lis()</code> 函数计算最长上升子序列的长度。首先创建一个大小为 n 的数组 <code>dp</code>，并将所有元素初始化为 1。然后，使用嵌套的循环遍历整个数组，如果找到一个比当前元素小的元素，则更新 <code>dp[i]</code> 的值。最后，遍历整个 <code>dp</code> 数组，找到最大的值即为最长上升子序列的长度。</p>
+<h3 id="编辑距离">编辑距离</h3>
+<ol>
+<li class="lvl-3">
+<p>编辑距离为两个字符串，a 和 b 通过多少次变换，<u><strong>使得 a 变成 b</strong></u>。</p>
+</li>
+<li class="lvl-3">
+<p>修改包含三种：</p>
+<ol>
+<li class="lvl-6">删除操作，将 a[i] 从 a 中移除</li>
+<li class="lvl-6">插入操作，在 a[i] 后加上 b[j]</li>
+<li class="lvl-6">替换操作，将 a[i] 修改为 b[j]</li>
+</ol>
+</li>
+<li class="lvl-3">
+<p>初始状态，i=j=0，都在字符串的开头。</p>
+<p>然后开始判断 a[i]=?b[j]</p>
+<ul class="lvl-2">
+<li class="lvl-5">
+<p>如果相同，那么就不需要修改，所以<code>dp[i+1][j+1]=dp[i][j]</code></p>
+<p>所以在a[i-1]等于b[j-1]时，<code>dp[i][j]</code>这个状态由<code>dp[i-1][j-1]</code>转移而来。</p>
+<p><code>dp[i][j]=dp[i-1][j-1]</code></p>
+</li>
+<li class="lvl-5">
+<p>如果不同，那就需要进行三种可能的操作</p>
+</li>
+</ul>
+<ol>
+<li class="lvl-6">
+<p><u><strong>修改操作</strong></u>：</p>
+<p>a[i] 修改为 b[j]， 因为编辑了一次，所以+1</p>
+<p><code>dp[i+1][j+1]=dp[i][j]+1</code></p>
+<p>所以在a[i-1]不等于b[j-1]时，<code>dp[i][j]</code>这个状态由<code>dp[i-1][j-1]</code>转移而来。</p>
+<p><code>dp[i][j]=dp[i-1][j-1]+1</code></p>
+</li>
+<li class="lvl-6">
+<p><u><strong>删除操作</strong></u>，直接把 a[i] 删除，此时转移到 <code>dp[i][j+1]</code> ，因为 a[i] 被删除，但是下一个字符到了 a[i] 的位置，而对应比较的位置到了b[j+1]。</p>
+<p>所以此时状态转移到了<code>dp[i][j+1]</code></p>
+<p><code>dp[i][j+1]=dp[i][j]+1</code></p>
+<p>因为编辑了一次，所以+1</p>
+<p>所以在a[i-1]不等于b[j-1]时，<code>dp[i][j]</code>就有可能通过<code>dp[i-1][j]</code>转移而来。</p>
+</li>
+<li class="lvl-6">
+<p><u><strong>插入操作</strong></u>，在a[i]后添加一个b[j]，那么此时a[i+1]和b[j]对应，因为加了一个字符就变成了a[i+1],而且跟b[j]对应，那么下一个状态转移到了<code>dp[i+1][j]</code></p>
+<p><code>dp[i+1][j]=dp[i][j]+1</code></p>
+<p>此时状态转移到了 <code>dp[i+1][j]=dp[i][j]+1</code></p>
+<p>因为编辑了一次，所以+1</p>
+<p>所以在a[i-1]不等于b[j-1]时，<code>dp[i][j]</code>就有可能通过<code>dp[i][j-1]</code>转移而来。</p>
+</li>
+</ol>
+<p>那么不同时，我们选择他们的最小值即可。</p>
+</li>
+</ol>
+<p>模版代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INF 99999999</span></span><br><span class="line">string s, t;</span><br><span class="line"><span class="type">int</span> dp[<span class="number">1010</span>][<span class="number">1010</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= s.<span class="built_in">size</span>(); i++) dp[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= t.<span class="built_in">size</span>(); j++) dp[<span class="number">0</span>][j] = INF;<span class="comment">// 这里不能用INT_MAX，因为后面有+1操作，这样会使得INT_MAX+1为负数,那么min求得的就是负数,不是最终答案 </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; s &gt;&gt; t;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= s.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= t.<span class="built_in">size</span>(); j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i - <span class="number">1</span>] == t[j - <span class="number">1</span>]) dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">else</span>  </span><br><span class="line">                dp[i][j] = <span class="built_in">min</span>(dp[i - <span class="number">1</span>][j - <span class="number">1</span>],<span class="built_in">min</span>(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>])) + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; dp[s.<span class="built_in">size</span>()][t.<span class="built_in">size</span>()];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="最大公约数">最大公约数</h3>
+<p>以下是使用C++求最大公约数的两种方法：</p>
+<p>方法一：辗转相除法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; y) <span class="built_in">swap</span>(x, y);</span><br><span class="line">    <span class="keyword">while</span> (y != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="type">int</span> r = x % y;</span><br><span class="line">        x = y;</span><br><span class="line">        y = r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> a, b;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">gcd</span>(a, b) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法二：递归法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x % y == <span class="number">0</span>) <span class="keyword">return</span> y;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">gcd</span>(y, x % y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 或者写成：</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123; <span class="comment">// 辗转相除法的递归实现</span></span><br><span class="line">	<span class="keyword">return</span> b==<span class="number">0</span>?a:<span class="built_in">gcd</span>(b, a%b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> a, b;</span><br><span class="line">    cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">gcd</span>(a, b) &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这两种方法都可以求出最大公约数，其中辗转相除法比较容易理解，而递归法则比较简洁。</p>
+<h3 id="最小公倍数">最小公倍数</h3>
+<p>可以通过先求最大公约数，再用两个数的乘积除以最大公约数来求得最小公倍数。</p>
+<p>以下是一个C++函数实现：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b == <span class="number">0</span> ? a : <span class="built_in">gcd</span>(b, a % b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lcm</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (a * b) / <span class="built_in">gcd</span>(a, b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>gcd</code>函数为求最大公约数的函数，<code>lcm</code>函数则调用了<code>gcd</code>函数来求解最小公倍数，返回值即为a和b的最小公倍数。</p>
+<h3 id="蛇形填数">蛇形填数</h3>
+<p>以8*8的填充矩阵为例：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230316150544093.png" alt="填充顺序"></p>
+<p>实现代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*	矩阵的左上三角形与右下三角形的填充规则是不同的</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;<span class="comment">//扫描数据的个数</span></span><br><span class="line"><span class="type">double</span> M[<span class="number">8</span>][<span class="number">8</span>];<span class="comment">//填充矩阵 </span></span><br><span class="line"><span class="comment">//针对蛇形填充——定义4个方向 ：右，左下，下，右上(上三角形);(下三角形)需要交换dx[0]与dy[0]以及dx[2]与dy[2] </span></span><br><span class="line"><span class="type">int</span> dx[<span class="number">4</span>]=&#123;<span class="number">1</span>,<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>&#125;,dy[<span class="number">4</span>]=&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">-1</span>&#125;;<span class="comment">//dx控制列，dy控制行 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="built_in">memset</span>(M,<span class="number">0</span>,<span class="built_in">sizeof</span>(M));<span class="comment">//赋值全0 </span></span><br><span class="line">	<span class="type">int</span> y=<span class="number">0</span>,x=<span class="number">0</span>,md=<span class="number">0</span>;</span><br><span class="line">	cin&gt;&gt;M[y][x];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;++i)&#123;<span class="comment">//循环直到将所有的数据填充到矩阵中 </span></span><br><span class="line">		y+=dy[md];</span><br><span class="line">		x+=dx[md];</span><br><span class="line">		cin&gt;&gt;M[y][x];</span><br><span class="line">		<span class="keyword">if</span>(md==<span class="number">0</span>||md==<span class="number">2</span>)md=(md+<span class="number">1</span>)%<span class="number">4</span>;<span class="comment">//每一次在经过向右或向下操作后，需要转换为左下或右上。 </span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(md==<span class="number">1</span>||md==<span class="number">3</span>)&#123;<span class="comment">//确保是因下或右上操作</span></span><br><span class="line">			<span class="keyword">if</span>(x==<span class="number">0</span>||y==<span class="number">0</span>||x==<span class="number">7</span>||y==<span class="number">7</span>)md=(md+<span class="number">1</span>)%<span class="number">4</span>;<span class="comment">//左下或右上达到矩阵边界之后需要进行操作的切换 </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(y==<span class="number">7</span>&amp;&amp;x==<span class="number">0</span>)&#123;<span class="comment">//遍历到了右下三角形，需要交换dx[0]与dy[0]以及dx[2]与dy[2]</span></span><br><span class="line">			<span class="built_in">swap</span>(dx[<span class="number">0</span>],dy[<span class="number">0</span>]);</span><br><span class="line">			<span class="built_in">swap</span>(dx[<span class="number">2</span>],dy[<span class="number">2</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/04/11/University/Algorithm/Classic%20problems/C++%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98/" rel="tag">C++经典问题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/04/16/University/Algorithm/Basic%20knowledge%20of%20C++/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            程序设计竞赛笔记
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/04/11/University/Algorithm/Basic%20knowledge%20of%20C++/%E7%AE%97%E6%B3%95C++%E5%9F%BA%E7%A1%80/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">C++算法基础</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

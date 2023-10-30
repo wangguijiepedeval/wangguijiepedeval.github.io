@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>软件项目组织管理期末总结2 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software Project Organization Management/软件项目组织管理期末总结2"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  软件项目组织管理期末总结2
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86%E6%9C%9F%E6%9C%AB%E6%80%BB%E7%BB%932/" class="article-date">
+  <time datetime="2023-07-09T10:33:53.523Z" itemprop="datePublished">2023-07-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/">软件项目组织管理</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">6.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">20 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>软件项目组织管理期末总结2</h1>
+<h2 id="六-驾驭项目成本">六 驾驭项目成本</h2>
+<h3 id="什么是成本？项目成本？学习曲线理论？储备金-应急-管理-？一些相关的概念">什么是成本？项目成本？学习曲线理论？储备金（应急、管理）？一些相关的概念。</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230619161207877.png" alt="image-20230619161207877" style="zoom:50%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601163743180.png" alt="image-20230601163743180" style="zoom: 33%;" />
+<p>储备金：包含于项目估算中，为<mark>减轻</mark><u><strong>未来难以预测的成本风险</strong></u>而准备的资金。</p>
+<p>应急储备：为一些可以部分预计的未来情况（已知的未知）做准备。在成本基准中，PM（项目经理）可控制</p>
+<p>管理储备：考虑到未来不可预测的情况（未知的未知）。不在成本基准中 PM无权控制，需要向管理层申请 。</p>
+<p><em><strong>成本基准</strong></em>：<u>是经批准的<mark>按时间安排</mark>的<strong>成本支出计划</strong>，并<mark>随时反映</mark>了<strong>经批准的项目变更</strong>（所增加或减少的资金项目），被用于<mark>度量和监督</mark>项目的<strong>实际执行成本</strong>。</u></p>
+<h3 id="什么是项目成本管理？目的？">什么是项目成本管理？目的？</h3>
+<p><mark>项目成本管理</mark>（包含用来确保项目团队在批准的预算内<span style="color: red;">完成一个项目</span>的必要过程）包括<mark>为使项目</mark><strong>在批准的预算内完成</strong>而<mark>对成本</mark>进行<u><strong>规划、估算、预算和控制</strong></u>的各个过程，从而<u>确保项目在批准的预算内完工</u>。</p>
+<p>目的：确保项目在批准的预算内完成，实现<u><strong>项目价值最大化</strong></u>。</p>
+<h3 id="项目成本管理的过程？">项目成本管理的过程？</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601164459234.png" alt="image-20230601164459234" style="zoom:50%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>规划成本管理——成本管理计划</p>
+</li>
+<li class="lvl-2">
+<p>成本估算——成本估算、估算依据</p>
+</li>
+<li class="lvl-2">
+<p>成本预算——成本基准计划</p>
+</li>
+<li class="lvl-2">
+<p>成本控制——修正估算、更新预算</p>
+</li>
+</ul>
+<h3 id="什么是成本估算？成本估算工具和技术？成本估算的类型？">什么是成本估算？成本估算工具和技术？成本估算的类型？</h3>
+<p><mark>成本估算</mark>是对<u>完成项目工作<strong>所需资源成本</strong></u>进行<strong>近似估算</strong>的过程。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601170820779.png" alt="image-20230601170820779" style="zoom:50%;" />
+<blockquote>
+<p><em><strong>类比估算法</strong></em>：也叫<mark>自上而下估算法</mark>，它是使用以前的、<u>相似项目</u>的实际成本作为目前项目成本估算的<u>根据</u>。</p>
+<p><em><strong>自下而上估计法</strong></em>：首先对项目工作分解结构（WBS）中的<u>具体工作包或者活动所需要的资源进行估算</u>，然后逐级累加，并最终汇总成为项目的总成本。</p>
+<p><em><strong>参数模型估算法</strong></em>：根据项目的<u>特征参数建立一个数学模型</u>，利用这个数学模型来<u>计算（预测）项目的成本</u>。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601171616894.png" alt="image-20230601171616894" style="zoom:50%;" />
+</blockquote>
+<h5 id="估算的类型">估算的类型</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601170639704.png" alt="image-20230601170639704" style="zoom:50%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>粗略的量级估算</p>
+</li>
+<li class="lvl-2">
+<p>预算估算</p>
+</li>
+<li class="lvl-2">
+<p>确定性估算</p>
+</li>
+</ul>
+<h3 id="什么是成本预算？概念的关键点是？主要工作是？">什么是成本预算？概念的关键点是？主要工作是？</h3>
+<p><mark>成本预算</mark>：<mark>汇总所有</mark>单个<strong>活动或工作包的估算成本</strong>，<mark>建立</mark>一个<strong>经批准的成本基准</strong>的过程。<mark>目的是</mark>为了<u>确定测量项目实际绩效</u>的<strong>基准计划</strong>，而<mark>把整个成本估算</mark><u><strong>按照时间段</strong></u>分配到具体工作包或者活动上去。</p>
+<h4 id="两个要点">两个要点</h4>
+<p><strong>（1）把成本估算分配到项目生命期中的==每一个活动（或工作包）==中。</strong></p>
+<p><strong>（2）建立<mark>成本控制基准线</mark>（ＢＣＷＳ或ＰＶ）－用来度量项目实际执行清况。</strong></p>
+<h4 id="成本预算主要工作">成本预算主要工作</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>确定项目<mark>总的预算</mark>（<em><strong>估算+储备</strong></em>）</p>
+</li>
+<li class="lvl-2">
+<p>确定项目<mark>各项活动的预算</mark></p>
+</li>
+<li class="lvl-2">
+<p>确定项目各项活动预算的<mark>投入时间</mark></p>
+</li>
+<li class="lvl-2">
+<p>给出<strong>项目成本预算</strong>的==“S”曲线==</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230601172730955.png" alt="image-20230601172730955" style="zoom:50%;" />
+<h3 id="成本估算和成本预算的联系和区别？">成本估算和成本预算的联系和区别？</h3>
+<p>（1） 关系：</p>
+<p>①估算是预算的<strong>依据</strong></p>
+<p>②估算和预算都属于<strong>成本管理的过程</strong></p>
+<p>③用的<strong>工具和技术一致</strong></p>
+<p>④预算是估算的<strong>进一步细分</strong></p>
+<p>⑤都是成本控制的依据</p>
+<p>（2） 区别：</p>
+<p>①内容不同：预算是<mark>直接人工费用、辅助服务费用</mark>、采购物品费用；估算是<mark>直接成本、间接成本</mark>、不可预见费、储备金</p>
+<p>②目标不同：预算是<mark>制定</mark>一个**<u>成本基准计划</u><strong>；估算是获得<mark>完成</mark>项目<u>所需费用</u>的</strong><u>近似值估算</u>**</p>
+<p>③输入不同：预算是项目管理计划、项目文件、商业文件、协议、事业环境因素、组织过程资产；估算是项目管理计划、项目文件、事业环境因素、组织过程资产</p>
+<p>④输出不同：预算是**<u>成本基准、资金要求</u><strong>、文件更新；估算是</strong><u>成本估算、估算依据</u>**、文件更新</p>
+<h3 id="成本控制的工具-挣值分析">成本控制的工具——挣值分析</h3>
+<h4 id="基本概念">基本概念</h4>
+<p>⭐️挣值方法是<mark>对项目范围、进度和成本进行综合控制的一种有效方法</mark>。它对于计划完成的工作、实际挣得的利益、实际花费的成本进行比较，以确定成本和进度是否按计划进行。</p>
+<p>项目挣值：指已完成作业量的计划成本的中间变量。</p>
+<p>⭐️挣值方法**<u>核心要素</u>**：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>三个<span style="color: red;">关键变量</span>：<em><strong>PV、AC、EV（挣值）</strong></em></p>
+</li>
+<li class="lvl-2">
+<p>两个<mark>偏差</mark>：<em><strong>CV、SV</strong></em></p>
+</li>
+<li class="lvl-2">
+<p>两个<mark>绩效指标</mark>：<em><strong>CPI、SPI</strong></em></p>
+</li>
+</ul>
+<h4 id="示例">示例</h4>
+<p>假设现在有一个项目，为期4个月，总预算4000美元，每月任务为总量的1／4，预算也是总预算的1／4。现在一个月过去了，完成了本月任务的80％，花费了900美元。下表以这个情景说明挣值的术语和含义。</p>
+<h5 id="基本术语">基本术语</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230605143938441.png" alt="image-20230605143938441" style="zoom:67%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230605144005430.png" alt="image-20230605144005430" style="zoom: 67%;" />
+<blockquote>
+<p>公式：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mi>P</mi><mi>I</mi><mo>=</mo><mfrac><mrow><mi>E</mi><mi>V</mi></mrow><mrow><mi>A</mi><mi>C</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">CPI=\frac{EV}{AC}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>E</mi><mi>A</mi><mi>C</mi><mo>=</mo><mfrac><mrow><mi>B</mi><mi>A</mi><mi>C</mi></mrow><mrow><mi>C</mi><mi>P</mi><mi>I</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">EAC=\frac{BAC}{CPI}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+</blockquote>
+<h5 id="挣值法的四个评价指标：">挣值法的四个评价指标：</h5>
+<p><mark>费用偏差CV（Cost Variance)</mark>。 CV是指检查期间BCWP与ACWP之间的差异。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mi>V</mi><mo>=</mo><mi>B</mi><mi>C</mi><mi>W</mi><mi>P</mi><mtext>–</mtext><mi>A</mi><mi>C</mi><mi>W</mi><mi>P</mi><mo>=</mo><mi>E</mi><mi>V</mi><mo>−</mo><mi>A</mi><mi>C</mi></mrow><annotation encoding="application/x-tex">CV = BCWP – ACWP = EV - AC
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">–</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span></p>
+<p><mark>进度偏差SV（Schedule Variance)</mark>。 SV是指检查期间BCWP与BCWS 之间的差异。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>S</mi><mi>V</mi><mo>=</mo><mi>B</mi><mi>C</mi><mi>W</mi><mi>P</mi><mtext>–</mtext><mi>B</mi><mi>C</mi><mi>W</mi><mi>S</mi><mo>=</mo><mi>E</mi><mi>V</mi><mo>−</mo><mi>P</mi><mi>V</mi></mrow><annotation encoding="application/x-tex"> SV = BCWP – BCWS = EV - PV
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">–</span><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></span></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>SV=对应预算的实际工作量—对应预算的预算工作量</p>
+</li>
+</ul>
+<p><mark>费用执行指标CPI （Cost Performed Index)</mark>。 CPI是指预算费用与实际费用之比（或工时值之比）。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mi>P</mi><mi>I</mi><mo>=</mo><mi>B</mi><mi>C</mi><mi>W</mi><mi>P</mi><mi mathvariant="normal">/</mi><mi>A</mi><mi>C</mi><mi>W</mi><mi>P</mi><mo>=</mo><mi>E</mi><mi>V</mi><mi mathvariant="normal">/</mi><mi>A</mi><mi>C</mi></mrow><annotation encoding="application/x-tex"> CPI = BCWP / ACWP = EV / AC
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">/</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">/</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></span></p>
+<p><mark>进度执行指标SPI （ Schedule Performed Index)</mark>。 SPI是指项目挣得值与计划值之比。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>S</mi><mi>P</mi><mi>I</mi><mo>=</mo><mi>B</mi><mi>C</mi><mi>W</mi><mi>P</mi><mi mathvariant="normal">/</mi><mi>B</mi><mi>C</mi><mi>W</mi><mi>S</mi><mo>=</mo><mi>E</mi><mi>V</mi><mi mathvariant="normal">/</mi><mi>P</mi><mi>V</mi></mrow><annotation encoding="application/x-tex">SPI = BCWP / BCWS = EV / PV
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">SP</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span></span></p>
+<h4 id="挣值法参数分析与对应措施表">⭐️挣值法参数分析与对应措施表</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230605150836031.png" alt="image-20230605150836031" style="zoom: 50%;" />
+<blockquote>
+<p>EV大于PV：效率高，进度快；否则，效率低，进度慢</p>
+<p>AC大于EV：投入超前（CV &lt; 0）；否则，投入延后</p>
+</blockquote>
+<h4 id="挣值分析绘图">⭐️挣值分析绘图</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>要会绘制图，并且必须在图中标记相应的参数</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230605151223763.png" alt="image-20230605151223763" style="zoom:50%;" />
+<h4 id="例题">例题</h4>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230621023700881.png" alt="image-20230621023700881"></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230621023810177.png" alt="image-20230621023810177"></p>
+<h2 id="七-保证项目质量">七 保证项目质量</h2>
+<h3 id="软件质量的重要性？">软件质量的重要性？</h3>
+<p>①人们对软件的<strong>依赖性越来越大</strong>；</p>
+<p>②软件质量问题带来的<strong>危害也越来越严重</strong>；</p>
+<p>③软件产品质量正在<strong>牵动着社会的命脉</strong>；</p>
+<p><strong>忽视软件质量必将让我们付出更大的代价，受到更为严厉的惩罚。</strong></p>
+<h3 id="质量的传统和新认识-质量和等级的区别">质量的传统和新认识，质量和等级的区别</h3>
+<table>
+<thead>
+<tr>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230608164140930.png" alt="image-20230608164140930" style="zoom:50%;" /></th>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230608164215327.png" alt="image-20230608164215327" style="zoom:50%;" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<h4 id="质量和等级的区别">质量和等级的区别</h4>
+<p>产品的质量影响成本，产品的特征影响销售。而<mark>等级</mark>指的是，<strong>相同功能用途</strong>但是<strong>技术参数不同</strong>的实体<mark>进行分类或排序</mark>。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>质量是反映<strong>实体</strong>满足<strong>明确</strong>和<strong>隐含</strong>需要的能力的<strong>特性</strong>总和</p>
+</li>
+<li class="lvl-2">
+<p>项目管理要解决的问题<strong>不是等级</strong>，<strong>而是质量</strong>。</p>
+</li>
+</ul>
+<h3 id="ios对质量的定义-质量管理的定义">IOS对质量的定义、质量管理的定义</h3>
+<p>（1） 质量：是反映<strong>实体</strong>满足<strong>明确</strong>和<strong>隐含</strong>需要的能力的<strong>特性</strong>总和。实体包括<strong>产品、过程和活动</strong>，不同的实体质量的实质内容<strong>不一样</strong>。</p>
+<p>（2）质量管理：在质量方面<mark>指挥和控制</mark><strong>组织</strong>的协调活动。</p>
+<h3 id="什么是软件质量？">什么是软件质量？</h3>
+<p><mark>软件质量</mark>是将客户的<strong>隐性需求</strong>转换为<strong>明确需求</strong>,并且满足所有<strong>明确需求</strong>。同时还与如何最小化隐性需求、最小化未实现的需求相关。此外还与是否以一致的、可重复的满足相关需求有关。</p>
+<blockquote>
+<p>从用户角度评价，即如何使用软件、使用效果如何、软件性能如何；开发团队角度评价，要用最少的资源与最快的进度生产出质量最优的产品；维护者角度，对软件维护方面的特性；管理者角度，注重总体效益和长远利益。</p>
+</blockquote>
+<h3 id="项目质量管理是指为满足项目质量目标要求所需要的管理过程；包括：质量计划-质量保证-质量控制">项目质量管理是指为满足<mark>项目质量目标要求</mark>所需要的管理过程；包括：质量计划 质量保证 质量控制</h3>
+<h3 id="质量管理发展的四个阶段">质量管理发展的四个阶段</h3>
+<ol>
+<li class="lvl-3">
+<p><em><strong>传统阶段</strong></em>：这是质量管理的<mark>起始阶段</mark>，也被称为<mark>检查阶段</mark>。在这个阶段，质量管理主要依赖于检查和筛选产品或服务的最终结果，以确定是否符合规定的标准。这包括使用人工方法进行检查、纠正和调整以确保产品的合格性。</p>
+</li>
+<li class="lvl-3">
+<p><em><strong>统计阶段</strong></em>：在这个阶段，质量管理<strong>开始</strong><mark>引入统计方法和概念</mark>。这个阶段的关键概念是质量控制。通过对生产过程进行统计分析，识别和纠正潜在的质量问题，以提高产品和服务的质量水平。统计过程控制（SPC）和质量函数展开（QFD）是在这个阶段被广泛应用的方法。</p>
+</li>
+<li class="lvl-3">
+<p><em><strong>全面阶段</strong></em>：<u><strong><mark>全面质量管理</mark>（TQM）是这一阶段的核心理念</strong></u>。TQM强调组织的全员参与，并将质量管理的责任扩展到整个组织。在这个阶段，质量管理不仅关注产品或服务的质量，还注重组织内部的流程、文化和员工的参与。TQM的目标是通过持续改进和顾客导向的方法来提高整体质量。</p>
+</li>
+<li class="lvl-3">
+<p><em><strong>用户满意度阶段</strong></em>：这个阶段<mark>强调了顾客满意度的重要性</mark>。质量管理的目标是实现超越顾客期望的产品和服务，并确保顾客的满意度和忠诚度。这个阶段强调建立和维护良好的顾客关系、持续改进和顾客导向的方法。质量管理被视为一种战略工具，用于实现顾客满意度并提高组织的竞争力。</p>
+</li>
+</ol>
+<h3 id="戴明改进循环-pdca-特性">戴明改进循环 PDCA、特性</h3>
+<h4 id="戴明改进循环-pdca循环">戴明改进循环(PDCA循环)</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230608172443224.png" alt="image-20230608172443224" style="zoom:50%;" />
+<p>PDCA 循环是<strong>计划</strong>、<strong>执行</strong>、<strong>检查</strong>、<strong>处理</strong>。</p>
+<h5 id="四个明显特性：">四个明显特性：</h5>
+<ol>
+<li class="lvl-3">
+<p>周而复始</p>
+</li>
+<li class="lvl-3">
+<p>大环带小环</p>
+</li>
+<li class="lvl-3">
+<p><mark>阶梯式</mark>上升</p>
+</li>
+<li class="lvl-3">
+<p><u>统计的工具</u></p>
+</li>
+</ol>
+<h3 id="项目质量计划编制方法：成本收益分析法-质量标杆法-质量图表法-实验设计法">项目质量计划编制方法：成本收益分析法、<mark>质量标杆法</mark>、质量图表法、<mark>实验设计法</mark></h3>
+<p>① 成本收益分析：质量成本的概念是将产品质量保持在规定的质量水平上所需的费用，一般分为一致性成本、不一致性成本两种。</p>
+<p><mark>② 质量标杆法</mark>：用其他项目质量结果或计划作为新项目的**<u>质量参照体系</u><strong>和</strong><u>比照目标</u>**。</p>
+<p>③ 质量图表法：使用各种图表制定项目质量计划的方法。</p>
+<p><mark>④ 实验设计法</mark>：用实验的方法去<mark>识别</mark><strong>项目质量及其影响因素</strong>，然后编制项目质量计划。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u>开放性、创新性项目</u>要<strong>通过实验</strong><mark>规划</mark>项目质量</p>
+</li>
+</ul>
+<h3 id="影响项目质量的因素-5m1e">影响项目质量的因素 5M1E</h3>
+<p>影响项目质量因素的控制一共六项，分别是<strong>人、方法、环境、测量、机械设备、材料与构配件</strong>，记作 <strong>5M1E</strong>。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230608172925755.png" alt="image-20230608172925755" style="zoom: 50%;" />
+<h3 id="质量控制的工具和方法：排列图-散布图-控制图-因果图-关联图-6西格玛-测试">质量控制的工具和方法：<mark>排列图、散布图、控制图</mark>、因果图、关联图、<mark>6西格玛</mark>、测试</h3>
+<p>①  <strong>排列图</strong>（<strong>帕累托图</strong>）：以 <strong>80/20</strong> 原则为基本思想，用于<strong>找出影响质量的关键因素</strong>。用频数与累计来显示，比如“沙含泥量过大”是 16，画折线时用（45+16）/80 来做，而不是 16/80。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/%E6%8E%92%E5%88%97%E5%9B%BE.jpg" alt="排列图"></p>
+<p>② <strong>控制图</strong>：用于确认<strong>项目过程和结果是否处于受控状态</strong>。七点定律指的是：产出物多次检查特征值连续 7 个点在控制中线的<strong>同一侧</strong>或者连续七个递增或递减点，认为项目质量出现失控。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230620204800195.png" alt="image-20230620204800195" style="zoom: 33%;" />
+<p><strong>③</strong> <strong>因果图</strong>（鱼刺图）：用来揭示<strong>问题的原因或其潜在原因</strong>。</p>
+<p><strong>④</strong> <strong>关联图</strong>（头脑风暴法）：用于分析<strong>复杂因素交织在一起的问题</strong>。</p>
+<p><strong>⑤</strong> <strong>散点图（散布图）</strong>：由 X 和 Y 构成，用于显示<strong>两个变量之间的<mark>相关性</mark></strong>。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230620204850983.png" alt="image-20230620204850983" style="zoom:50%;" />
+<p>⑥ <strong>统计抽样</strong>：样本大小=0.25*（可信度因子/可接受误差）²。</p>
+<p>⑦ <strong>6σ管理法</strong>：通过降低偏差来提高质量</p>
+<p>⑧ <strong>测试</strong></p>
+<h3 id="提高软件项目质量的方法">提高软件项目质量的方法</h3>
+<p>提高软件质量：<mark>关键在<strong>领导</strong></mark>，同时需要<mark>控制<strong>质量成本</strong></mark>，<mark>考虑</mark><strong>组织影响</strong>、<strong>工作环境因素</strong>和<strong>质量</strong>，注意<mark>改善工作环境</mark>以提高生产效率和质量。利用一些<mark>成熟度模型来进行管理</mark>。</p>
+<h2 id="八-协调项目人力资源">八 协调项目人力资源</h2>
+<h3 id="什么是人力资源？具有哪些特征？">什么是人力资源？具有哪些特征？</h3>
+<h4 id="人力资源含义">⭐️人力资源含义</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230612141827962.png" alt="image-20230612141827962" style="zoom:50%;" />
+<h4 id="人力资源具有的特征：">⭐️人力资源具有的特征：</h4>
+<p>①***<mark>可再生</mark>的生物性资源***：它以人身为天然载体，是一种“活”的资源，并与人的自然生理特征相联系。</p>
+<p>②<em><strong>居于<mark>主导地位</mark>的动能性资源</strong></em>：人类不同于自然界其他生物之处在于人具有目的性、主观能动性和社会意识。</p>
+<p>③<em><strong>具有<mark>时效性</mark>的资源</strong></em>：人力资源的形成、开发、使用都具有时间方面的制约。</p>
+<h3 id="什么是项目人力资源管理？">什么是项目人力资源管理？</h3>
+<p><strong>项目人力资源管理</strong>可以定义为**<u>根据项目目标</u>**，<mark>采用科学的方法</mark>，<u>对项目组织成员</u>进行合理的选拔、培训、考核、激励，<u>使其融合到组织之中</u>，并充分发挥其潜能，从而<u><strong>保证高效实现项目目标</strong></u>的过程。</p>
+<h3 id="管理员工的关键所在：激励理论-权力理论-习惯">管理员工的关键所在：激励理论、权力理论、习惯</h3>
+<p>（1）激励理论：激励人分为<strong>内在动机</strong>和<strong>外在动机</strong>两种动力，前者是<strong>满足自身乐趣</strong>，后者是<u>获利避免惩罚</u>。</p>
+<p>（2）权力理论：权力是一种<mark>影响行为</mark>的<strong>潜在能力</strong>。</p>
+<p>（3）习惯：</p>
+<p>​			①<strong>积极主动</strong></p>
+<p>​			②<strong>以终为始，一开始就牢记结果</strong></p>
+<p>​			③<strong>把最重要的事放在最重要的位置上</strong></p>
+<p>​			④<strong>考虑双赢</strong></p>
+<p>​			⑤<strong>首先去理解别人然后再被别人理解</strong></p>
+<p>​			⑥<strong>协同工作</strong></p>
+<p>​			⑦<strong>不断更新</strong></p>
+<h3 id="马斯洛的需求层次理论">马斯洛的需求层次理论</h3>
+<p>在马斯洛需求理论中，将人的<mark>需求划分为五层</mark>，自下而上分别是<strong>生理需求</strong>、<strong>安全需求</strong>、社会需求、尊重需求和自我实现需求。</p>
+<h3 id="赫茨伯格的双因素理论">赫茨伯格的双因素理论</h3>
+<p>赫茨伯格认为，人工作的<strong>主要激励因素</strong>来自<strong>个人成绩</strong>与<strong>由此获得的认可度</strong></p>
+<h3 id="权力的5种主要类型：强制权力-合法权力-专家权力-奖励权力-参照权力">权力的5种主要类型：强制权力、<mark>合法权力、专家权力</mark>、奖励权力、<mark>参照权力</mark>。</h3>
+<ol>
+<li class="lvl-3">
+<p>强制权力：对不服从领导者指示或要求的人进行控制和惩罚的权力。一般强制权力在项目团队的建设中不是一个很好的方法。</p>
+</li>
+<li class="lvl-3">
+<p><mark>合法权力</mark>：通过法律或制度规定的权力。是指在高级管理层对项目经理正式授权的基础上，项目经理让员工进行工作的权力。</p>
+</li>
+<li class="lvl-3">
+<p><mark>专家权力</mark>：用个人知识和技能让员工改变他们的行为。</p>
+</li>
+<li class="lvl-3">
+<p>奖励权力：就是使用一些激励措施来引导员工去工作。</p>
+</li>
+<li class="lvl-3">
+<p><mark>参照权力</mark>（感召权力）：**<u>个人特质</u><strong>产生的一种</strong><u>使别人认同</u>**的权力,与人格特性及其他个人特质有关。 参照权力形成的原因是<u>他人的崇拜</u>,因此拥有者必定具有某种能使别人敬仰并奉为楷模的魅力。</p>
+</li>
+</ol>
+<h3 id="项目人力资源管理的过程-4个">项目人力资源管理的过程 4个</h3>
+<p>项目人力资源管理过程：分为四个步骤，<strong>人力资源规划</strong>、<strong>团队组建</strong>、<strong>团队建设</strong>和<strong>团队管理</strong>。</p>
+<h3 id="人力资源规划-责任分配矩阵">人力资源规划 责任分配矩阵</h3>
+<p>（1） 人力资源规划：包括<strong>识别与记录</strong>项目角色、责任和汇报关系，产生项目的<strong>组织结构图</strong>和<strong>人员配置管理计划</strong>。工作<strong>解释与分配</strong>也很重要，分为 4 个阶段：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/工作的解释和分配4个阶段.jpg" alt="工作的解释和分配4个阶段" style="zoom:50%;" />
+<p>（2）<strong>责任分配矩阵</strong>（RAM）是用<u>矩阵表格的形式</u><mark>表示</mark><u><strong>工作分解结构中的细目</strong></u>，以及工作绩效<mark>对应的个人责任</mark>。除了可以分配细分的工作活动外，还可以用于<u>定义项目的通用角色和责任</u>， 可以做<strong>项目干系人角色分配</strong>。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/%E8%B4%A3%E4%BB%BB%E5%88%86%E9%85%8D%E7%9F%A9%E9%98%B5.jpg" alt="责任分配矩阵"></p>
+<p>人员配置计划描述了人员在<strong>什么时候、什么方式进入和离开项目团队</strong>，一般用<strong>资源柱状****图</strong>（直方图）表示。</p>
+<h3 id="组建项目团队-主要途径-资源负荷-资源平衡">组建项目团队 主要途径 <mark>资源负荷 资源平衡</mark></h3>
+<p><mark>团队组建</mark>：<u>通过<mark>招聘或者其他方式</mark>，<mark>获得</mark>项目所需人员</u>，并根据状况安排或分配到指定岗位上，<mark>主要途径</mark>有<u><strong>人员预先指派</strong></u>、<u><strong>谈判</strong></u>、<u><strong>虚拟团队</strong></u>等。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>其中虚拟团队的优点有：技术发达、地理限制小、人才丰富、资源节约。</p>
+</li>
+</ul>
+<p>团队是<strong>项目成员的一个整合过程</strong>。项目经理通过<strong>资源负荷</strong>和<strong>资源平衡</strong>两种方法来<mark>最有效使用</mark><u>项目人员</u>，前者用于<u><strong>指定资源</strong></u>，后者用于**<u>合理化分配</u>**。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>资源负荷容易引发<strong>过度分配</strong>，造成工作人员手头的任务过多。</p>
+</li>
+</ul>
+<h3 id="开发项目团队-团队发展的5个阶段-工具和方法"><mark>开发</mark>项目团队 团队发展的5个阶段、工具和方法</h3>
+<h4 id="开发项目团队">开发项目团队</h4>
+<p>通过<mark>培训个人与团队的技能</mark>来**<u>改善</u>**项目绩效。</p>
+<p>输出是：<u>评估团队绩效</u>。</p>
+<h4 id="5个阶段">5个阶段</h4>
+<p><strong>①</strong> <strong>形成</strong>：辨识人际边界和任务边界，建立成员的<strong>相互关系</strong>，项目经理起到<strong>指导性作用</strong>。</p>
+<p><strong>②</strong> <strong>震荡</strong>：获取信心，但是存在<strong>人际冲突</strong>与分化，项目经理起到<strong>影响性作用</strong>。</p>
+<p><strong>③</strong> <strong>规范</strong>：规则、价值等都已建立，<strong>团队效能提高</strong>，项目经理为<strong>参与式领导</strong></p>
+<p><strong>④</strong> <strong>项目成熟</strong>：团队角色更灵活，运作如一个整体，项目经理为<strong>委任式领导</strong>。</p>
+<p><strong>⑤</strong> <strong>项目解散</strong>：任务完成，团队解散</p>
+<h4 id="工具和方法">工具和方法</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>团队建设活动</mark></p>
+</li>
+<li class="lvl-2">
+<p><mark>一般管理技术</mark></p>
+</li>
+<li class="lvl-2">
+<p><mark>绩效考评与奖励系统</mark></p>
+</li>
+<li class="lvl-2">
+<p><mark>人员配置</mark></p>
+</li>
+<li class="lvl-2">
+<p><mark>培训</mark></p>
+</li>
+</ul>
+<h3 id="管理项目团队-工作和方法-冲突管理-解决方法：回避和撤出-竞争和逼迫-缓和和调停-妥协-正视">管理项目团队 工作和方法 （冲突管理 解决方法：回避和撤出、竞争和逼迫、缓和和调停、妥协、正视）</h3>
+<p>管理项目团队：除了开发团队外，项目经理必须领导团队完成各种项目活动。</p>
+<h4 id="工作和方法">工作和方法</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>观察和交谈</p>
+</li>
+<li class="lvl-2">
+<p>项目绩效评价</p>
+</li>
+<li class="lvl-2">
+<p>冲突管理</p>
+</li>
+<li class="lvl-2">
+<p>问题日志</p>
+</li>
+</ul>
+<p>冲突管理的解决方法：<u><strong>回避和撤出、竞争和逼迫、缓和和调停、妥协、正视</strong></u></p>
+<h2 id="九-改善项目的沟通">九 改善项目的沟通</h2>
+<h3 id="软件项目成功的三个主要因素">软件项目成功的三个主要因素</h3>
+<ol>
+<li class="lvl-3">
+<p>用户参与</p>
+</li>
+<li class="lvl-3">
+<p>主管层的支持</p>
+</li>
+<li class="lvl-3">
+<p>需求的<mark>清晰表述</mark></p>
+</li>
+</ol>
+<h3 id="项目沟通管理的目标？">项目沟通管理的目标？</h3>
+<p>项目沟通管理的目标是：<mark>及时</mark>而适当地<u><strong>创建</strong>、<strong>收集</strong>、<strong>发送</strong>、<strong>储存</strong>和<strong>处理</strong></u>项目的信息。</p>
+<h3 id="项目沟通管理的过程？"><mark>项目沟通管理的过程？</mark>⭐️</h3>
+<p>（1） <strong>规划沟通管理</strong>：主要作用是为及时向<strong>相关方提供相关信息</strong>。输入包括项目章程、项目管理计划、项目文件、事业环境因素和组织过程资产。项目管理计划包括<strong>资源管理计划</strong>和<strong>相关方参与计划</strong>，都属于人力资源管理的内容。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输出：<mark>沟通管理计划</mark></p>
+</li>
+</ul>
+<p>（2） <strong>管理沟通</strong>：<strong>确保</strong>项目信息及时且恰当地收集、生成、发布、存储、检索、管理、监督和最终处置的过程。主要作用是**<u>促成项目团队和相关方之间有效的信息流动</u>**。本过程需要在整个项目期间开展。</p>
+<p>（3） <strong>监督沟通</strong>：是<mark>确保满足</mark>项目及其相关方的<strong>信息需求</strong>的过程。主要作用是<strong>按沟通管理计划和相关方参与计划</strong>的要求<strong>优化</strong>信息传递流程。主要目标是在整个项目生命周期中确保信息的<strong>最佳流动</strong>。</p>
+<h3 id="沟通管理计划包括哪些内容？">沟通管理计划包括哪些内容？</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>描述什么信息送给谁、何时送、如何送。</p>
+</li>
+<li class="lvl-2">
+<p>传送重要项目信息的格式。</p>
+</li>
+<li class="lvl-2">
+<p>获得信息的方法。</p>
+</li>
+</ul>
+<p>主要包括以下内容：</p>
+<p>① 描述信息收集和文件归档的结构。</p>
+<p>② <mark>描述什么信息送给谁、何时送、如何送。</mark></p>
+<p>③ <mark>传送重要项目信息的格式。</mark></p>
+<p>④ 用于创建信息的日程表。</p>
+<p>⑤ <mark>获得信息的方法。</mark></p>
+<p>⑥ 更新沟通管理计划的方法。</p>
+<p>⑦ 项目干系人沟通分析。</p>
+<h3 id="沟通复杂性的确定：沟通渠道数目的计算公式"><mark>沟通复杂性的确定</mark>：沟通渠道数目的计算公式⭐️</h3>
+<p>沟通复杂性的确定依赖于<strong>人数</strong>，当团队中有 n 个人的时候，沟通渠道 S 的计算公式为：S=n(n-1)/2。</p>
+<p>沟通方法大致分为<strong>互动沟通</strong>、<strong>推式沟通</strong>和<strong>拉式沟通</strong>。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/%E6%B2%9F%E9%80%9A%E6%B8%A0%E9%81%93%E8%AE%A1%E7%AE%97.jpg" alt="沟通渠道计算"></p>
+<blockquote>
+<p>互动沟通是一种双向的、交互式的沟通方式；</p>
+<p>推式沟通是一种单向的、发送方主导的沟通方式；</p>
+<p>拉式沟通是一种接收者主导的沟通方式。</p>
+</blockquote>
+<h3 id="绩效报告的作用和内容？状态报告-进度报告-项目预测和变更请求">绩效报告的作用和内容？状态报告、进度报告、项目预测和变更请求</h3>
+<p>工作绩效报告的<mark>作用</mark>是使<strong>项目干系人</strong><mark>知晓</mark>为了<u>达到项目的目标，</u>是<u>如何使用资源</u>的，这些资源的状况和对项目的贡献。主要包括以下四类<mark>内容</mark>：</p>
+<p>① <strong>状态报告</strong>：项目在某一特定<strong>时间点</strong>所处的位置</p>
+<p>② <strong>进度报告</strong>：项目组在某一特定<strong>期间</strong>所完成的工作</p>
+<p><strong>③</strong> <strong>项目预测</strong>：预测项目<strong>未来的</strong>状态与进度</p>
+<p>④ <strong>变更请求</strong>：项目变更的<mark>原因</mark>、对目标和资源的<mark>影响</mark>以及采取的<mark>措施</mark></p>
+<h3 id="管理收尾的主要输出是项目档案-正式接受和取得的教训">管理收尾的主要输出是<mark>项目档案、正式接受和取得的教训</mark>。</h3>
+<h3 id="改善沟通的建议">改善沟通的建议</h3>
+<p>改善沟通的建议可以<u><strong><mark>利用沟通技能</mark></strong></u>、<u><strong><mark>召开有效的会议</mark></strong></u>、<u><strong><mark>使用项目沟通模板</mark></strong></u>、<u><strong>建立沟通基础结构</strong></u>、<u><strong><mark>利用软件辅助沟通</mark></strong></u>。</p>
+<p>发现冲突后需要根据<strong>关系和任务的重要程度</strong>判断选择哪种方式解决：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/出现冲突后选择的解决方式.png" alt="出现冲突后选择的解决方式" style="zoom:50%;" />
+<h2 id="十-应对项目风险">十 应对项目风险</h2>
+<h3 id="什么是风险？项目风险管理？">什么是风险？项目风险管理？</h3>
+<p>风险：是可能给<mark>项目的成功</mark>带来**<u>威胁或损害</u><strong>的</strong>可能性**。</p>
+<p>项目风险管理：是指<mark>通过</mark><strong>风险识别</strong>、<strong>风险分析</strong>和<strong>风险评估</strong>去<mark>认识</mark>项目的风险，并<strong>以此为基础</strong><mark>合理的使用</mark>各种<strong>风险应对</strong>措施、管理方法、技术和手段，对项目风险<mark>实行</mark><u><strong>有效的应对和监控</strong></u>，妥善处理风险事件所造成的不利后果，以<strong>最低的成本</strong><mark>实现</mark><u><strong>项目总体目标</strong></u>的实践活动的总称。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u><em><strong>项目风险管理是对项目风险进行<mark>识别、评估和应对</mark>的过程。</strong></em></u></p>
+</li>
+</ul>
+<h3 id="项目风险管理的特点？目标？">项目风险管理的特点？目标？</h3>
+<h5 id="特点：">特点：</h5>
+<p>①活动:项目风险管理是为减轻潜在的不利事件对项目的影响而采取的一项活动。</p>
+<p>②成本：<mark>风险管理是一种投资，需要成本</mark>。</p>
+<p>③成本和收益：在任何情况下，<mark>项目风险管理的成本不应超过项目潜在的收益</mark>。</p>
+<p>④平衡：需要努力<mark>在项目的各个方面寻找<strong>风险和机会之间</strong>的<strong>平衡</strong></mark>。</p>
+<h5 id="目标：">目标：</h5>
+<p>把<mark>对于项目目标而言</mark><strong>正面事件</strong>的<u>概率和影响</u>结果<mark>最大化</mark>和把<strong>负面事件</strong>的<u>概率和影响</u>最小化。</p>
+<h3 id="风险承受度？">风险承受度？</h3>
+<p>①风险承受度：是从<mark>潜在回报中</mark>得到满足或快乐的程度。</p>
+<p>②表现形式：一些组织或个人对风险有一种中性的承受度，一些对风险很厌恶，而另一些则追求风险。</p>
+<h5 id="风险规避-风险中立-风险偏好"><strong>风险规避 风险中立 风险偏好</strong></h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230619174055551.png" alt="image-20230619174055551" style="zoom:50%;" />
+<blockquote>
+<p>比如：一个人在面临更大的风险时获得更大的满足感，并愿意付出代价承担风险，那么这个人是（风险偏好型）。</p>
+</blockquote>
+<h3 id="项目风险管理涉及的主要过程：风险规划管理-风险识别-定性风险分析-定量风险分析-风险应对计划和风险监控">项目风险管理涉及的主要过程：<mark>风险规划管理、风险识别、定性风险分析、定量风险分析、风险应对计划和风险监控</mark>。</h3>
+<h3 id="四个应对风险的基本措施是：规避-接受-减轻-转移">四个应对风险的基本措施是：<mark>规避、接受、减轻、转移</mark>。</h3>
+<h2 id="不考-十一-关注项目的采购和外包">（不考）十一 关注项目的采购和外包</h2>
+<h3 id="什么是项目采购？什么是项目采购管理？">什么是项目采购？什么是项目采购管理？</h3>
+<h3 id="项目采购的特点-目标？">项目采购的特点，目标？</h3>
+<h3 id="项目采购管理的主要过程？">项目采购管理的主要过程？</h3>
+<h3 id="编制采购计划的工具和技术有哪些？">编制采购计划的工具和技术有哪些？</h3>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86%E6%9C%9F%E6%9C%AB%E6%80%BB%E7%BB%932/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" rel="tag">期末复习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/" rel="tag">软件项目组织管理</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/09/09/University/Coding/ML/AI_Code%E5%9F%BA%E7%A1%80/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            AI编程基础
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86%E6%9C%9F%E6%9C%AB%E6%80%BB%E7%BB%931/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">软件项目组织管理期末总结1</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>2023软件度量考点 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/software-metrics/2023软件度量考点"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  2023软件度量考点
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/04/27/University/junior/course/software-metrics/2023%E8%BD%AF%E4%BB%B6%E5%BA%A6%E9%87%8F%E8%80%83%E7%82%B9/" class="article-date">
+  <time datetime="2023-04-27T15:55:31.440Z" itemprop="datePublished">2023-04-27</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E5%BA%A6%E9%87%8F%E5%8F%8A%E5%BA%94%E7%94%A8/">软件度量及应用</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">8.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">30 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>2023软件度量考点</h1>
+<h3 id="textcolor-red-考试：软件生命周期"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试：软件生命周期</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试：软件生命周期}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">考试：软件生命周期</span></span></span></span>⭐️</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230303153507082.png" alt="生命周期"></p>
+<p>序列图（活动图）——高级基本控制结构：自递归调用、中断、并行三种</p>
+<blockquote>
+<p>需求分析：</p>
+<ul class="lvl-1">
+<li class="lvl-2"><strong>功能点度量，大题</strong></li>
+<li class="lvl-2">用例点度量</li>
+<li class="lvl-2">size、Effort、cost、Schedule</li>
+</ul>
+<p>概要设计（模块）：</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>内聚、耦合</p>
+</li>
+<li class="lvl-2">
+<p>数据流结构度量</p>
+</li>
+</ul>
+<p>详细设计：</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>控制流结构度量</p>
+</li>
+<li class="lvl-2">
+<p>数据结构度量，面向对象度量（CK，LK）。<strong>面向对象的度量会出大题</strong></p>
+</li>
+<li class="lvl-2">
+<p>试运行、维护、质量度量</p>
+</li>
+</ul>
+</blockquote>
+<p><span style="color: red;">软件度量方法分为三种：</span></p>
+<ol>
+<li class="lvl-3">
+<p>软件规模度量方法：这种方法旨在测量软件项目的规模，以便对开发工作量和项目时间表进行估计。通常使用<u><strong>行数、功能点数</strong></u>等指标来度量软件规模。</p>
+</li>
+<li class="lvl-3">
+<p>软件复杂度度量方法：这种方法旨在测量软件系统的复杂性。软件复杂度通常包括模块之间的相互作用、代码结构、程序流程、数据结构等。通常使用<u><strong>代码行数、圈复杂度</strong></u>等指标来度量软件复杂度。</p>
+</li>
+<li class="lvl-3">
+<p>软件质量度量方法：这种方法旨在测量软件系统的质量。软件质量通常包括正确性、可靠性、可用性、可维护性、可扩展性等方面。通常使用<u><strong>缺陷密度、代码可读性、代码复杂度</strong></u>等指标来度量软件质量。</p>
+</li>
+</ol>
+<p><u><em><strong>助记部分（共27点）：</strong></em></u></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>软件测试、测量、度量</p>
+</li>
+<li class="lvl-2">
+<p>对实体属性的测量，度量点……</p>
+</li>
+<li class="lvl-2">
+<p>软件度量的3p</p>
+</li>
+<li class="lvl-2">
+<p>软件质量包括：功能性、可靠性……</p>
+</li>
+<li class="lvl-2">
+<p>软件度量方法分为：软件规模、软件复杂性、软件质量……</p>
+</li>
+<li class="lvl-2">
+<p>测量的目的：了解、预测、控制、提升……</p>
+</li>
+<li class="lvl-2">
+<p>测量要明确的4个问题</p>
+</li>
+<li class="lvl-2">
+<p>测量尺度</p>
+</li>
+<li class="lvl-2">
+<p>测量方式分为：……</p>
+</li>
+<li class="lvl-2">
+<p>什么是度量？……</p>
+</li>
+<li class="lvl-2">
+<p>度量方式分为：……</p>
+</li>
+<li class="lvl-2">
+<p>度量的3个实体</p>
+</li>
+<li class="lvl-2">
+<p>度量的属性：内在、外在</p>
+</li>
+<li class="lvl-2">
+<p>软件过程中的一些重要点</p>
+</li>
+<li class="lvl-2">
+<p>Halstead预测法</p>
+</li>
+<li class="lvl-2">
+<p>LOC度量</p>
+</li>
+<li class="lvl-2">
+<p>各阶段涉及到的图</p>
+</li>
+<li class="lvl-2">
+<p>设计方面</p>
+<ul class="lvl-2">
+<li class="lvl-4">功能点度量</li>
+<li class="lvl-4">用例点度量</li>
+<li class="lvl-4">对象点（OP）</li>
+<li class="lvl-4">特征点</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>软件结构</p>
+</li>
+<li class="lvl-2">
+<p>软件结构度量</p>
+<ul class="lvl-2">
+<li class="lvl-4">数据流结构</li>
+<li class="lvl-4">控制流结构</li>
+<li class="lvl-4">数据结构</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>控制结构度量</p>
+</li>
+<li class="lvl-2">
+<p>面向对象度量</p>
+<ul class="lvl-2">
+<li class="lvl-4">LK 度量（4）</li>
+<li class="lvl-4">CK 度量（6）</li>
+<li class="lvl-4">MOOD 度量</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>软件代码度量</p>
+</li>
+<li class="lvl-2">
+<p>数据结构度量</p>
+</li>
+<li class="lvl-2">
+<p>软件质量模型</p>
+</li>
+<li class="lvl-2">
+<p>软件错误、缺陷……</p>
+</li>
+<li class="lvl-2">
+<p>软件质量度量</p>
+</li>
+</ul>
+<h2 id="chapter-1">Chapter 1</h2>
+<h3 id="textcolor-red-考试：iso-9126是专门针对软件质量的定义"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试：</mtext><mi>I</mi><mi>S</mi><mi>O</mi><mtext> </mtext><mn>9126</mn><mtext>是专门针对软件质量的定义</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试：ISO \ 9126是专门针对软件质量的定义}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">考试：</span><span class="mord mathnormal" style="margin-right:0.07847em;color:red;">I</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">SO</span><span class="mspace" style="color:red;"><span style="color:red;"> </span></span><span class="mord" style="color:red;">9126</span><span class="mord cjk_fallback" style="color:red;">是专门针对软件质量的定义</span></span></span></span></h3>
+<h4 id="软件质量模型"><mark>软件质量模型</mark></h4>
+<p>软件质量模型：软件质量是**<u>软件产品的外部属性</u><strong>，而不是内部属性。软件质量的含义包括：要满足软件的</strong><u>功能需求</u><strong>且尽量不出错，要达到用户的期望且方便适用。<mark>软件质量的定义为</mark>：</strong><u>软件</u><strong>与<u><strong>明确的</strong></u>和<u><strong>隐含的</strong></u>定义的</strong><u>需求</u><strong><mark>相一致</mark>的程度，是<u><em>软件符合</em></u>明确的</strong><u>功能需求</u><strong>与</strong><u>性能需求</u><strong>，文档中有明确描述的</strong><u>开发标准</u><strong>以及所有专业开发的软件都应该具有的</strong><u>隐含特征</u>**的程度。</p>
+<table>
+<thead>
+<tr>
+<th>McCall 质量模型：</th>
+<th><strong>Boehm 质量模型</strong>：</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230422214221131.png" alt="image-20230422214221131"></td>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230422214130920.png" alt="image-20230422214130920"></td>
+</tr>
+<tr>
+<td><strong>ISO 9126 质量模型</strong>：</td>
+<td><strong>CMM 模型</strong>：</td>
+</tr>
+<tr>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230422214143616.png" alt="image-20230422214143616"></td>
+<td>没有给出**<u>度量</u>**<u>软件质量</u>的<mark>框架</mark></td>
+</tr>
+</tbody>
+</table>
+<h2 id="chapter-3">Chapter 3</h2>
+<h3 id="textcolor-red-考试：loc-代码行度量-简答题"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试：</mtext><mi>L</mi><mi>O</mi><mi>C</mi><mtext>（代码行度量）简答题</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试：LOC（代码行度量）简答题}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">考试：</span><span class="mord mathnormal" style="color:red;">L</span><span class="mord mathnormal" style="margin-right:0.07153em;color:red;">OC</span><span class="mord cjk_fallback" style="color:red;">（代码行度量）简答题</span></span></span></span></h3>
+<p>代码行LOC：一般指所有的<u>可执行的源代码行数</u>，包括可交付的工作控制语句、数据定义、类型声明、输入输出声明等。</p>
+<p><strong>常用的单位有 ：</strong><br>
+①源代码行SLOC：有两种测量方法，一种是测量物理代码行<mark>PLOC</mark>，即注释外源程序行数；另一种是测量逻辑代码行<mark>LLOC</mark>，即可执行的源程序行数<br>
+②非注释代码行<mark>NCLOC</mark><br>
+③注释代码行<mark>CLOC</mark><br>
+④千代码行<mark>KLOC</mark></p>
+<p>Advantages of LOC</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u>简单</u>且可<u>自动测量</u>，可以<u>直接反映</u>软件的<u>规模大小</u></p>
+</li>
+<li class="lvl-2">
+<p>与<mark>程序</mark>的<u>工作量及成本</u>呈现正相关</p>
+</li>
+</ul>
+<p>Disadvantage of LOC</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>定义模糊</p>
+</li>
+<li class="lvl-2">
+<p>与程序语言相关</p>
+</li>
+<li class="lvl-2">
+<p>与程序员的能力相关</p>
+</li>
+<li class="lvl-2">
+<p>不适合于<u>早期阶段</u>对规模的<u><mark>预测</mark></u></p>
+</li>
+</ul>
+<p>可以用代码行来<u><mark>间接得到</mark></u><u><strong>代码注释密度</strong></u>，可以一定程度上反映程序的<u><strong>可理解性</strong></u>、<u><strong>可修改性</strong></u>与<u><strong>可维护性</strong></u></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>ρ</mi><mo>=</mo><mfrac><mrow><mi>C</mi><mi>L</mi><mi>O</mi><mi>C</mi></mrow><mrow><mi>C</mi><mi>L</mi><mi>O</mi><mi>C</mi><mo>+</mo><mi>N</mi><mi>C</mi><mi>L</mi><mi>O</mi><mi>C</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\rho=\frac{C L O C}{C L O C+N C L O C}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1297em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.07153em;">OC</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">NC</span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.07153em;">OC</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.07153em;">OC</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<blockquote>
+<p>LOC（line of code）</p>
+<ul class="lvl-1">
+<li class="lvl-2">缺点：定义模糊，与程序语言相关，与程序员的能力相关，不适合于早期阶段对规模的预测</li>
+<li class="lvl-2">优点：可以自动测量，可以直接反映软件的规模大小，与程序的工作量及成本直接相关</li>
+</ul>
+</blockquote>
+<h3 id="textcolor-red-考试：功能点度量有一个大题"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试：功能点度量有一个大题</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试：功能点度量有一个大题}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">考试：功能点度量有一个大题</span></span></span></span></h3>
+<p>功能点：由<strong>数据流图</strong>来测量，利用<strong>软件需求分析</strong>度量软件规模。向用户提供的功能分为<strong>数据功能</strong>和<strong>交易功能</strong>两种类型，前者包括 EIF 和 ILF，后者包括 EI，EO，EQ。功能点度量一般用 <strong>UFC</strong> 和 <strong>VAF</strong> 来计算，<mark>UFC</mark> 测量<u><strong>功能需求</strong></u>，<mark>VAF</mark> 测量<u><strong>非功能需求</strong></u>。</p>
+<blockquote>
+<p>软件的功能点是<u><strong>未调整功能计数</strong></u>（UFC）和<u><strong>价值调整因子</strong></u>（VAF）的乘积。</p>
+<ul class="lvl-1">
+<li class="lvl-2">UFC：Unadjusted Function Count</li>
+<li class="lvl-2">VAF：Value Adjustment Factor</li>
+</ul>
+</blockquote>
+<h5 id="1-ufc计算方法">1、UFC计算方法</h5>
+<p>UFC 而言用下表来计算：</p>
+<table>
+<thead>
+<tr>
+<th>Weight Factor（右边为权重因子）</th>
+<th><strong>Simple</strong></th>
+<th><mark><strong>Average</strong></mark></th>
+<th><strong>Complex</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Number of <strong>External Inputs</strong>  外部输入（EI）</td>
+<td>3</td>
+<td>4</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Number of <strong>External Outputs</strong>  外部输出（EO）</td>
+<td>4</td>
+<td>5</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Number of <strong>External Queries</strong>  外部查询（EQ）</td>
+<td>3</td>
+<td>4</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Number of <strong>External Interfaces  Files</strong>  外部接口文件（EIF）</td>
+<td>5</td>
+<td>7</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Number of <strong>Internal Logic  Files</strong>  内部逻辑文件（ILF）</td>
+<td>7</td>
+<td>10</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>其中因为 Queries 相比于 Input，还需要考虑点击事件、查询后还必须由反馈信息，所以两者区分开来。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><u>外部输入</u>是指用户或其他系统向软件系统<u><strong>输入数据</strong></u>的功能，数据可以是单个数据项或数据集合。</p>
+</li>
+<li class="lvl-2">
+<p><u>外部查询</u>是指软件系统向用户或其他系统<u><strong>提供查询结果</strong></u>的功能，查询结果可以是单个数据项或数据集合。</p>
+</li>
+</ul>
+<blockquote>
+<p><span style="color: red;"><u><em><strong>功能点度量方法中，需要测量程序的哪五个主要成分？</strong></em></u></span></p>
+<ol>
+<li class="lvl-3">外部输入（External Inputs，EI）：指用户或其他系统向软件系统<u><strong>输入数据</strong></u>的功能。例如，用户在一个电子商务系统中输入商品信息和订单信息就是外部输入。</li>
+<li class="lvl-3">外部输出（External Outputs，EO）：指软件系统向用户或其他系统提供<u><strong>输出结果</strong></u>的功能。例如，在一个学生信息管理系统中，用户可以查询某个学生的信息，该查询结果就是外部输出。</li>
+<li class="lvl-3">外部查询（External Inquiries，EQ）：指用户或其他系统<u><strong>查询</strong></u>软件系统中的<u><strong>数据</strong></u>的功能。例如，在一个银行系统中，用户可以查询自己的账户余额，该查询就是外部查询。</li>
+<li class="lvl-3">外部接口文件（External Interface Files，EIF）：指软件系统与外部系统或组件之间进行<u><strong>数据交换</strong></u>的文件。例如，在一个在线支付系统中，<u>与第三方支付接口交换</u>的数据文件就是外部接口文件。</li>
+<li class="lvl-3">内部逻辑文件（Internal Logical Files，ILF）：指软件系统<u><strong>内部维护</strong></u>的<u>数据文件</u>或<u>数据集合</u>，例如，在一个库存管理系统中，库存信息和供应商信息就是内部逻辑文件。</li>
+</ol>
+</blockquote>
+<h5 id="2-vaf计算方法">2、VAF计算方法</h5>
+<p>VAF 而言，一共 14 个指标，每个指标都有如下六个等级，计算时需要统计这 14 个指标的等级和，VAF∈[0.65, 1.35]：</p>
+<p>0=factor not present or has no influence</p>
+<p>1=insignificant influence</p>
+<p>2=moderate influence</p>
+<p>3=average influence</p>
+<p>4=significant influence</p>
+<p>5=strong influence</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mrow><mi mathvariant="normal">V</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">F</mi></mrow><mo>=</mo><mn>0.65</mn><mo>+</mo><mn>0.01</mn><mi mathvariant="normal">Σ</mi><msub><mi mathvariant="normal">F</mi><mi mathvariant="normal">i</mi></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mrow><mi mathvariant="normal">F</mi><mi mathvariant="normal">P</mi></mrow><mo>=</mo><mrow><mi mathvariant="normal">U</mi><mi mathvariant="normal">F</mi><mi mathvariant="normal">C</mi></mrow><mo>×</mo><mrow><mi mathvariant="normal">V</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">F</mi></mrow></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned} &amp; \mathrm{VAF}=0.65+0.01 \Sigma \mathrm{F}_{\mathrm{i}} \\ &amp; \mathrm{FP}=\mathrm{UFC} \times \mathrm{VAF}\end{aligned}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.75em;"><span style="top:-3.75em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span><span style="top:-2.25em;"><span class="pstrut" style="height:2.84em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.25em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.75em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord"><span class="mord mathrm">VAF</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">0.65</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.01Σ</span><span class="mord"><span class="mord mathrm">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mord"><span class="mord mathrm">FP</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathrm">UFC</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord mathrm">VAF</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.25em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230425144329042.png" alt="image-20230425144329042" style="zoom:67%;" />
+<p>计算得到FP值（<mark>功能点数</mark>）之后可以进行如下功能点度量：</p>
+<p>1、生产能力</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mi>r</mi><mi>o</mi><mi>d</mi><mi>u</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>v</mi><mi>i</mi><mi>t</mi><mi>y</mi><mo>=</mo><mfrac><mrow><mi>F</mi><mi>P</mi></mrow><mrow><mi>P</mi><mi>e</mi><mi>r</mi><mi>s</mi><mi>o</mi><mi>n</mi><mo>−</mo><mi>M</mi><mi>o</mi><mi>n</mi><mi>t</mi><mi>h</mi><mi>s</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">Productivity = \frac{FP }{Person-Months}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">ro</span><span class="mord mathnormal">d</span><span class="mord mathnormal">u</span><span class="mord mathnormal">c</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">i</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1297em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">erso</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal">s</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">FP</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<blockquote>
+<p>FP是指软件项目的总功能点数，Person-Months是指完成该项目所需的总人月数。</p>
+</blockquote>
+<p>2、每个功能点所需的平均文档页面数量</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>D</mi><mi>o</mi><mi>c</mi><mi>u</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>=</mo><mfrac><mrow><mi>p</mi><mi>a</mi><mi>g</mi><mi>e</mi><mi>s</mi><mtext> </mtext><mi>o</mi><mi>f</mi><mtext> </mtext><mi>d</mi><mi>o</mi><mi>c</mi><mi>u</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi></mrow><mrow><mi>F</mi><mi>P</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">Documentation = \frac{pages \ of \ documentation}{FP}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">Doc</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">FP</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">es</span><span class="mspace"> </span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace"> </span><span class="mord mathnormal">d</span><span class="mord mathnormal">oc</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span><span class="mord mathnormal">i</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<blockquote>
+<p>Pages of Documentation是指在软件开发过程中需要编写的文档总页数，FP是指软件项目的总功能点数。</p>
+</blockquote>
+<p><mark>功能点度量</mark>可以用于**<u>预测软件规模</u><strong>，</strong><u>计算缺陷密度</u><strong>，</strong><u>估算软件工作量</u><strong>，</strong><u>估算软件成本</u><strong>，</strong><u>计划开发时间</u><strong>，</strong><u>计划人员安排</u>**</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>优点：简单（准确），早期，泛用性强</p>
+</li>
+<li class="lvl-2">
+<p>缺点：主观，不直观</p>
+</li>
+</ul>
+<blockquote>
+<p>优点：</p>
+<ol>
+<li class="lvl-3">与代码行数等物理度量方法相比，功能点度量<u><strong>更为准确</strong></u>。这是因为功能点度量是基于软件系统的实际功能需求进行测量，而不是基于代码行数等技术细节进行测量。</li>
+<li class="lvl-3">功能点度量可以在<u><strong>早期对规模进行度量</strong></u>。</li>
+<li class="lvl-3">功能点度量可以<u><strong>用于不同编程语言和技术平台</strong></u>的软件项目。这是因为功能点度量与具体的编程语言和技术平台无关，而是基于软件系统的功能需求进行测量。</li>
+<li class="lvl-3">功能点度量可以帮助管理者<u><strong>更好地了解</strong></u>软件项目的规模和开发工作量。这有助于管理者做出更明智的决策，并合理分配资源。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li class="lvl-3">
+<p><u><strong>功能点度量可能存在主观性和误差</strong></u>。<u>不同的评估人员</u>可能会对同一个软件系统<u>得出不同的功能点数</u>，这可能会影响度量的准确性和可信度。</p>
+</li>
+<li class="lvl-3">
+<p><u><strong>功能点度量不能很直观地反映软件系统的复杂性和质量</strong></u>。虽然功能点度量可以帮助评估软件系统的规模和开发工作量，但它并不能很好地反映软件系统的复杂性和质量，这<u>需要使用其他软件度量方法</u>进行评估。</p>
+</li>
+</ol>
+</blockquote>
+<p>适合：<strong>数据处理较多的项目</strong></p>
+<h3 id="textcolor-red-考试：用例点的度量"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试：用例点的度量</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试：用例点的度量}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">考试：用例点的度量</span></span></span></span></h3>
+<ol>
+<li class="lvl-3">
+<p>复杂角色与简单角色的判断；（参考：UAW计算步骤下的角色权重评估表）</p>
+</li>
+<li class="lvl-3">
+<p>是否有SLA；</p>
+</li>
+<li class="lvl-3">
+<p>角色的权重（权重分析）</p>
+</li>
+</ol>
+<p>用例点：用例图中包含的角色越多，用例越多，用户的需求功能也就越多，软件的规模也就越大。一般分为六个步骤：</p>
+<p>①计算未调整前的角色权重 <strong><u>UAW</u></strong>：</p>
+<table>
+<thead>
+<tr>
+<th>角色权重评估表</th>
+<th>计算示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230421221334589.png" alt="image-20230421221334589"></td>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230421223414039.png" alt="image-20230421223414039" style="zoom:50%;" /></td>
+</tr>
+</tbody>
+</table>
+<p>②计算未调整前的用例权重 <strong><u>UUCW</u></strong>：一般来说，用例中包含的<strong>操作处理</strong>越多，或实现用例功能涉及的<strong>类</strong>越多，用例就越复杂。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>有以下 3 种评估方法：</p>
+</li>
+</ul>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230421221455186.png" alt="image-20230421221455186"></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>针对以上 3 种评估方法，分别由对应的用例权重评估表：</p>
+</li>
+</ul>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230421221544169.png" alt="image-20230421221544169"></p>
+<p>③计算未调整前的用例点 <strong><u>UUCP</u>=UAW+UUCW</strong></p>
+<p>④计算技术复杂因子 <strong><u>TCF</u>=0.6+（0.01* TFactor）</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>技术复杂性因素权重表如下：</p>
+</li>
+</ul>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230421221822400.png" alt="image-20230421221822400"></p>
+<blockquote>
+<p>每个 Ti 都有 0-5 六个等级，需要加权求。</p>
+</blockquote>
+<p>⑤计算环境因子 <strong><u>EF</u>=1.4+（-0.03*EFactor）</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>环境复杂性因素权重表如下：</p>
+</li>
+</ul>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230421222028278.png" alt="image-20230421222028278"></p>
+<p><u>权重正负</u>表示环境对项目产生的影响是<strong>正影响</strong>还是<strong>负影响</strong>。每个 Fi 都有 0-5 六个等级，需要加权求和：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>𝑬</mi><mi>𝑭</mi><mi>𝒂</mi><mi>𝒄</mi><mi>𝒕</mi><mi>𝒐</mi><mi>𝒓</mi><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>8</mn></munderover><msub><mi>F</mi><mi>i</mi></msub><msub><mi>W</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">𝑬𝑭𝒂𝒄𝒕𝒐𝒓 = \sum_{i=1}^{8}F_iW_i
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord boldsymbol" style="margin-right:0.11111em;">EFactor</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3.0788em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8011em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">8</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>其中，Fi的值如下：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230421222820125.png" alt="image-20230421222820125" style="zoom: 67%;" />
+<p>⑥计算调整后的用例点 <strong><u>UCP</u>=UUCP*TCF*EF</strong></p>
+<p>最后可能会需要通过 <strong><u>UCP</u></strong> 计算开发工作量 <u><strong>Effort</strong></u>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>E</mi><mi>f</mi><mi>f</mi><mi>o</mi><mi>r</mi><mi>t</mi><mo>=</mo><mi>U</mi><mi>C</mi><mi>P</mi><mo>∗</mo><mi>p</mi><mi>e</mi><mi>r</mi><mi>s</mi><mi>o</mi><msub><mi>n</mi><mrow><mi>h</mi><mi>o</mi><mi>u</mi><mi>r</mi><mi>s</mi></mrow></msub></mrow><annotation encoding="application/x-tex">Effort = UCP*person_{hours}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.10764em;">ff</span><span class="mord mathnormal" style="margin-right:0.02778em;">or</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal">erso</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">h</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">u</span><span class="mord mathnormal mtight">rs</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<blockquote>
+<p>一个用例点可能需要花费15-30 person-hours。</p>
+</blockquote>
+<p>一个用例点花费 15-30 人时/UCP</p>
+<blockquote>
+<p>补充：</p>
+<p>（3）对象点：𝑶𝑷 = 𝑶𝑷 ∗ (𝟏 − 𝒓%)，其中r%表示的是<strong>从先前项目中重用的部分</strong></p>
+<p>（4）特征点：以功能点为基础，还要考虑<strong>算法复杂度</strong>。</p>
+</blockquote>
+<blockquote>
+<p>术语：</p>
+<ul class="lvl-1">
+<li class="lvl-2">SLA = Service Level Agreement = 服务质量/水平协议</li>
+<li class="lvl-2">SLO = Service Level Objective = 服务质量/水平目标</li>
+<li class="lvl-2">SLI = Services Level Indicator = 服务质量/水平指标</li>
+</ul>
+</blockquote>
+<h3 id="textcolor-red-考试：计算uaw-未调整前的角色权重"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试：计算</mtext><mi>U</mi><mi>A</mi><mi>W</mi><mtext>（未调整前的角色权重）</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试：计算UAW（未调整前的角色权重）}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">考试：计算</span><span class="mord mathnormal" style="margin-right:0.10903em;color:red;">U</span><span class="mord mathnormal" style="color:red;">A</span><span class="mord mathnormal" style="margin-right:0.13889em;color:red;">W</span><span class="mord cjk_fallback" style="color:red;">（未调整前的角色权重）</span></span></span></span></h3>
+<p><mark>这里的内容详见用例点度量：</mark></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/20230324141509.png" style="zoom:33%;" />
+<p>角色复杂程度的判断：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>简单：通过接口连接的另一个系统；</p>
+<ul class="lvl-2">
+<li class="lvl-4">具有定义的应用程序编程接口的系统</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>普通：通过协议连接的另一个系统；</p>
+<ul class="lvl-2">
+<li class="lvl-4">一个普通的参与者要么是另一个通过协议如TCP/IP进行交互的系统，要么是一个人通过基于文本的界面如ASCII终端进行交互</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>复杂：通过人机交互界面进行交互的人。</p>
+<ul class="lvl-2">
+<li class="lvl-4">一个通过人机交互界面进行交互的人</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><span style="color: red;">From Chapter 3 Page：54</span></p>
+</blockquote>
+<h5 id="span-style-color-blue-以上内容均来自chapter-3-span"><span style="color: blue;">—以上内容均来自Chapter 3—</span></h5>
+<h2 id="chapter-4">Chapter 4</h2>
+<h3 id="textcolor-red-考试：能够分清是什么样的耦合？"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试：能够分清是什么样的耦合？</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试：能够分清是什么样的耦合？}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">考试：能够分清是什么样的耦合？</span></span></span></span></h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230414141237426.png" alt="image-20230414141237426" style="zoom:33%;" />
+<h4 id="软件结构度量"><mark>软件结构度量</mark></h4>
+<p><mark>软件结构度量</mark>：分布在概要设计、详细设计、编码、测试和质量维护。软件模块化与<u><strong>内聚、耦合、信息隐藏、信息流</strong>和<strong>扇入扇出</strong></u>有关。软件模块化以**<u>分治法</u><strong>为依据，<u><strong>程序是模块</strong>而</strong>模块不仅仅是程序**</u>，要求每个模块只完成软件需求中的**<u>独立子功能</u><strong>，并且与其他模块的</strong><u>联系最少</u><strong>且</strong><u>接口简单</u><strong>，模块化的度量标准有</strong><u>内聚性</u><strong>和</strong><u>耦合性</u><strong>，目标是</strong><u>高内聚、低耦合</u>**</p>
+<h5 id="模块内聚性度量">模块内聚性度量</h5>
+<p>（1） <mark>模块内聚性度量</mark>：是指完成同一任务时对模块**<u>各个组成部分的需要程度</u>**。根据内聚程度由高到低分别分为<u><strong>功能内聚</strong>、<strong>顺序内聚</strong>、<strong>通信内聚</strong>、<strong>过程内聚</strong>、<strong>时间内聚</strong>、<strong>逻辑内聚</strong>、<strong>偶然内聚</strong></u>。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>内聚率</mtext><mo>=</mo><mfrac><mtext>功能内聚模块数</mtext><mtext>总模块数</mtext></mfrac></mrow><annotation encoding="application/x-tex">内聚率 = \frac{功能内聚模块数}{总模块数}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">内聚率</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">总模块数</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">功能内聚模块数</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<blockquote>
+<ol>
+<li class="lvl-3">
+<p>功能内聚：将所有<mark>完成同一功能的元素</mark>放到一个模块中，如<mark>输入输出处理模块、数据存储模块</mark>等。</p>
+<ul class="lvl-3">
+<li class="lvl-5">（强调模块内元素的功能相关性，意味着，模块中的所有元素都应该属于同一类别）</li>
+<li class="lvl-5">例如，一个处理用户信息的模块应该包含所有与用户信息有关的元素，比如用户输入、用户验证、用户数据库查询等等。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>顺序内聚：将一系列<u><strong>相互依赖的操作</strong></u>放到同一个模块中，这些操作<mark>必须按照<u><strong>特定的顺序</strong></u>依次执行</mark>。</p>
+</li>
+<li class="lvl-3">
+<p>通信内聚：将需要<mark>进行<u><strong>相互通信</strong></u>的元素</mark>放到同一个模块中，例如消息处理器或邮件发送器等。</p>
+</li>
+<li class="lvl-3">
+<p>过程内聚：将<u><strong>相关联的操作</strong></u>放到同一个模块中，在该模块内可以<mark>共享相同的数据结构和变量</mark>。</p>
+</li>
+<li class="lvl-3">
+<p>时间内聚：将<mark>需要<u><strong>同时执行</strong></u>的操作</mark>放到同一个模块中，例如计时器或周期性任务调度器等。</p>
+</li>
+<li class="lvl-3">
+<p>逻辑内聚：指模块内的<u>各个元素之间</u>存在一定的<u>逻辑关系</u>，这些元素共同完成一个特定的功能或者任务。</p>
+<ul class="lvl-3">
+<li class="lvl-5">（强调模块内元素的逻辑关系）</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h5 id="模块耦合性度量">模块耦合性度量</h5>
+<p>（2） <mark>模块耦合性度量</mark>：模块耦合是指**<u>两个模块之间的相互依赖程度</u><strong>。可以利用系统中模块对的耦合性来计算全局的耦合性，一般来说，模块之间的联系越多，模块的调用关系越复杂，模块对的耦合性越高，系统的全局耦合性也就越高。根据耦合程度由低到高可以分为<u><strong>无耦合</strong>、<strong>数据耦合</strong>、<strong>标记耦合</strong>、<strong>控制耦合</strong>、<strong>公共耦合</strong></u>和</strong><u>内容耦合</u>**。</p>
+<p>假设系统中的两个模块 x 和 y，两者的耦合关系记为 Ri。则：</p>
+<p>①无耦合关系 R0：表示 x 和 y 无联系，完全独立</p>
+<p>②数据耦合关系 R1：表示 x 和 y 通过**<u>参数</u><strong>发生联系，参数要么是</strong><u>数据元素</u><strong>要么是<u><strong>不含控制元素</strong></u>的</strong><u>同类数据项的集合</u>**</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>一个模块向另一个模块传入的参数是<u><strong>普通数据</strong></u>；</p>
+</li>
+<li class="lvl-2">
+<pre><code class="language-cpp">sum (int a, int b)
+&#123;
+    int c;
+    c=a+b;
+    return(c);
+&#125;
+main()
+&#123;
+    int x, y;
+    printf (sum(x, y)); //数据
+&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">③标记耦合关系 R2：表示通过参数表传递**&lt;u&gt;相同的记录类型&lt;/u&gt;**，这个类型==不是基本类型==， 是&lt;u&gt;**例如结构体、类这样的类型**&lt;/u&gt;</span><br><span class="line"></span><br><span class="line">- 一个模块向另一个模块传入的参数是一个&lt;u&gt;**数据结构**&lt;/u&gt;(数组、记录、图、文件、对象等)；</span><br><span class="line"></span><br><span class="line">- ```cpp</span><br><span class="line">  Class Student ( ) // Student 类</span><br><span class="line">  &#123;</span><br><span class="line">  &#125;</span><br><span class="line">  StuInfo(Student Stu)</span><br><span class="line">  &#123; </span><br><span class="line">      string sno = Stu.getSno();</span><br><span class="line">      string name = Stu.getName();</span><br><span class="line">      string major = Stu.getMajor();</span><br><span class="line">      string cclass = Stu.getCClass();</span><br><span class="line">      string info = sno + name + mojor + cclass;</span><br><span class="line">      return(info);</span><br><span class="line">  &#125;</span><br><span class="line">  main()</span><br><span class="line">  &#123;</span><br><span class="line">      Student Tom = new Student ( ); // Student 对象</span><br><span class="line">      printf (StuInfo(Tom)); // 传入参数是对象</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</code></pre>
+</li>
+</ul>
+<p>④控制耦合关系 R3：表示 x **<u>为了控制 y 的行为</u>**而向其传递了一个表示控制信息的参数。我们<u><em><strong>要尽量避免 R3，可以把 R3 通过分解功能转变为R1</strong></em></u></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>一个模块向另一个模块传入的参数是<u><strong>开关、标志或名字信息</strong></u>，其<u>作用</u>是明显<u>控制另一个模块的功能</u>；</p>
+</li>
+<li class="lvl-2">
+<pre><code class="language-cpp">output (flag)
+&#123;
+    if (flag) //标志控制
+    	printf (“Yes!”);
+    else
+    	printf (“No!”);
+&#125;
+main()
+&#123;
+    bool flag;
+    output (flag); //标志
+&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">⑤公共耦合关系 R4：表示 x 和 y 都访问了一个**&lt;u&gt;公共数据环境&lt;/u&gt;**</span><br><span class="line"></span><br><span class="line">- ==公共耦合==是指两个或多个模块共享同一组&lt;u&gt;**全局数据**&lt;/u&gt;，而==数据耦合==是指两个或多个模块共享同一组&lt;u&gt;**局部数据**&lt;/u&gt;。</span><br><span class="line"></span><br><span class="line">⑥内容耦合关系 R5：表示 x 引用到了 y 的内部，当出现**&lt;u&gt;一个模块直接访问另一个模块的内部数据&lt;/u&gt;**或者**&lt;u&gt;一个模块不通过正常入口转到另一模块内部&lt;/u&gt;**或者**&lt;u&gt;两个模块有一部分程序代码重叠&lt;/u&gt;**或者**&lt;u&gt;一个模块有多个入口&lt;/u&gt;**，则表示发生了 R5</span><br><span class="line"></span><br><span class="line">结构化程序设计要尽量保证**&lt;u&gt;单入口单出口&lt;/u&gt;**，要**&lt;u&gt;避免使用 goto 语句&lt;/u&gt;**</span><br><span class="line"></span><br><span class="line">![image-20230422124255309](https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230422124255309.png)</span><br><span class="line"></span><br><span class="line">局部耦合度：模块 x 和 y 之间的耦合紧密程度通过耦合度 **c(x,y)**来计算，</span><br><span class="line">$$</span><br><span class="line">𝒄(𝒙, 𝒚) = 𝒌 + \frac&#123;𝒏&#125;&#123;𝒏+𝟏&#125;</span><br><span class="line">$$</span><br><span class="line">，其中 k 是 x 和 y 之间**&lt;u&gt;最紧密的耦合关系 Rk&lt;/u&gt;**，n 是 x 和 y 之间的**&lt;u&gt;相互连接数&lt;/u&gt;**</span><br><span class="line"></span><br><span class="line">全局耦合度：C(S)是系统 S 中两两模块间&lt;u&gt;耦合度集合&lt;/u&gt;的**&lt;u&gt;中位数&lt;/u&gt;**</span><br><span class="line"></span><br><span class="line">&gt; &lt;span style=&quot;color: red;&quot;&gt;&lt;u&gt;***思考：如何消除控制耦合？如何修改上述控制耦合所示程序？***&lt;/u&gt;&lt;/span&gt;</span><br><span class="line">&gt;</span><br><span class="line">&gt; ```cpp</span><br><span class="line">&gt; outputY //Yes控制程序</span><br><span class="line">&gt; &#123; </span><br><span class="line">&gt;     printf (“Yes!”);</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; output //No控制程序</span><br><span class="line">&gt; &#123; </span><br><span class="line">&gt;     printf(“No!”);</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; main()</span><br><span class="line">&gt; &#123;// 不再向另一个模块传递开关/标志等，由此更改了控制耦合</span><br><span class="line">&gt;     bool flag;</span><br><span class="line">&gt;     if (flag) //Yes控制逻辑</span><br><span class="line">&gt;     	outputY;</span><br><span class="line">&gt;     else //No控制逻辑</span><br><span class="line">&gt;     	outputN;</span><br><span class="line">&gt; &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<blockquote></blockquote>
+<h5 id="信息流结构度量">信息流结构度量</h5>
+<p>（3） <mark>信息流结构度量</mark>：一个模块**<u>调用</u><strong>另一个模块并且向它</strong><u>传递</u><strong>信息或者被调用模块向调用模块</strong><u>返回</u><strong>一个返回值就会产生信息流。模块中用于描述信息流的两个特殊属性是</strong><u>扇入</u><strong>和</strong><u>扇出</u><strong>。扇入指的是</strong><u>直接调用该模块的上级模块的个数</u><strong>，扇出指的是</strong><u>模块直接调用的下级模块的个数</u>**。</p>
+<p>一个模块**<u>扇入大</u><strong>说明其</strong><u>可重用性高</u><strong>，一个模块的<u><strong>扇出大</strong></u>说明其</strong><u>复杂度高</u>**。扇入扇出不可过多或过少。</p>
+<p><u><strong>信息流结构复杂性度量</strong></u>有两种方法：</p>
+<p>①<strong>Henry-Kafura</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>信息流复杂性</mtext><mo stretchy="false">(</mo><mi>𝑴</mi><mo stretchy="false">)</mo><mo>=</mo><mtext>长度</mtext><mo stretchy="false">(</mo><mi>𝑴</mi><mo stretchy="false">)</mo><mo>∗</mo><mo stretchy="false">(</mo><mtext>扇入</mtext><mo stretchy="false">(</mo><mi>𝑴</mi><mo stretchy="false">)</mo><mo>∗</mo><mtext>扇出</mtext><mo stretchy="false">(</mo><mi>𝑴</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">信息流复杂性(𝑴) = 长度(𝑴) ∗ ( 扇入(𝑴) ∗ 扇出(𝑴))^2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">信息流复杂性</span><span class="mopen">(</span><span class="mord boldsymbol" style="margin-right:0.17208em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">长度</span><span class="mopen">(</span><span class="mord boldsymbol" style="margin-right:0.17208em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord cjk_fallback">扇入</span><span class="mopen">(</span><span class="mord boldsymbol" style="margin-right:0.17208em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">扇出</span><span class="mopen">(</span><span class="mord boldsymbol" style="margin-right:0.17208em;">M</span><span class="mclose">)</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>长度可以用**<u>代码行数</u>**来代替。</p>
+<p>②<strong>Shepperd</strong>：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>信息流复杂性</mtext><mo stretchy="false">(</mo><mi>𝑴</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><mtext>扇入</mtext><mo stretchy="false">(</mo><mi>𝑴</mi><mo stretchy="false">)</mo><mo>∗</mo><mtext>扇出</mtext><mo stretchy="false">(</mo><mi>𝑴</mi><mo stretchy="false">)</mo><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">信息流复杂性(𝑴) = (扇入(𝑴) ∗ 扇出(𝑴))^2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">信息流复杂性</span><span class="mopen">(</span><span class="mord boldsymbol" style="margin-right:0.17208em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord cjk_fallback">扇入</span><span class="mopen">(</span><span class="mord boldsymbol" style="margin-right:0.17208em;">M</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">扇出</span><span class="mopen">(</span><span class="mord boldsymbol" style="margin-right:0.17208em;">M</span><span class="mclose">)</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p>这是一种**<u>纯信息流结构</u>的**算法。</p>
+<p><mark>但是以上两种方法都有同一个问题：当某模块的扇入或者扇出为 0 时，复杂性也会是 0</mark></p>
+<h3 id="textcolor-red-考试：程序控制流图-一个控制流结构大题"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试：程序控制流图</mtext><mi mathvariant="normal">/</mi><mtext>一个控制流结构大题</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试：程序控制流图/一个控制流结构大题}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback" style="color:red;">考试：程序控制流图</span><span class="mord" style="color:red;">/</span><span class="mord cjk_fallback" style="color:red;">一个控制流结构大题</span></span></span></span></h3>
+<p>圈(环形)复杂度、画程序流程图、理解圈复杂度的意义（反映出了什么，圈复杂度越大的话，这个程序代码坏味道）</p>
+<table>
+<thead>
+<tr>
+<th>PPT知识点位置（计算示例）</th>
+<th>类型题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230407144813765.png" alt="image-20230407144813765" style="zoom: 33%;" /></td>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230422110239187.png" alt="image-20230422110239187"></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>补充：计算圈复杂度、、圈复杂度的意义、.程序流程图、反映出了什么，圈复杂度越大的话，这个程序是不是有一种代码坏味道啊</p>
+</blockquote>
+<hr>
+<h4 id="控制结构度量"><mark>控制结构度量</mark></h4>
+<p>控制结构度量：<strong><u>基本控制结构（BCSs）</u><strong>是一组用于创建程序逻辑结构的基本控制流机制， 包括<u><strong>条件</strong>、<strong>循环</strong>和</strong>顺序</strong></u>三种类型。而高级基本控制结构有<u><strong>自递归调用</strong>、<strong>中断</strong>、<strong>并行</strong></u>这三种， 可以通过面向对象设计中的**<u>活动图</u>**来反映。</p>
+<p>控制流结构复杂性的度量可以用 **<u>McCabe’s <mark>圈复杂度</mark>度量</u>**来做。如果图 G 有 n 个顶点，e 条边，连通分量是 P，则</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>𝑽</mi><mo stretchy="false">(</mo><mi>𝑮</mi><mo stretchy="false">)</mo><mo>=</mo><mi>𝒆</mi><mo>−</mo><mi>𝒏</mi><mo>+</mo><mi>𝑷</mi></mrow><annotation encoding="application/x-tex">𝑽(𝑮) = 𝒆 − 𝒏 + 𝑷
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord boldsymbol" style="margin-right:0.18625em;">V</span><span class="mopen">(</span><span class="mord boldsymbol" style="margin-right:0.07347em;">G</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord boldsymbol" style="margin-right:0.085em;">e</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord boldsymbol" style="margin-right:0.09426em;">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord boldsymbol" style="margin-right:0.0992em;">P</span></span></span></span></span></p>
+<p>一般一个模块的圈复杂度不超过 <u><strong>10</strong></u>，数量表现为**<u>独立线性路径</u><strong>条数，也可以理解为覆盖所有可能情况使用最少的测试用例数，程序的可能错误与</strong><u>高的圈复杂度</u><strong>有着很大关系， 圈复杂度可以通过设计实现</strong><u>自动化</u><strong>的程序来计算，可以通过图论的方法计算</strong><u>判定节点</u><strong>来设计自动化程序。该方法最好是在</strong><u>详细设计阶段</u><strong>完成，用</strong><u>程序流程图</u><strong>和</strong><u>控制流图</u>**来度量。</p>
+<blockquote>
+<p><span style="color: red;"><u><em><strong>环形复杂度对于软件开发过程能起到哪些积极的作用？</strong></em></u></span></p>
+<p>环形复杂度（圈复杂度）在软件开发过程中可以起到以下积极的作用：</p>
+<ol>
+<li class="lvl-3">
+<p><mark>识别</mark>潜在问题：环形复杂度可用于<u>分析</u>代码中的<u>循环结构</u>，可以帮助开发人员<u>识别</u><mark>潜在的</mark><u><strong>性能问题</strong></u>、<u><strong>错误</strong></u>和<u><strong>代码逻辑混乱</strong></u>等。</p>
+</li>
+<li class="lvl-3">
+<p><mark>改进</mark>代码质量：通过使用环形复杂度分析工具，开发人员可以<u>更好地了解</u>其代码的<u>复杂程度</u>并<u><strong>进行必要的优化和重构</strong></u>，以<u>提高代码质量和可维护性</u>。</p>
+</li>
+<li class="lvl-3">
+<p><mark>提高</mark>程序性能：环形复杂度可用于分析程序中的循环结构，并确定需要优化的区域。这<u>有助于编写<strong>更有效率</strong>的代码，从而提高程序的<strong>执行速度</strong></u>。</p>
+</li>
+<li class="lvl-3">
+<p><mark>预测</mark>系统行为：环形复杂度可用于<u><strong>预测系统行为</strong></u>，以便开发人员可以<u><strong>及早识别</strong></u>可能<u>导致系统<strong>故障</strong>或<strong>崩溃</strong></u>的问题，以便<u>及时进行修复</u>。</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="chapter-5">Chapter 5</h2>
+<h5 id="专有术语">专有术语</h5>
+<p>LK度量：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>CS (Class Size)</p>
+</li>
+<li class="lvl-2">
+<p>NOO (Number of Operations Overridden)</p>
+</li>
+<li class="lvl-2">
+<p>NOA (Number of Added)</p>
+</li>
+<li class="lvl-2">
+<p>SI (Specialization Index)</p>
+</li>
+</ul>
+<p>CK度量：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230422012522763.png" alt="image-20230422012522763" style="zoom:50%;" />
+<hr>
+<h3 id="textcolor-red-考试：面向对象度量-解答题："><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试：面向对象度量</mtext><mo>−</mo><mtext>解答题：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试：面向对象度量-解答题：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord cjk_fallback" style="color:red;">考试：面向对象度量</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin" style="color:red;">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">解答题：</span></span></span></span></h3>
+<p>1、为什么要提出一套专门的面向对象的方法？</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>封装性</p>
+</li>
+<li class="lvl-2">
+<p>继承性</p>
+</li>
+<li class="lvl-2">
+<p>多态性：体现在方法的重载和重写</p>
+</li>
+<li class="lvl-2">
+<p>局部性</p>
+</li>
+</ul>
+<blockquote>
+<p>面向对象的软件的特性：继承性、多态性、封装性、局部性</p>
+</blockquote>
+<hr>
+<p><mark>面向对象度量(OO metrics)方法</mark>：面向对象技术<mark>采用</mark><strong><u>抽象</u></strong>、<strong><u>封装</u></strong>、<strong><u>继承</u></strong>、<strong><u>多态</u></strong>、<strong><u>信息隐藏</u><strong>和</strong><u>重用性</u><strong>等来度量，对于子类规模的度量方法：计算子类</strong><u>在父类的基础上</u></strong>，增加了多少个属性和方法， 增加的越多，子类规模越大。</p>
+<p>面向对象度量方法从五个方面来<mark>考虑</mark>：<u><strong>局部性</strong>、<strong>封装性</strong>、<strong>继承性</strong>、<strong>多态性</strong>和<strong>信息隐藏</strong></u></p>
+<p><mark>主要有以下度量方法：</mark></p>
+<h4 id="1-lk-度量法：考虑四个度量点">1、LK 度量法：考虑四个度量点</h4>
+<p>①类规模度量 <strong><u>CS</u></strong>：从属性总数量和方法总数量两个点来考虑</p>
+<p>②方法重写数 <u><strong>NOO</strong></u>：计算子类继承父类时**<u>重写父类方法的数量</u>**，NOO 过大表示父类抽象不够好</p>
+<p>③增加方法数量 <u><strong>NOA</strong></u>：子类继承父类时**<u>增加的方法的数量</u>**，随着深度越深，NOA 越小越好</p>
+<p>④特征化指数 <strong><u>SI</u></strong>：用来度量每一个子类在类图设计中的特征化等级，属于**<u>间接测量</u><strong>的综合属性，SI 过大说明</strong><u>类不符合抽象层次结构</u><strong>，体现了面向对象的<u><strong>抽象性</strong>和</strong>继承性**</u>。公式如下：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230422010743473.png" alt="image-20230422010743473"></p>
+<h4 id="2-ck-度量法：考虑六个度量点">2、CK 度量法：考虑六个度量点</h4>
+<p><mark>（详细请见下一考点处：“考试：CK——LCOM：缺乏内聚”）</mark></p>
+<h4 id="3-mood-度量法：考虑四类-六个度量点">3、MOOD 度量法：考虑四类，六个度量点</h4>
+<p>①封装性度量点 MHF 和 AHF：方法、属性的隐藏程度</p>
+<p>②继承性度量点 MIF 和 AIF：方法、属性的继承比例</p>
+<p>③多态性度量点 PF：子类重写父类方法的比例</p>
+<p>④消息传递度量点 CF：类间方法消息交互，表示耦合</p>
+<h3 id="textcolor-red-考试：ck-lcom：缺乏内聚"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试：</mtext><mi>C</mi><mi>K</mi><mtext>——</mtext><mi>L</mi><mi>C</mi><mi>O</mi><mi>M</mi><mtext>：缺乏内聚</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试：CK——LCOM：缺乏内聚}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">考试：</span><span class="mord mathnormal" style="margin-right:0.07153em;color:red;">C</span><span class="mord mathnormal" style="margin-right:0.07153em;color:red;">K</span><span class="mord" style="color:red;">——</span><span class="mord mathnormal" style="color:red;">L</span><span class="mord mathnormal" style="margin-right:0.10903em;color:red;">COM</span><span class="mord cjk_fallback" style="color:red;">：缺乏内聚</span></span></span></span></h3>
+<table>
+<thead>
+<tr>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230407141723134.png" alt="image-20230407141723134" style="zoom:33%;" /></th>
+<th><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230407141427355.png" alt="image-20230407141427355" style="zoom: 50%;" /></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<blockquote>
+<p>方法数增加，内聚数会不会陡然增加，LCOM缺乏内聚</p>
+</blockquote>
+<h4 id="ck-度量法：考虑六个度量点">CK 度量法：考虑六个度量点</h4>
+<p>①类的加权方法 <strong><u>WMC</u></strong>：是对<strong>类规模</strong>和<strong>类复杂度</strong>的度量，设类有方法 M1~Mn，它们的复杂度分别为 C1~Cn，则</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>𝑾</mi><mi>𝑴</mi><mi>𝑪</mi><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>C</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">𝑾𝑴𝑪 = \sum_{i=1}^nC_i
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord boldsymbol" style="margin-right:0.14208em;">WMC</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.9291em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<blockquote>
+<p>可以用**<u>圈复杂度</u><strong>来作为方法的复杂度，当 C1=C2=…Cn 时，</strong><u>将它们均记为 1</u>**</p>
+<p>子类在计算 WMC 时<u><strong>只计算子类本身的方法数</strong></u></p>
+<p>复杂度低的方法**<u>可以忽略不计</u>**或者设置为较小值</p>
+</blockquote>
+<p>②类的响应数量 <strong><u>RFC</u></strong>：计算一个类的对象对接受的消息进行<strong>响应的方法集合的数目</strong>， 是对<strong>类复杂性</strong>和<strong>类之间耦合度</strong>的一种度量。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="center" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi><mrow><mi mathvariant="bold-italic">R</mi><mi mathvariant="bold-italic">F</mi><mi mathvariant="bold-italic">C</mi></mrow></mi><mo>=</mo><mi mathvariant="normal">∣</mi><mi><mrow><mi mathvariant="bold-italic">R</mi><mi mathvariant="bold-italic">S</mi></mrow></mi><mi mathvariant="normal">∣</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi><mrow><mi mathvariant="bold-italic">R</mi><mi mathvariant="bold-italic">S</mi></mrow></mi><mo>=</mo><mo stretchy="false">{</mo><mi mathvariant="bold-italic">M</mi><mo stretchy="false">}</mo><msub><mo>∪</mo><mtext>alli </mtext></msub><mrow><mo fence="true">{</mo><msub><mi mathvariant="bold-italic">R</mi><mi>i</mi></msub><mo fence="true">}</mo></mrow></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{gathered}
+\boldsymbol{R F C}=|\boldsymbol{R S}| \\
+\boldsymbol{R S}=\{\boldsymbol{M}\} \cup_{\text {alli }}\left\{\boldsymbol{R}_i\right\}
+\end{gathered}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:3em;vertical-align:-1.25em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.75em;"><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.06979em;">RFC</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">∣</span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.05382em;">RS</span></span></span><span class="mord">∣</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.05382em;">RS</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mopen">{</span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.11424em;">M</span></span></span><span class="mclose">}</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin"><span class="mbin">∪</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">alli </span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">{</span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.00421em;">R</span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">}</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.25em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<blockquote>
+<p>{M}是类中方法的集合（包括<u><strong>继承来的</strong></u>），{Ri}是被类中第 i 个方法所调用的其他方法集合。</p>
+</blockquote>
+<p>③继承树的深度  <strong><u>DIT</u></strong>：计算某个类在系统类设计的继承树中<strong>最大深度</strong>，也就是<strong>最深层</strong>次。一般我们认为继承层次不要超过 <strong>6</strong></p>
+<p>④子类数量 <strong><u>NOC</u></strong>：计算一个父类拥有多少个<strong>直接继承的子类</strong>，也是对继承性的度量。</p>
+<p>⑤对象间的耦合度 <u><strong>CBO</strong></u>：用来计算一个类和其他类之间的耦合性，这里考虑的耦合关系只包括类之间的**<u>依赖、实现、关联、组合、聚合</u>**，<strong>不包括继承</strong>。</p>
+<p>⑥类缺乏内聚性 <strong><u>LCOM</u></strong>：通过类中的属性和方法来衡量<strong>类中方法之间的相关性</strong>。高内聚要求一个模块承担一个单一职责。LCOM 越大则反映类设计存在缺陷，要考虑是否要将类中方法分解。</p>
+<p>假设一个类中有 n 个方法 M1，M2…Mn，方法 Mi 使用的<u><em>实例变量集合</em></u>记作 Ii，因此 n个方法形成了 n 个集合I1，I2…In.</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="center" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi mathvariant="bold-italic">P</mi><mo>=</mo><mrow><mo fence="true">{</mo><mrow><mo fence="true">(</mo><msub><mi mathvariant="bold-italic">I</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi mathvariant="bold-italic">I</mi><mi>j</mi></msub><mo fence="true">)</mo></mrow><mo>∣</mo><mrow><mo fence="true">(</mo><msub><mi mathvariant="bold-italic">I</mi><mi mathvariant="bold-italic">i</mi></msub><mo>∩</mo><msub><mi mathvariant="bold-italic">I</mi><mi>j</mi></msub><mo fence="true">)</mo></mrow><mo>=</mo><mi mathvariant="bold-italic">ϕ</mi><mo fence="true">}</mo></mrow></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi mathvariant="bold-italic">Q</mi><mo>=</mo><mrow><mo fence="true">{</mo><mrow><mo fence="true">(</mo><msub><mi mathvariant="bold-italic">I</mi><mi mathvariant="bold-italic">i</mi></msub><mo separator="true">,</mo><msub><mi mathvariant="bold-italic">I</mi><mi>j</mi></msub><mo fence="true">)</mo></mrow><mo>∣</mo><mrow><mo fence="true">(</mo><msub><mi mathvariant="bold-italic">I</mi><mi mathvariant="bold-italic">i</mi></msub><mo>∩</mo><msub><mi mathvariant="bold-italic">I</mi><mi>j</mi></msub><mo fence="true">)</mo></mrow><mo mathvariant="normal">≠</mo><mi mathvariant="bold-italic">ϕ</mi><mo fence="true">}</mo></mrow></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mi><mrow><mi mathvariant="bold-italic">L</mi><mi mathvariant="bold-italic">C</mi><mi mathvariant="bold-italic">O</mi><mi mathvariant="bold-italic">M</mi></mrow></mi><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.16em" columnalign="center center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="bold-italic">P</mi><mi mathvariant="normal">∣</mi><mo>−</mo><mi mathvariant="normal">∣</mi><mi mathvariant="bold-italic">Q</mi><mi mathvariant="normal">∣</mi><mo separator="true">,</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="bold-italic">P</mi><mi mathvariant="normal">∣</mi><mo>&gt;</mo><mi mathvariant="normal">∣</mi><mi mathvariant="bold-italic">Q</mi><mi mathvariant="normal">∣</mi></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>0</mn><mo separator="true">,</mo></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="bold-italic">P</mi><mi mathvariant="normal">∣</mi><mo>≤</mo><mi mathvariant="normal">∣</mi><mi mathvariant="bold-italic">Q</mi><mi mathvariant="normal">∣</mi></mrow></mstyle></mtd></mtr></mtable></mrow></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{gathered}
+\boldsymbol{P}=\left\{\left(\boldsymbol{I}_i, \boldsymbol{I}_j\right) \mid\left(\boldsymbol{I}_{\boldsymbol{i}} \cap \boldsymbol{I}_j\right)=\boldsymbol{\phi}\right\} \\
+\boldsymbol{Q}=\left\{\left(\boldsymbol{I}_{\boldsymbol{i}}, \boldsymbol{I}_j\right) \mid\left(\boldsymbol{I}_{\boldsymbol{i}} \cap \boldsymbol{I}_j\right) \neq \boldsymbol{\phi}\right\} \\
+\boldsymbol{L C O M}=\left\{\begin{array}{cc}
+|\boldsymbol{P}|-|\boldsymbol{Q}|, &amp; |\boldsymbol{P}|&gt;|\boldsymbol{Q}| \\
+0, &amp; |\boldsymbol{P}| \leq|\boldsymbol{Q}|
+\end{array}\right.
+\end{gathered}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:5.7em;vertical-align:-2.6em;"></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.1em;"><span style="top:-5.71em;"><span class="pstrut" style="height:3.45em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.15972em;">P</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">{</span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.07778em;">I</span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.07778em;">I</span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.07778em;">I</span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3353em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord boldsymbol mtight">i</span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.07778em;">I</span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">ϕ</span></span></span><span class="mclose delimcenter" style="top:0em;">}</span></span></span></span><span style="top:-4.21em;"><span class="pstrut" style="height:3.45em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol">Q</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">{</span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.07778em;">I</span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3353em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord boldsymbol mtight">i</span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.07778em;">I</span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.07778em;">I</span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3353em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord boldsymbol mtight">i</span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.07778em;">I</span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">ϕ</span></span></span><span class="mclose delimcenter" style="top:0em;">}</span></span></span></span><span style="top:-2.1em;"><span class="pstrut" style="height:3.45em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.11424em;">LCOM</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">{</span></span><span class="mord"><span class="mtable"><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">∣</span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.15972em;">P</span></span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">∣</span><span class="mord"><span class="mord"><span class="mord boldsymbol">Q</span></span></span><span class="mord">∣</span><span class="mpunct">,</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span><span class="mpunct">,</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">∣</span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.15972em;">P</span></span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">∣</span><span class="mord"><span class="mord"><span class="mord boldsymbol">Q</span></span></span><span class="mord">∣</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">∣</span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.15972em;">P</span></span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">∣</span><span class="mord"><span class="mord"><span class="mord boldsymbol">Q</span></span></span><span class="mord">∣</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.95em;"><span></span></span></span></span></span><span class="arraycolsep" style="width:0.5em;"></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.6em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
+<table>
+<thead>
+<tr>
+<th>Example 1</th>
+<th>Example 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230422010115544.png" alt="image-20230422010115544"></td>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230422010134142.png" alt="image-20230422010134142"></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><mark>LCOM = P集合的元素个数 - Q集合的元素个数</mark></p>
+</blockquote>
+<h3 id="textcolor-red-考试：dit会有一道大题-20或15分"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试：</mtext><mi>D</mi><mi>I</mi><mi>T</mi><mtext>会有一道大题（</mtext><mn>20</mn><mtext>或</mtext><mn>15</mn><mtext>分）</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试：DIT会有一道大题（20或15分）}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">考试：</span><span class="mord mathnormal" style="margin-right:0.02778em;color:red;">D</span><span class="mord mathnormal" style="margin-right:0.07847em;color:red;">I</span><span class="mord mathnormal" style="margin-right:0.13889em;color:red;">T</span><span class="mord cjk_fallback" style="color:red;">会有一道大题（</span><span class="mord" style="color:red;">20</span><span class="mord cjk_fallback" style="color:red;">或</span><span class="mord" style="color:red;">15</span><span class="mord cjk_fallback" style="color:red;">分）</span></span></span></span></h3>
+<blockquote>
+<p><mark>这里应该是关于面向对象度量的大题：</mark></p>
+<ol>
+<li class="lvl-3">LK度量</li>
+<li class="lvl-3">CK度量</li>
+<li class="lvl-3">MOOD度量</li>
+</ol>
+</blockquote>
+<p>CK：Depth of Inheritance Tree（DIT）</p>
+<blockquote>
+<p>继承树深度的计算：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230331154105008.png" alt="image-20230331154105008" style="zoom:50%;" />
+<p>CBO的计算：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230422211303572.png" alt="image-20230422211303572" style="zoom: 50%;" />
+</blockquote>
+<p><mark>类型题：</mark></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230422011537076.png" alt="image-20230422011537076"></p>
+<h2 id="chapter-6">Chapter 6</h2>
+<h3 id="textcolor-red-考试：可靠性和可用性的区别"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>考试：可靠性和可用性的区别</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{考试：可靠性和可用性的区别}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">考试：可靠性和可用性的区别</span></span></span></span></h3>
+<blockquote>
+<p>考察软件的可靠性：每时间故障数</p>
+</blockquote>
+<p>可靠性（responsibility）——某段时间</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>一段时间内能够正常使用</p>
+</li>
+</ul>
+<p>可用性（reliability）——某个时刻（某个时间点）</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>某一个时刻软件是否能够正常运行</p>
+</li>
+</ul>
+<hr>
+<p>（1） <mark>软件可靠性</mark>：软件产品在**<u>规定的条件下</u><strong>和</strong><u><mark>规定的时间区间</mark></u><strong>完成</strong><u>规定功能</u><strong>的能力。<u>条件</u>是直接与软件运行相关的</strong><u>计算机系统状态</u><strong>和</strong><u>软件输入条件</u><strong>，时间区间是软件的</strong>实际运行时间区间**，功能是<u>软件产品必须具备</u>的功能。软件可靠性与**<u>软件缺陷、系统输入、系统使用</u>**有关。一般有三种度量方法：</p>
+<p>①**<u>故障率</u>**度量：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>λ</mi><mo>=</mo><mfrac><mtext> 总故障次数 </mtext><mtext> 总工作时间 </mtext></mfrac><mo>=</mo><mfrac><mi>n</mi><mrow><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>t</mi><mi>i</mi></msub></mrow></mfrac></mrow><annotation encoding="application/x-tex">\lambda=\frac{\text { 总故障次数 }}{\text { 总工作时间 }}=\frac{n}{\sum_{i=1}^n t_i}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">λ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord"> </span><span class="mord cjk_fallback">总工作时间</span><span class="mord"> </span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord"> </span><span class="mord cjk_fallback">总故障次数</span><span class="mord"> </span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1016em;vertical-align:-0.994em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.3057em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8043em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.994em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>, <u><strong>故障率</strong></u>表示<u>单位运行时间内</u>发生<u>故障的次数</u>。<br>
+②**<u>平均故障间隔时间(MTBF)</u>**度量： <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>T</mi><mi>B</mi><mi>F</mi><mo>=</mo><mfrac><mn>1</mn><mi>λ</mi></mfrac></mrow><annotation encoding="application/x-tex">M T B F=\frac{1}{\lambda}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">MTBF</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">λ</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>, 反映了软件的运行能力, 越大越好。</p>
+<p>③**<u>平均维修时间(MTTR)</u>**度量： <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>T</mi><mi>T</mi><mi>R</mi><mo>=</mo><mfrac><mtext> 总维修时间 </mtext><mtext> 维修次数 </mtext></mfrac><mo>=</mo><mfrac><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mi>t</mi><mi>i</mi></msub></mrow><mi>n</mi></mfrac><mo>=</mo><mfrac><mn>1</mn><mi>μ</mi></mfrac></mrow><annotation encoding="application/x-tex">M T T R=\frac{\text { 总维修时间 }}{\text { 维修次数 }}=\frac{\sum_{i=1}^n t_i}{n}=\frac{1}{\mu}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">MTTR</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2173em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8723em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight"> </span><span class="mord cjk_fallback mtight">维修次数</span><span class="mord mtight"> </span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight"> </span><span class="mord cjk_fallback mtight">总维修时间</span><span class="mord mtight"> </span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.405em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.06em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.535em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7385em;"><span style="top:-2.1786em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3214em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3262em;vertical-align:-0.4811em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">μ</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4811em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>, 反映了软件的修复能力。</p>
+<p>（2）<mark>软件可用性</mark>：软件产品在<u>规定的条件下</u>和==<u><strong>规定的时间点</strong></u>==完成<u>规定功能</u>的能力。</p>
+<p>（3）软件易用性：使用菜单和图形界面, 具有一致的用户界面, 提供丰富全面的错误信息, 具有结构良好的用户手册，实时提供软件帮助功能。可以用<u>任务有效性</u>度量。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext> Task Effectiveness </mtext><mo>=</mo><mfrac><mrow><mtext> 数量 </mtext><mo>∗</mo><mtext> 质量 </mtext></mrow><mn>100</mn></mfrac><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">\text { Task Effectiveness }=\frac{\text { 数量 } * \text { 质量 }}{100} \%
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord"> Task Effectiveness </span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">100</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord"> </span><span class="mord cjk_fallback">数量</span><span class="mord"> </span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord"> </span><span class="mord cjk_fallback">质量</span><span class="mord"> </span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord">%</span></span></span></span></span></p>
+<p>（4）软件维护性：通过 <u><strong>平均维修时间（MTTR ）</strong></u>来度量，也可以用修复时间中位数度量。</p>
+<p>（5）软件可移植性：指软件产品从一种环境迁移到另一种环境的能力</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext> 可移植性</mtext><mo>=</mo><mn>1</mn><mo>−</mo><mfrac><mrow><mi>E</mi><mi>T</mi></mrow><mrow><mi>E</mi><mi>R</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{ 可移植性}=1-\frac{E T}{E R}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord"> </span><span class="mord cjk_fallback">可移植性</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">ER</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">ET</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>ET 是将系统移植到目标环境所需要的资源，ER 是未固定环境创建系统所需要的资源</p>
+<h2 id="补充必要知识">补充必要知识</h2>
+<h3 id="类之间的关系">类之间的关系</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/s1mmons/p/15978698.html">设计模式：类之间的关系 - blakee - 博客园 (cnblogs.com)</a></p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/04/27/University/junior/course/software-metrics/2023%E8%BD%AF%E4%BB%B6%E5%BA%A6%E9%87%8F%E8%80%83%E7%82%B9/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" rel="tag">课堂笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E5%BA%A6%E9%87%8F/" rel="tag">软件度量</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/11/University/junior/course/electronic_commerce/%E7%94%B5%E5%95%86%E5%AE%9E%E9%AA%8C%E8%AE%B0%E5%BD%95/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            电商实验记录（个人）
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/04/25/University/junior/course/multi-media-tech/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">多媒体期末复习总结</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

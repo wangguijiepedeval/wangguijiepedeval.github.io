@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>第四章（项目集成管理） |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software Project Organization Management/4-项目集成管理"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  第四章（项目集成管理）
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/4-%E9%A1%B9%E7%9B%AE%E9%9B%86%E6%88%90%E7%AE%A1%E7%90%86/" class="article-date">
+  <time datetime="2023-07-09T10:33:41.031Z" itemprop="datePublished">2023-07-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/">软件项目组织管理</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">8 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>项目集成管理</h1>
+<p>⭐️<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230515140437481.png" alt="image-20230515140437481" style="zoom: 33%;" /></p>
+<h2 id="什么是项目集成管理">什么是项目集成管理</h2>
+<p>1、项目集成管理任务是在项目生命周期中协调所有其他项目管理知识领域所涉及的过程。</p>
+<p>​		－－它确保项目所有的组成要素在<u><strong>恰当的时间、正确的地方、合适的人物</strong></u>结合在一起，以成功地完成项目。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230511172149710.png" alt="image-20230511172149710" style="zoom:33%;" />
+<p>2、具体内容：项目集成管理<mark>围绕</mark>项目计划进行，主要过程有：<u><strong>计划制定</strong></u>、<u><strong>计划执行</strong></u>和<u><strong>计划变更控制</strong></u>。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230511172302030.png" alt="image-20230511172302030" style="zoom:33%;" />
+<p>3、关键：集成管理是实现<u><strong>整体项目成功</strong></u>的关键。</p>
+<p>4、项目经理的主要任务:是作好项目的集成管理，特别是:</p>
+<p>​	1)<strong>主动控制</strong>项目的人员、计划、工作。</p>
+<p>​	2)<strong>及时协调</strong>各项目目标之间或人员之间的冲突。</p>
+<p>​	3)<strong>适时认真</strong>向高层汇报重要的项目信息。</p>
+<h3 id="项目集成管理的主要工作">⭐️项目集成管理的主要工作</h3>
+<p>(1) <u><strong>制定项目章程</strong></u>。它是指与项目利益相关者一起合作，制定正式批准项目的文件——章程。</p>
+<p>(2) <u><strong>创建初步的项目范围说明书</strong></u>。它是指通过与项目利益相关者的合作，尤其是与项目产品、服务或其他产出的用户合作，开发出总体的范围要求。这个过程的目的便是建立初步的项目范围说明书。</p>
+<p>(3) <u><strong>制定项目管理计划</strong></u>。这个阶段涉及协调所有计划要付出的努力，创建一份一致、连贯的文件——项目管理计划。</p>
+<p>(4) <u><strong>指导和管理项目实施</strong></u>。这涉及通过实施项目管理计划中的活动，来执行项目管理计划。这个阶段主要完成交付物、变更请求、工作绩效信息、被实施的变更请求、纠正措施、预防措施和缺陷修复。</p>
+<p>(5) <u><strong>监控项目工作</strong></u>。这涉及监督项目工作是否符合项目的绩效目标。这个阶段主要<u>完成惩治和预防措施建议</u>、<u>缺陷修复建议</u>以及<u>变更请求</u>。</p>
+<p>(6) <u><strong>整体变更控制</strong></u>。它涉及对影响项目交付物和组织运营资产的所有变更做好协调工作。这个阶段的任务包括被批准和被拒绝的变更请求、被批准的纠正和预防措施、被批准和生效的缺陷修复、交付物、项目管理计划和项目范围说明书的更新。</p>
+<p>(7) <u><strong>项目收尾</strong></u>。它涉及完成所有的项目活动，从而式结束项目。这个阶段包括最终产品、服务或者成果，行政上和合同上的终止于续，以及对组织运营资产的更新。</p>
+<h3 id="项目集成管理的思想">项目集成管理的思想</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230511173359466.png" alt="image-20230511173359466" style="zoom:50%;" />
+<h2 id="战略计划和项目选择">战略计划和项目选择</h2>
+<h3 id="swot">SWOT</h3>
+<p>&quot;SWOT&quot;是一种商业分析工具，其名称代表着Strengths（优势）、Weaknesses（劣势）、Opportunities（机会）和Threats（威胁）。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>SWOT 即基于内外部竞争环境和竞争条件下的态势分析，就是将与研究对象密切相关的各种主要<u><strong>内部优势、劣势和外部的机会和威胁</strong></u>等，通过调查列举出来，并依照<u><strong>矩阵形式排列</strong></u>，然后用<u><strong>系统分析</strong></u>的思想，把各种因素相互匹配起来加以分析，从中得出一系列相应的结论，而结论通常带有一定的决策性。</p>
+</li>
+<li class="lvl-2">
+<p>运用这种方法，可以对研究对象所处的情景进行<u><strong>全面、系统、准确</strong></u>的研究，从而根据研究结果制定相应的<u><strong>发展战略、计划以及对策</strong></u>等。</p>
+</li>
+</ul>
+<h3 id="识别有潜力的项目">识别有潜力的项目</h3>
+<h4 id="筛选信息技术项目过程-重点">⭐️筛选信息技术项目过程（重点⭐️）</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230515141208580.png" alt="筛选信息技术项目过程" style="zoom:50%;" />
+<p>⭐️<u>识别</u>潜在项目<u>之后</u>，还必须<mark>进行筛选</mark>，下面是4种筛选方法：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>注重<u><strong>整个组织的需求</strong></u>；——标准：“<mark>需求、资金和意愿</mark>”。</p>
+</li>
+<li class="lvl-2">
+<p>将IT<u><strong>项目进行分类</strong></u>；——依据：优先级、时间、动机</p>
+</li>
+<li class="lvl-2">
+<p>进行净现值等<u><strong>财务分析</strong></u>；</p>
+</li>
+<li class="lvl-2">
+<p>运用<u><strong>加权评分模</strong></u>型。</p>
+</li>
+</ul>
+<h4 id="对it项目进行分类">⭐️对IT项目进行分类</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>基于<mark>优先级</mark>的分类：将待选项目按高、中、低三个次序进行整体综合排序，首先进行最重要的项目。</p>
+</li>
+<li class="lvl-2">
+<p>基于<mark>时间</mark>的分类：基于时间的考虑筛选项目，可能是完成项目所需的工期时间，也可能是项目必须满足的截止日期；</p>
+</li>
+<li class="lvl-2">
+<p>基于<mark>动机</mark>的分类</p>
+<ul class="lvl-2">
+<li class="lvl-4"><mark>问题、机会、（上级）指令</mark></li>
+<li class="lvl-4">机会：评价项目是否可以<u><strong>解决某个问题</strong></u>，或是<u><strong>抓住某种机会</strong></u>，或迎合某个<u><strong>指示要求</strong></u>；</li>
+</ul>
+</li>
+</ul>
+<h4 id="净现值分析">净现值分析⭐️</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>净现值分析( net present value analysis)是计算项目<u><strong>预期净货币收益和损失</strong></u>的方法，将当前时间点之后的所有未来预期现金流入和流出都做折现计算。</p>
+</li>
+<li class="lvl-2">
+<p>只考虑那些能产生<u><strong>正净现值的项目</strong></u>（项目回报超过了资金成本）</p>
+<ul class="lvl-2">
+<li class="lvl-4">优先选择净现值大的项目</li>
+</ul>
+</li>
+</ul>
+<p>折现因子：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mi>t</mi></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{(1+r)^t}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3651em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mclose mtight"><span class="mclose mtight">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7253em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
+<p>第t年现金流：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">A_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p><span style="color: red;">净现值(NPV)：</span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><munder><mo>∑</mo><mrow><mi>t</mi><mo>=</mo><mn>1...</mn><mi>n</mi></mrow></munder><mfrac><msub><mi>A</mi><mi>t</mi></msub><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>r</mi><msup><mo stretchy="false">)</mo><mi>t</mi></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\sum_{t=1...n} \frac{A_t}{(1+r)^t}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.6274em;vertical-align:-1.2671em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8829em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">=</span><span class="mord mtight">1...</span><span class="mord mathnormal mtight">n</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2671em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7196em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><mark>折现率</mark>( discount rate)是用来将未来现金流折现的利率，也称作资本化率或资本机会成本。</p>
+<h4 id="投资回报率-投资回报">投资回报率/投资回报</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>选择项目时候另外一个重要的财务考虑因素便是投资回报。</p>
+</li>
+<li class="lvl-2">
+<p>投资回报率/投资回报(retum on investment , ROI) 是项目的收益减去成本后，再除以成本的结果。</p>
+</li>
+</ul>
+<p><span style="color: red;">投资回报率（ROI）：</span></p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mtext>总的折现收益</mtext><mo>−</mo><mtext>总的折现成本</mtext></mrow><mtext>总的折现成本</mtext></mfrac></mrow><annotation encoding="application/x-tex">\frac{总的折现收益-总的折现成本}{总的折现成本}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">总的折现成本</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">总的折现收益</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord cjk_fallback">总的折现成本</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h2 id="项目管理计划">项目管理计划</h2>
+<blockquote>
+<p><mark>项目管理计划</mark>(project management plan) 用来<u><strong>协调所有项目计划文件</strong></u>和帮助<u><strong>引导项目的执行与控制</strong></u>。</p>
+</blockquote>
+<h3 id="项目管理计划的制定">⭐️项目管理计划的制定</h3>
+<p>1.定义：项目计划是一个用来<u><strong>协调</strong></u>所有其他计划，以<u><strong>指导项目执行和控制</strong></u>的可操作的文件。</p>
+<p>2.关系：项目计划与项目执行应该是<u><strong>相互渗透</strong></u>的,谁负责做这件事，就该由谁来做这个计划。</p>
+<p>3.⭐️内容：一个项目计划主要包括：<u><strong>整体介绍、组织描述、管理程序、技术程序、任务范围、时间进度、经费预算</strong></u>等。</p>
+<h3 id="项目管理计划的主要内容">项目管理计划的主要内容</h3>
+<ol>
+<li class="lvl-3">
+<p>整体介绍或概述</p>
+</li>
+<li class="lvl-3">
+<p>组织情况描述</p>
+</li>
+<li class="lvl-3">
+<p>项目的管理和方法</p>
+</li>
+<li class="lvl-3">
+<p>项目任务</p>
+</li>
+<li class="lvl-3">
+<p>项目进度</p>
+</li>
+<li class="lvl-3">
+<p>项目预算</p>
+</li>
+<li class="lvl-3">
+<p>利益相关者分析</p>
+</li>
+</ol>
+<h3 id="项目管理计划的执行">项目管理计划的执行</h3>
+<p>项目计划的实施的工具和方法：</p>
+<p>① 项目管理流程</p>
+<p>② 工作授权系统</p>
+<p>③ 状态审查会议（项目进度碰头会）</p>
+<p>④ 项目管理软件</p>
+<p>积极的领导和强大的团队合作是项目管理成功的关键。</p>
+<h3 id="监控项目">监控项目</h3>
+<h5 id="变更请求中的缺陷补救作用">变更请求中的缺陷补救作用</h5>
+<blockquote>
+<p>在变更请求中，缺陷补救的作用是解决或修复已经发现的缺陷或问题。当在项目或产品开发过程中发现了缺陷或问题时，变更请求可以被提出以寻求对其进行补救。</p>
+<p>以下是缺陷补救在变更请求中的几个重要作用：</p>
+<ol>
+<li class="lvl-3">
+<p>问题解决：缺陷补救的主要目的是解决已经发现的问题。通过变更请求，可以提出相应的修复措施，确保问题得到解决，从而提高项目或产品的质量和可靠性。</p>
+</li>
+<li class="lvl-3">
+<p>客户满意度提升：及时处理和修复缺陷可以增加客户满意度。当客户发现缺陷并提出变更请求时，快速响应并解决问题可以增加客户对组织的信任和满意度。</p>
+</li>
+<li class="lvl-3">
+<p>风险降低：未解决的缺陷可能对项目或产品产生负面影响，并引发进一步的问题。通过及时采取缺陷补救措施，可以减少潜在的风险，并避免问题进一步扩大化。</p>
+</li>
+<li class="lvl-3">
+<p>过程改进：通过分析和处理变更请求中的缺陷，可以识别问题的根本原因，并采取适当的措施来改进开发过程。这有助于组织避免类似的问题在未来的项目中再次发生，提高整体效率和质量。</p>
+</li>
+</ol>
+<p>——GPT</p>
+</blockquote>
+<h3 id="集成变更控制">⭐️集成变更控制</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>集成变更控制( integrated change control) 涉及在<u>整个项目的生命周期</u>中<u><strong>识别、估计和管理变更</strong></u>。</p>
+</li>
+<li class="lvl-2">
+<p>⭐️集成变更控制的<mark>主要目的是</mark>:</p>
+<p>(1)控制可能造成变更的因素，以确保变更都是有益的。</p>
+<p>(2)确认变更已经发生。</p>
+<p>(3)管理发生的变更。</p>
+</li>
+</ul>
+<h4 id="流程">流程</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230515151435244.png" alt="image-20230515151435244" style="zoom:50%;" />
+<blockquote>
+<p><u><strong>变更请求</strong></u>是<u>监控项目</u>的输出</p>
+</blockquote>
+<h4 id="变更控制系统">⭐️变更控制系统⭐️</h4>
+<p>变更控制系统是一个正式的、文档化的过程。描述了正式的项目文件可能改变的时间和方式。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230515151747652.png" alt="image-20230515151747652" style="zoom:50%;" />
+<h3 id="终止项目">终止项目</h3>
+<h4 id="项目集成管理的最后一步">项目集成管理的最后一步</h4>
+<p>必须要有活动收尾，并向适当的人员交付已完成或取消的工作。主要成果如下：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>行政收尾程序</p>
+</li>
+<li class="lvl-2">
+<p>合同收尾程序</p>
+</li>
+<li class="lvl-2">
+<p>最终产品、服务或者成果</p>
+</li>
+<li class="lvl-2">
+<p>组织过程资产更新</p>
+</li>
+</ul>
+<p>过程资产：项目团队以实用方式提供的一份包括项目文档、项目终止文件和历史信息的清单。</p>
+<h2 id="课堂快速测试">课堂快速测试</h2>
+<h2 id="课堂讨论">课堂讨论</h2>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230515154749077.png" alt="image-20230515154749077" style="zoom:50%;" />
+<p>存在的问题：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>没有进行项目集成管理</p>
+</li>
+<li class="lvl-2">
+<p>没有考虑项目管理计划的7个方面（从这7个方面来进行分析）</p>
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/4-%E9%A1%B9%E7%9B%AE%E9%9B%86%E6%88%90%E7%AE%A1%E7%90%86/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" rel="tag">课堂笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%AE%A1%E7%90%86/" rel="tag">软件项目组织管理</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/5-%E9%A1%B9%E7%9B%AE%E8%8C%83%E5%9B%B4%E7%AE%A1%E7%90%86/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            第五章（项目范围管理）
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/07/09/University/junior/course/Software%20Project%20Organization%20Management/3-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%BF%87%E7%A8%8B%E7%BB%84/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">第三章（项目管理过程组）</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

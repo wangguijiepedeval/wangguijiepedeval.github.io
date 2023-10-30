@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>第三章练习题 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/(IOT)Principles and Applications of the Internet of Things/第三章练习题"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  第三章练习题
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/11/University/junior/course/(IOT)Principles%20and%20Applications%20of%20the%20Internet%20of%20Things/%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0%E9%A2%98/" class="article-date">
+  <time datetime="2023-05-11T03:37:35.749Z" itemprop="datePublished">2023-05-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E7%89%A9%E8%81%94%E7%BD%91%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/">物联网原理与应用</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">8 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>第三章练习题</h1>
+<h2 id="一-单选题">一、单选题</h2>
+<p>1.以下关于计算机网络“分组交换”特点的描述中，错误的是(B)。<br>
+A.分组交换适合突发性强的计算机数据通信的需求<br>
+B.分组交换在发送数据之前需要事先建立线路连接❌<br>
+C.分组头部带有源地址与目的地址<br>
+D.分组数据最大长度确定</p>
+<blockquote>
+<p>分组交换在发送数据之前不需要事先建立线路连接，因为分组交换采用的是存储转发的方式传输数据。</p>
+</blockquote>
+<p>2.以下关于P地址的描述中，错误的是©<br>
+A.IP协议与网络规模的矛盾突出表现在IP地址上<br>
+B.IP协议有两个版本：IPv4与IPv6<br>
+C.IPv4地址已经分配出大约50%❌<br>
+D.IPv6地址能够满足物联网大量节点接入的需求</p>
+<blockquote>
+<p>IPv4地址已经被分配完毕</p>
+</blockquote>
+<p>3.以下关于IPv6地址的描述中，错误的是(B)。<br>
+A.大规模物联网的应用需要大量的IP地址<br>
+B.IPv6的地址长度定为64位❌<br>
+C.可以提供超过2<sup>128</sup>(3.4×10<sup>38</sup>)个地址<br>
+D.地球表面每一平方米平均可以获得的IP地址数量为6.65×10<sup>23</sup></p>
+<blockquote>
+<p>IPv6的地址长度为128位，地址数量是IPv4的2<sup>96</sup>倍</p>
+</blockquote>
+<p>4.智能医疗应用为计算机网络增加的一种网络类型是(D)。<br>
+A.局域网<br>
+B.城域网<br>
+C.个人区域网<br>
+D.人体区域网 ✔️</p>
+<blockquote>
+<p>物联网智能医疗应用对计算机网络提出了新的需求，促进（人体区域网(Body Area Network,BAN)的发展。物联网智能医疗的需求主要表现在以下两点：第一，智能医疗应用系统需要将人体携带的传感器或移植到人体内的生物传感器节点组成人体区域网，将采集到的人体生理信号（如温度、血糖、血压、心跳等参数），以及人体活动或动作信号、人所在的环境信息，通过无线方式传送到附近的基站。因此，用于智能医疗的个人区域网是一种<mark>无线人体区域网(WBAN)</mark>。第二，智能医疗应用系统不需要有很多节点，<u>节点之间的距离一般在1米左右</u>，<u>节点之间的最大传输速率为10Mbs</u>。无线个人区域网又称为无线个人传感器网络(WBSN)。</p>
+</blockquote>
+<p>5.以下关于WBAN特点的描述中，错误的是©。<br>
+A.用于健康医疗监控<br>
+B.节点之间的距离一般在1米左右<br>
+C.节点之间的传输速率最大为1Mbps❌																																								D.2012年，IEEE批准的标准是EEE802.15.6</p>
+<blockquote>
+<p>无线人体区域网（WBAN）：节点之间的最大传输速率为10Mbs</p>
+</blockquote>
+<p>6.以下关于蜂窝移动通信网小区制特点的描述中，错误的是©<br>
+A.将一个大区制覆盖的区域划分成多个小区<br>
+B.多个小区组成一个区群<br>
+C.在每个小区只设立一个基站❌<br>
+D.小区内的手机与基站建立无线链路</p>
+<blockquote>
+<p>在每个小区设立一个（或几个）基站</p>
+<p>详见：PDF标签102</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221021210226810.png" alt="image-20221021210226810" style="zoom:33%;" />
+</blockquote>
+<p>7.以下关于蜂窝移动通信网络特点的描述中，错误的是(D)。<br>
+A.无线信道是手机与基站之间的无线“空中接口”<br>
+B.基站通过空中接口的下行信道向手机发送语音、数据与信令<br>
+C.手机通过空中接口的上行信道向基站发送语音、数据与信令信号<br>
+D.根据手机硬件与软件、APP的发展水平可以划分出手机的1G到5G❌</p>
+<blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221021210106825.png" alt="image-20221021210106825" style="zoom:50%;" />
+<p>1G~5G的发展是根据移动通信技术的发展来看的</p>
+</blockquote>
+<p>8.以下关于移动通信网中M2M通信特点的描述中，错误的是(D)。<br>
+A.物联网控制中心计算机远程控制智能路灯属于M2M通信<br>
+B.M2M中的“机器”可以是传统的机器，也可以是物联网智能硬件<br>
+C.WMMP协议是支持移动通信网中“机器与机器”交互的通信协议<br>
+D.未来用于人与人通信的手机数量可能仅占整个移动通信网终端数的很小一部分❌</p>
+<blockquote>
+<p>手机将占主要部分</p>
+<p>详见：PDF标签105</p>
+</blockquote>
+<p>9.以下关于5G指标的描述中，错误的是(D)。<br>
+A.连接数密度为每平方公里可以支持100万个在线设备<br>
+B.允许用户最大的移动速度为每小时500公里<br>
+C.单用户理论的峰值速率常规情况为10Gbps<br>
+D.端-端延时可以达到100ms❌</p>
+<blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221021210615261.png" alt="image-20221021210615261" style="zoom: 50%;" />
+<p>详见：PDF标签108</p>
+</blockquote>
+<p>10.以下关于NB-IoT特点的描述中，错误的是©。<br>
+A.广覆盖、大规模、低功耗、低成本<br>
+B.单个小区支持10万个移动终端接入<br>
+C.终端模块待机时间可长达1年❌<br>
+D.只占用大约180kHz的带宽</p>
+<blockquote>
+<p>窄带物联网（NB-IoT）</p>
+<p>终端模块待机时间可长达10年，而造价仅5美元左右</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221021210721133.png" alt="image-20221021210721133" style="zoom:50%;" />
+</blockquote>
+<h2 id="二-思考题">二、思考题</h2>
+<p>1.什么要研究分组交换网技术？</p>
+<p>电话交换网是相当脆弱的，电话交换系统中的任一交换机或连接交换机的一条中继线路损坏，尤其是关键长途电话局交换机如果遭到破坏，就可能导致整个系统通信中断。并且电话交换网可靠性差。而分组交换网技术采用网状拓扑结构，任意两个节点之间都有多条传输路径，即使网络中的某个节点或者线路损坏，依然可以通过其它路径进行数据传输；同时分组交换网技术采用分组交换的数据传输方式，通过存储转发克服了电话交换网可靠性差的特点，分组方式避免传输报文过长导致出错概率的增加，路由选择算法的自适应能力能够可选择的绕过故障的结点。</p>
+<p>2.为什么说IPv6协议将成为物联网核心协议之一？</p>
+<p>IPv6具有巨大的空间地址、新的协议格式、有效的分级寻找和路由结构、地址自动适应、内置的安全机制；IPv6地址能够满足未来大规模物联网终端设备接入的需求，比如：大量的传感器、RFID读写设备、智能移动终端设备、智能机器人都可以获得IPv6地址。除此之外，IPv6协议能够适应物联网智能工业、智能农业、智能交通、智能医疗、智能物流、智能家居等领域的应用。</p>
+<p>3.为什么说进入5G时代，受益最大的是物联网？</p>
+<p>因为物联网中存在一些对带宽、延时与可靠性有高要求的物联网应用在4G网络中无法实现。</p>
+<p>物联网规模的超常规发展，大量物联网应用系统将部署在山区、森林、水域等偏僻地区。很多物联网感知与控制节点密集部署在大楼内部、地下室、地铁与隧道中，4G网络与技术已难以适应，只能寄希望于5G网络与技术。</p>
+<p>物联网涵盖智能工业、智能农业、智能交通、智能医疗与智能电网等各个行业，业务类型多、业务需求差异性大。尤其是在智能工业的工业机器人与工业控制系统中，节点之间的感知数据与控制指令传输必须保证是正确的，延时必须在毫秒量级，否则就会造成工业生产事故。无人驾驶汽车与智能交通控制中心之间的感知数据与控制指令传输尤其要求准确性，延时必须控制在毫秒量级，否则就会造成车毁人亡的重大交通事故。5G技术的成熟和应用将使很多物联网应用的带宽、可靠性与延时的瓶颈得到解决。</p>
+<p>5G技术的发展与应用将大大推动物联网“万物互联”的进程，因此说进入5G时代，受益最大的是物联网。</p>
+<p>4.请举出两个典型的物联网应用移动通信网M2M（机器对机器）的例子。</p>
+<p>自动贩卖机：通过对货物终端的监控，将实时销售数据对货物进行调配</p>
+<p>车载定位：车载终端由控制器模块、GPS、无线模块、视频图像处理设备及信息采集设备等组成。车载GPS导航终端通过GPS模块接收导航信息，并可以通过无线模块实时更新地图。车载终端通过车辆信息采集设备收集车辆状况信息通过无线模块上传给管理系统，从而车辆防盗系统可以实现与用户终端进行交互。</p>
+<p>5.请举出两个典型的物联网应用移动通信网NB-IoT的例子。</p>
+<p>烟感器：<br>
+NB-IoT支持海量连接，传感器实时检测烟雾，一旦烟雾浓度超标就会通过NB-IoT直接发送信息到后台，同时NB-IoT低功耗，待机时间长，可降低安装和维护成本；另外信号穿透力强，可覆盖楼宇偏僻角落。</p>
+<p>共享单车智能锁：</p>
+<p>NB-IoT保证了单车在-40℃到85℃的严酷环境下，智能锁仍然能正常工作；同时解决了功耗高、电池使用寿命短的问题，电池使用寿命可以达到2-3年，可、支撑整辆单车的使用生命周期；NB-IoT模组成本低，拉低整车成本；IoT平台的引入将可以更有效的管理共享单车，并有望引入新的商业模式。</p>
+<blockquote>
+<p>更多参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38498942/article/details/104652658">(77条消息) NB-IOT经典案例_weixin_38498942的博客-CSDN博客</a></p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/05/11/University/junior/course/(IOT)Principles%20and%20Applications%20of%20the%20Internet%20of%20Things/%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%BB%83%E4%B9%A0%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%A9%E8%81%94%E7%BD%91%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" rel="tag">物联网原理与应用</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/" rel="tag">课程作业</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/11/University/junior/course/(IOT)Principles%20and%20Applications%20of%20the%20Internet%20of%20Things/%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%BB%83%E4%B9%A0%E9%A2%98/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            第四章练习题
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/05/11/University/junior/course/(IOT)Principles%20and%20Applications%20of%20the%20Internet%20of%20Things/%E7%AC%AC%E5%85%AD%E7%AB%A0%E7%BB%83%E4%B9%A0%E9%A2%98/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">第六章练习题</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

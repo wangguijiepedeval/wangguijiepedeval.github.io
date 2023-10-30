@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>keras基础 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Scientific Computing and Mathematical Modeling/keras代码基础"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  keras基础
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/11/University/junior/course/Scientific%20Computing%20and%20Mathematical%20Modeling/keras%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time datetime="2023-05-11T02:45:10.925Z" itemprop="datePublished">2023-05-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E4%B8%8E%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">科学计算与数学建模</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">11 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>keras基础</h1>
+<blockquote>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://keras.io/zh/">主页 - Keras 中文文档</a></p>
+</blockquote>
+<h3 id="mnist加载数据">mnist加载数据</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.datasets <span class="keyword">import</span> mnist</span><br><span class="line">(X_train, y_train), (X_test, y_test) = mnist.load_data(<span class="string">&quot;/data/shixunfiles/8a61469f7ea1b51cbae51d4f78837e45_1637892731181.npz&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li class="lvl-3">
+<p>根据指定路径下载数据</p>
+</li>
+</ol>
+<h3 id="reshape">reshape</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 将图像摊平为向量</span></span><br><span class="line">X_train = X_train.reshape(<span class="number">60000</span>, <span class="number">784</span>)</span><br><span class="line">X_test = X_test.reshape(<span class="number">10000</span>, <span class="number">784</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化</span></span><br><span class="line">X_train = X_train / <span class="number">255</span></span><br><span class="line">X_test = X_test / <span class="number">255</span></span><br><span class="line">y_train = np_utils.to_categorical(y_train, <span class="number">10</span>)</span><br><span class="line">y_test_h = np_utils.to_categorical(y_test, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li class="lvl-3">
+<p>a.reshape(shape) ： 不改变numpy数组a的元素，返回一个shape形状的数组，原数组a不变</p>
+</li>
+<li class="lvl-3">
+<p><u>区别于keras.layers的Reshape层，两者作用相同，但不是同一个东西</u>。</p>
+</li>
+</ol>
+<h3 id="sequential-顺序模型">Sequential 顺序模型</h3>
+<blockquote>
+<p>官方参考：<a target="_blank" rel="noopener" href="https://keras.io/zh/getting-started/sequential-model-guide/">Sequential 顺序模型指引 - Keras 中文文档</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> models</span><br><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="comment"># 序列模型</span></span><br><span class="line">model = models.Sequential()</span><br></pre></td></tr></table></figure>
+<ol>
+<li class="lvl-3">
+<p>可以通过将网络层实例的列表传递给 <code>Sequential</code> 的构造器，来创建一个 <code>Sequential</code> 模型；</p>
+</li>
+<li class="lvl-3">
+<p>也可以简单地使用 <code>.add()</code> 方法将各层添加到模型中。</p>
+</li>
+<li class="lvl-3">
+<p>对于顺序模型中的第一层（且只有第一层，因为下面的层可以自动地推断尺寸）需要接收关于其输入尺寸的信息。</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面的代码片段是等价的</span></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(Dense(<span class="number">32</span>, input_shape=(<span class="number">784</span>,)))</span><br><span class="line"></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(Dense(<span class="number">32</span>, input_dim=<span class="number">784</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="inputlayer输入层">InputLayer输入层</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> InputLayer</span><br><span class="line"><span class="comment"># 输入层</span></span><br><span class="line">model.add(InputLayer(input_shape=(img_size_flat,)))</span><br></pre></td></tr></table></figure>
+<ol>
+<li class="lvl-3">
+<p>输入层采用 InputLayer 进行定义， InputLayer 只用于<strong>接收数据</strong>，不对数据做任何处理。</p>
+</li>
+<li class="lvl-3">
+<p>可以包装现有张量 (传递 input_tensor 参数)或创建占位符张量 (传递参数 input_shape 和可选的 dtype )</p>
+</li>
+</ol>
+<h3 id="conv2d卷积层">Conv2D卷积层</h3>
+<blockquote>
+<p>官方参考：<a target="_blank" rel="noopener" href="https://keras.io/zh/backend/#conv2d">后端 Backend - Keras 中文文档</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Conv2D, MaxPooling2D</span><br><span class="line"><span class="comment"># 具有ReLu激活和最大池化的卷积层1</span></span><br><span class="line">model.add(Conv2D(kernel_size=<span class="number">5</span>, strides=<span class="number">1</span>, filters=<span class="number">16</span>,</span><br><span class="line">                 padding=<span class="string">&#x27;same&#x27;</span>, activation=<span class="string">&#x27;relu&#x27;</span>, name=<span class="string">&#x27;layer_conv1&#x27;</span>))</span><br><span class="line">model.add(MaxPooling2D(pool_size=<span class="number">2</span>, strides=<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 具有ReLu激活和最大池化的卷积层2</span></span><br><span class="line">model.add(Conv2D(kernel_size=<span class="number">5</span>, strides=<span class="number">1</span>, filters=<span class="number">36</span>,</span><br><span class="line">                 padding=<span class="string">&#x27;same&#x27;</span>, activation=<span class="string">&#x27;relu&#x27;</span>, name=<span class="string">&#x27;layer_conv2&#x27;</span>))</span><br><span class="line">model.add(MaxPooling2D(pool_size=<span class="number">2</span>, strides=<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keras.backend.conv2d(x, kernel, strides=(<span class="number">1</span>, <span class="number">1</span>), padding=<span class="string">&#x27;valid&#x27;</span>, data_format=<span class="literal">None</span>, dilation_rate=(<span class="number">1</span>, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>x</strong>: 张量或变量。</p>
+</li>
+<li class="lvl-2">
+<p><strong>kernel</strong>: 核张量。</p>
+</li>
+<li class="lvl-2">
+<p><strong>strides</strong>: 步长元组。</p>
+</li>
+<li class="lvl-2">
+<p><strong>padding</strong>: 字符串，<code>&quot;same&quot;</code> 或 <code>&quot;valid&quot;</code>。</p>
+</li>
+<li class="lvl-2">
+<p><strong>data_format</strong>: 字符串，<code>&quot;channels_last&quot;</code> 或 <code>&quot;channels_first&quot;</code>。 对于输入/卷积核/输出，是否使用 Theano 或 TensorFlow/CNTK数据格式。</p>
+</li>
+<li class="lvl-2">
+<p><strong>dilation_rate</strong>: 2 个整数的元组。</p>
+</li>
+</ul>
+<h3 id="maxpooling2d最大池化">MaxPooling2D最大池化</h3>
+<blockquote>
+<p>官方参考：<a target="_blank" rel="noopener" href="https://keras.io/zh/layers/pooling/#maxpooling2d">池化层 Pooling - Keras 中文文档</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> MaxPooling2D</span><br><span class="line">model.add(MaxPooling2D(pool_size=<span class="number">2</span>, strides=<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keras.layers.MaxPooling2D(pool_size=(<span class="number">2</span>, <span class="number">2</span>), strides=<span class="literal">None</span>, padding=<span class="string">&#x27;valid&#x27;</span>, data_format=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>pool_size</strong>: 整数，或者 2 个整数表示的元组， 沿（垂直，水平）方向缩小比例的因数。 （2，2）会把输入张量的两个维度都缩小一半。 如果只使用一个整数，那么两个维度都会使用同样的窗口长度。</p>
+</li>
+<li class="lvl-2">
+<p><strong>strides</strong>: 整数，2 个整数表示的元组，或者是 <code>None</code>。 表示步长值。 如果是 <code>None</code>，那么默认值是 <code>pool_size</code>。</p>
+</li>
+<li class="lvl-2">
+<p><strong>padding</strong>: <code>&quot;valid&quot;</code> 或者 <code>&quot;same&quot;</code> （区分大小写）。</p>
+</li>
+<li class="lvl-2">
+<p><strong>data_format</strong>: 字符串，<code>channels_last</code> (默认)或 <code>channels_first</code> 之一。 表示输入各维度的顺序。 <code>channels_last</code> 代表尺寸是 <code>(batch, height, width, channels)</code> 的输入张量， 而 <code>channels_first</code> 代表尺寸是 <code>(batch, channels, height, width)</code> 的输入张量。 默认值根据 Keras 配置文件 <code>~/.keras/keras.json</code> 中的 <code>image_data_format</code> 值来设置。 如果还没有设置过，那么默认值就是 “channels_last”。</p>
+</li>
+</ul>
+<h3 id="flatten">Flatten</h3>
+<blockquote>
+<p>官方参考：<a target="_blank" rel="noopener" href="https://keras.io/zh/layers/core/#flatten">核心网络层 - Keras 中文文档</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Flatten</span><br><span class="line"><span class="comment"># 将卷积层的输出拉直</span></span><br><span class="line">model.add(Flatten())</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keras.layers.Flatten(data_format=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>data_format</strong>：一个字符串，其值为 <code>channels_last</code>（默认值）或者 <code>channels_first</code>。它表明输入的维度的顺序。此参数的目的是当模型从一种数据格式切换到另一种数据格式时保留权重顺序。<code>channels_last</code> 对应着尺寸为 <code>(batch, ..., channels)</code> 的输入，而 <code>channels_first</code> 对应着尺寸为 <code>(batch, channels, ...)</code> 的输入。默认为 <code>image_data_format</code> 的值，你可以在 Keras 的配置文件 <code>~/.keras/keras.json</code> 中找到它。如果你从未设置过它，那么它将是 <code>channels_last</code></p>
+</li>
+</ul>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">model = Sequential()</span><br><span class="line">model.add(Conv2D(<span class="number">64</span>, (<span class="number">3</span>, <span class="number">3</span>),</span><br><span class="line">                 input_shape=(<span class="number">3</span>, <span class="number">32</span>, <span class="number">32</span>), padding=<span class="string">&#x27;same&#x27;</span>,))</span><br><span class="line"><span class="comment"># 现在：model.output_shape == (None, 64, 32, 32)</span></span><br><span class="line"></span><br><span class="line">model.add(Flatten())</span><br><span class="line"><span class="comment"># 现在：model.output_shape == (None, 65536)</span></span><br></pre></td></tr></table></figure>
+<h3 id="dense完全连接层">Dense完全连接层</h3>
+<blockquote>
+<p>官方参考：<a target="_blank" rel="noopener" href="https://keras.io/zh/layers/core/#dense">核心网络层 - Keras 中文文档</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense</span><br><span class="line"><span class="comment"># 具有ReLu激活的完全连接层</span></span><br><span class="line">model.add(Dense(<span class="number">128</span>, activation=<span class="string">&#x27;relu&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 最后一个全连接层，具有softmax激活，用于分类</span></span><br><span class="line">model.add(Dense(num_classes, activation=<span class="string">&#x27;softmax&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keras.layers.Dense(units, activation=<span class="literal">None</span>, use_bias=<span class="literal">True</span>, kernel_initializer=<span class="string">&#x27;glorot_uniform&#x27;</span>, bias_initializer=<span class="string">&#x27;zeros&#x27;</span>, kernel_regularizer=<span class="literal">None</span>, bias_regularizer=<span class="literal">None</span>, activity_regularizer=<span class="literal">None</span>, kernel_constraint=<span class="literal">None</span>, bias_constraint=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>units</strong>: 正整数，输出空间维度。</p>
+</li>
+<li class="lvl-2">
+<p><strong>activation</strong>: 激活函数 。 若不指定，则不使用激活函数 (即，「线性」激活: <code>a(x) = x</code>)。</p>
+</li>
+<li class="lvl-2">
+<p><strong>use_bias</strong>: 布尔值，该层是否使用偏置向量。</p>
+</li>
+<li class="lvl-2">
+<p><strong>kernel_initializer</strong>: <code>kernel</code> 权值矩阵的初始化器 。</p>
+</li>
+<li class="lvl-2">
+<p><strong>bias_initializer</strong>: 偏置向量的初始化器 。</p>
+</li>
+<li class="lvl-2">
+<p><strong>kernel_regularizer</strong>: 运用到 <code>kernel</code> 权值矩阵的正则化函数。</p>
+</li>
+<li class="lvl-2">
+<p><strong>bias_regularizer</strong>: 运用到偏置向的的正则化函数。</p>
+</li>
+<li class="lvl-2">
+<p><strong>activity_regularizer</strong>: 运用到层的输出的正则化函数 (它的 “activation”)。</p>
+</li>
+<li class="lvl-2">
+<p><strong>kernel_constraint</strong>: 运用到 <code>kernel</code> 权值矩阵的约束函数。</p>
+</li>
+<li class="lvl-2">
+<p><strong>bias_constraint</strong>: 运用到偏置向量的约束函数。</p>
+</li>
+</ul>
+<p>实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 作为 Sequential 模型的第一层</span></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(Dense(<span class="number">32</span>, input_shape=(<span class="number">16</span>,)))</span><br><span class="line"><span class="comment"># 现在模型就会以尺寸为 (*, 16) 的数组作为输入，</span></span><br><span class="line"><span class="comment"># 其输出数组的尺寸为 (*, 32)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在第一层之后，你就不再需要指定输入的尺寸了：</span></span><br><span class="line">model.add(Dense(<span class="number">32</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="compile模型编译">compile模型编译</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译模型</span></span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=Adam(lr=<span class="number">1e-3</span>),</span><br><span class="line">              loss=<span class="string">&#x27;categorical_crossentropy&#x27;</span>, metrics=[<span class="string">&#x27;accuracy&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<ol>
+<li class="lvl-4">
+<p>优化器 optimizer</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-5">
+<p>rmsprop</p>
+</li>
+<li class="lvl-5">
+<p>adagrad</p>
+</li>
+<li class="lvl-5">
+<p>Optimizer 类的实例</p>
+</li>
+</ul>
+<ol start="2">
+<li class="lvl-3">
+<p>损失函数 loss</p>
+<ul class="lvl-2">
+<li class="lvl-5">categorical_crossentropy：多分类交叉熵</li>
+<li class="lvl-5">binary_crossentropy：二分类交叉熵</li>
+<li class="lvl-5">mse</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>评估标准 metrics</p>
+<ul class="lvl-2">
+<li class="lvl-5">一般设为<code>accuracy</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="fit模型训练">fit模型训练</h3>
+<blockquote>
+<p>官方参考：<a target="_blank" rel="noopener" href="https://keras.io/zh/models/model/#fit">函数式 API - Keras 中文文档</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># epochs设置为1，batch_size设置为128</span></span><br><span class="line"><span class="comment"># 训练模型</span></span><br><span class="line">model.fit(X_train, y_train, epochs=<span class="number">1</span>, batch_size=<span class="number">128</span>,</span><br><span class="line">          validation_split=<span class="number">1</span>/<span class="number">12</span>, verbose=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fit(self, x=<span class="literal">None</span>, y=<span class="literal">None</span>, batch_size=<span class="literal">None</span>, epochs=<span class="number">1</span>, verbose=<span class="number">1</span>, callbacks=<span class="literal">None</span>, validation_split=<span class="number">0.0</span>, validation_data=<span class="literal">None</span>, shuffle=<span class="literal">True</span>, class_weight=<span class="literal">None</span>, sample_weight=<span class="literal">None</span>, initial_epoch=<span class="number">0</span>, steps_per_epoch=<span class="literal">None</span>, validation_steps=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>x：输入数据。如果模型只有一个输入，那么x的类型是numpy数组，如果模型有多个输入，那么x的类型应当为list，list的元素是对应于各个输入的numpy array。</p>
+</li>
+<li class="lvl-2">
+<p>y：标签，numpy 数组。如果模型有多个输出，可以传入一个numpy 数组的list。</p>
+</li>
+<li class="lvl-2">
+<p>batch_size：整数，指定进行梯度下降时每个batch包含的样本数。训练时一个</p>
+</li>
+<li class="lvl-2">
+<p>batch的样本会被计算一次梯度下降，使目标函数优化一步。</p>
+</li>
+<li class="lvl-2">
+<p>epochs：整数，训练终止时的epoch值，训练将在达到该epoch值时停止</p>
+</li>
+<li class="lvl-2">
+<p>verbose：<u>日志显示</u>，0：为不在标准输出流输出日志信息，1：为输出进度条记录，2：为每个epoch输出一行记录</p>
+</li>
+<li class="lvl-2">
+<p>validation_split：0~1之间的浮点数，用来指定训练集的一定比例数据作为验证集。验证集将不参与训练，并在每个epoch结束后测试的模型的指标，如损失函数、精确度等。</p>
+</li>
+</ul>
+<h3 id="evaluate模型评估">evaluate模型评估</h3>
+<blockquote>
+<p>官方参考：<a target="_blank" rel="noopener" href="https://keras.io/zh/models/model/#evaluate">函数式 API - Keras 中文文档</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 评估与预测性能指标</span></span><br><span class="line">result = model.evaluate(X_test, y_test_h, verbose=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;loss &quot;</span>, result[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;acc &quot;</span>, result[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">evaluate(x=<span class="literal">None</span>, y=<span class="literal">None</span>, batch_size=<span class="literal">None</span>, verbose=<span class="number">1</span>, sample_weight=<span class="literal">None</span>, steps=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>x</strong>: 测试数据的 Numpy 数组（如果模型只有一个输入）， 或者是 Numpy 数组的列表（如果模型有多个输入）。 如果模型中的输入层被命名，你也可以传递一个字典，将输入层名称映射到 Numpy 数组。 如果从本地框架张量馈送（例如 TensorFlow 数据张量）数据，x 可以是 <code>None</code>（默认）。</p>
+</li>
+<li class="lvl-2">
+<p><strong>y</strong>: 目标（标签）数据的 Numpy 数组，或 Numpy 数组的列表（如果模型具有多个输出）。 如果模型中的输出层被命名，你也可以传递一个字典，将输出层名称映射到 Numpy 数组。 如果从本地框架张量馈送（例如 TensorFlow 数据张量）数据，y 可以是 <code>None</code>（默认）。</p>
+</li>
+<li class="lvl-2">
+<p><strong>batch_size</strong>: 整数或 <code>None</code>。每次评估的样本数。如果未指定，默认为 32。</p>
+</li>
+<li class="lvl-2">
+<p><strong>verbose</strong>: 0 或 1。日志显示模式。 0 = 安静模式，1 = 进度条。</p>
+</li>
+<li class="lvl-2">
+<p><strong>sample_weight</strong>: 测试样本的可选 Numpy 权重数组，用于对损失函数进行加权。 您可以传递与输入样本长度相同的扁平（1D）Numpy 数组（权重和样本之间的 1:1 映射）， 或者在时序数据的情况下，传递尺寸为 <code>(samples, sequence_length)</code> 的 2D 数组，以对每个样本的每个时间步施加不同的权重。 在这种情况下，你应该确保在 <code>compile()</code> 中指定 <code>sample_weight_mode=&quot;temporal&quot;</code>。</p>
+</li>
+<li class="lvl-2">
+<p><strong>steps</strong>: 整数或 <code>None</code>。 声明评估结束之前的总步数（批次样本）。默认值 <code>None</code>。</p>
+</li>
+</ul>
+<h3 id="predict预测">predict预测</h3>
+<blockquote>
+<p>官方参考：<a target="_blank" rel="noopener" href="https://keras.io/zh/models/model/#predict">函数式 API - Keras 中文文档</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 预测</span></span><br><span class="line">predict = model.predict(X_test)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;1 predict: &quot;</span>, predict)</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">predict(x, batch_size=<span class="literal">None</span>, verbose=<span class="number">0</span>, steps=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>x</strong>: 输入数据，Numpy 数组 （或者 Numpy 数组的列表，如果模型有多个输出）。</p>
+</li>
+<li class="lvl-2">
+<p><strong>batch_size</strong>: 整数。如未指定，默认为 32。</p>
+</li>
+<li class="lvl-2">
+<p><strong>verbose</strong>: 日志显示模式，0 或 1。</p>
+</li>
+<li class="lvl-2">
+<p><strong>steps</strong>: 声明预测结束之前的总步数（批次样本）。默认值 <code>None</code>。</p>
+</li>
+</ul>
+<h3 id="argmax">argmax</h3>
+<blockquote>
+<p>官方参考：<a target="_blank" rel="noopener" href="https://keras.io/zh/backend/#argmax">后端 Backend - Keras 中文文档</a></p>
+</blockquote>
+<p>返回指定轴的最小值的索引。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">predict = np.argmax(predict, axis=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;2 predict: &quot;</span>, predict)</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keras.backend.argmin(x, axis=-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>x</strong>: 张量或变量。</p>
+</li>
+<li class="lvl-2">
+<p><strong>axis</strong>: 执行归约操作的轴。</p>
+</li>
+</ul>
+<h3 id="保存-删除-加载模型">保存、删除、加载模型</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 保存模型</span></span><br><span class="line">model2.save(path_model)</span><br><span class="line"><span class="comment"># 删除模型</span></span><br><span class="line"><span class="keyword">del</span> model2</span><br><span class="line"><span class="comment"># 加载模型3</span></span><br><span class="line">model3 = models.load_model(path_model)</span><br></pre></td></tr></table></figure>
+<h3 id="summary输出各层信息">summary输出各层信息</h3>
+<p>summary()方法查看模型架构：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 得到层</span></span><br><span class="line">model3.summary()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出样例：</span></span><br><span class="line">_________________________________________________________________</span><br><span class="line">Layer (<span class="built_in">type</span>)                 Output Shape              Param <span class="comment">#   </span></span><br><span class="line">=================================================================</span><br><span class="line">embedding_1 (Embedding)      (<span class="literal">None</span>, <span class="number">20</span>, <span class="number">8</span>)             <span class="number">80000</span>     </span><br><span class="line">_________________________________________________________________</span><br><span class="line">flatten_1 (Flatten)          (<span class="literal">None</span>, <span class="number">160</span>)               <span class="number">0</span>         </span><br><span class="line">_________________________________________________________________</span><br><span class="line">dense_1 (Dense)              (<span class="literal">None</span>, <span class="number">1</span>)                 <span class="number">161</span>       </span><br><span class="line">=================================================================</span><br><span class="line">Total params: <span class="number">80</span>,<span class="number">161</span></span><br><span class="line">Trainable params: <span class="number">80</span>,<span class="number">161</span></span><br><span class="line">Non-trainable params: <span class="number">0</span></span><br><span class="line">_________________________________________________________________</span><br></pre></td></tr></table></figure>
+<h3 id="layers模型各层">layers模型各层</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> layers</span><br><span class="line"><span class="comment"># layers下标索引根据add()添加的先后顺序决定</span></span><br><span class="line">layer_input = model3.layers[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># layers[1]:model.add(Reshape(img_shape_full))</span></span><br><span class="line">layer_conv1 = model3.layers[<span class="number">2</span>]</span><br><span class="line"><span class="comment"># layers[3]:model.add(MaxPooling2D(pool_size=2, strides=2))</span></span><br><span class="line">layer_conv2 = model3.layers[<span class="number">4</span>]</span><br><span class="line"><span class="comment"># layers[5]:model.add(MaxPooling2D(pool_size=2, strides=2))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># layers[6]:model.add(Flatten())</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># layers[7]:model.add(Dense(128, activation=&#x27;relu&#x27;))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># layers[8]:model.add(Dense(num_classes, activation=&#x27;softmax&#x27;))</span></span><br></pre></td></tr></table></figure>
+<h3 id="get-weights获得权重">get_weights获得权重</h3>
+<blockquote>
+<p>官方参考：<a target="_blank" rel="noopener" href="https://keras.io/zh/layers/about-keras-layers/#keras">关于 Keras 网络层 - Keras 中文文档</a></p>
+</blockquote>
+<p><code>layer.get_weights()</code>: 以含有Numpy矩阵的列表形式返回层的权重。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 卷积权重</span></span><br><span class="line">weights_conv1 = layer_conv1.get_weights()[<span class="number">0</span>]</span><br><span class="line">weights_conv2 = layer_conv2.get_weights()[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="backend">backend</h3>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/tensorflow_python/tf_keras_backend_function.html">TensorFlow函数教程：tf.keras.backend.function_w3cschool</a></p>
+</blockquote>
+<p><code>backend.function</code>输出值为 Numpy 数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras <span class="keyword">import</span> backend</span><br><span class="line"><span class="comment"># 卷积层输出一</span></span><br><span class="line">output_conv1 = backend.function(</span><br><span class="line">        inputs=[layer_input.<span class="built_in">input</span>], outputs=[layer_conv1.output])</span><br><span class="line">layer_output1 = output_conv1([np.array([image1])])[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(layer_output1.shape)</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.backend.function(</span><br><span class="line">    inputs,</span><br><span class="line">    outputs,</span><br><span class="line">    updates=<span class="literal">None</span>,</span><br><span class="line">    name=<span class="literal">None</span>,</span><br><span class="line">    **kwargs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>inputs：占位符张量列表。</p>
+</li>
+<li class="lvl-2">
+<p>outputs：输出张量列表。</p>
+</li>
+<li class="lvl-2">
+<p>updates：更新操作列表。</p>
+</li>
+<li class="lvl-2">
+<p>name：String，函数名称。</p>
+</li>
+<li class="lvl-2">
+<p>**kwargs：需要传递给 <code>tf.Session.run</code> 的参数。</p>
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/05/11/University/junior/course/Scientific%20Computing%20and%20Mathematical%20Modeling/keras%E4%BB%A3%E7%A0%81%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/keras/" rel="tag">keras</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E4%B8%8E%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" rel="tag">科学计算与数学建模</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/11/University/junior/course/Software%20testing%20technology/%E4%BD%9C%E4%B8%9A1-%E7%BB%84%E5%90%88%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95-%E6%AD%A3%E4%BA%A4%E6%B3%95%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            测试作业1-组合分析方法
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/05/11/University/junior/course/Scientific%20Computing%20and%20Mathematical%20Modeling/%E5%BC%80%E5%8D%B7%E5%AE%9D%E5%85%B8plus+/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">2022年期末总结</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

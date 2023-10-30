@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>算法每日一题6 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/Algorithm/question each day/每日一题（系列6）"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  算法每日一题6
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/04/11/University/Algorithm/question%20each%20day/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%EF%BC%88%E7%B3%BB%E5%88%976%EF%BC%89/" class="article-date">
+  <time datetime="2023-04-11T06:44:55.726Z" itemprop="datePublished">2023-04-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/">竞赛</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/">算法</a> / <a class="article-category-link" href="/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">每日一题</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">3.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">14 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>每日一题</h1>
+<blockquote>
+<p>每日一题系列旨在督促本人坚持算法练习，并期望将之养成一个习惯。</p>
+</blockquote>
+<h3 id="1-分解质因数">1、分解质因数</h3>
+<blockquote>
+<p>lanqiao-1559：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/18397/learning/?id=894710&amp;compatibility=false">分解质因数 - 蓝桥云课 (lanqiao.cn)</a></p>
+<p><u><strong>完成时间：2023年4月5日</strong></u></p>
+<p>tags：简单数论、质因数分解</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230405021119535.png" alt="image-20230405021119535"></p>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 分解质因数</span></span><br><span class="line"><span class="type">int</span> p[<span class="number">20</span>];  <span class="comment">//p[]记录因子，p[1]是最小因子。一个int数的质因子最多有10几个</span></span><br><span class="line"><span class="type">int</span> c[<span class="number">40</span>];  <span class="comment">//c[i]记录第i个因子的个数。一个因子的个数最多有30几个 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getFactor</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="type">int</span> m = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=<span class="built_in">sqrt</span>(n);++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(n%i==<span class="number">0</span>)&#123;<span class="comment">// i为n因子 </span></span><br><span class="line">			p[++m] = i, c[m] = <span class="number">0</span>;<span class="comment">// 存储第m个因子以及其个数 </span></span><br><span class="line">			<span class="keyword">while</span>(n%i==<span class="number">0</span>)&#123;</span><br><span class="line">				n /= i,c[m]++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">if</span>(n&gt;<span class="number">1</span>)&#123;<span class="comment">// 剩下的整数 </span></span><br><span class="line">		p[++m] = n, c[m] = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> m;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> a, b;</span><br><span class="line">	cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=a;i&lt;=b;++i)&#123;</span><br><span class="line">		<span class="type">int</span> m = <span class="built_in">getFactor</span>(i);</span><br><span class="line">		cout&lt;&lt;i&lt;&lt;<span class="string">&quot;=&quot;</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;=m;++k)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=c[k];++j)&#123;</span><br><span class="line">				cout&lt;&lt;p[k];</span><br><span class="line">				<span class="keyword">if</span>(j&lt;c[k])cout&lt;&lt;<span class="string">&quot;*&quot;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(k&lt;m)cout&lt;&lt;<span class="string">&quot;*&quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		cout&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-最少砝码">2、最少砝码</h3>
+<blockquote>
+<p>lanqiao-1461：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/1461/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;problem_id=1461">最少砝码 - 蓝桥云课 (lanqiao.cn)</a></p>
+<p><u><strong>完成时间：2023年4月5日</strong></u></p>
+<p>tags：思维训练、找规律</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230405105822797.png" alt="image-20230405105822797"></p>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 最少砝码 </span></span><br><span class="line"><span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> R, N;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;N;</span><br><span class="line">	<span class="keyword">while</span>(R&lt;N)&#123;</span><br><span class="line">		R = <span class="number">3</span>*R+<span class="number">1</span>;<span class="comment">// 推导出的公式 </span></span><br><span class="line">		cnt++; </span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;cnt;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-砍竹子">3、砍竹子</h3>
+<blockquote>
+<p>lanqiao-2117：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2117/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;problem_id=2117">砍竹子 - 蓝桥云课 (lanqiao.cn)</a></p>
+<p><u><strong>完成时间：2023年4月5日</strong></u></p>
+<p>tags：思维训练、找规律</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p>正解：思维。这样计算最少砍刀数：</p>
+<p>（1）首先计算最多砍多少刀，计算每棵竹子砍到1需要多少刀，所有竹子砍数相加得到一个总数，记为ans；</p>
+<p>（2）记录每棵竹子每次被砍后的新高度；</p>
+<p>（3）比较<mark>任意两个相邻</mark>的竹子，它们是否有相同的高度，如果有相同的高度，这两棵竹子接下来可以一起砍，从而少砍一刀，ans减一；</p>
+<p>（4）比较结束后，ans就是答案。</p>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 砍竹子 </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line">ll total = <span class="number">0</span>;<span class="comment">// 存储对所有竹子一棵一棵的砍的总次数</span></span><br><span class="line">ll cnt = <span class="number">0</span>;<span class="comment">// 记录少砍多少刀</span></span><br><span class="line">ll x;<span class="comment">// 输入竹子的高度</span></span><br><span class="line">unordered_set&lt;ll&gt;h[N]; <span class="comment">// 定义了一个类型为set的数组，即h[i]就是一个set </span></span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">sqr</span><span class="params">(ll n)</span></span>&#123;<span class="comment">// 由于数据过大时使用sqrt会出现误差 </span></span><br><span class="line">	ll x = <span class="built_in">sqrt</span>(n);<span class="comment">// 由于精度问题进行调整 </span></span><br><span class="line">	<span class="keyword">if</span>((x+<span class="number">1</span>)*(x+<span class="number">1</span>)&lt;=n)x = x+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(x*x&gt;n)x = x<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">return</span> x; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		cin&gt;&gt;x;</span><br><span class="line">		<span class="keyword">while</span>(x&gt;<span class="number">1</span>)&#123;<span class="comment">// 竹子高度大于1时 </span></span><br><span class="line">			total++;</span><br><span class="line">			<span class="keyword">if</span>(h[i<span class="number">-1</span>].<span class="built_in">count</span>(x))cnt++;<span class="comment">// 必须保证是连续的具有相同高度的竹子</span></span><br><span class="line">			h[i].<span class="built_in">insert</span>(x);<span class="comment">// 存储当前第i个竹子的多个高度情况 </span></span><br><span class="line">			x = <span class="built_in">sqr</span>(x/<span class="number">2</span>+<span class="number">1</span>);<span class="comment">// 砍一刀之后剩下的高度 </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;total-cnt;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-排列小球">4、排列小球</h3>
+<blockquote>
+<p>lanqiao-546：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/546/learning/?page=1&amp;first_category_id=1&amp;sort=students_count&amp;problem_id=546">排列小球 - 蓝桥云课 (lanqiao.cn)</a></p>
+<p><u><strong>完成时间：2023年4月5日</strong></u></p>
+<p>tags：思维训练、dfs</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p>初步看题可知为枚举各种颜色小球的数量，来实现递增序列，故确定思路为<mark>dfs</mark>.</p>
+</li>
+<li class="lvl-3">
+<p>我们应该如何枚举小球呢？可以利用递增条件，<u><strong>记录上一次枚举的数量，下一次枚举需要大于这个数量</strong></u>；</p>
+</li>
+<li class="lvl-3">
+<p><code>dfs(sum,x,last)</code>表示还需要sum个球中，前面选了颜色为last色的，x个球；</p>
+</li>
+<li class="lvl-3">
+<p>如果接着再选j个颜色为i的，为<code>dfs(sum-j,j,i)</code>；</p>
+</li>
+<li class="lvl-3">
+<p>递归边界所有球都用完，方案数加一。dfs过程中需要注意两个问题：</p>
+<pre><code> （1）当前选的小球和上次选的小球颜色相同，则跳过。
+
+ （2）每次枚举递增数量的小球。
+</code></pre>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 排列小球</span></span><br><span class="line"><span class="type">int</span> nums[<span class="number">3</span>];<span class="comment">// 存储R,G,B的个数</span></span><br><span class="line"><span class="type">int</span> res = <span class="number">0</span>, total = <span class="number">0</span>;<span class="comment">// 分别为方案数、小球总数 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> sum, <span class="type">int</span> x, <span class="type">int</span> color)</span></span>&#123;<span class="comment">// 深度优先搜索 </span></span><br><span class="line">	<span class="keyword">if</span>(sum==<span class="number">0</span>)&#123;</span><br><span class="line">		++res;<span class="comment">// 方案数+1 </span></span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(i==color)<span class="keyword">continue</span>;<span class="comment">// 颜色相同则换另一种颜色的球</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=x+<span class="number">1</span>;j&lt;=nums[i];++j)&#123;<span class="comment">// j从上一个颜色的球的个数+1开始遍历(球的数量递增) </span></span><br><span class="line">			nums[i] -= j;</span><br><span class="line">			<span class="keyword">if</span>(sum&gt;=j)<span class="built_in">dfs</span>(sum-j, j, i);</span><br><span class="line">			nums[i] += j;<span class="comment">// 恢复现场 </span></span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;++i)&#123;</span><br><span class="line">		cin&gt;&gt;nums[i];</span><br><span class="line">		total += nums[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">dfs</span>(total, <span class="number">0</span>, <span class="number">-1</span>);</span><br><span class="line">	cout&lt;&lt;res;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-lcis">5、LCIS</h3>
+<blockquote>
+<p>lanqiao-1190：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/?first_category_id=1&amp;sort=students_count&amp;problem_id=1190">LCIS - 蓝桥云课 (lanqiao.cn)</a></p>
+<p><u><strong>完成时间：2023年4月5日</strong></u></p>
+<p>tags：思维训练、LCS、LIS</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p>这题是动态规划问题经典问题</p>
+<p>在动态规划中，最长公共子序列（LCS）与最长上升子序列（LIS）是基础的线性DP,本题要求求出两个不等长序列的最长公共上升子序列。</p>
+<p>本体解法就是在最长公共子序列上找一遍最长上升子序列即可。</p>
+<p>求解最长公共子序列，也就是在判断a[i] = = b[j]的前提下，再求出上升序列；</p>
+<p><code>dp[i][j]</code>代表所有a[1 ~ i]和b[1 ~ j]中以b[j]结尾的公共上升子序列的集合；</p>
+<p><code>dp[i][j]</code>的值等于该集合的子序列中长度的最大值；</p>
+</li>
+<li class="lvl-3">
+<p><strong><u>状态方程</u></strong>：</p>
+<p>对于当处于(a[i], b[j]) 状态时 ,由于dp状态就决定了，b[j]是一定作为这个状态下LICS的结尾的，所以对于a[i]，就有两种情况，将其纳入LCIS或者不纳入，首先先说不把a[i]纳入LCIS的情况：</p>
+<p>（1）若是 a[i] != b[j] ，显然是一定不能讲a[i]与b[j]进行配对的，那么问题就缩小成了a的前i - 1个字符与b的前j个字符且以b[j]结尾的LCIS，即dp[i - 1, j]也就是说 ，i之前的以b[j]结尾的序列自然没有改变，长度仍然是<code>dp[i−1][j]</code>; 若是a[i] == b[i] 如果不想要a[i]与b[j]进行配对，是不是也会得到上面的结果，故当不想a[i]与b[j]配对(或无法配对)时，dp[i, j] = dp[i - 1, j]</p>
+<p>（2）当a[i] == b[j]且它们进行配对时，就要在a串前i - 1个字符和b的前j - 1个字符中找到一个最长的序列，设这个序列以k结尾且b[k] &lt; b[j]，就等价于<code>dp[i][j]=max(dp[i - 1, k]) + 1</code></p>
+<p>最后再遍历一边<code>dp[n][1~m]</code>，找出其中最大值即可。</p>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// LCIS ——在求LCS的过程中求LIS </span></span><br><span class="line"><span class="type">int</span> a[<span class="number">2010</span>], b[<span class="number">2010</span>], dp[<span class="number">2010</span>][<span class="number">2010</span>];<span class="comment">// dp[i][j]代表所有a[1 ~ i]和b[1 ~ j]中以b[j]结尾的公共上升子序列的集合</span></span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)cin&gt;&gt;a[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;++i)cin&gt;&gt;b[i];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m;++j)&#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i]==b[j])&#123;<span class="comment">// 匹配 </span></span><br><span class="line">				dp[i][j] = <span class="number">1</span>;<span class="comment">// 表示初始的上升序列都是1 </span></span><br><span class="line">				<span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;j;++k)&#123;</span><br><span class="line">					<span class="keyword">if</span>(b[k]&lt;b[j])&#123;</span><br><span class="line">						dp[i][j] = <span class="built_in">max</span>(dp[i<span class="number">-1</span>][k]+<span class="number">1</span>, dp[i][j]);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;<span class="comment">// 不匹配 </span></span><br><span class="line">				dp[i][j] = dp[i<span class="number">-1</span>][j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=m;++j)&#123;</span><br><span class="line">		res = <span class="built_in">max</span>(res, dp[n][j]);</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;res;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-蓝桥公园">6、蓝桥公园</h3>
+<blockquote>
+<p>lanqiao-1121：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/?first_category_id=1&amp;sort=students_count&amp;problem_id=1121">蓝桥公园- 蓝桥云课 (lanqiao.cn)</a></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230405163054608.png" alt="image-20230405163054608"  />
+<p><u><strong>完成时间：2023年4月5日</strong></u></p>
+<p>tags：图论、Floyd算法</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p>在代码中，0x3f经常被用作一个特殊的数值，比如在动态规划中，可以将dp数组初始化为0x3f，表示还没有任何状态值被更新过，相当于无限大的意思。(0x3f的十进制数为63)</p>
+</li>
+<li class="lvl-3">
+<p><code>const long long INF = 0x3f3f3f3f3f3f3f3fLL;  //这样定义INF的好处是: INF &lt;= INF+x 防止溢出</code></p>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 蓝桥公园 </span></span><br><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="type">const</span> ll INF = <span class="number">0x3f3f3f3f3f3f3f3f</span>LL;<span class="comment">// 这样定义INF的好处是: INF &lt;= INF+x 防止溢出</span></span><br><span class="line"><span class="type">int</span> n, m, q;</span><br><span class="line"><span class="type">int</span> u, v;</span><br><span class="line">ll w;</span><br><span class="line"><span class="type">int</span> st, ed;</span><br><span class="line">ll dp[<span class="number">405</span>][<span class="number">405</span>];<span class="comment">// dp[i][j]:从i到j的距离 </span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">floyd</span><span class="params">()</span></span>&#123;<span class="comment">// Floyd算法 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;=n;++k)&#123;<span class="comment">// k必须在最外循环层 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;++j)&#123;</span><br><span class="line">				dp[i][j] = <span class="built_in">min</span>(dp[i][j], dp[i][k]+dp[k][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m&gt;&gt;q;</span><br><span class="line">	<span class="built_in">memset</span>(dp, <span class="number">0x3f</span>, <span class="built_in">sizeof</span>(dp));<span class="comment">// 初始化, 0x3f在这里指代INF</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;<span class="comment">// 存储图 </span></span><br><span class="line">		cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;</span><br><span class="line">		dp[u][v] = dp[v][u] = <span class="built_in">min</span>(dp[u][v], w);<span class="comment">// 避免重边 </span></span><br><span class="line">	&#125; </span><br><span class="line">	<span class="built_in">floyd</span>();</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=q;++i)&#123;</span><br><span class="line">		cin&gt;&gt;st&gt;&gt;ed;</span><br><span class="line">		<span class="keyword">if</span>(dp[st][ed]==INF)cout&lt;&lt;<span class="number">-1</span>&lt;&lt;endl;<span class="comment">// 不可达 </span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(st==ed)cout&lt;&lt;<span class="number">0</span>&lt;&lt;endl;	<span class="comment">// 确保dp[i][i]=0（符合逻辑） </span></span><br><span class="line">		<span class="keyword">else</span> cout&lt;&lt;dp[st][ed]&lt;&lt;endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7-蓝桥王国">7、蓝桥王国</h3>
+<blockquote>
+<p>lanqiao-1121：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/?first_category_id=1&amp;sort=students_count&amp;problem_id=1122">蓝桥王国 - 蓝桥云课 (lanqiao.cn)</a></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230405171822310.png" alt="image-20230405171822310"></p>
+<p><u><strong>完成时间：2023年4月5日</strong></u></p>
+<p>tags：图论、Dijkstra算法</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>分析：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{分析：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">分析：</span></span></span></span></p>
+<ol>
+<li class="lvl-3">
+<p>维护两个集合：已确定最短路径的结点集合A、这些结点向外扩散的邻居结点集合B。</p>
+<p>（1）把起点s放到A中，把s所有的邻居放到B中。此时，邻居到s的距离就是直连距离。</p>
+<p>（2）从B中找出距离起点s最短的结点u，放到A中。</p>
+<p>（3）把u所有的新邻居放到B中。显然，u的每一条边都连接了一个邻居，每个新邻居都要加进去。其中u的一个新邻居v，它到s的距离dis(s, v)等于dis(s, u) + dis(u, v)。</p>
+<p>（4）重复(2)、(3)，直到B为空时，结束。</p>
+</li>
+</ol>
+<p>解决代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 蓝桥王国 ——Dijkstra算法 </span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">3e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="type">const</span> ll INF = <span class="number">0x3f3f3f3f3f3f3f3f</span>LL;<span class="comment">// 定义INF，并且保证了INF&lt;=INF+x，防止溢出</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">edge</span>&#123;</span><br><span class="line">	<span class="type">int</span> from, to;<span class="comment">// 起点，终点 ,起点from并没有用到，eg[i]的i就是from</span></span><br><span class="line">	ll w;<span class="comment">// 权重(距离) </span></span><br><span class="line">	<span class="built_in">edge</span>(<span class="type">int</span> a, <span class="type">int</span> b, ll c)&#123;</span><br><span class="line">		from = a;</span><br><span class="line">		to = b;</span><br><span class="line">		w = c;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">s_node</span>&#123;</span><br><span class="line">	<span class="type">int</span> id;ll n_dis;<span class="comment">// 点id，当前点到起点的距离</span></span><br><span class="line">	<span class="built_in">s_node</span>(<span class="type">int</span> a, ll b)&#123;</span><br><span class="line">		id = a;</span><br><span class="line">		n_dis = b;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="type">bool</span> <span class="keyword">operator</span> &lt;(<span class="type">const</span> s_node&amp;a)<span class="type">const</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> n_dis&gt;a.n_dis;<span class="comment">// 实现优先队列根据n_dis升序排序？？？ </span></span><br><span class="line">	&#125; </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line">vector&lt;edge&gt;eg[N];<span class="comment">// 存储图——相当于是一个二维数组 </span></span><br><span class="line">ll dis[N];<span class="comment">// 存储点i到起点的距离</span></span><br><span class="line"><span class="type">bool</span> done[N];<span class="comment">// true标记已经找到了最短路径 </span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*_______________需要打印路径时加上以下代码____________________*/</span></span><br><span class="line"><span class="type">int</span> pre[N];<span class="comment">// 存储当前结点的前一结点，方便打印路径</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print_path</span><span class="params">(<span class="type">int</span> s, <span class="type">int</span> t)</span></span>&#123;<span class="comment">// 打印从s到t的最短路</span></span><br><span class="line">	<span class="keyword">if</span>(s==t)&#123;<span class="comment">// 打印起点</span></span><br><span class="line">		cout&lt;&lt;s&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">print_path</span>(s, pre[t]);<span class="comment">// 先打印前一个点</span></span><br><span class="line">	cout&lt;&lt;t&lt;&lt;<span class="string">&quot; &quot;</span>;<span class="comment">// 后打印当前点。最后打印的是终点t</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">/*____________________________________________________________*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dijkstra</span><span class="params">()</span></span>&#123;<span class="comment">// Dijkstra算法 </span></span><br><span class="line">	<span class="type">int</span> s = <span class="number">1</span>;<span class="comment">// 起点id </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</span><br><span class="line">		dis[i] = INF;<span class="comment">// 初始化距离为无穷大 </span></span><br><span class="line">		done[i] = <span class="literal">false</span>; <span class="comment">// 初始都为找到最短路径 </span></span><br><span class="line">	&#125;</span><br><span class="line">	dis[s] = <span class="number">0</span>;<span class="comment">// 起点到自己本身的距离为0 </span></span><br><span class="line">	priority_queue&lt;s_node&gt;Q;<span class="comment">// 优先队列存储新邻居结点——默认大顶堆 </span></span><br><span class="line">	Q.<span class="built_in">push</span>(<span class="built_in">s_node</span>(s, dis[s]));<span class="comment">// 将起点存储到其中 </span></span><br><span class="line">	<span class="keyword">while</span>(!Q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">		s_node u = Q.<span class="built_in">top</span>();</span><br><span class="line">		Q.<span class="built_in">pop</span>();</span><br><span class="line">		<span class="keyword">if</span>(done[u.id])<span class="keyword">continue</span>;<span class="comment">// 如果已经找到了，就跳过继续往下 </span></span><br><span class="line">		done[u.id] = <span class="literal">true</span>;<span class="comment">// 标记找到最短路径 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;eg[u.id].<span class="built_in">size</span>();++i)&#123;</span><br><span class="line">			edge y = eg[u.id][i];<span class="comment">// 得到当前点u与其临界点之间的边 </span></span><br><span class="line">			<span class="keyword">if</span>(done[y.to])<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(dis[y.to]&gt;y.w+u.n_dis)&#123;</span><br><span class="line">				dis[y.to] = y.w+u.n_dis;<span class="comment">// 更新最短距离 </span></span><br><span class="line">				Q.<span class="built_in">push</span>(<span class="built_in">s_node</span>(y.to, dis[y.to]));<span class="comment">// 增加新邻居结点 </span></span><br><span class="line">				<span class="comment">//pre[y.to] = u.id;// 如果有需要，记录路径</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//print_path(s, n);// 如果有需要，打印路径: 起点1，终点n</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)eg[i].<span class="built_in">clear</span>();<span class="comment">// 清除可能存在的元素 </span></span><br><span class="line">	<span class="type">int</span> u,v;</span><br><span class="line">	ll w;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</span><br><span class="line">		cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;</span><br><span class="line">		eg[u].<span class="built_in">push_back</span>(<span class="built_in">edge</span>(u, v, w));<span class="comment">// 单向，如果是双向，则再怎加eg[v].push_back()即可 </span></span><br><span class="line">	&#125; </span><br><span class="line">	<span class="built_in">dijkstra</span>();<span class="comment">// 调用Dijkstra算法 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;<span class="comment">// 1~n个点 </span></span><br><span class="line">		<span class="keyword">if</span>(dis[i]&gt;=INF)cout&lt;&lt;<span class="string">&quot;-1 &quot;</span>;</span><br><span class="line">		<span class="keyword">else</span> cout&lt;&lt;dis[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/04/11/University/Algorithm/question%20each%20day/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%EF%BC%88%E7%B3%BB%E5%88%976%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">每日一题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" rel="tag">蓝桥杯</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/04/11/University/Algorithm/question%20each%20day/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%EF%BC%88%E7%B3%BB%E5%88%977%EF%BC%89/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            算法每日一题7
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/04/11/University/Algorithm/question%20each%20day/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%EF%BC%88%E7%B3%BB%E5%88%975%EF%BC%89/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">算法每日一题5</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

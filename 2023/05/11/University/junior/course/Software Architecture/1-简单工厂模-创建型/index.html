@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>1-简单工厂模式 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software Architecture/1-简单工厂模-创建型"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  1-简单工厂模式
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/1-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1-%E5%88%9B%E5%BB%BA%E5%9E%8B/" class="article-date">
+  <time datetime="2023-05-11T03:31:27.491Z" itemprop="datePublished">2023-05-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">软件体系结构</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">6 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>简单工厂模式</h1>
+<h3 id="创建型模式">创建型模式</h3>
+<ol>
+<li class="lvl-3">
+<p>关注<mark>对象的创建过程</mark></p>
+</li>
+<li class="lvl-3">
+<p>对类的实例化过程进行了抽象，将软件模块中对象的创建和对象的使用分离</p>
+</li>
+<li class="lvl-3">
+<p>描述如何<mark>将对象的创建和使用分离</mark></p>
+</li>
+</ol>
+<blockquote>
+<p><mark>java创建对象方法：</mark></p>
+<ol>
+<li class="lvl-3">new关键字直接创建</li>
+<li class="lvl-3">工厂创建对象——工厂模式</li>
+<li class="lvl-3">克隆创建对象——原型模式</li>
+<li class="lvl-3">通过反射创建对象</li>
+</ol>
+</blockquote>
+<h6 id="创建型模式一览表">创建型模式一览表</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116191204763.png" alt="image-20221116191204763" style="zoom:50%;" />
+<blockquote>
+<p><mark>单例模式是唯一一个自己创建自己的模式</mark></p>
+<p>简单工厂模式（<mark>参数化工厂模式</mark>）只有一个工厂</p>
+<ol>
+<li class="lvl-3">
+<p>存在问题：单个工厂负责所有产品的生产，可能会任务过重——<mark>违反单一职责原则</mark></p>
+</li>
+<li class="lvl-3">
+<p>增加新产品时需要修改源代码——<mark>违反开闭原则</mark></p>
+</li>
+</ol>
+</blockquote>
+<h3 id="简单工厂模式-基本实现流程：">简单工厂模式-基本实现流程：</h3>
+<ol>
+<li class="lvl-3">
+<p>具体产品类：将需要创建的各种不同产品对象的相关代码封装到具体产品类中</p>
+</li>
+<li class="lvl-3">
+<p>抽象产品类：将具体产品类公共的代码进行抽象和提取后封装在一个抽象产品类中</p>
+</li>
+<li class="lvl-3">
+<p>工厂类：提供一个工厂类用于创建各种产品，在工厂类中提供一个创建产品的工厂方法，该方法可以根据所传入参数的不同创建不同的具体产品对象</p>
+</li>
+<li class="lvl-3">
+<p>客户端：只需调用工厂类的工厂方法并传入相应的参数即可得到一个产品对象</p>
+</li>
+</ol>
+<h4 id="简单工厂模式定义">简单工厂模式定义</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116192710871.png" alt="image-20221116192710871" style="zoom:50%;" />
+<blockquote>
+<p>在具体的FactoryPatternDemo 类中将类对象作为局部变量，因此是依赖关系而不是关联关系</p>
+</blockquote>
+<ol>
+<li class="lvl-3">
+<p>在简单工厂模式中用于创建实例的方法通常是<mark>静态(static)方法</mark>，又被称为静态工厂方法(Static Factory Method)模式</p>
+</li>
+<li class="lvl-3">
+<p>要点：如果需要什么，只需要传入一个正确的参数，就可以获取所需要的对象，而<u>无须知道其创建细节</u></p>
+</li>
+<li class="lvl-3">
+<p>简单工厂模式也称为<u>Parameterized Factory Methods</u>（参数化工厂模式）</p>
+</li>
+</ol>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116195324477.png" alt="image-20221116195324477" style="zoom: 67%;" />
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">A a;</span><br><span class="line">a=<span class="keyword">new</span> <span class="title class_">A1</span>();</span><br><span class="line">a.</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*问：此时通过a.能够看到哪些方法？</span></span><br><span class="line"><span class="comment">*答：只能看到父类A的m1()和m2()方法，因为a首先是单独被类A声明的，而不是在声明a的时候就同时用A1()实例化，因*此只能看到类A的两个方法，而无法看到类A1的m3()方法</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><u>在java中static会导致丧失多态性</u></p>
+<p><mark>子类不能够覆盖父类的静态（static）方法</mark></p>
+</blockquote>
+<h5 id="简单工厂模式结构">简单工厂模式结构</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116194350957.png" alt="image-20221116194350957" style="zoom:50%;" />
+<blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>工厂类（</mtext><mi>F</mi><mi>a</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi><mi>y</mi><mtext>）中创建产品的方法是</mtext><mi>s</mi><mi>t</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>c</mi><mtext>方法</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{工厂类（Factory）中创建产品的方法是static方法}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord cjk_fallback" style="color:red;">工厂类（</span><span class="mord mathnormal" style="margin-right:0.13889em;color:red;">F</span><span class="mord mathnormal" style="color:red;">a</span><span class="mord mathnormal" style="color:red;">c</span><span class="mord mathnormal" style="color:red;">t</span><span class="mord mathnormal" style="margin-right:0.03588em;color:red;">ory</span><span class="mord cjk_fallback" style="color:red;">）中创建产品的方法是</span><span class="mord mathnormal" style="color:red;">s</span><span class="mord mathnormal" style="color:red;">t</span><span class="mord mathnormal" style="color:red;">a</span><span class="mord mathnormal" style="color:red;">t</span><span class="mord mathnormal" style="color:red;">i</span><span class="mord mathnormal" style="color:red;">c</span><span class="mord cjk_fallback" style="color:red;">方法</span></span></span></span></p>
+</blockquote>
+<h5 id="简单工厂模式包含以下3个角色">简单工厂模式包含以下3个角色</h5>
+<ol>
+<li class="lvl-3">
+<p>Factory（工厂角色）</p>
+</li>
+<li class="lvl-3">
+<p>Product（抽象产品角色）</p>
+<ul class="lvl-2">
+<li class="lvl-5">如果抽象父类不需要实现具体的方法，则使用接口实现</li>
+<li class="lvl-5">如果抽象父类需要实现一些具体的方法，则使用类实现</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>ConcreteProduct（具体产品角色）</p>
+</li>
+</ol>
+<h5 id="典型的抽象产品类代码">典型的抽象产品类代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Product</span> &#123;</span><br><span class="line">    <span class="comment">//所有产品类的公共业务方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">methodSame</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//公共方法的实现</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//声明抽象业务方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">methodDiff</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="典型的具体产品类代码">典型的具体产品类代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConcreteProduct</span> <span class="keyword">extends</span> <span class="title class_">Product</span>&#123;</span><br><span class="line">    <span class="comment">//实现业务方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">methodDiff</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//业务方法的实现</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="典型的工厂类代码">典型的工厂类代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Factory</span> &#123;</span><br><span class="line">    <span class="comment">//静态工厂方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Product <span class="title function_">getProduct</span><span class="params">(String arg)</span> &#123;</span><br><span class="line">        <span class="type">Product</span> <span class="variable">product</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (arg.equalsIgnoreCase(<span class="string">&quot;A&quot;</span>)) &#123;</span><br><span class="line">            product = <span class="keyword">new</span> <span class="title class_">ConcreteProductA</span>();</span><br><span class="line">            <span class="comment">//初始化设置product</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (arg.equalsIgnoreCase(<span class="string">&quot;B&quot;</span>)) &#123;</span><br><span class="line">            product = <span class="keyword">new</span> <span class="title class_">ConcreteProductB</span>();</span><br><span class="line">            <span class="comment">//初始化设置product</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> product;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="典型的客户端代码">典型的客户端代码</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Client</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">        Product product; </span><br><span class="line">        product = Factory.getProduct(<span class="string">&quot;A&quot;</span>); <span class="comment">//通过工厂类创建产品对象</span></span><br><span class="line">        product.methodSame();</span><br><span class="line">        product.methodDiff();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="实例类图1：">实例类图1：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116200747782.png" alt="image-20221116200747782" style="zoom:50%;" />
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FactoryPatternDemo</span> &#123;</span><br><span class="line">    </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="type">ShapeFactory</span> <span class="variable">shapeFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ShapeFactory</span>();</span><br><span class="line"> </span><br><span class="line">      <span class="comment">//获取 Circle 的对象，并调用它的 draw 方法</span></span><br><span class="line">      <span class="type">Shape</span> <span class="variable">shape1</span> <span class="operator">=</span> shapeFactory.getShape(<span class="string">&quot;CIRCLE&quot;</span>);</span><br><span class="line"> </span><br><span class="line">      <span class="comment">//调用 Circle 的 draw 方法</span></span><br><span class="line">      shape1.draw();</span><br><span class="line">   &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*	在以上代码中如果要更改生成的产品就必须要修改源代码，违反了开闭原则，所以将改变的部分放到XML配置文件中</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>加载/解析配置文件：</p>
+<ol>
+<li class="lvl-3">DOM加载配置文件
+<ul class="lvl-3">
+<li class="lvl-5">一次性读取全部内容到内存</li>
+<li class="lvl-5">相对于SAX来说内存占用多，但是速度快</li>
+</ul>
+</li>
+<li class="lvl-3">SAX加载配置文件
+<ul class="lvl-3">
+<li class="lvl-5">逐行扫描文档，一边扫描一边解析</li>
+<li class="lvl-5">内存占用少</li>
+</ul>
+</li>
+</ol>
+<p><mark>java涉及到文件读取和外部操作时一般都要用try-catch作异常处理</mark></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//xml文件</span></span><br><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span>?&gt;</span><br><span class="line">&lt;config&gt;</span><br><span class="line">    &lt;chartType&gt;histogram&lt;/chartType&gt;</span><br><span class="line">&lt;/config&gt;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*	chartType可以有多个元素</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//加载xml文件</span></span><br><span class="line"><span class="keyword">import</span> javax.xml.parsers.*;</span><br><span class="line"><span class="keyword">import</span> org.w3c.dom.*;</span><br><span class="line"><span class="keyword">import</span> org.xml.sax.SAXException;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">XMLUtil</span> &#123;</span><br><span class="line">    <span class="comment">//该方法用于从XML配置文件中提取图表类型，并返回类型名</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getChartType</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//创建文档对象——调用DOM固有方法</span></span><br><span class="line">            <span class="type">DocumentBuilderFactory</span> <span class="variable">dFactory</span> <span class="operator">=</span> DocumentBuilderFactory.newInstance();</span><br><span class="line">            <span class="type">DocumentBuilder</span> <span class="variable">builder</span> <span class="operator">=</span> dFactory.newDocumentBuilder();</span><br><span class="line">            Document doc;							</span><br><span class="line">            doc = builder.parse(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;src//designpatterns//simplefactory//config.xml&quot;</span>)); </span><br><span class="line">		</span><br><span class="line">            <span class="comment">//获取包含图表类型的文本结点</span></span><br><span class="line">            <span class="type">NodeList</span> <span class="variable">nl</span> <span class="operator">=</span> doc.getElementsByTagName(<span class="string">&quot;chartType&quot;</span>);</span><br><span class="line">            <span class="type">Node</span> <span class="variable">classNode</span> <span class="operator">=</span> nl.item(<span class="number">0</span>).getFirstChild();</span><br><span class="line">            <span class="type">String</span> <span class="variable">chartType</span> <span class="operator">=</span> classNode.getNodeValue().trim();</span><br><span class="line">            <span class="keyword">return</span> chartType;</span><br><span class="line">        &#125;   </span><br><span class="line">        <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>引入配置文件：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116202058610.png" alt="image-20221116202058610" style="zoom:50%;" />
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">……</span><br><span class="line">Chart chart;</span><br><span class="line"><span class="type">String</span> <span class="variable">type</span> <span class="operator">=</span> XMLUtil.getChartType(); <span class="comment">//读取配置文件中的参数</span></span><br><span class="line">chart = ChartFactory.getChart(type); <span class="comment">//创建产品对象</span></span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+<h6 id="实例类图2：">实例类图2：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116203043356.png" alt="image-20221116203043356" style="zoom:50%;" />
+<h6 id="工厂类多创建方法：">工厂类多创建方法：</h6>
+<p>针对构造函数的参数重载在工厂中定义不同的create方法（Rectangle是抽象产品类）</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116203724278.png" alt="image-20221116203724278" style="zoom:50%;" />
+<h5 id="简单工厂模式的优点：">简单工厂模式的优点：</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221116203111937.png" alt="image-20221116203111937" style="zoom:50%;" />
+<ol>
+<li class="lvl-3">
+<p>对象创建和使用的分离</p>
+</li>
+<li class="lvl-3">
+<p>客户端无须知道所创建的具体产品类的类名</p>
+</li>
+<li class="lvl-3">
+<p>通过<mark>引入配置文件</mark>，可以在不修改任何客户端代码的情况下更换和增加新的具体产品类</p>
+</li>
+</ol>
+<blockquote>
+<p><u><mark>所有模式都实现了对象创建和使用的分离</mark></u></p>
+</blockquote>
+<h5 id="模式的缺点：">模式的缺点：</h5>
+<ol>
+<li class="lvl-3">
+<p>工厂类集中了所有产品的创建逻辑，<mark>职责过重</mark></p>
+</li>
+<li class="lvl-3">
+<p>增加了系统中类的个数</p>
+</li>
+<li class="lvl-3">
+<p>系统扩展困难，一旦<mark>添加新产品不得不修改工厂逻辑</mark>（即，修改源代码）</p>
+</li>
+<li class="lvl-3">
+<p>由于使用了静态工厂方法，造成<mark>工厂角色无法形成基于继承的等级结构</mark></p>
+<ul class="lvl-2">
+<li class="lvl-5"><u>子类不能覆盖父类的静态方法</u></li>
+</ul>
+</li>
+</ol>
+<h4 id="模式适用环境">模式适用环境⭐️</h4>
+<ol>
+<li class="lvl-3">
+<p>工厂类负责创建的对象比较少，对象的类型比较稳定</p>
+</li>
+<li class="lvl-3">
+<p>客户端只知道传入工厂类的参数，对于如何创建对象并不关心扩展</p>
+</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/05/11/University/junior/course/Software%20Architecture/1-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1-%E5%88%9B%E5%BB%BA%E5%9E%8B/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" rel="tag">课程笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" rel="tag">软件体系结构</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/2-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            2-工厂方法模式
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/05/11/University/junior/course/Software%20Architecture/%E7%94%A8%E4%BE%8B%E5%9B%BE%E7%BB%98%E5%88%B6%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">用例图绘制注意事项</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

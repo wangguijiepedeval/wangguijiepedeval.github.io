@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="本文介绍ChatGPT中涉及到的方法和模型，并作简要介绍。" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>ChatGPT基础 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/AI/ModelLearning/ChatGPT/ChatGPT基础"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  ChatGPT基础
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/10/18/University/AI/ModelLearning/ChatGPT/ChatGPT%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time datetime="2023-10-18T08:07:04.603Z" itemprop="datePublished">2023-10-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/">格物致知</a> / <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/">经典模型</a> / <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/ChatGPT/">ChatGPT</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">10 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>ChatGPT基础</h1>
+<h3 id="gpt模型">GPT模型</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>GPT (Generative Pre-trained Transformer）</strong><br>
+GPT是由OpenAI训练的一种基于深度学习技术的自然语言处理模型，该模型是<strong>基于Transformer结构</strong>的生成式预训练模型。</p>
+</li>
+<li class="lvl-2">
+<p><strong>Transformer</strong><br>
+Transformer是一种通用的神经网络结构，它可以用于各种序列到序列的任务，如机器翻译、文本摘要、图像生成等。GPT是一种特殊的Transformer，它只使用了Transformer中的解码器部分，一些模型都使用了Transformer，有的使用其中的编码器部分。<br>
+<strong>GPT也可以看作是一种神经网络语言模型，它使用了Transformer作为其神经网络结构。</strong></p>
+</li>
+</ul>
+<h3 id="transformer">Transformer⭐️</h3>
+<blockquote>
+<p>详细见参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/338817680">https://zhuanlan.zhihu.com/p/338817680</a></p>
+<p>更多参考：<a target="_blank" rel="noopener" href="https://transformers.run/back/attention/">https://transformers.run/back/attention/</a></p>
+</blockquote>
+<h4 id="transformer整体概述">Transformer整体概述</h4>
+<p>用于中英文翻译的Transformer整体结构：</p>
+<img src="https://pic4.zhimg.com/v2-4544255f3f24b7af1e520684ae38403f_r.jpg" alt="img" style="zoom:50%;" />
+<p><strong>Transformer 由 Encoder 和 Decoder 两个部分组成</strong>，Encoder 和 Decoder 都包含 6 个 block。</p>
+<p><strong>第一步：<strong>获取输入句子的每一个单词的表示向量 <strong>X</strong>，<strong>X</strong>由单词的 Embedding（Embedding就是从原始数据提取出来的</strong>Feature</strong>） 和单词位置的 Embedding 相加得到。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><mark>思考：单词的 Embedding和位置的 Embedding如何获得？</mark></p>
+</li>
+</ul>
+<p><img src="https://pic4.zhimg.com/v2-7dd39c44b0ae45d31a3ae7f39d3f883f_r.jpg" alt="img"></p>
+<p><strong>第二步：<strong>将得到的单词表示向量矩阵</strong>x</strong>(<strong>X<sub>n*d</sub></strong>，n表示的是句子中单词的个数，d表示的每个单词向量的维度)输入到<strong>Encoder</strong>中，经过6个 Encoder block 后可以得到句子所有单词的编码信息矩阵 <strong>C</strong>。每一个 Encoder block 输出的矩阵维度与输入完全一致。</p>
+<img src="https://pic3.zhimg.com/80/v2-45db05405cb96248aff98ee07a565baa_1440w.webp" alt="img" style="zoom:33%;" />
+<p><strong>第三步</strong>：将 <strong>Encoder</strong> 输出的编码信息矩阵 <strong>C</strong>传递到 <strong>Decoder</strong> 中，Decoder 依次会根据当前翻译过的<strong>单词 1~ i</strong> 翻译<strong>下一个单词 i+1</strong>，如下图所示。在使用的过程中，翻译到单词 i+1 的时候需要通过 <strong>Mask (掩盖)</strong> 操作遮盖住 i+1 之后的单词。</p>
+<p><img src="https://pic2.zhimg.com/v2-5367bd47a2319397317562c0da77e455_r.jpg" alt="img"></p>
+<p><strong>Decoder</strong> 接收了 <strong>Encoder</strong> 的编码矩阵 <strong>C</strong>，然后首先输入一个翻译开始符 “<Begin>”，预测第一个单词 “I”；然后输入翻译开始符 “<Begin>” 和单词 “I”，预测单词 “have”，以此类推，如下图所示。</p>
+<p><img src="https://pic1.zhimg.com/v2-4616451fe8aa59b2df2ead30fa31dc98_r.jpg" alt="img"></p>
+<h4 id="transformer详细架构">Transformer详细架构</h4>
+<img src="https://pic4.zhimg.com/v2-f6380627207ff4d1e72addfafeaff0bb_r.jpg" alt="img" style="zoom:50%;" />
+<p>上图是论文中 Transformer 的内部结构图，左侧为 Encoder block，右侧为 Decoder block。红色圈中的部分为 <strong>Multi-Head Attention</strong>，是由多个 <strong>Self-Attention</strong>组成的，可以看到 Encoder block 包含一个 Multi-Head Attention，而 Decoder block 包含两个 Multi-Head Attention (其中有一个用到 Masked)。Multi-Head Attention 上方还包括一个 <strong>Add &amp; Norm</strong> 层，<strong>Add</strong> 表示<u>残差连接</u> (Residual Connection) 用于防止网络退化，Norm 表示 Layer Normalization，用于对每一层的激活值进行<strong>归一化</strong>。</p>
+<h5 id="encoder-结构">Encoder 结构</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231018153045934.png" alt="image-20231018153045934" style="zoom: 33%;" />
+<p>Encoder block 结构由 Multi-Head Attention, <strong>Add &amp; Norm, Feed Forward, Add &amp; Norm</strong> 组成。其中Multi-Head Attention详见下面的“注意力机制”部分。</p>
+<h6 id="add-norm">Add &amp; Norm</h6>
+<p>Add &amp; Norm 层由 Add 和 Norm 两部分组成，其计算公式如下：</p>
+<img src="https://pic3.zhimg.com/v2-a4b35db50f882522ee52f61ddd411a5a_r.jpg" alt="img" style="zoom: 80%;" />
+<p>其中 <strong>X</strong>表示 Multi-Head Attention 或者 Feed Forward 的输入，MultiHeadAttention(<strong>X</strong>) 和 FeedForward(<strong>X</strong>) 表示输出 (输出与输入 <strong>X</strong> 维度是一样的，所以可以相加)。</p>
+<p><strong>Add</strong>指 <strong>X</strong>+MultiHeadAttention(<strong>X</strong>)，是一种<strong>残差连接</strong>，通常用于解决多层网络训练的问题，可以让网络只关注当前差异的部分，在 ResNet 中经常用到：</p>
+<p><img src="https://pic4.zhimg.com/v2-4b3dde965124bd00f9893b05ebcaad0f_r.jpg" alt="img"></p>
+<p><strong>Norm</strong>指 Layer Normalization，通常用于 RNN 结构，Layer Normalization 会将每一层神经元的输入都转成均值方差都一样的（<strong>归一化</strong>），这样可以加快收敛。</p>
+<h6 id="feed-forward">Feed Forward</h6>
+<p>Feed Forward 层比较简单，是一个两层的全连接层，第一层的<strong>激活函数</strong>为 <strong>Relu</strong>，第二层<strong>不使用激活函数</strong>，对应的公式如下：</p>
+<img src="https://pic2.zhimg.com/v2-47b39ca4cc3cd0be157d6803c8c8e0a1_r.jpg" alt="img" style="zoom:80%;" />
+<p><strong>X</strong>是输入，Feed Forward 最终得到的输出矩阵的维度与<strong>X</strong>一致。</p>
+<h5 id="decoder-结构">Decoder 结构</h5>
+<img src="https://pic3.zhimg.com/v2-f5049e8711c3abe8f8938ced9e7fc3da_r.jpg" alt="img" style="zoom: 50%;" />
+<p>Decoder block 结构如下：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>包含两个 Multi-Head Attention 层。</p>
+</li>
+<li class="lvl-2">
+<p>第一个 Multi-Head Attention 层采用了 <strong>Masked</strong> 操作。</p>
+</li>
+<li class="lvl-2">
+<p>第二个 Multi-Head Attention 层的<strong>V，K</strong>矩阵使用 Encoder 的<strong>编码信息矩阵C</strong>进行计算，而<strong>Q</strong>使用上一个 Decoder block 的输出计算。</p>
+</li>
+<li class="lvl-2">
+<p>最后有一个 Softmax 层计算下一个翻译单词的概率。</p>
+</li>
+</ul>
+<h4 id="注意力机制">注意力机制</h4>
+<p>Attention 有许多种实现方式，但是最常见的还是 Scaled Dot-product Attention。</p>
+<img src="https://transformers.run/assets/img/attention/attention.png" alt="img" style="zoom:50%;" />
+<h5 id="self-attention">Self-Attention</h5>
+<p>采用Scaled Dot-product Attention实现，在计算的时候需要用到矩阵<strong>Q(查询),K(键值),V(值)</strong>。</p>
+<p>Self-Attention 接收的是输入(单词的表示向量x组成的矩阵X) 或者上一个 Encoder block 的输出。而<strong>Q,K,V</strong>正是通过 Self-Attention 的输入进行线性变换得到的。</p>
+<p>Self-Attention 的输入用矩阵X进行表示，可以使用线性变阵矩阵<strong>WQ,WK,WV</strong>计算得到<strong>Q,K,V</strong>。计算如下图所示，<strong>注意 X, Q, K, V 的每一行都表示一个单词。</strong></p>
+<img src="https://pic3.zhimg.com/80/v2-4f4958704952dcf2c4b652a1cd38f32e_1440w.webp" alt="img" style="zoom: 33%;" />
+<p>根据以下公式计算出Self-Attention的输出：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-9699a37b96c2b62d22b312b5e1863acd_1440w.webp" alt="img"></p>
+<p>公式中计算矩阵<strong>Q</strong>和<strong>K</strong>每一行向量的内积，为了防止内积过大，因此除以**d<sub>k</sub>**的平方根。矩阵Q与K的转置计算得到的矩阵行列维度均为n，n表示的时句子中单词的个数，计算得到的矩阵表示了单词之间的attention强度。</p>
+<img src="https://pic2.zhimg.com/80/v2-9caab2c9a00f6872854fb89278f13ee1_1440w.webp" alt="img" style="zoom:50%;" />
+<p>得到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><msup><mi>K</mi><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">QK^T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0358em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">Q</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span>之后，使用 Softmax 计算每一个单词对于其他单词的 attention 系数，公式中的 Softmax 是对矩阵的每一行进行 Softmax，即每一行的和都变为 1.</p>
+<img src="https://pic1.zhimg.com/80/v2-96a3716cf7f112f7beabafb59e84f418_1440w.webp" alt="img" style="zoom:50%;" />
+<p>得到 Softmax 矩阵之后可以和<strong>V</strong>相乘，得到最终的输出<strong>Z</strong>。</p>
+<img src="https://pic4.zhimg.com/80/v2-7ac99bce83713d568d04e6ecfb31463b_1440w.webp" alt="img" style="zoom:50%;" />
+<p>上图中 Softmax 矩阵的第 1 行表示单词 1 与其他所有单词的 attention 系数，最终<strong>单词 1</strong> 的输出 <strong>Z1</strong> 等于所有单词 i 的值**V<sub>i</sub>**根据 attention 系数的比例加在一起得到，如下图所示：</p>
+<img src="https://pic3.zhimg.com/80/v2-27822b2292cd6c38357803093bea5d0e_1440w.webp" alt="img" style="zoom: 80%;" />
+<h5 id="multi-head-attention">Multi-Head Attention</h5>
+<p>Multi-Head Attention 是由多个 Self-Attention 组合形成的，下图是论文中 Multi-Head Attention 的结构图。</p>
+<img src="https://pic2.zhimg.com/v2-b0ea8f5b639786f98330f70405e94a75_r.jpg" alt="img" style="zoom:33%;" />
+<p>Multi-Head Attention 包含多个 Self-Attention 层，首先将输入<strong>X</strong>分别传递到 h 个不同的 Self-Attention 中，计算得到 h 个输出矩阵<strong>Z</strong>。如下图是 h=8 时候的情况，此时会得到 8 个输出矩阵<strong>Z</strong>。</p>
+<img src="https://pic1.zhimg.com/v2-6bdaf739fd6b827b2087b4e151c560f4_r.jpg" alt="img" style="zoom: 33%;" />
+<p>得到 8 个输出矩阵 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">Z_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mn>8</mn></msub></mrow><annotation encoding="application/x-tex">Z_8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">8</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 之后，Multi-Head Attention 将它们拼接在一起 <strong>(Concat)</strong>，然后传入一个<strong>Linear</strong>层，得到 Multi-Head Attention 最终的输出<strong>Z</strong>。</p>
+<img src="https://pic4.zhimg.com/v2-35d78d9aa9150ae4babd0ea6aa68d113_r.jpg" alt="img" style="zoom:67%;" />
+<p>可以看到 Multi-Head Attention 输出的矩阵<strong>Z</strong>与其输入的矩阵<strong>X</strong>的<strong>维度是一样的</strong>。</p>
+<blockquote>
+<p>GPT-3的训练使用了情境（上下文）学习（In-context Learning），它是元学习（Meta-learning）的一种，元学习的核心思想在于通过少量的数据寻找一个合适的初始化范围，使得模型能够在有限的数据集上快速拟合，并获得不错的效果。</p>
+</blockquote>
+<h3 id="in-context-learning">In-context Learning</h3>
+<p>“In-context Learning”（上下文学习）是一种自然语言处理（NLP）中的方法，通常用于<strong>训练和微调</strong>大型预训练模型，以使其适应特定的任务或应用场景。这个方法强调将模型放置在特定上下文中，以让它更好地理解和生成与该上下文相关的文本。</p>
+<p>下面是&quot;In-context Learning&quot;的一些关键特点和概念：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>特定上下文</strong>：这意味着将模型置于特定的对话、环境或任务中，以模拟真实世界的情境。这可以包括对话历史、任务描述、问题陈述等。</p>
+</li>
+<li class="lvl-3">
+<p><strong>微调模型</strong>：通常，&quot;In-context Learning&quot;涉及微调一个已经进行了大规模预训练的模型，例如GPT（Generative Pre-trained Transformer）模型。微调的目的是使模型更好地适应特定任务，根据上下文生成更相关的文本。</p>
+</li>
+<li class="lvl-3">
+<p><strong>多模态学习</strong>：&quot;In-context Learning&quot;也可以涉及将多个模态的数据（例如文本、图像、音频）结合在一起，以更好地处理多模态任务，例如文本到图像生成或图像到文本生成。</p>
+</li>
+<li class="lvl-3">
+<p><strong>任务细化</strong>：这种方法可用于各种任务，包括自然语言理解、文本生成、问题回答、对话、图像标注等。通过在特定上下文中微调模型，可以使其更好地执行这些任务。</p>
+</li>
+<li class="lvl-3">
+<p><strong>实时决策</strong>：&quot;In-context Learning&quot;还可以用于模拟代理与环境互动，进行实时决策，例如机器人控制、自动驾驶汽车、虚拟助手等领域。</p>
+</li>
+</ol>
+<img src="https://pic2.zhimg.com/v2-76557778e35baee4266048d08f667cc5_r.jpg" alt="img" style="zoom:33%;" />
+<p>In Context Learning（ICL）的关键思想是<strong>从类比中学习</strong>。上图给出了一个描述语言模型如何使用 ICL 进行决策的例子。首先，ICL 需要一些示例来形成一个演示上下文。这些示例通常是用自然语言模板编写的。然后 ICL 将查询的问题（即你需要预测标签的 input）和一个上下文演示（一些相关的 cases）连接在一起，形成带有提示的输入，并将其输入到语言模型中进行预测。</p>
+<h3 id="meta-learning">Meta-learning</h3>
+<blockquote>
+<p>元学习Meta Learning，含义为学会学习，即learn to learn，就是带着这种对人类这种“学习能力”的期望诞生的。Meta Learning希望使得模型获取一种“学会学习”的能力，使其可以在获取已有“知识”的基础上快速学习新的任务。</p>
+<ul class="lvl-1">
+<li class="lvl-2">参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136975128">https://zhuanlan.zhihu.com/p/136975128</a></li>
+</ul>
+</blockquote>
+<img src="https://pic4.zhimg.com/v2-23b952fb974edeffa4e28d0065440227_r.jpg" alt="img" style="zoom:33%;" />
+<p>机器学习中的Function直接作用于特征和标签，去寻找特征与标签之间的关联；而元学习中的Function是用于寻找新的f，新的f才会应用于具体的任务。</p>
+<h5 id="maml与model-pre-training的区别：">MAML与Model Pre-training的区别：</h5>
+<img src="https://pic3.zhimg.com/80/v2-fa485a14b8e56279f66c88678924385a_1440w.webp" alt="img" style="zoom: 33%;" />
+<h4 id="模型无关元学习-maml">模型无关元学习（MAML）</h4>
+<p>“模型无关元学习”（Model-Agnostic Meta-Learning），是一种用于元学习的机器学习算法。MAML 的核心思想是训练一个模型，使其能够快速适应新任务或数据集。与传统的机器学习方法不同，MAML 不专注于学习特定任务，而是关注如何学会学习（learn to learn）。</p>
+<h6 id="maml算法流程：">MAML算法流程：</h6>
+<p><img src="https://pic1.zhimg.com/v2-eda1034966a79b9f1c30dc6527b57830_r.jpg" alt="img"></p>
+<h3 id="提示学习-prompt-learning-和指示学习-instruct-learning">提示学习（Prompt Learning）和指示学习（Instruct Learning）</h3>
+<p>Prompt是激发语言模型的<strong>补全能力</strong>，例如根据上半句生成下半句，或是完形填空等。Instruct是激发语言模型的理解能力，它通过给出更明显的指令，让模型去做出正确的行动。</p>
+<ol>
+<li class="lvl-3">
+<p>提示学习：给女朋友买了这个项链，她很喜欢，这个项链太____了。</p>
+</li>
+<li class="lvl-3">
+<p>指示学习：这句话的情感是非常正向的：给女朋友买了这个项链，她很喜欢。</p>
+</li>
+</ol>
+<h3 id="强化学习-reinforcement-learning">强化学习（Reinforcement learning）</h3>
+<blockquote>
+<p>强化学习是除了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0">监督学习</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%84%A1%E7%9B%A3%E7%9D%A3%E5%AD%B8%E7%BF%92">非监督学习</a>之外的第三种基本的机器学习方法。</p>
+</blockquote>
+<p>强化学习通过奖励（Reward）机制来指导模型训练，奖励机制可以看做传统模型训练机制的损失函数。</p>
+<p>强化学习的思路是通过对奖励的大量采样来拟合损失函数，从而实现模型的训练。</p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Reinforcement_learning_diagram.svg/1280px-Reinforcement_learning_diagram.svg.png" alt="undefined" style="zoom:25%;" />
+<p>强化学习的典型框架：智能体在环境中采取一种行为（Action），环境将其转换为一次回报（Reward）和一种状态（State）表示，随后反馈给智能体（Agent）。</p>
+<h4 id="基于人类反馈的强化学习">基于人类反馈的强化学习</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/v2-028a8f676586a8f1dcf9235cb5c06a25_r.jpg" alt="img" style="zoom:33%;" />
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/10/18/University/AI/ModelLearning/ChatGPT/ChatGPT%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ChatGPT/" rel="tag">ChatGPT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Transformer/" rel="tag">Transformer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B/" rel="tag">经典模型</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/10/23/University/AI/ModelLearning/ChatGPT/Transformer%E5%9F%BA%E7%A1%80/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Transformer基础
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/10/18/University/Algorithm/Topic%20learning/13-%E5%B7%AE%E5%88%86%E4%B8%8E%E5%89%8D%E7%BC%80%E5%92%8C/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">差分与前缀和</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>计算机视觉CV-1 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/AI/CV/计算机视觉CV-1"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  计算机视觉CV-1
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/09/10/University/AI/CV/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89CV-1/" class="article-date">
+  <time datetime="2023-09-10T09:11:27.167Z" itemprop="datePublished">2023-09-10</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/">格物致知</a> / <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a> / <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">9 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>计算机视觉CV</h1>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.kaggle.com/learn/computer-vision">https://www.kaggle.com/learn/computer-vision</a></p>
+</blockquote>
+<h3 id="卷积神经网络-convnet-cnn">卷积神经网络（convnet，CNN）</h3>
+<p>一种深度学习神经网络架构，特别适用于处理具有网格结构（例如图像和视频）的数据。能够有效地捕捉图像中的局部特征，并具备平移不变性。</p>
+<h3 id="对抗网络-adversarial-networks">对抗网络（adversarial networks）</h3>
+<p>对抗网络（Adversarial Networks），通常指的是生成对抗网络（Generative Adversarial Networks，GANs），是一种深度学习模型框架，由两个神经网络模型组成，一个是生成器（Generator），另一个是判别器（Discriminator）。GANs 的<mark>核心思想</mark>是<u><strong>通过对抗训练的方式来生成逼真的数据样本。</strong></u></p>
+<p>GANs的主要组成和工作原理：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>生成器（Generator）</strong>：生成器是一个神经网络模型，它的任务是<u><strong>生成与真实数据样本类似的合成数据样本</strong></u>。它接受一个随机噪声向量（通常称为潜在空间向量）作为输入，并将其映射到一个数据样本的空间。生成器尝试生成越来越逼真的数据样本，以欺骗判别器。</p>
+</li>
+<li class="lvl-3">
+<p><strong>判别器（Discriminator）</strong>：判别器是另一个神经网络模型，它的任务是评估给定的数据样本是真实数据还是生成器生成的合成数据。<u><strong>判别器的目标是区分真实数据和生成器生成的数据</strong></u>。它输出一个概率值，表示输入样本是真实数据的概率。</p>
+</li>
+<li class="lvl-3">
+<p><strong>对抗过程</strong>：GANs 的训练过程是一个对抗过程。<mark>生成器和判别器相互竞争和对抗</mark>。生成器试图生成足够逼真的数据，以欺骗判别器，而判别器试图更好地区分真实数据和生成数据。这个过程通过<u><strong>最小化生成器和判别器之间的损失函数</strong></u>来进行，通常使用<mark>交替优化</mark>的方式。</p>
+</li>
+<li class="lvl-3">
+<p><strong>损失函数</strong>：生成器和判别器都有各自的损失函数。<u><strong>生成器的损失函数衡量生成的数据与真实数据之间的差距</strong></u>，<u><strong>判别器的损失函数衡量判别器的分类性能</strong></u>。GANs的优化目标是找到平衡点，使生成器生成逼真的数据，并且判别器无法准确地区分真伪。</p>
+</li>
+<li class="lvl-3">
+<p><strong>生成逼真样本</strong>：一旦训练完成，生成器可以用来生成逼真的数据样本，这些样本在统计上类似于训练数据。这在图像生成、图像修复、超分辨率、生成艺术等应用中具有广泛的用途。</p>
+</li>
+</ol>
+<h3 id="图像分割-image-segmentation">图像分割（image segmentation）</h3>
+<p>图像分割（Image Segmentation）是计算机视觉领域的一个重要任务，其目标是<u><strong>将图像分成若干个不同的区域或对象，使得每个区域内的像素具有相似的特征或语义</strong></u>。图像分割通常用于将图像中的每个像素分配到特定的类别或分割对象，从而识别和提取图像中的各种物体、边界和结构。</p>
+<p>图像分割的<mark>主要类型</mark>和应用：</p>
+<ol>
+<li class="lvl-3">
+<p><strong>语义分割（Semantic Segmentation）</strong>：在语义分割中，目标是<u><strong>将图像中的每个像素分配到预定义的语义类别</strong></u>，通常<u><strong>使用类别标签来表示不同的对象或区域</strong></u>。这种分割技术可用于实现图像中对象的精确识别和像素级别的分类。</p>
+</li>
+<li class="lvl-3">
+<p><strong>实例分割（Instance Segmentation）</strong>：实例分割不仅要求分割图像中的对象，还<u><strong>需要将相同类别的不同实例区分开来</strong></u>。这种分割技术对于多对象场景中的对象检测和跟踪非常有用。</p>
+</li>
+<li class="lvl-3">
+<p><strong>边缘检测（Edge Detection）</strong>：边缘检测是图像分割的一种形式，它<u><strong>旨在识别图像中的物体边界</strong></u>。通常通过<u><strong>检测像素值之间的梯度或差异来实现</strong></u>。</p>
+</li>
+<li class="lvl-3">
+<p><strong>实际应用</strong>：图像分割在各种实际应用中都有广泛的用途，包括医学图像分析（如肿瘤检测和器官分割）、自动驾驶（识别道路和障碍物）、计算机视觉系统中的对象识别和跟踪、图像编辑和合成、卫星图像分析等领域。</p>
+</li>
+</ol>
+<h3 id="卷积分类器-convolutional-classifier">卷积分类器（Convolutional Classifier）</h3>
+<p>包含：a <strong>convolutional base</strong> and a <strong>dense head</strong>.</p>
+<p>卷积基础convolutional base：用于从图像中提取特征，由卷积层和池化层组成。</p>
+<p>密集头部dense head：用于分类的部分，通常由全连接层（Fully Connected Layers）组成。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>全连接层</strong>的主要特点是每个神经元都与前一层的每个神经元相连接。</p>
+</li>
+</ul>
+<img src="https://storage.googleapis.com/kaggle-media/learn/images/U0n5xjU.png" alt="The parts of a convnet: image, base, head, class; input, extract, classify, output." style="zoom:50%;" />
+<p>特征提取的示例图：</p>
+<img src="https://storage.googleapis.com/kaggle-media/learn/images/UUAafkn.png" alt="The idea of feature extraction." style="zoom: 25%;" />
+<p>网络在训练过程中的目标是学习两件事：</p>
+<ol>
+<li class="lvl-3">
+<p>从图像中提取哪些特征（基础）；</p>
+</li>
+<li class="lvl-3">
+<p>哪个类别与哪些特征相匹配（头部）。</p>
+</li>
+</ol>
+<h5 id="u-attaching-a-head-of-dense-layers-to-a-pretrained-base-u"><u><em><strong>attaching a head of dense layers to a pretrained base</strong></em></u></h5>
+<p>卷积网络很少从头开始训练。更常见的是，我们重用预训练模型的基础。然后我们在预训练的基础上附加一个未经训练的头部。换句话说，我们重用网络中已经学会执行 1. 提取特征，并附加一些新层来学习；2. 分类的部分。</p>
+<img src="https://storage.googleapis.com/kaggle-media/learn/images/E49fsmV.png" alt="Attaching a new head to a trained base." style="zoom:25%;" />
+<blockquote>
+<p>头部包含较少的层，在已有的Base上加上一个new Head可以从相对较少的数据创建非常准确的分类器。</p>
+<p>重用预训练模型是一种称为<mark>迁移学习</mark>的技术。它非常有效，以至于现在几乎每个图像分类器都会使用它。</p>
+</blockquote>
+<p>分类模型结构：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入：预训练的 VGG16 模型输出的特征图。</p>
+</li>
+<li class="lvl-2">
+<p>中间层：Flatten 层将特征图展平，接着是一个具有6个神经元的全连接层，用于学习特征的高级表示。</p>
+</li>
+<li class="lvl-2">
+<p>输出层：具有一个神经元的全连接输出层，用于进行二分类，输出一个样本属于正类别的概率。</p>
+</li>
+</ul>
+<blockquote>
+<p>预训练的 VGG16<mark>设置为不可训练，保证其权重不变</mark>。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">model = keras.Sequential([</span><br><span class="line">    pretrained_base,</span><br><span class="line">    layers.Flatten(),</span><br><span class="line">    layers.Dense(<span class="number">6</span>, activation=<span class="string">&#x27;relu&#x27;</span>),</span><br><span class="line">    layers.Dense(<span class="number">1</span>, activation=<span class="string">&#x27;sigmoid&#x27;</span>),</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<h4 id="模型训练过程分析">模型训练过程分析</h4>
+<table>
+<thead>
+<tr>
+<th>训练数据的loss与验证数据的loss</th>
+<th>更多操作训练数据的accuracy与验证数据的accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/__results___16_0.png" alt="img"></td>
+<td><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/__results___16_1.png" alt="img"></td>
+</tr>
+</tbody>
+</table>
+<p>可以发现，随着训练epoch次数的增加，训练数据集的loss和accuracy逐渐增加。</p>
+<p>而验证数据集的loss先减少再回升，这可能是因为训练次数的增加导致的<mark>过拟合</mark>；验证数据集的accuracy也在epoch=20左右的时候达到最大值之后下降。</p>
+<h4 id="交叉熵-cross-entropy">交叉熵（Cross-Entropy）</h4>
+<p>它用于衡量两个概率分布之间的相似性或差异性。交叉熵常被用于分类问题中，特别是在深度学习中，用作损失函数来衡量模型的性能和优化模型的参数。</p>
+<p>在机器学习和深度学习中，交叉熵的定义如下：</p>
+<p>假设有两个概率分布 P 和 Q，其中 <strong>P 表示真实分布（ground truth）</strong>，<strong>Q 表示模型的预测分布</strong>。交叉熵损失用于<u><strong>衡量 Q 预测与 P 真实分布之间的差异</strong></u>。其一般形式为：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>H</mi><mo stretchy="false">(</mo><mi>P</mi><mo separator="true">,</mo><mi>Q</mi><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><munder><mo>∑</mo><mi>i</mi></munder><mi>P</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo><mo>⋅</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>Q</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H(P, Q) = -\sum_{i} P(i) \cdot \log(Q(i)) 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">Q</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3277em;vertical-align:-1.2777em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord mathnormal">Q</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">))</span></span></span></span></span></p>
+<p>在二分类问题中，可以简化为：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>H</mi><mo stretchy="false">(</mo><mi>P</mi><mo separator="true">,</mo><mi>Q</mi><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><mo stretchy="false">[</mo><mi>P</mi><mo>⋅</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>Q</mi><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>P</mi><mo stretchy="false">)</mo><mo>⋅</mo><mi>log</mi><mo>⁡</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>Q</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">H(P, Q) = -[P \cdot \log(Q) + (1 - P) \cdot \log(1 - Q)]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">Q</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord mathnormal">Q</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">Q</span><span class="mclose">)]</span></span></span></span></span></p>
+<p>其中，P 表示真实标签（0或1），Q 表示模型的预测值（0到1之间的概率值）。</p>
+<p>要理解交叉熵的含义，可以将其视为<strong>衡量两个概率分布之间的“距离”</strong>。当模型的预测分布 Q 与真实分布 P 完全匹配时，交叉熵达到最小值为零。但是，如果 Q 的预测与 P 不匹配，交叉熵将增大，表明模型的预测与真实情况之间存在差异。</p>
+<p>在分类问题中，通常使用交叉熵作为损失函数来训练模型，<strong><u>目标是最小化交叉熵</u></strong>，使模型的预测尽可能接近真实标签的分布。这有助于模型学习正确分类样本的能力。</p>
+<blockquote>
+<p>交叉熵是用于衡量概率分布之间差异的一种常用度量，特别在分类问题中广泛应用。它是深度学习中常见的损失函数之一，用于模型的训练和优化。</p>
+</blockquote>
+<h4 id="典型代码">典型代码</h4>
+<h5 id="加载训练和验证集：">加载训练和验证集：</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ds_train_ = image_dataset_from_directory(</span><br><span class="line">    <span class="string">&#x27;../input/car-or-truck/train&#x27;</span>,</span><br><span class="line">    labels=<span class="string">&#x27;inferred&#x27;</span>,</span><br><span class="line">    label_mode=<span class="string">&#x27;binary&#x27;</span>,</span><br><span class="line">    image_size=[<span class="number">128</span>, <span class="number">128</span>],</span><br><span class="line">    interpolation=<span class="string">&#x27;nearest&#x27;</span>,</span><br><span class="line">    batch_size=<span class="number">64</span>,</span><br><span class="line">    shuffle=<span class="literal">True</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h5 id="数据管道data-pipeline-也就是对数据进行各种处理的函数集-：">数据管道Data Pipeline（也就是对数据进行各种处理的函数集）：</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">convert_to_float</span>(<span class="params">image, label</span>):</span><br><span class="line">    image = tf.image.convert_image_dtype(image, dtype=tf.float32)</span><br><span class="line">    <span class="keyword">return</span> image, label</span><br></pre></td></tr></table></figure>
+<h5 id="对训练集和验证集的处理：">对训练集和验证集的处理：</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">AUTOTUNE = tf.data.experimental.AUTOTUNE</span><br><span class="line">ds_train = (</span><br><span class="line">    ds_train_</span><br><span class="line">    .<span class="built_in">map</span>(convert_to_float)</span><br><span class="line">    .cache()</span><br><span class="line">    .prefetch(buffer_size=AUTOTUNE)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li class="lvl-3">
+<p><code>AUTOTUNE = tf.data.experimental.AUTOTUNE</code>：<code>AUTOTUNE</code> 是一个特殊的常量，它允许 TensorFlow <mark>自动选择最佳的参数值</mark>，以优化数据加载和处理性能。它通常用于设置数据集的缓存和预取参数，以使数据加载和模型训练尽可能快速。</p>
+</li>
+<li class="lvl-3">
+<p><code>ds_train</code> 和 <code>ds_valid</code> 分别是<mark>训练集和验证集的数据集对象</mark>。</p>
+</li>
+<li class="lvl-3">
+<p><code>.map(convert_to_float)</code>：这是使用 <code>.map</code> 操作来<mark>对数据集中的每个样本应用</mark> <code>convert_to_float</code> <mark>函数</mark>，即将图像数据从整数类型转换为浮点数类型。这是数据预处理的一部分，确保输入数据与深度学习模型的期望数据类型一致。</p>
+</li>
+<li class="lvl-3">
+<p><code>.cache()</code>：这个操作<mark>将数据集缓存到内存中</mark>，以便在训练过程中更快地访问数据。这对于小型数据集或可以适应内存的数据集而言非常有用，因为它可以减少数据加载的时间。</p>
+</li>
+<li class="lvl-3">
+<p><code>.prefetch(buffer_size=AUTOTUNE)</code>：这个操作是为了加速数据加载。它允许模型<mark>在训练时异步地从数据集中预取（预加载）样本到内存中</mark>，以便在训练过程中无需等待数据加载完成。<code>buffer_size</code> 参数设置为 <code>AUTOTUNE</code> 表示让 TensorFlow 自动选择合适的缓冲区大小以优化性能。</p>
+</li>
+</ol>
+</blockquote>
+<h5 id="模型的训练：">模型的训练：</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="built_in">compile</span>(</span><br><span class="line">    optimizer=<span class="string">&#x27;adam&#x27;</span>,</span><br><span class="line">    loss=<span class="string">&#x27;binary_crossentropy&#x27;</span>,</span><br><span class="line">    metrics=[<span class="string">&#x27;binary_accuracy&#x27;</span>],</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">history = model.fit(</span><br><span class="line">    ds_train,</span><br><span class="line">    validation_data=ds_valid,</span><br><span class="line">    epochs=<span class="number">30</span>,</span><br><span class="line">    verbose=<span class="number">0</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>epochs=30</code> 指定了训练的时代数，即模型将<mark>遍历整个训练数据集的次数</mark>。</p>
+<p><u><em><strong>在每个 <code>epoch</code> 中，训练数据集会被分成多个 <code>batch</code>，每个 batch 包含 batch_size 个样本。模型通过处理这些 batch 来学习数据集。</strong></em></u></p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/09/10/University/AI/CV/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89CV-1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/" rel="tag">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CV/" rel="tag">CV</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/09/10/University/AI/CV/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89CV-2/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            计算机视觉CV-2
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/09/10/University/AI/CV/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89CV-5/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">计算机视觉CV-5</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

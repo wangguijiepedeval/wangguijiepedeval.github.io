@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>软件测试技术笔记1 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/junior/course/Software testing technology/软件测试技术"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  软件测试技术笔记1
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/11/University/junior/course/Software%20testing%20technology/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF/" class="article-date">
+  <time datetime="2023-05-11T03:06:22.341Z" itemprop="datePublished">2023-05-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/">大学</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/">大三</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E5%AD%A6/%E5%A4%A7%E4%B8%89/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF/">软件测试技术</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">8.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">30 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>软件测试技术笔记之一</h1>
+<blockquote>
+<ol>
+<li class="lvl-3">选择</li>
+<li class="lvl-3">填空</li>
+<li class="lvl-3">解答</li>
+<li class="lvl-3">案例分析</li>
+</ol>
+</blockquote>
+<h2 id="绪论">绪论</h2>
+<h3 id="软件测试技术-测试任务">软件测试技术——测试任务</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220919161141887.png" alt="image-20220919161141887"></p>
+<h4 id="白盒测试和黑盒测试的区别包括以下几点：">白盒测试和黑盒测试的区别包括以下几点：</h4>
+<h6 id="定义不同">定义不同</h6>
+<p>黑盒测试：顾名思义就是把测试对象看作一个不能打开的黑盒子。测试时，测试人员完全不用考虑盒子里面的逻辑结构和具体运作，只依据程序的需求规格说明书，检查程序的功能是否符合它的功能说明，检验输出结果对不对。</p>
+<p>白盒测试：与黑盒恰恰相反，这种方法是把测试对象看作一个打开的透明盒子。测试时，测试人员会利用程序内部的逻辑结构及有关信息，通过在不同点检查程序状态，检验程序中的每条通路是否都能按预定要求进行正确工作。</p>
+<h6 id="测试对象不同">测试对象不同</h6>
+<p>黑盒测试：主要针对的是程序所展现给用户的功能。</p>
+<p>白盒测试：主要针对的是程序代码逻辑，简单的说，就是前者测试最终展示功能，后者测试后台程序。</p>
+<h6 id="测试方式不同">测试方式不同</h6>
+<p>黑盒测试：功能测试，是通过测试来检测每个功能是否都能正常使用。</p>
+<p>白盒测试：称结构测试、透明盒测试、逻辑驱动测试或基于代码的测试。</p>
+<h6 id="测试目的不同">测试目的不同</h6>
+<p>黑盒测试：把程序看作一个不能打开的黑盒子，在完全不考虑程序内部结构和内部特性的情况下，在程序接口进行测试，只检查程序功能是否按照需求规格说明书的规定正常使用，程序是否能适当地接收输入数据而产生正确的输出信息。</p>
+<p>白盒测试：通过检查软件内部的逻辑结构，对软件中的逻辑路径进行覆盖测试。在程序不同地方设立检查点，检查程序的状态，以确定实际运行状态与预期状态是否一致。</p>
+<h6 id="测试原则不同">测试原则不同</h6>
+<p>黑盒测试：以用户的角度，从输入数据与输出数据的对应关系出发进行测试的。很明显，如果外部特性本身设计有问题或规格说明的规定有误，用黑盒测试方法是发现不了的。</p>
+<p>白盒测试：一个模块中的所有独立路径至少被测试一次。所有逻辑值均需测试 true 和 false 两种情况。</p>
+<blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220919161108477.png" alt="image-20220919161108477" style="zoom: 33%;" />
+</blockquote>
+<h4 id="静态测试与动态测试">静态测试与动态测试</h4>
+<p>静态测试是指测试不运行的部分：只是检查和审阅,如规范测试、软件模型测试、文档测试等。动态测试是通常意义上的测试，也就是运行和使用软件。</p>
+<blockquote>
+<p>静态测试包括：</p>
+<ol>
+<li class="lvl-3">代码测试</li>
+<li class="lvl-3">界面测试</li>
+<li class="lvl-3">文档测试</li>
+</ol>
+</blockquote>
+<h4 id="单元测试-集成测试以及系统测试">单元测试、集成测试以及系统测试</h4>
+<h6 id="方式不同">方式不同</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>单元测试一般由开发小组采用白盒方式来测试。</p>
+</li>
+<li class="lvl-2">
+<p>集成测试一般由开发小组采用<mark>白盒加黑盒</mark>的方式来测试。</p>
+</li>
+<li class="lvl-2">
+<p>系统测试一般由独立测试小组采用黑盒方式来测试。</p>
+</li>
+</ul>
+<h6 id="粒度不同">粒度不同</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>单元测试的粒度最小。</p>
+</li>
+<li class="lvl-2">
+<p>系统测试的粒度最大。</p>
+</li>
+<li class="lvl-2">
+<p>集成测试界于单元测试和系统测试之间，起到“桥梁作用”。</p>
+</li>
+</ul>
+<h6 id="内容不同">内容不同</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>单元测试主要测试单元是否符合“设计”。</p>
+</li>
+<li class="lvl-2">
+<p>集成测试既验证“设计”，又验证“需求”。</p>
+</li>
+<li class="lvl-2">
+<p>系统测试主要测试系统是否符合“需求规格说明书”</p>
+</li>
+</ul>
+<h4 id="alpha测试与-beta测试"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>测试与<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span>测试</h4>
+<h6 id="测试时间不同：">测试时间不同：</h6>
+<p>Beta测试是<mark>软件产品完成了功能测试和系统测试之后</mark>，在产品发布之前所进行的软件测试活动，它是<u><strong>技术测试的最后一个阶段。</strong></u></p>
+<p>alpha测试简称“α测试”，可以<mark>从软件产品编码结束之时开始，或在模块(子系统)测试完成之后开始，也可以在确认测试过程中产品达到一定的稳定和可靠程度之后再开始</mark>。</p>
+<h6 id="测试的目的不同：">测试的目的不同：</h6>
+<p>α测试的目的是评价软件产品的FLURPS（即功能、局域化、可用性、可靠性、性能和支持）。尤其注重产品的界面和特色。α测试即为非正式验收测试。</p>
+<p>Beta测试是一种验收测试，通过了验收测试，产品就会进入发布阶段。</p>
+<h6 id="测试人员及场所不同：">测试人员及场所不同：</h6>
+<p>α测试是由一个用户在开发环境下进行的测试，也可以是公司内部的用户在模拟实际操作环境下进行的受控测试，α测试不能由程序员或测试员完成。α测试发现的错误，可以在测试现场立刻反馈给开发人员，由开发人员及时分析和处理。</p>
+<p>Beta测试由软件的最终用户们在一个或多个客户场所进行。开发者通常不在Beta测试的现场，因Beta测试是软件在开发者不能控制的环境中的“真实”应用。</p>
+<h4 id="回归测试-冒烟测试和随机测试">回归测试、冒烟测试和随机测试</h4>
+<p>回归测试：</p>
+<p>对软件的新版本测试时，重复执行上一个版本测试时的用例。回归测试可以在任何测试阶段进行，既有黑盒测试的回归，也有白盒测试的回归。</p>
+<p>冒烟测试：</p>
+<p>对新版本<mark>进行系统大规模的测试之前</mark>，先验证一下软件的基本功能是否实现，是否具备可测性</p>
+<p>随机测试：</p>
+<p>随机测试是指所有的输入数据都是随机生成的，其目的是模拟用户的真实操作，并发现一些边缘性错误。</p>
+<h3 id="软件测试过程模型">软件测试过程模型</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>V模型</p>
+</li>
+<li class="lvl-2">
+<p>W模型</p>
+</li>
+<li class="lvl-2">
+<p>X模型</p>
+</li>
+<li class="lvl-2">
+<p>H模型</p>
+</li>
+</ul>
+<h4 id="软件的生命周期">软件的生命周期</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220921110105722.png" alt="image-20220921110105722" style="zoom: 80%;" />
+<h5 id="v模型">V模型</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220921105920976.png" alt="image-20220921105920976" style="zoom:50%;" />
+<blockquote>
+<p><mark>先开发，后测试</mark></p>
+<p><u><em><strong>软件开发与软件测试的关系？（用V模型回答即可）</strong></em></u></p>
+</blockquote>
+<h5 id="w模型">W模型</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220921110532865.png" alt="image-20220921110532865" style="zoom: 50%;" />
+<blockquote>
+<p>边开发，边测试<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>测试与开发同步进行</p>
+<p>W模型：两个V字型模型</p>
+<p><u><em><strong>软件开发与软件测试的关系？（用W模型回答即可）</strong></em></u></p>
+</blockquote>
+<h5 id="x模型">X模型</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220921111549903.png" alt="image-20220921111549903" style="zoom:50%;" />
+<h5 id="h模型">H模型</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220921111523013.png" alt="image-20220921111523013" style="zoom:50%;" />
+<h4 id="作业："><mark>作业：</mark></h4>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20220921114127385.png" alt="image-20220921114127385"></p>
+<blockquote>
+<p>对矿泉水瓶这个产品进行相应的测试？从哪些方面考虑。</p>
+<ol>
+<li class="lvl-3">外观方面：水瓶的高度、底座，水瓶上的字体颜色大小是否合适等等；</li>
+<li class="lvl-3">功能方面：水瓶是否能够装水不漏、能不能够让人喝到水、瓶盖拧紧不漏的时候能不能让人拧开；</li>
+<li class="lvl-3">性能方面：抗压、抗摔、抗高温、抗低温；</li>
+<li class="lvl-3">安全方面：物理方面：瓶子是否有凸起刺手的地方，瓶口是否光滑；化学方面就是会不会产生有毒物质；</li>
+<li class="lvl-3">易用性方面：水瓶的信息是否全面（保质期、生产日期、厂商等等），方不方便携带（手拿、放包里）；</li>
+<li class="lvl-3">兼容性方面：装其他液体会不会产生有毒物质、能不能装固体。</li>
+</ol>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41907993/article/details/108116028">(77条消息) 软件测试笔记——如何测试一个矿泉水瓶？_努力小c的博客-CSDN博客_如何测试一个水瓶</a></p>
+</blockquote>
+<p>测试的四个阶段：</p>
+<ol>
+<li class="lvl-3">
+<p>单元测试</p>
+</li>
+<li class="lvl-3">
+<p>集成测试</p>
+</li>
+<li class="lvl-3">
+<p>系统测试</p>
+</li>
+<li class="lvl-3">
+<p>验收测试</p>
+</li>
+</ol>
+<p>测试考虑的方面：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>界面友好性测试<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>矿泉水瓶是否有好看的样式</p>
+</li>
+<li class="lvl-2">
+<p>功能测试<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>矿泉水瓶是否能够分装矿泉水不漏、矿泉水瓶是否耐用（一般指水瓶塑料质量）、矿泉水瓶瓶盖和瓶身是否匹配</p>
+</li>
+<li class="lvl-2">
+<p>易用性测试<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>水瓶是否设计合理，符合人体工学方便手拿</p>
+</li>
+<li class="lvl-2">
+<p>常规性测试</p>
+</li>
+<li class="lvl-2">
+<p>兼容性测试<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>高温下能不能保持、装其它液体并较好地保存</p>
+</li>
+</ul>
+<h3 id="测试需求分析">测试需求分析</h3>
+<ol>
+<li class="lvl-3">
+<p>测试需求是什么？</p>
+<ol>
+<li class="lvl-6">
+<p>测试需求主要解决“测什么”的问题</p>
+</li>
+<li class="lvl-6">
+<p>测试需求应全部覆盖已定义的业务流程</p>
+</li>
+<li class="lvl-6">
+<blockquote>
+<p>测试目标不等于质量目标，质量水平测试目标体现测试价值该项目的测试边界哪些东西要测试</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li class="lvl-3">
+<p>为什么需要软件测试需求？</p>
+<ol>
+<li class="lvl-6">软件测试需求是设计测试用例的依据</li>
+<li class="lvl-6">有助于保证测试的质量和进度</li>
+<li class="lvl-6">软件测试需求是衡量测试覆盖率的重要指标</li>
+</ol>
+</li>
+<li class="lvl-3">
+<p>如何进行软件测试需求？</p>
+<p>测试需求分析的主要目的：依据需求文档提取测试点，根据测试点来编写测试用例</p>
+<ul class="lvl-2">
+<li class="lvl-5">
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>测试点分析</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{测试点分析}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">测试点分析</span></span></span></span>：</p>
+<ol>
+<li class="lvl-8">通过分析需求描述中的输入、输出、处理、限制、约束等，给出对应的验证内容（功能测试）</li>
+<li class="lvl-8">通过分析各个功能模块之间的业务顺序，和各个功能模块之间传递的信息和数据，对存在功能交互的功能项，给出对应的验证内容；（功能交互测试）</li>
+<li class="lvl-8">考虑到需求的完整性，要充分覆盖软件需求的各种特征，包含隐形需求的验证，比如界面的验证，注册账号的唯一性验证（界面、易用性、安全性、性能压力）</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="测试需求分析过程">测试需求分析过程</h4>
+<ol>
+<li class="lvl-3">
+<p>了解项目的背景、产品价值，解决什么业务问题→分析业务需求，确定测试目标</p>
+</li>
+<li class="lvl-3">
+<p>了解用户是谁，用户所关心的问题→分析用户需求</p>
+</li>
+<li class="lvl-3">
+<p>确定待测软件的功能特性，可以从整体到局部，从上到下，逐层分解，形成待测试的功能列表</p>
+</li>
+<li class="lvl-3">
+<p>确定待测软件的非功能特性，基于本系统的特点而需特别关注的质量属性</p>
+</li>
+<li class="lvl-3">
+<p>确定测试项的优先级</p>
+</li>
+</ol>
+<p><mark>作业</mark>：软件测试计划书在第一次实验之前完成（小组）</p>
+<h3 id="软件测试计划">软件测试计划</h3>
+<h4 id="测试用例">测试用例</h4>
+<p>定义：测试用例=<mark>输入</mark>（<strong>测试步骤和操作步骤</strong>）+<mark>输出</mark>（<strong>期望结果</strong>）+ <mark>测试环境</mark>（<strong>系统环境设置</strong>）</p>
+<h3 id="黑盒测试">黑盒测试</h3>
+<p>基本概念：黑盒测试是从用户观点出发的测试，其目的是<mark>尽可能发现软件的外部行为错误</mark>。⭐️</p>
+<h5 id="黑盒测试用例设计方法">黑盒测试用例设计方法</h5>
+<ol>
+<li class="lvl-3">
+<p>等价类划分法</p>
+</li>
+<li class="lvl-3">
+<p>边界值分析法</p>
+</li>
+<li class="lvl-3">
+<p>因果图法</p>
+</li>
+<li class="lvl-3">
+<p>判定表法</p>
+</li>
+<li class="lvl-3">
+<p>正交分解法</p>
+</li>
+<li class="lvl-3">
+<p>基本路径分析法</p>
+</li>
+<li class="lvl-3">
+<p>场景设计法</p>
+</li>
+<li class="lvl-3">
+<p>错误推测法</p>
+</li>
+</ol>
+<h6 id="等价类划分法">等价类划分法</h6>
+<p>把所有可能的输入数据，即程序输入域划分为若干个 互不相交的子集，称为等价类，然后从每个等价类中 选取少数具有代表性的数据作为测试用例，进行测试。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>在分析需求规格说明的基础上划分等价类，列出等价类表。</p>
+</li>
+<li class="lvl-2">
+<p>等价类是某个输入域的子集，在该子集中每个输入数据的作用是等效的。</p>
+</li>
+<li class="lvl-2">
+<p>分为<strong>有效等价类</strong>和<strong>无效等价类</strong>。</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005102215984.png" alt="image-20221005102215984" style="zoom:50%;" />
+<h6 id="确定等价类的原则">确定等价类的原则</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>输入条件规定了<mark>取值范围或值的个数</mark>的情况下，则可以确立<u><strong>一个</strong>有效等价类(在范围内)和<strong>两个</strong>无效等价类(不在范围内)</u>。</p>
+</li>
+<li class="lvl-2">
+<p>在输入条件规定了输入值的集合或者<mark>规定了“必须如何”的条件</mark>的情况下，可以确立<u><strong>一个</strong>有效等价类和<strong>一个</strong>无效等价类</u>。</p>
+</li>
+<li class="lvl-2">
+<p>在输入条件是一个<mark>布尔量</mark>的情况下，可确定<u><strong>一个</strong>有效等价类和<strong>一个</strong>无效等价类</u>。</p>
+</li>
+<li class="lvl-2">
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>多输入的或关系</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{多输入的或关系}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">多输入的或关系</span></span></span></span>：在规定了<mark>输入数据的一组值</mark>(假定n个)，并且程序要对每一个输入值分别处理的情况下，可确立<u><strong>n个</strong>有效等价类和<strong>一个</strong>无效等价类。</u></p>
+</li>
+<li class="lvl-2">
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>多输入的且关系</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{多输入的且关系}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">多输入的且关系</span></span></span></span>：在规定了输入数据必须遵守的规则的情况下，可确立<u><strong>一个</strong>有效等价类(符合规则)和<strong>若干个</strong>无效等价类(从不同角度违反规则)。</u></p>
+</li>
+<li class="lvl-2">
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>细分等价类</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{细分等价类}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">细分等价类</span></span></span></span>：在确知已划分的等价类中，各元素在程序处理中的方式不同的情况下，则应再将该等价类进一步地划分为更小的等价类。</p>
+</li>
+</ul>
+<h6 id="确定测试用例">确定测试用例</h6>
+<p>(a) 建立等价类表，列出所有划分出的等价类：</p>
+<p>(b) 为每个等价类规定一个唯一的编号；</p>
+<p>© <u>设计一个新的测试用例，使其<mark>尽可能多地覆盖尚未覆盖的有效等价类</mark></u>；⭐️</p>
+<p>(d) 重复©，最后使得所有有效等价类均被测试用例所覆盖；</p>
+<p>(e) <u>设计一个新的测试用例，使其<mark>只覆盖一个无效等价类</mark></u>；⭐️</p>
+<p>(f) 重复e)使所有无效等价类均被覆盖。</p>
+<blockquote>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005105851336.png" alt="image-20221005105851336"></p>
+<p>例如：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005105822624.png" alt="image-20221005105822624" style="zoom:50%;" />
+<p>是否是等腰三角形的无效等价类？怎么写？</p>
+<p>首先写满足三角形的基本条件，然后是三条边都不相等。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>a<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span>b<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span>c</p>
+<p>等边三角形的无效等价类？</p>
+<p>同样是必须先满足三角形的基本条件，然后是三条边两两互不相等，总共可以写出三条无效等价类。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>a<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span>b或b<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span>c或a<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo mathvariant="normal">≠</mo></mrow><annotation encoding="application/x-tex">\neq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel"><span class="mrel"><span class="mord vbox"><span class="thinbox"><span class="rlap"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="inner"><span class="mord"><span class="mrel"></span></span></span><span class="fix"></span></span></span></span></span><span class="mrel">=</span></span></span></span></span>c</p>
+</blockquote>
+<h6 id="边界值分析法">边界值分析法</h6>
+<p>在等价类划分基础上进行边界值分析测试的基本思想是， 选取正好等于、刚刚大于或刚刚小于等价类边界的值作 为测试数据，而不是选取等价类中的典型值或任意值做 为测试数据。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>边界值分析法是一种很实用的黑盒测试用例方法，它具有很强的发现故障的能力。</p>
+</li>
+<li class="lvl-2">
+<p>很多错误发生在输入或输出范围的边界上，因此针对各种边界情况设置测试用例， 可以更有效地发现缺陷。</p>
+</li>
+<li class="lvl-2">
+<p>边界条件就是软件计划的操作界限所在的边缘条件。</p>
+</li>
+</ul>
+<h6 id="实例：">-<mark>实例：</mark></h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230222163409694.png" alt="image-20230222163409694"></p>
+<blockquote>
+<p><mark>答题规范：</mark></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230222192045017.png" alt="image-20230222192045017"></p>
+</blockquote>
+<blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>边界</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{边界}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">边界</span></span></span></span>是指相当于输入等价类和输出等价类而言，稍高于边界值及稍低于其边界值的一些特定情况。<br>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230222163533267.png" alt="image-20230222163533267"></p>
+</blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005111521366.png" alt="image-20221005111521366" style="zoom: 50%;" />
+<p><mark>对于一个n变量的程序，边界值分析测试会产生4n+1个测试用例。</mark>（<mark>不考虑区域外</mark>的无效等价类）</p>
+<h6 id="健壮性边界测试">健壮性边界测试</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>健壮性测试是边界值分析的一种扩展</p>
+</li>
+<li class="lvl-2">
+<p>变量除了取min，min＋，nom， max－，max五个边界值外， 还要考虑采用一个略超过最大值（max+）以及一个略小于最 小值 (min-) 的取值</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005111821818.png" alt="image-20221005111821818" style="zoom:50%;" />
+<p><mark>对于一个n变量的程序，健壮性边界值测试将产生6n+1个测试用例</mark>（<mark>考虑区域外</mark>的无效等价类）</p>
+<p>健壮性测试最有意义的部分不是输入，而是预期的输出，观察例外情况如何处理。</p>
+<h6 id="确定边界值的原则">确定边界值的原则</h6>
+<ol>
+<li class="lvl-3">
+<p>如果<mark>输入条件规定了值的范围</mark>，则应取刚达到这个范围的边界的值，以及刚刚超越这个范围边界的值作为测试输入数据。</p>
+<ul class="lvl-2">
+<li class="lvl-5">
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005112608245.png" alt="image-20221005112608245" style="zoom:50%;" />
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>如果<mark>输入条件规定了值的个数</mark>，则用最大个数、最小个数、比最小个数少、比最大个数多 1的数作为测试数据。</p>
+<ul class="lvl-2">
+<li class="lvl-5">
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005112618012.png" alt="image-20221005112618012" style="zoom:50%;" />
+</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>很多如果程序的规格说明给出的输入域或输出域是<mark>有序集合</mark>，则应选取集合的第一个元素和最后一个元素作为测试用例。</p>
+</li>
+<li class="lvl-3">
+<p>如果程序中使用了一个内部数据结构，则应当选择这个内部数据结构的边界上的值作为测试用例。</p>
+</li>
+</ol>
+<h5 id="textcolor-red-题目-：等价类划分"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>题目</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{题目}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">题目</span></span></span></span>：等价类划分</h5>
+<p>条件规定了<mark>取值范围或值的个数</mark>的情况下（1个有效，2个无效）</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221005113228451.png" alt="image-20221005113228451" style="zoom:50%;" />
+<blockquote>
+<p><mark><strong>等价类划分题目的正确回答形式：</strong></mark></p>
+<ol>
+<li class="lvl-3">
+<p>等价类划分——格式：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230218195522914.png" alt="image-20230218195522914"></p>
+</li>
+<li class="lvl-3">
+<p>测试用例设计——格式：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230218200237385.png" alt="image-20230218200237385"></p>
+</li>
+</ol>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>有效等价类</td>
+<td>1<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≤</span></span></span></span>p<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mrel">≤</span></span></span></span>20</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>第一个有效等价类细分</td>
+<td>p=20</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>……</td>
+<td>15&lt;p&lt;20</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>……</td>
+<td>p=15</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>10&lt;p&lt;15</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>p=10</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>5&lt;p&lt;10</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>p=5</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>1&lt;p&lt;5</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>无效等价类</td>
+<td>p&lt;1</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>3</td>
+<td>无效等价类</td>
+<td>p&gt;20</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>16组边界测试</p>
+</blockquote>
+<h5 id="基于组合技术和组合优化的方法">基于组合技术和组合优化的方法</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>判定表/决策表方法</p>
+</li>
+<li class="lvl-2">
+<p>因果图</p>
+</li>
+<li class="lvl-2">
+<p>两两组合方法</p>
+</li>
+<li class="lvl-2">
+<p>正交实验法</p>
+</li>
+</ul>
+<h6 id="判定表">判定表</h6>
+<blockquote>
+<p><u>在所有的黑盒测试方法中，基于判定表的测试是<mark>最严格</mark>，<mark>最具有逻辑性</mark>的测试方法。</u></p>
+</blockquote>
+<p>定义：判定表是把作为条件的所有输入的各种组合值以及对应输出值都罗列出来而形成的表格。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012101501775.png" alt="image-20221012101501775" style="zoom:50%;" />
+<blockquote>
+<ol>
+<li class="lvl-3">
+<p>条件桩</p>
+</li>
+<li class="lvl-3">
+<p>条件项</p>
+</li>
+<li class="lvl-3">
+<p>动作桩</p>
+</li>
+<li class="lvl-3">
+<p>动作项</p>
+</li>
+</ol>
+</blockquote>
+<p>判定表的特点：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>条件的顺序无关</p>
+</li>
+<li class="lvl-2">
+<p>操作/活动的顺序无关</p>
+</li>
+<li class="lvl-2">
+<p>规则间的无关联</p>
+</li>
+</ul>
+<h6 id="判定表方法步骤">判定表方法步骤</h6>
+<ol>
+<li class="lvl-3">
+<p>列出条件桩</p>
+</li>
+<li class="lvl-3">
+<p>列出动作桩</p>
+</li>
+<li class="lvl-3">
+<p>填入条件项及其组合</p>
+</li>
+<li class="lvl-3">
+<p>填入动作项，制定初始判定表</p>
+</li>
+<li class="lvl-3">
+<p>简化、合并相似规则或者相同动作</p>
+</li>
+</ol>
+<h6 id="判定表实例">判定表实例</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221102101230013.png" alt="image-20221102101230013" style="zoom: 33%;" />
+<h6 id="因果图">因果图</h6>
+<p>多种输入条件的组合，输入之间有关系，例如，约束关系、组合关系，需要进行因果分析，不可直接采用判定表方法。</p>
+<h6 id="因果图基本符号"><mark>因果图基本符号</mark><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012103438292.png" alt="image-20221012103438292"></h6>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>互斥 E：a、b、c <mark>只能有一个成立</mark>，但是可以都不成立。</p>
+</li>
+<li class="lvl-2">
+<p>包含 I：a、b、c 中<mark>至少有一个成立</mark>。可以多选但不能不选。</p>
+</li>
+<li class="lvl-2">
+<p>唯一 O：a、b、c 有且仅有一个为 1。也就是说多个原因中有且只有一个成立。</p>
+</li>
+<li class="lvl-2">
+<p>要求 R：如果 a 成立，则要求 b 必须也成立，其他的不做约束。一个出现，另一个也一定出现</p>
+</li>
+<li class="lvl-2">
+<p>强制屏蔽 M：对于结果的约束。当 a = 1 时，要求 b 必须为0，其他的不约束。a 不成立时，b 的值不一定。唯一和互斥的区别是：唯一必须选一个；互斥可以不选，如果选只能选一个，几个原因中有且只有一个成立。</p>
+</li>
+</ul>
+</blockquote>
+<h6 id="因果图的基本流程：">因果图的基本流程：</h6>
+<blockquote>
+<p>1.<mark>分析</mark>软件规格说明文档描述的<mark>哪些是原因（输入条件），哪些是结果（输出条件）</mark>。原因常是输入条件或输入条件的等价类，结果是输出条件；<br>
+2.分析程序规格说明的描述中的语义内容，将其表示成<mark>连接各个原因与各个结果的“因果图”</mark>；<br>
+3.<mark>标明约束条件</mark>。在因果图上标上哪些不可能发生的因果关系，表明约束或限制条件；<br>
+5.把<mark>判定表的每一列作为依据设计测试用例</mark>。（因果图导出判定表）</p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>题目之一</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{题目之一}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">题目之一</span></span></span></span>：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012103512102.png" alt="image-20221012103512102" style="zoom:50%;" />
+<blockquote>
+<p>因果图：<mark>帮助生成决策表</mark></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012103650938.png" alt="image-20221012103650938" style="zoom: 33%;" />
+<p>决策表</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012103733794.png" alt="image-20221012103733794"></p>
+<p><u><em><strong>中间结点：一般用于抽离多个输入的共性</strong></em></u></p>
+</blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mtext>题目之二</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{题目之二}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback" style="color:red;">题目之二</span></span></span></span>：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012103948725.png" alt="image-20221012103948725" style="zoom:50%;" />
+<blockquote>
+<p>首先找出输入条件（原因）和输出条件（结果）：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012104553998.png" alt="image-20221012104553998" style="zoom:50%;" />
+<p>得到因果图：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012105836977.png" alt="image-20221012105836977"></p>
+<table>
+<thead>
+<tr>
+<th>原因：1</th>
+<th>1</th>
+<th>1</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>11：不属于1~4</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>21：不移动</td>
+<td>1</td>
+<td>0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>（11）=（1）（2）（3）（~4）</p>
+<p>（21）=（~ 1）+（~ 2）+（~ 3）+（4）</p>
+<p>最后得到决策表：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012111030509.png" alt="image-20221012111030509"></p>
+</blockquote>
+<h5 id="因果图回溯">因果图回溯</h5>
+<h6 id="建立有限项的判定表"><mark>建立有限项的判定表</mark></h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>选择一个结果作为当前状态</p>
+</li>
+<li class="lvl-2">
+<p>对因果图进行回溯，查找导致<code>该果为1</code>的所有因的组合</p>
+</li>
+<li class="lvl-2">
+<p>在判定表中为每个因的组合生成一列</p>
+</li>
+<li class="lvl-2">
+<p>对于每种“因”的组合，判断所有其他“果”的状态，并放置在每一列中。</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017145707560.png" alt="image-20221017145707560" style="zoom:50%;" />
+<h6 id="回溯一个or-结点-x-a-b-c-并关系">回溯一个or 结点（x=a + b + c，并关系）</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017145937514.png" alt="image-20221017145937514"></p>
+<blockquote>
+<p>个人理解：</p>
+<p><code>x=a+b</code>：</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>x=1时，不考虑a=b=1的情况，其它情况都考虑(10,01)；</p>
+</li>
+<li class="lvl-2">
+<p>x=0时，考虑导致结果为0的<u>所有组合</u>：</p>
+<ul class="lvl-3">
+<li class="lvl-4">考虑a=b=0的所有情况；</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h6 id="回溯一个and-结点-x-a-b-c-交关系">回溯一个and 结点，（x=a * b * c, 交关系）</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017165536197.png" alt="image-20221017165536197"></p>
+<blockquote>
+<p>个人理解：</p>
+<p><code>x=a*b*c</code>：</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>x=1时，考虑a=b=c=1的所有情况；</p>
+</li>
+<li class="lvl-2">
+<p>x=0时，考虑导致结果为0的<u>所有组合</u>：</p>
+<ul class="lvl-3">
+<li class="lvl-4">对a=b=c=0只考虑1种；</li>
+<li class="lvl-4">abc(001,010,011…)取值中存在至少一个1时：
+<ul class="lvl-5">
+<li class="lvl-6">为1的只考虑1种</li>
+<li class="lvl-6">取0的考虑所有组合：
+<ul class="lvl-7">
+<li class="lvl-8">根据交或并运算循环套用规则</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h5 id="因果突发示例：">因果突发示例：</h5>
+<p>1️⃣</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221012113110208.png" alt="image-20221012113110208" style="zoom:50%;" />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">回溯：</span><br><span class="line">(<span class="number">1</span>+<span class="number">2</span>)*(<span class="number">3</span>*<span class="number">4</span>)=x=<span class="number">0</span></span><br><span class="line">输出：</span><br><span class="line"><span class="number">-7</span>=<span class="number">1</span>时，除了<span class="number">1</span>、<span class="number">2</span>外全为<span class="number">1</span>，且<span class="number">12</span>可取<span class="number">11</span>、<span class="number">10</span>、<span class="number">01</span></span><br><span class="line">因此输出为x=<span class="number">1</span>的情况就只有三种，因此最后x=<span class="number">0</span>的结果就只有<span class="number">13</span>组</span><br><span class="line"><span class="number">13</span>组</span><br><span class="line">(x)=(<span class="number">5</span>)*(<span class="number">6</span>)=<span class="number">0</span></span><br><span class="line">set x=<span class="number">0</span>,</span><br><span class="line">so <span class="number">5</span>=<span class="number">0</span>,<span class="number">6</span>=<span class="number">1</span> <span class="keyword">or</span> <span class="number">5</span>=<span class="number">1</span>,<span class="number">6</span>=<span class="number">0</span> <span class="keyword">or</span> <span class="number">5</span>=<span class="number">0</span>,<span class="number">6</span>=<span class="number">0</span></span><br><span class="line"><span class="number">5</span>=<span class="number">0</span>,<span class="number">6</span>=<span class="number">1</span>:(<span class="number">5</span>=<span class="number">0</span>考虑所有情况,<span class="number">6</span>=<span class="number">1</span>只考虑一种)</span><br><span class="line">	<span class="number">1</span>=<span class="number">0</span>,<span class="number">2</span>=<span class="number">0</span>;</span><br><span class="line">	<span class="number">3</span>=<span class="number">1</span>,<span class="number">4</span>=<span class="number">1</span></span><br><span class="line">    <span class="number">1</span>种</span><br><span class="line"><span class="number">5</span>=<span class="number">1</span>,<span class="number">6</span>=<span class="number">0</span>:(<span class="number">5</span>=<span class="number">1</span>只考虑一种,<span class="number">6</span>=<span class="number">0</span>考虑所有情况)</span><br><span class="line">	<span class="number">3</span>=<span class="number">4</span>=<span class="number">0</span> <span class="keyword">or</span> <span class="number">3</span>=<span class="number">0</span>,<span class="number">4</span>=<span class="number">1</span> <span class="keyword">or</span> <span class="number">3</span>=<span class="number">1</span>,<span class="number">4</span>=<span class="number">0</span></span><br><span class="line">    <span class="number">3</span>种</span><br><span class="line"><span class="number">5</span>=<span class="number">0</span>,<span class="number">6</span>=<span class="number">0</span>:(<span class="number">5</span>=<span class="number">6</span>=<span class="number">0</span>只考虑一种)</span><br><span class="line">    <span class="number">1</span>=<span class="number">0</span>,<span class="number">2</span>=<span class="number">0</span>;</span><br><span class="line">    <span class="number">3</span>=<span class="number">4</span>=<span class="number">0</span></span><br><span class="line">    <span class="number">1</span>种</span><br><span class="line">最后保留<span class="number">5</span>种</span><br></pre></td></tr></table></figure>
+<p>2️⃣找出(91) = 1的输入？</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017141743361.png" alt="image-20221017141743361" style="zoom:50%;" />
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">91</span>)=~(<span class="number">36</span>)</span><br><span class="line">    =~(<span class="number">32</span>*<span class="number">35</span>)</span><br><span class="line">    =~((~<span class="number">1</span>+<span class="number">31</span>)*(<span class="number">5</span>+<span class="number">8</span>+<span class="number">33</span>+<span class="number">34</span>))</span><br><span class="line">    =~((~<span class="number">1</span>+<span class="number">2</span>*<span class="number">3</span>)*(<span class="number">5</span>+<span class="number">8</span>+(<span class="number">6</span>*<span class="number">9</span>*<span class="number">10</span>)+(<span class="number">7</span>*<span class="number">13</span>*<span class="number">14</span>)))</span><br><span class="line">    =<span class="number">1</span></span><br><span class="line"><span class="number">36</span>=<span class="number">0</span> set <span class="number">32</span>=<span class="number">0</span> <span class="keyword">or</span> <span class="number">35</span>=<span class="number">0</span></span><br><span class="line">    <span class="number">32</span>=<span class="number">0</span>,<span class="number">35</span>=<span class="number">0</span>时：</span><br><span class="line">    <span class="number">1</span>=<span class="number">1</span>,<span class="number">31</span>=<span class="number">0</span>;<span class="number">5</span>=<span class="number">8</span>=<span class="number">33</span>=<span class="number">34</span>=<span class="number">0</span></span><br><span class="line">    <span class="number">1</span>种</span><br><span class="line">    <span class="number">32</span>=<span class="number">0</span>,<span class="number">35</span>=<span class="number">1</span>时：</span><br><span class="line">    <span class="number">1</span>=<span class="number">1</span>,<span class="number">31</span>=<span class="number">0</span>;<span class="number">5</span>=<span class="number">1</span> <span class="keyword">or</span> <span class="number">8</span>=<span class="number">1</span> <span class="keyword">or</span> <span class="number">33</span>=<span class="number">1</span> <span class="keyword">or</span> <span class="number">34</span>=<span class="number">1</span></span><br><span class="line">    。。。直接算很难求，需要结合下面的约束关系图进行问题的简化</span><br><span class="line">        </span><br><span class="line">    存在约束：</span><br><span class="line">    （aRb:a=<span class="number">1</span>,则b=<span class="number">1</span>；a=<span class="number">0</span>，则b不定）(<span class="built_in">E</span>(<span class="number">6</span>,<span class="number">7</span>)表示<span class="number">6</span>和<span class="number">7</span>至多出现一个<span class="number">1</span>)</span><br><span class="line">    <span class="number">9</span>R6</span><br><span class="line">    <span class="number">10</span>R6</span><br><span class="line">    <span class="number">13</span>R7</span><br><span class="line">    <span class="number">14</span>R7</span><br><span class="line">    <span class="built_in">E</span>(<span class="number">6</span>,<span class="number">7</span>)</span><br><span class="line">    由以上条件可以知道</span><br><span class="line">    must <span class="number">36</span>=<span class="number">0</span>(consider all):</span><br><span class="line">		<span class="number">32</span>=<span class="number">0</span>,<span class="number">35</span>=<span class="number">1</span> <span class="keyword">or</span> <span class="number">32</span>=<span class="number">1</span>,<span class="number">35</span>=<span class="number">0</span> <span class="keyword">or</span> <span class="number">32</span>=<span class="number">0</span>,<span class="number">35</span>=<span class="number">0</span></span><br><span class="line">            </span><br><span class="line">        <span class="number">32</span>=<span class="number">0</span>(all),<span class="number">35</span>=<span class="number">1</span>(only one):</span><br><span class="line">			<span class="comment">//32=0(all)</span></span><br><span class="line">			<span class="number">1</span>=<span class="number">1</span>(one),<span class="number">31</span>=<span class="number">0</span>(all):</span><br><span class="line">				<span class="number">2</span>,<span class="number">3</span>出现一个<span class="number">0</span>既满足:<span class="number">3</span> kinds      </span><br><span class="line">            </span><br><span class="line">        <span class="number">32</span>=<span class="number">1</span>(one),<span class="number">35</span>=<span class="number">0</span>(all):</span><br><span class="line">			<span class="comment">//35=0(all)</span></span><br><span class="line">            <span class="number">5</span>=<span class="number">0</span>,<span class="number">8</span>=<span class="number">0</span>,<span class="number">33</span>=<span class="number">0</span>(all),<span class="number">34</span>=<span class="number">0</span>(all):(根据并规则，考虑满足的所有情况)</span><br><span class="line">				<span class="comment">//33=0(all)-注意约束条件</span></span><br><span class="line">        		<span class="number">6</span>=<span class="number">1</span>,<span class="number">9</span>=<span class="number">1</span>,<span class="number">10</span>=<span class="number">0</span>;</span><br><span class="line">                <span class="number">6</span>=<span class="number">1</span>,<span class="number">9</span>=<span class="number">0</span>,<span class="number">10</span>=<span class="number">1</span>;</span><br><span class="line">				<span class="number">6</span>=<span class="number">1</span>,<span class="number">9</span>=<span class="number">0</span>,<span class="number">10</span>=<span class="number">0</span>;</span><br><span class="line">				<span class="number">6</span>=<span class="number">0</span>,<span class="number">9</span>=<span class="number">0</span>,<span class="number">10</span>=<span class="number">0</span>;</span><br><span class="line">        		<span class="comment">//34=0(all)-注意约束条件</span></span><br><span class="line">				<span class="number">7</span>=<span class="number">1</span>,<span class="number">13</span>=<span class="number">1</span>,<span class="number">14</span>=<span class="number">0</span>;</span><br><span class="line">                <span class="number">7</span>=<span class="number">1</span>,<span class="number">13</span>=<span class="number">0</span>,<span class="number">14</span>=<span class="number">1</span>;</span><br><span class="line">				<span class="number">7</span>=<span class="number">1</span>,<span class="number">13</span>=<span class="number">0</span>,<span class="number">14</span>=<span class="number">0</span>;</span><br><span class="line">				<span class="number">7</span>=<span class="number">0</span>,<span class="number">13</span>=<span class="number">0</span>,<span class="number">14</span>=<span class="number">0</span>;</span><br><span class="line">				<span class="comment">//注意E(5,6,7,8)：5,6,7,8至多有一个1</span></span><br><span class="line">				so:<span class="number">7</span> kinds</span><br><span class="line">                    <span class="number">6</span>=<span class="number">1</span>,<span class="number">7</span>=<span class="number">0</span> <span class="number">3</span> kinds</span><br><span class="line">                    <span class="number">7</span>=<span class="number">1</span>,<span class="number">6</span>=<span class="number">0</span> <span class="number">3</span> kinds</span><br><span class="line">                    <span class="number">6</span>=<span class="number">0</span>,<span class="number">7</span>=<span class="number">0</span> <span class="number">1</span> kinds</span><br><span class="line">        <span class="number">32</span>=<span class="number">0</span>,<span class="number">35</span>=<span class="number">0</span>:(只考虑一种)</span><br><span class="line">			so:<span class="number">1</span> kinds</span><br></pre></td></tr></table></figure>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017143058355.png" alt="image-20221017143058355" style="zoom:50%;" />
+<h5 id="为什么需要组合覆盖和正交试验法？">为什么需要组合覆盖和正交试验法？</h5>
+<h6 id="新需求">新需求</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>多因素组合</p>
+</li>
+<li class="lvl-2">
+<p>传统测试方法的大工作量</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017150328405.png" alt="image-20221017150328405" style="zoom:50%;" />
+<blockquote>
+<p>决策表存在不足</p>
+</blockquote>
+<h4 id="两两组合测试">两两组合测试</h4>
+<blockquote>
+<p>所有测试数据两两配对，<mark>每一对数据至少出现一次</mark>，两两组合测试也称结对测试(Pairwise Testing)。大部分缺陷是在进行两个变量取值冲突的测试时被发现的，不仅仅是在所有的组合情况下才会被发现，所以不用测试所有的组合，在一定的时间、一定的人力条件下测试所有的两两组合即可。</p>
+</blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017150734564.png" alt="image-20221017150734564" style="zoom:50%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>大部分缺陷是在两个变量取值冲突的测试时被发现的</p>
+</li>
+<li class="lvl-2">
+<p>构造测试用例需要涵盖每个因素的所有状态，并且涵盖每2个因素之间的所有交互。</p>
+</li>
+<li class="lvl-2">
+<p>不仅仅是在所有的组合情况下才会发现所有的测试缺陷</p>
+</li>
+<li class="lvl-2">
+<p>没有必要构造覆盖所有因素的所有组合的测试用例集合，只需要构造覆盖每个因素的所有状态，覆盖任意2个因素所有状态的测试用例集合。</p>
+</li>
+</ul>
+<h4 id="组合覆盖法">组合覆盖法</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017151202031.png" alt="image-20221017151202031" style="zoom:50%;" />
+<blockquote>
+<p>成对覆盖：</p>
+<ul class="lvl-1">
+<li class="lvl-2">要求任意两个因素的所有水平组合要被覆盖一次</li>
+</ul>
+</blockquote>
+<h5 id="作业："><mark>作业：</mark></h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017150943556.png" alt="image-20221017150943556" style="zoom:50%;" />
+<h4 id="正交试验法-orthogonal-test-design-method-otdm">正交试验法（Orthogonal Test Design Method, OTDM）</h4>
+<p>正交测试源于正交试验设计方法。从大量的（实验）数据（测试例）中挑选适量的、有代表性的点（条件组合），从而合理地安排实验（测试）的一种科学实验设计方法。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>正交测试法使用已经构造好了的正交表格来安排试验并进行数据分析。</p>
+</li>
+<li class="lvl-2">
+<p>简单易行并且计算表格化，应用性较好。</p>
+</li>
+<li class="lvl-2">
+<p>是一种有效减少测试用例个数的设计方法。</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017151530280.png" alt="image-20221017151530280" style="zoom:67%;" />
+<h6 id="正交试验法示例：">正交试验法示例：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017152332203.png" alt="image-20221017152332203" style="zoom:50%;" />
+<p>简单对比法：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017152244303.png" alt="image-20221017152244303" style="zoom:50%;" />
+<blockquote>
+<p>由以上简单对比法可以得到：</p>
+<p>m=3，n=3（A、B、C）</p>
+<p>第一次：实验n次</p>
+<p>第二次：实验(m-1)次</p>
+<p>第三次：实验(m-1)次</p>
+<p>最后总共实验了：n+2*(m-1)次</p>
+</blockquote>
+<h5 id="正交表法-orthogonalarraytesting-strategy-oats">正交表法（OrthogonalArrayTesting Strategy,OATS ）</h5>
+<p>正交表的两大优越性，即“<mark>均匀分散，整齐可比</mark>”。特性中有任意一条不满足，就不是正交表。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017152530191.png" alt="image-20221017152530191"></p>
+<p>正交表</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017152850670.png" alt="image-20221017152850670" style="zoom:50%;" />
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>每一列中各数字出现的次数都一样多；</p>
+</li>
+<li class="lvl-2">
+<p>任何两列所构成的有序数对出现次数一样多。</p>
+</li>
+</ul>
+</blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017153203105.png" alt="image-20221017153203105" style="zoom:50%;" />
+<h6 id="正交表法练习：">正交表法练习：</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017153710513.png" alt="image-20221017153710513"></p>
+<blockquote>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230219182700209.png" alt="image-20230219182700209"></p>
+<p>补充：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230219183826453.png" alt="image-20230219183826453"></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230219184145479.png" alt="image-20230219184145479"></p>
+</blockquote>
+<h4 id="textcolor-red-10月17日作业："><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="red"><mn>10</mn><mtext>月</mtext><mn>17</mn><mtext>日作业：</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{red}{10月17日作业：}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord" style="color:red;">10</span><span class="mord cjk_fallback" style="color:red;">月</span><span class="mord" style="color:red;">17</span><span class="mord cjk_fallback" style="color:red;">日作业：</span></span></span></span></h4>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221017162532169.png" alt="image-20221017162532169"></p>
+<h4 id="功能图法">功能图法</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>每个程序的功能通常由<u>静态说明</u>和<u>动态说明</u>组成</p>
+</li>
+<li class="lvl-2">
+<p>静态说明描述了<u>输入条件和输出条件之间的对应关系</u></p>
+</li>
+<li class="lvl-2">
+<p>动态说明描述了<u>输入数据的次序或者转移的次序</u></p>
+</li>
+<li class="lvl-2">
+<p>功能图法就是<mark>为了解决动态说明问题</mark>的一种测试用例的设计方法</p>
+</li>
+</ul>
+<h6 id="构成：">构成：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>状态迁移图（statetransitiondiagram，STD）：适用于动态说明，输入数据和当前状态决定输出数据和后续状态</p>
+</li>
+<li class="lvl-2">
+<p>逻辑功能模型（logicfunctionmodel，LFM）：适合于描述静态说明，输出数据仅由输入数据决定</p>
+</li>
+</ul>
+<h6 id="逻辑功能表：">逻辑功能表：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019102601847.png" alt="image-20221019102601847" style="zoom: 67%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>从逻辑功能表中，可以根据所有的输入输出以及状态来生成所需要的节点和路径，形成实现功能图的基本路径组合——&gt;基本路径覆盖法设计测试用例</p>
+</li>
+<li class="lvl-2">
+<p>功能图法实际是一种黑盒、白盒混合用例设计方法</p>
+</li>
+</ul>
+<h5 id="测试用例生成规则：">测试用例生成规则：</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>节点代替状态，弧线代替迁移。</p>
+</li>
+<li class="lvl-2">
+<p><mark>状态迁移图转化为一个程序的控制流程图形式</mark>，问题也转换为程序的路径测试问题。</p>
+</li>
+<li class="lvl-2">
+<p>从功能图生成实用的测试用例。一个结构化的状态迁移中，定义3种形式的循环：</p>
+<ul class="lvl-2">
+<li class="lvl-4">顺序</li>
+<li class="lvl-4">选择</li>
+<li class="lvl-4">重复</li>
+</ul>
+</li>
+</ul>
+<h5 id="功能图生成测试用例的过程：">功能图生成测试用例的过程：</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>生成局部测试用例：在每个状态中，从因果图生成局部测试用例。局部测试库由原因值（输入数据）组合与对应的结果值（输出数据或状态）构成</p>
+</li>
+<li class="lvl-2">
+<p>测试路径生成：利用上面的规则生成从初始状态到最后状态的测试路径；</p>
+</li>
+<li class="lvl-2">
+<p>测试用例合成：合成测试路径与功能图中每个状态的局部测试用例。结果是初状态到最后一个状态的一个状态序列，以及每个状态中输入数据与对应输出数据组合。</p>
+</li>
+</ul>
+<h4 id="场景设计法">场景设计法</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>黑盒测试中重要的测试用例设计方法</p>
+</li>
+<li class="lvl-2">
+<p><u>事件触发时的情景</u>便形成了<mark>场景</mark>，场景的<u>不同触发顺序</u>构成了<mark>用例</mark></p>
+</li>
+<li class="lvl-2">
+<p>基本流（基本流程）</p>
+</li>
+<li class="lvl-2">
+<p>备选流（分支流程）</p>
+</li>
+</ul>
+<p>用例场景：描述流经用例的路径，从用例开始到结束遍历这条路径上所有基本流和备选流</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019103245664.png" alt="image-20221019103245664" style="zoom: 50%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>同一事件的不同触发顺序和处理结果就形成<mark>事件流</mark></p>
+</li>
+</ul>
+<blockquote>
+<p>V：表示有效（valid）</p>
+<p>I：表示无效</p>
+<p>n/a：表示不适用</p>
+</blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019103433299.png" alt="image-20221019103433299" style="zoom:50%;" />
+<blockquote>
+<p>直黑线表示基本流、备选流用不同的彩色表示</p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>场景1：基本流</p>
+</li>
+<li class="lvl-2">
+<p>场景2：基本流、备选流1；</p>
+</li>
+<li class="lvl-2">
+<p>场景3：基本流、备选流3；</p>
+</li>
+<li class="lvl-2">
+<p>场景4：基本流、备选流3、备选流1；</p>
+</li>
+<li class="lvl-2">
+<p>场景5：基本流、备选流1、备选流2；</p>
+</li>
+<li class="lvl-2">
+<p>场景6：基本流、备选流4</p>
+</li>
+<li class="lvl-2">
+<p>场景7：基本流、备选流3、备选流4</p>
+</li>
+<li class="lvl-2">
+<p>场景8：基本流、备选流3、备选流1、备选流2</p>
+</li>
+</ul>
+<h4 id="错误推测法">错误推测法</h4>
+<h6 id="流程：">流程：</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019112312887.png" alt="image-20221019112312887" style="zoom:50%;" />
+<h3 id="黑盒测试方法的比较与选择">黑盒测试方法的比较与选择</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019112649434.png" alt="image-20221019112649434" style="zoom:50%;" />
+<h6 id="选择：">选择：</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>如果变量引用的是物理量，可采用等价类测试和边界值测试。</p>
+</li>
+<li class="lvl-2">
+<p>如果变量引用的是逻辑量，可采用等价类测试用例和决策表测试。</p>
+</li>
+<li class="lvl-2">
+<p>如果变量是独立的，可采用边界值分析测试和等价类测试。</p>
+</li>
+<li class="lvl-2">
+<p>如果变量不是独立的，可采用决策表测试。</p>
+</li>
+<li class="lvl-2">
+<p>如果可保证是单缺陷假设，可采用边界值分析。</p>
+</li>
+<li class="lvl-2">
+<p>如果可保证是多缺陷假设，可采用边界值分析测试和决策表测试。</p>
+</li>
+<li class="lvl-2">
+<p>如果程序包含大量例外处理，可采用健壮性测试和决策表测试。</p>
+</li>
+</ul>
+<h5 id="小结：">小结：</h5>
+<ol>
+<li class="lvl-3">
+<p>进行等价类划分，包括输入条件和输出条件的等价类划分，将无限测试变成有限测试，这是减少工作量和提高测试效率最有效的方法；</p>
+</li>
+<li class="lvl-3">
+<p>在任何情况下都必须使用<mark>边界值分析方法</mark>，经验表明，用这种方法设计出的测试用例<mark>发现错误的能力最强</mark>；</p>
+</li>
+<li class="lvl-3">
+<p>如果程序的功能说明中含有输入条件的组合情况，则一开始就可选用因果图法和判定表法；</p>
+</li>
+<li class="lvl-3">
+<p>对于配置参数类软件，用<mark>正交试验法</mark>选择较好的组合方式达到最佳效果；</p>
+</li>
+<li class="lvl-3">
+<p>功能图法也是很好的测试用例设计方法，可以通过不同时期条件的有效性设计不同的测试数据；</p>
+</li>
+<li class="lvl-3">
+<p>对于业务清晰的系统，可以利用场景法贯穿整个测试案例过程在案例中综合使用各种测试方法；</p>
+</li>
+<li class="lvl-3">
+<p>可以用错误推测法追加一些测试用例，这需要依靠测试工程师的智慧和经验。</p>
+</li>
+</ol>
+<h5 id="场景法实例：">场景法实例：</h5>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221019112927024.png" alt="image-20221019112927024"></p>
+<blockquote>
+<p>A</p>
+<p>AB</p>
+<p>AC</p>
+<p>AD</p>
+<p>AE</p>
+<p><strong><u><em>答题格式：</em></u></strong></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230222234931858.png" alt="image-20230222234931858"></p>
+</blockquote>
+<h2 id="软件缺陷的生命周期">软件缺陷的生命周期</h2>
+<h5 id="定义：">定义：</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>软件缺陷生命周期指的是一个软件缺陷被发现、报告到这个缺陷被修复、验证直至最后关闭的完整过程</p>
+</li>
+<li class="lvl-2">
+<p>缺陷生命周期是各类开发人员一起参与、协同测试的过程</p>
+</li>
+<li class="lvl-2">
+<p>软件缺陷<mark>一旦发现</mark>便进入<mark>严密监控之中</mark>，<u>直至软件缺陷生命周期终结</u>，这样即可保证在较短的时间内高效率地关闭所有的缺陷，缩短软件测试的进程，提高软件质量，同时减少开发、测试和维护成本。</p>
+</li>
+</ul>
+<h6 id="基本的缺陷生命周期">基本的缺陷生命周期</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221026102400945.png" alt="image-20221026102400945" style="zoom:33%;" />
+<ol>
+<li class="lvl-3">
+<p>发现-打开：<mark>测试人员</mark>找到<mark>软件缺陷</mark>并将软件缺陷<mark>提交给开发人员</mark>。</p>
+<ul class="lvl-2">
+<li class="lvl-5">测试人员<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>开发人员</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>打开-修复：开发人员<mark>再现、修复缺陷</mark>，然后提交给<mark>测试人员去验证</mark>。</p>
+<ul class="lvl-2">
+<li class="lvl-5">开发人员<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⟶</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.522em;vertical-align:-0.011em;"></span><span class="mrel">⟶</span></span></span></span>测试人员</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>修复-关闭：<mark>测试人员验证</mark>修复过的软件，<mark>关闭</mark>已不存在的<mark>缺陷</mark></p>
+<ul class="lvl-2">
+<li class="lvl-5">测试人员</li>
+</ul>
+</li>
+</ol>
+<h4 id="软件缺陷-bug-处理流程-v">⭐️软件缺陷==（Bug）处理流程==(V)</h4>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221026102830336.png" alt="image-20221026102830336" style="zoom:33%;" />
+<h5 id="实际的缺陷生命周期">实际的缺陷生命周期</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221026103804673.png" alt="image-20221026103804673" style="zoom: 33%;" />
+<h5 id="缺陷处理详细">缺陷处理详细</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>确保每个被发现的缺陷都能够被解决（被解决<u>不一定是将bug完全修复</u>，<u>而是指对该缺陷有一个解决方案</u>，如：延期等）</p>
+</li>
+<li class="lvl-2">
+<p>验证：缺陷的修复需要得到测试人员的验证，同时还要进行回归测试，检查这个缺陷的修复是否会引入新的问题；</p>
+</li>
+<li class="lvl-2">
+<p>重新打开：重新打开一个缺陷，需要加注释说明、电话沟通等，否则会引起“打开-修复”多个来回，造成测试人员和开发人员不必要的矛盾（背锅侠）</p>
+</li>
+<li class="lvl-2">
+<p>关闭：<mark>只有测试人员有关闭缺陷的权限</mark>，开发人员没有这个权限。</p>
+</li>
+<li class="lvl-2">
+<p>暂缓：如果每个人都同意将确实存在的缺陷移到以后处理，应该指定下一个版本号或修改的日期。一旦新的版本开始时，这些暂缓的缺陷应该重新被打开。</p>
+</li>
+<li class="lvl-2">
+<p>审阅：可以由<mark>测试管理员、项目管理员或其他人</mark>来进行，审阅缺陷报告的质量水平；</p>
+</li>
+<li class="lvl-2">
+<p>拒绝：如果审阅者决定需要对一份缺陷报告进行重大修改，应该和测试人员一起讨论，由<mark>测试人员纠正缺陷报告</mark>，然后再次提交；</p>
+</li>
+<li class="lvl-2">
+<p>完善：完整地描述了问题的特征并将其分离，那么审查者就会肯定这个报告；</p>
+</li>
+<li class="lvl-2">
+<p>分配：分配给适当的开发人员，如果不知道具体开发人员，应分配给项目开发组长，由开发组长再分配给对应的开发人员；</p>
+</li>
+</ul>
+<h6 id="软件缺陷描述-状态">软件缺陷描述|状态</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221026110456852.png" alt="image-20221026110456852" style="zoom: 50%;" />
+<h6 id="软件缺陷描述-严重性">软件缺陷描述|严重性</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230222101531553.png" alt="image-20230222101531553"></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>致命的（fatal）、严重的（critical）、一般的（major）、微小的（minor）</p>
+</li>
+</ul>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221026110534433.png" alt="image-20221026110534433" style="zoom: 50%;" />
+<h6 id="软件缺陷描述-优先级">软件缺陷描述|优先级</h6>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20230222101600191.png" alt="image-20230222101600191"></p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221026110616496.png" alt="image-20221026110616496" style="zoom:33%;" />
+<h6 id="软件缺陷描述-严重性和优先级">软件缺陷描述|严重性和优先级</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>一般地，严重程度高的软件缺陷具有较高的优先级。</p>
+</li>
+<li class="lvl-2">
+<p>严重程度高优先级不一定高，某些严重的软件缺陷只在非常极端的条件下产生</p>
+</li>
+<li class="lvl-2">
+<p>严重程度低的优先级不一定低</p>
+</li>
+</ul>
+<h6 id="缺陷报告-缺陷报告的详细信息">缺陷报告|缺陷报告的详细信息</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221026111427547.png" alt="image-20221026111427547" style="zoom:33%;" />
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221026111521088.png" alt="image-20221026111521088" style="zoom: 33%;" />
+<h6 id="软件缺陷报告-缺陷描述的基本要求">软件缺陷报告|缺陷描述的基本要求</h6>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>单一准确</p>
+</li>
+<li class="lvl-2">
+<p>可以再现</p>
+</li>
+<li class="lvl-2">
+<p>完整统一</p>
+</li>
+<li class="lvl-2">
+<p>短小简练</p>
+</li>
+<li class="lvl-2">
+<p>特定条件</p>
+</li>
+<li class="lvl-2">
+<p>补充完善</p>
+</li>
+<li class="lvl-2">
+<p><u><mark>不做评价</mark></u></p>
+</li>
+</ul>
+<h5 id="bug的优先排列：">Bug的优先排列：</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>可重复性(Repeatability)</p>
+</li>
+<li class="lvl-2">
+<p>可发生性(Visibility)</p>
+</li>
+<li class="lvl-2">
+<p>严重性(Severity)</p>
+</li>
+<li class="lvl-2">
+<p><u>优先级=（可重复性+可发生性）X 严重性</u></p>
+</li>
+</ul>
+<h5 id="软件测试管理-质量成本">软件测试管理|质量成本</h5>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221026113056168.png" alt="image-20221026113056168" style="zoom: 80%;" />
+<h6 id="软件测试管理-质量成本实例">软件测试管理|质量成本实例</h6>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221026113852858.png" alt="image-20221026113852858" style="zoom: 50%;" />
+<blockquote>
+<p>2、3种情况</p>
+</blockquote>
+<h2 id="实验要求">实验要求</h2>
+<h4 id="测试用例撰写要求：">测试用例撰写要求：</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>用例名：简明扼要</p>
+</li>
+<li class="lvl-2">
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20221026100643992.png" alt="image-20221026100643992" style="zoom:50%;" />
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/05/11/University/junior/course/Software%20testing%20technology/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" rel="tag">课程笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" rel="tag">软件测试</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/11/University/junior/course/Software%20testing%20technology/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF2/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            软件测试技术笔记2
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/05/11/University/junior/course/Software%20testing%20technology/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%9512%E8%AF%95%E5%8D%B7%E6%80%BB%E7%BB%93/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">12级试卷总结</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
