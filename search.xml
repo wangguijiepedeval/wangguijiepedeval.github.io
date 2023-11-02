@@ -642,6 +642,120 @@
       </tags>
   </entry>
   <entry>
+    <title>Vision Transformer基础</title>
+    <url>/2023/11/02/University/AI/ModelLearning/Vision%20Transformer%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1>Vision Transformer基础</h1>
+<h2 id="模型介绍">模型介绍</h2>
+<blockquote>
+<p>ViT原论文中最核心的结论是，<strong>当拥有足够多的数据进行预训练的时候，ViT的表现就会超过CNN</strong>，突破<strong>transformer缺少归纳偏置</strong>的限制，可以在下游任务中获得较好的迁移效果。</p>
+<p>但是当训练数据集不够大的时候，ViT的表现通常比同等大小的ResNets要差一些，因为Transformer和CNN相比缺少归纳偏置（inductive bias），即一种先验知识，提前做好的假设。CNN具有两种归纳偏置，一种是<strong>局部性</strong>（locality/two-dimensional neighborhood structure），即图片上相邻的区域具有相似的特征；一种是<strong>平移不变形</strong>（translation equivariance）， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mi>g</mi><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(g(x))=g(f(x))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">))</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">))</span></span></span></span> ，其中g代表卷积操作，f代表平移操作。当CNN具有以上两种<u><strong>归纳偏置</strong></u>，就有了很多先验信息，需要<strong>相对少的数据就可以学习一个比较好的模型</strong>。</p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Transformer相较于CNN结构，缺少一定的平移不变性和局部感知性，因此在数据量不充分时，很难达到同等的效果。具体表现为使用中等规模的ImageNet训练的Transformer会比ResNet在精度上低几个百分点。</p>
+</li>
+<li class="lvl-2">
+<p>当有大量的训练样本时，结果则会发生改变。使用大规模数据集进行预训练后，再使用迁移学习的方式应用到其他数据集上，可以达到或超越当前的SOTA水平。</p>
+</li>
+</ul>
+<h2 id="ViT的结构">ViT的结构</h2>
+<blockquote>
+<p>参考：</p>
+<ul class="lvl-1">
+<li class="lvl-2"><a href="https://zhuanlan.zhihu.com/p/445122996">https://zhuanlan.zhihu.com/p/445122996</a></li>
+<li class="lvl-2"><a href="https://paddlepedia.readthedocs.io/en/latest/tutorials/computer_vision/classification/ViT.html">https://paddlepedia.readthedocs.io/en/latest/tutorials/computer_vision/classification/ViT.html</a></li>
+</ul>
+</blockquote>
+<p>ViT将输入图片分为多个patch（16x16），再将每个patch投影为固定长度的向量送入Transformer，后续encoder的操作和原始Transformer中完全相同。但是因为对图片分类，因此在输入序列中加入一个特殊的token，该token对应的输出即为最后的类别预测。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/v2-5afd38bd10b279f3a572b13cda399233_r.jpg" alt="img"></p>
+<h3 id="Patch-Position-Embedding">Patch+Position Embedding</h3>
+<p>考虑到在Transformer结构中，输入是一个二维的矩阵，矩阵的形状可以表示为 (N,D)，其中 N是sequence的长度，而 D 是sequence中每个向量的维度。因此，在ViT算法中，首先需要设法将 H×W×C的三维图像转化为 (N,D)的二维输入。</p>
+<p>ViT中的具体实现方式为：将 H×W×C的图像，变为一个 N×(P<sup>2</sup>∗C)的序列。这个序列可以看作是一系列展平的图像块，也就是将图像切分成小块后，再将其展平。该序列中一共包含了 N=HW/P<sup>2</sup>个图像块，每个图像块的维度则是 (P<sup>2</sup>∗C)。其中 <strong>P 是图像块的大小</strong>，<strong>C 是通道数量</strong>。经过如上变换，就可以将 N 视为sequence的长度了。</p>
+<p>但是，此时每个图像块的维度是 (P<sup>2</sup>∗C)，而我们实际需要的向量维度是 D，因此我们还需要对图像块进行 Embedding。这里 Embedding 的方式非常简单，只需要对每个 (P<sup>2</sup>∗C)的图像块做一个<u><strong>线性变换</strong></u>，<strong>将维度压缩为D即可</strong>。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/VIT_pic2.png" alt="图2 图像分块嵌入示意图" style="zoom: 25%;" />
+<p>例如：输入图片大小为224x224，将图片分为固定大小的patch，patch大小为16x16，则每张图像会生成224x224/16x16=196个patch，即输入序列长度为<strong>196</strong>，每个patch维度16x16x3=<strong>768</strong>，线性投射层的维度为768xN (N=768)，因此输入通过线性投射层之后的维度依然为196x768，即一共有196个token，每个token的维度是768。这里还需要加上一个特殊字符cls，因此最终的维度是<strong>197x768</strong>。到目前为止，已经通过patch embedding将一个视觉问题转化为了一个seq2seq问题。</p>
+<h3 id="Encoder：Multi-Head-Attention">Encoder：Multi-Head Attention</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/VIT_pic3.png" alt="图3 多头注意力示意图" style="zoom:25%;" />
+<p>Transformer 结构中最重要的结构就是 Multi-head Attention，即多头注意力结构。具有2个head的 Multi-head Attention 结构如下图所示。输入 a<sup>i</sup> 经过转移矩阵，并切分生成 q<sup>(i,1)</sup>、q<sup>(i,2)</sup>、k<sup>(i,1)</sup>、k<sup>(i,2)</sup>、v<sup>(i,1)</sup>、v<sup>(i,2)</sup>，然后 q<sup>(i,1)</sup>与 k<sup>(i,1)</sup>做 attention，得到权重向量 α，将 α 与 v<sup>(i,1)</sup>进行加权求和，得到最终的 b<sup>(i,1)</sup>(i=1,2,…,N)，同理可以得到 b<sup>(i,2)</sup>(i=1,2,…,N)。接着将它们拼接起来，通过一个线性层进行处理，得到最终的结果。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/Multi-head_Attention.jpg" alt="图4 多头注意力" style="zoom: 50%;" />
+<p>其中，使用 q<sup>(i,j)</sup>、k<sup>(i,j)</sup>与 v<sup>(i,j)</sup>计算 b<sup>(i,j)</sup>(i=1,2,…,N)的方法是缩放点积注意力 (Scaled Dot-Product Attention)。 首先使用每个 q<sup>(i,j)</sup>去与 k<sup>(i,j)</sup>做 attention，这里说的 attention 就是<strong>匹配这两个向量有多接近</strong>，具体的方式就是计算向量的<strong>加权内积</strong>，得到 α(i,j)。这里的加权内积计算方式如下所示：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>α</mi><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mi>i</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>q</mi><mn>1</mn></msup><mo>∗</mo><msup><mi>k</mi><mi>i</mi></msup><mi mathvariant="normal">/</mi><msqrt><mi>d</mi></msqrt></mrow><annotation encoding="application/x-tex">α(1,i)=q^1∗k^i/ \sqrt{d}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">i</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0585em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2311em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8747em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span><span class="mord">/</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9811em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal">d</span></span></span><span style="top:-2.9411em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.0589em;"><span></span></span></span></span></span></span></span></span></span></p>
+<p>其中，d 是 q 和 k 的维度，因为 q∗k 的数值会随着维度的增大而增大，因此除以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mi>d</mi></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{d}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.1078em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9322em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal">d</span></span></span><span style="top:-2.8922em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1078em;"><span></span></span></span></span></span></span></span></span> 的值也就相当于归一化的效果。</p>
+<p>接下来，把计算得到的 α(i,j) 取 softmax 操作，再将其与 v(i,j) 相乘。</p>
+<blockquote>
+<p>多头注意力机制的<mark>详细计算过程</mark>参考：<a href="https://www.wgj.ink/2023/10/23/University/AI/ModelLearning/ChatGPT/Transformer%E5%9F%BA%E7%A1%80/#%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6">Transformer基础</a></p>
+</blockquote>
+<h3 id="Encoder：MLP（多层感知机）">Encoder：MLP（多层感知机）</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/VIT_pic6.png" alt="图6 MLP多层感知机的结构" style="zoom:25%;" />
+<p>多层感知机由<u><strong>输入层、输出层和至少一层的隐藏层</strong></u>构成。网络中各个隐藏层中神经元可接收相邻前序隐藏层中所有神经元传递而来的信息，经过加工处理后将信息输出给相邻后续隐藏层中所有神经元。在多层感知机中，相邻层所包含的神经元之间通常使用“全连接”方式进行连接。多层感知机可以模拟复杂非线性函数功能，所模拟函数的复杂性取决于网络隐藏层数目和各层中神经元数目。多层感知机的结构如下图所示。</p>
+<img src="https://paddlepedia.readthedocs.io/en/latest/_images/MLP.png" alt="图7 多层感知机" style="zoom:33%;" />
+<h3 id="DropPath">DropPath</h3>
+<p>代码实现过程中还使用了<strong>DropPath</strong>（Stochastic Depth）来代替传统的<strong>Dropout结构</strong>，DropPath可以理解为<u><strong>一种特殊的Dropout</strong></u>。其作用是在训练过程中<strong>随机丢弃子图层</strong>（randomly drop a subset of layers），而在预测时正常使用完整的 Graph。</p>
+<p>DropPath的主要优势在于它可以减少网络的复杂性，降低过拟合的风险，同时增加了网络的鲁棒性和泛化能力。</p>
+<h3 id="细节：Class-Token">细节：Class Token</h3>
+<p>假设我们将原始图像切分成 3×3共9个小图像块，最终的输入序列长度却是10，也就是说我们这里人为的增加了一个向量进行输入，我们通常将人为增加的这个向量称为 Class Token。那么这个 Class Token 有什么作用呢？</p>
+<p>我们可以想象，如果没有这个向量，也就是将 N=9个向量输入 Transformer 结构中进行编码，我们最终会得到9个编码向量，可对于图像分类任务而言，我们应该选择哪个输出向量进行后续分类呢？因此，ViT算法提出了一个可学习的嵌入向量 Class Token，将它与9个向量一起输入到 Transformer 结构中，输出10个编码向量，然后用这个 Class Token 进行分类预测即可。</p>
+<p>其实这里也可以理解为：ViT 其实只用到了 Transformer 中的 Encoder，而并没有用到 Decoder，而 Class Token 的作用就是寻找其他9个输入向量对应的类别。</p>
+<h3 id="细节：Positional-Encoding">细节：Positional Encoding</h3>
+<p>按照 Transformer 结构中的位置编码习惯，这个工作也使用了位置编码。不同的是，ViT 中的位置编码没有采用原版 Transformer 中的 sincos编码，而是直接设置为可学习的 Positional Encoding。对训练好的 Positional Encoding 进行可视化，如下图所示。我们可以看到，位置越接近，往往具有更相似的位置编码。此外，出现了行列结构，同一行/列中的 patch 具有相似的位置编码。</p>
+<img src="https://paddlepedia.readthedocs.io/en/latest/_images/Positional_Encoding.png" alt="图9 Positional Encoding" style="zoom:33%;" />
+<h3 id="细节：MLP-Head">细节：MLP Head</h3>
+<p>得到输出后，ViT中使用了 MLP Head对输出进行分类处理，这里的 MLP Head 由 LayerNorm 和两层全连接层组成，并且采用了GELU激活函数。</p>
+<h4 id="GELU激活函数">GELU激活函数</h4>
+<blockquote>
+<p>参考：<a href="https://blog.csdn.net/liruihongbob/article/details/86510622">https://blog.csdn.net/liruihongbob/article/details/86510622</a></p>
+</blockquote>
+<p>Gaussian Error Linerar Units(GELUS)，GELUs其实是 dropout、zoneout、Relus的综合，GELUs对于输入乘以一个0,1组成的mask，而该mask的生成则是依概率随机的依赖于输入。假设输入为X, mask为m，则m服从一个伯努利分布(Φ(x) , Φ(x) = P( X &lt;= x ) , X服从标准正态分布)，这么选择是因为神经元的输入趋向于正态分布，这么设定使得当输入x减小的时候，输入会有一个更高的概率被dropout掉，这样的激活变换就会随机依赖于输入了。</p>
+<p>数学表达如下：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>G</mi><mi>E</mi><mi>L</mi><mi>U</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mi>P</mi><mo stretchy="false">(</mo><mi>X</mi><mo>&lt;</mo><mo>=</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mi mathvariant="normal">Φ</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">GELU(x)=xP(X&lt;=x)=xΦ(x)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">GE</span><span class="mord mathnormal" style="margin-right:0.10903em;">LU</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">x</span><span class="mord">Φ</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></span></p>
+<p>这里Φ(x)是正态分布的概率函数，可以简单采用正态分布N(0,1), 要是觉得不刺激当然可以使用参数化的正态分布N(μ,σ), 然后通过训练得到μ,σ。</p>
+<h2 id="模型特点">模型特点</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>作为CV领域最经典的 Transformer 算法之一，不同于传统的CNN算法，ViT尝试将标准的Transformer结构直接应用于图像，并对整个图像分类流程进行最少的修改。</p>
+</li>
+<li class="lvl-2">
+<p>为了满足 Transformer 输入结构的要求，将整幅图像拆分成小图像块，然后把这些小图像块的线性嵌入序列输入到网络。同时，使用了Class Token的方式进行分类预测。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>格物致知</category>
+        <category>经典模型</category>
+        <category>Vision Transformer</category>
+      </categories>
+      <tags>
+        <tag>CV</tag>
+        <tag>经典模型</tag>
+        <tag>Transformer</tag>
+        <tag>ViT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>目标检测和边界框</title>
     <url>/2023/10/25/University/AI/CV/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%92%8C%E8%BE%B9%E7%95%8C%E6%A1%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1>目标检测和边界框</h1>
