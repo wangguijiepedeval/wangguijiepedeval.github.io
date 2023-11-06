@@ -642,6 +642,38 @@
       </tags>
   </entry>
   <entry>
+    <title>Paper Learning指南</title>
+    <url>/2023/11/06/University/AI/PaperLearn/%E6%AF%8F%E6%97%A5%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1>Paper Learning</h1>
+<blockquote>
+<p>论文阅读学习指南</p>
+</blockquote>
+<h2 id="center-arxiv-center"><center><a href="https://arxiv.org/list/cs.CV/recent">arXiv</a></center></h2>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p><input type="checkbox" id="checkbox0" checked="true"><label for="checkbox0">链接：</label><a href="https://arxiv.org/list/cs.CV/recent">https://arxiv.org/list/cs.CV/recent</a></p>
+</li>
+</ul>
+</blockquote>
+<h2 id="center-cvf-center"><center><a href="https://openaccess.thecvf.com/menu">CVF</a></center></h2>
+<blockquote>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p><input type="checkbox" id="checkbox1" checked="true"><label for="checkbox1">链接：</label><a href="https://openaccess.thecvf.com/menu">https://openaccess.thecvf.com/menu</a></p>
+</li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>格物致知</category>
+      </categories>
+      <tags>
+        <tag>学习指南</tag>
+        <tag>Paper Learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vision Transformer基础</title>
     <url>/2023/11/02/University/AI/ModelLearning/Vision%20Transformer%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1>Vision Transformer基础</h1>

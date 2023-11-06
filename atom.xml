@@ -6,7 +6,7 @@
   <link href="https://wangguijiepedeval.github.io/atom.xml" rel="self"/>
   
   <link href="https://wangguijiepedeval.github.io/"/>
-  <updated>2023-11-02T09:53:44.492Z</updated>
+  <updated>2023-11-06T07:55:31.792Z</updated>
   <id>https://wangguijiepedeval.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Paper Learning指南</title>
+    <link href="https://wangguijiepedeval.github.io/2023/11/06/University/AI/PaperLearn/%E6%AF%8F%E6%97%A5%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/"/>
+    <id>https://wangguijiepedeval.github.io/2023/11/06/University/AI/PaperLearn/%E6%AF%8F%E6%97%A5%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/</id>
+    <published>2023-11-06T07:55:51.962Z</published>
+    <updated>2023-11-06T07:55:31.792Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="格物致知" scheme="https://wangguijiepedeval.github.io/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/"/>
+    
+    
+    <category term="学习指南" scheme="https://wangguijiepedeval.github.io/tags/%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/"/>
+    
+    <category term="Paper Learning" scheme="https://wangguijiepedeval.github.io/tags/Paper-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>Vision Transformer基础</title>
@@ -620,35 +647,6 @@
     <category term="蓝桥杯" scheme="https://wangguijiepedeval.github.io/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
     
     <category term="算法" scheme="https://wangguijiepedeval.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CCF-CSP模拟考笔记</title>
-    <link href="https://wangguijiepedeval.github.io/2023/10/18/University/junior/competition/CCF-CSP/CCF-CSP%E6%A8%A1%E6%8B%9F%E8%80%83%E7%AC%AC%E4%BA%8C%E9%A2%98%E7%AC%94%E8%AE%B0/"/>
-    <id>https://wangguijiepedeval.github.io/2023/10/18/University/junior/competition/CCF-CSP/CCF-CSP%E6%A8%A1%E6%8B%9F%E8%80%83%E7%AC%AC%E4%BA%8C%E9%A2%98%E7%AC%94%E8%AE%B0/</id>
-    <published>2023-10-18T07:52:44.018Z</published>
-    <updated>2023-04-02T17:42:49.817Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="竞赛" scheme="https://wangguijiepedeval.github.io/categories/%E7%AB%9E%E8%B5%9B/"/>
-    
-    <category term="CCF-CSP认证" scheme="https://wangguijiepedeval.github.io/categories/%E7%AB%9E%E8%B5%9B/CCF-CSP%E8%AE%A4%E8%AF%81/"/>
-    
-    <category term="第二题" scheme="https://wangguijiepedeval.github.io/categories/%E7%AB%9E%E8%B5%9B/CCF-CSP%E8%AE%A4%E8%AF%81/%E7%AC%AC%E4%BA%8C%E9%A2%98/"/>
-    
-    
-    <category term="CCF-CSP" scheme="https://wangguijiepedeval.github.io/tags/CCF-CSP/"/>
     
   </entry>
   
