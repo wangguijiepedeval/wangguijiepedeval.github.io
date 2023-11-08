@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Pix2seq：应用于目标检测的语言建模框架 |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/AI/PaperLearn/Pix2seq：应用于目标检测的语言建模框架"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Pix2seq：应用于目标检测的语言建模框架
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/11/08/University/AI/PaperLearn/Pix2seq%EF%BC%9A%E5%BA%94%E7%94%A8%E4%BA%8E%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E8%AF%AD%E8%A8%80%E5%BB%BA%E6%A8%A1%E6%A1%86%E6%9E%B6/" class="article-date">
+  <time datetime="2023-11-08T07:08:25.964Z" itemprop="datePublished">2023-11-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/">格物致知</a> / <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a> / <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">3.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">13 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>Pix2seq</h1>
+<blockquote>
+<p>论文原文：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2109.10852">https://arxiv.org/abs/2109.10852</a></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/414791567">https://zhuanlan.zhihu.com/p/414791567</a></p>
+</blockquote>
+<h2 id="Abstract">Abstract</h2>
+<p>Pix2seq将目标检测视为一个以观察到的像素输入为条件的语言建模任务。</p>
+<p>目标描述（例如边界框和类别标签）以离散标记的序列形式表达，并训练一个神经网络来感知图像并生成所需的序列。我们的方法主要基于这样的直觉，即如果神经网络知道对象的位置和类别，那么我们只需要教它如何解读它们。</p>
+<h2 id="Pix2seq架构">Pix2seq架构</h2>
+<p>Pix2seq基于这样一种直觉，即如果神经网络知道对象在哪里以及是什么，我们只需教会它读取它们。通过“描述”对象的学习，模型可以学会将“语言”与像素观察结果联系起来，从而得到有用的对象表示。给定一张图像，Pix2seq模型产生与对象描述相对应的离散token序列。如下图所示。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231106163701374.png" alt="image-20231106163701374" style="zoom:50%;" />
+<p>将目标检测视为在像素输入的条件下进行的语言建模任务，模型架构和损失函数通用而且相对简单，并未针对检测任务进行专门设计（<mark>泛用性好</mark>）。</p>
+<h4 id="使用Pix2Seq进行检测任务">使用Pix2Seq进行检测任务</h4>
+<p>首先提出了一种量化和序列化方案，将边界框和类别标签转化为离散token 的序列。</p>
+<p>然后，我们利用编码器-解码器架构来感知像素输入和生成目标序列。</p>
+<p>目标函数简单地是在像素输入和之前的token 的条件下，使token 的最大似然。</p>
+<p>虽然架构和损失函数都不针对任务进行特定假设（不假设关于目标检测的先前知识，如边界框），但我们仍然可以通过一种<u><strong>序列增强技术</strong></u>来纳入任务特定的先验知识，该技术在训练期间改变输入和目标序列。</p>
+<h3 id="Pix2seq系统由四个主要组件组成">Pix2seq系统由四个主要组件组成</h3>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231106164737104.png" alt="image-20231106164737104" style="zoom:50%;" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>图像增强</strong>: 在训练计算机视觉模型时，常用图像增强技术来丰富固定的训练样本集合（例如随机缩放和裁剪）。</p>
+</li>
+<li class="lvl-2">
+<p><strong>序列构建与扩充</strong>：由于图像的目标注释通常表示为一组边界框和类别标签，我们将其转换为一系列离散的标记。</p>
+</li>
+<li class="lvl-2">
+<p><strong>架构（Architecture）</strong>：我们使用了编码器-解码器模型，其中<strong>编码器感知像素输入</strong>，<strong>解码器逐个令牌地生成目标序列</strong>。</p>
+</li>
+<li class="lvl-2">
+<p><strong>目标/损失函数（Objective）</strong>: 模型的训练目标是最大化在图像和前面的标记条件下的标记对数似然函数（使用softmax交叉熵损失）。</p>
+</li>
+</ul>
+<p>在常见的目标检测数据集中，图像中的目标数量是可变的，通常表示为一组边界框和类别标签。在Pix2Seq中，我们将其表示为离散化的令牌序列。</p>
+<p>具体而言，一个目标被表示为一个由五个离散化的令牌组成的序列，即[y<sub>min</sub>, x<sub>min</sub>, y<sub>max</sub>, x<sub>max</sub>, c]，其中每个连续的角点坐标被均匀离散化为[1, n<sub>bins</sub>]的整数，c为类别索引。</p>
+<p>使用一个共享的词汇表来表示所有令牌，因此词汇表的大小等于bin数量加类别数量。这种边界框的量化方案使我们能够在实现高精度的同时使用一个较小的词汇表。例如，对于一个600×600的图像，只需要600个bin即可实现零量化误差。不同量化水平对边界框的排列的影响如下图所示。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231106165814110.png" alt="image-20231106165814110" style="zoom:50%;" />
+<p>将每个目标描述表示为一个简短的离散序列后，我们需要将多个目标描述序列化为给定图像的单个序列。由于对于检测任务本身来说，对象的顺序不重要，我们使用随机排序策略（每次显示图像时随机调整目标的顺序）。</p>
+<p>最后，由于不同图像通常具有不同数量的目标，生成的序列长度也会有所不同。为了表示序列的结束，我们因此使用了一个EOS（end of sequence）令牌。不同排序策略下的序列构建过程如下图所示。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231106165910271.png" alt="image-20231106165910271" style="zoom: 67%;" />
+<h3 id="架构">架构</h3>
+<p>我们使用编码器-解码器架构。编码器可以是一个通用的图像编码器，它感知像素并将其编码为隐藏表示，例如ConvNet，Transformer或者它们的组合。对于生成，我们使用Transformer解码器。它每次生成一个令牌，以前面的令牌和编码的图像表示为条件。这消除了现代目标检测器中架构的复杂性和定制性，例如边界框提议和回归，因为令牌是从具有softmax的单一词汇表中生成的。</p>
+<h3 id="目标">目标</h3>
+<p>目标与语言建模类似，给定一张图像和前面的令牌，Pix2Seq被训练为预测令牌，使用最大似然损失，即，</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231106170528298.png" alt="image-20231106170528298" style="zoom: 67%;" />
+<p>其中 x 是给定图像，y 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>~</mo></mover></mrow><annotation encoding="application/x-tex">\tilde{y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8623em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3.35em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">~</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span> 是输入和与 x 相关的目标序列，L 是目标序列长度。 y 和 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>~</mo></mover></mrow><annotation encoding="application/x-tex">\tilde{y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8623em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3.35em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">~</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span> 在标准语言建模设置中是相同的，但它们也可以不同（如我们后来的增强序列构造）。此外，w<sub>j</sub> 是序列中第 j 个标记的预先分配的权重。我们设置 w<sub>j</sub> = 1, ∀j，但是可以根据标记的类型（例如，坐标标记与类标记）或相应对象的大小来对标记进行加权。</p>
+<h3 id="推理">推理</h3>
+<p>在推理阶段，我们从模型的似然中抽取令牌，即P(y<sub>j</sub> |x, y<sub>1:j−1</sub>)。这可以通过选择具有最大似然的令牌（argmax抽样）或使用其他随机抽样技术来实现。我们发现使用nucleus抽样(Holtzman et al., 2019)比argmax抽样具有更高的回收率。当生成EOS令牌时，序列结束。生成序列后，提取和去量化对象描述（即获取预测的边界框和类别标签）就变得简单明了。</p>
+<h3 id="序列增强以整合任务先验">序列增强以整合任务先验</h3>
+<p>EOS 令牌（标记）允许模型决定何时终止生成，但在实践中我们发现模型往往会在没有预测所有对象的情况下完成。这可能是由于 1) 注释噪声（例如，注释者未识别所有对象），以及 2) 识别或定位某些对象的不确定性。虽然这只会对整体性能产生很小的影响（例如，平均精度为 1-2%），但它对召回率的影响较大。为了鼓励更高的召回率，一种技巧是通过人为降低其可能性来延迟 EOS 令牌的采样。然而，这通常会导致嘈杂和重复的预测。在某种程度上，精确度和召回率之间的这种困难权衡是我们的模型与任务无关、不知道检测任务本身的结果。为了缓解这个问题，我们简单地引入了序列增强技术，从而结合了有关该任务的先验知识。传统自回归语言模型（即没有序列增强）中的目标序列 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>y</mi><mo>~</mo></mover></mrow><annotation encoding="application/x-tex">\tilde{y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8623em;vertical-align:-0.1944em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3.35em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">~</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span></span></span></span> 与输入序列 y 相同。并且序列中的所有标记都是真实的（例如，从人类注释转换而来）。通过序列增强，我们在训练期间增强输入序列以包括真实的和合成的噪声标记。我们还修改目标序列，以便模型可以学习识别噪声标记而不是模仿它们。这提高了模型针对噪声和重复预测的鲁棒性（特别是当 EOS 令牌被延迟以增加召回率时）。由序列增强引入的修改如下图所示。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231107105249912.png" alt="image-20231107105249912" style="zoom:80%;" />
+<p><em><strong>图</strong> : <strong>带有/不带有序列增强的语言建模示意图</strong>。通过序列增强，输入标记被构建为包括真实对象（蓝色）和合成噪声对象（橙色）。对于噪声对象，模型被训练为将它们识别为“噪声”类，并且我们将“n/a”标记（对应于噪声对象的坐标）的损失权重设为</em><em>零</em>*，因为我们不希望模型模仿它们。*</p>
+<h4 id="修改序列建构">修改序列建构</h4>
+<p>首先，我们通过以下两种方式创建合成噪声物体来增强输入序列：1)对现有的真实物体添加噪声（例如，随机缩放或移动它们的边界框），2) 生成完全随机的边界框（配以随机关联的类别标签）。值得注意的是，这些噪声物体中的一些可能与真实物体相同或重叠，模拟嘈杂和重复的预测，如下图所示。在合成和离散化噪声物体之后，我们将它们附加在原始输入序列的末尾。至于目标序列，我们将噪声物体的目标标记设置为“噪声”类（不属于任何真实类别标签），将噪声物体的坐标标记设置为“n/a”，其损失权重设置为零，即在公式1 中，设置<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231107105032028.png" alt="image-20231107105032028">。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231107105453018.png" alt="image-20231107105453018" style="zoom: 80%;" />
+<h4 id="修改推理">修改推理</h4>
+<p>通过序列增强，我们能够大幅度延迟EOS标记，提高召回率，而不增加嘈杂和重复预测的频率。因此，我们让模型预测到最大长度，从而得到一个固定大小的物体列表。当我们从生成的序列中提取边界框和类别标签列表时，我们将“噪音”类别标签替换为具有全部实际类别标签中最高可能性的真实类别标签。我们将所选类标记的可能性作为（排名）对象的分数。</p>
+<hr>
+<h1>Basic Information:</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Title: PIX2SEQ: A LANGUAGE MODELING FRAMEWORK FOR OBJECT DETECTION (PIX2SEQ：一种用于目标检测的语言建模框架)</p>
+</li>
+<li class="lvl-2">
+<p>Authors: Ting Chen, Saurabh Saxena, Lala Li, David J. Fleet, Geoffrey Hinton</p>
+</li>
+<li class="lvl-2">
+<p>Affiliation: Google Research, Brain Team (谷歌研究，Brain团队)</p>
+</li>
+<li class="lvl-2">
+<p>Keywords: object detection, language modeling, neural network, Pix2Seq framework (目标检测，语言建模，神经网络，Pix2Seq框架)</p>
+</li>
+<li class="lvl-2">
+<p>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2109.10852v2">Paper</a>, <a target="_blank" rel="noopener" href="https://github.com/google-research/pix2seq">GitHub</a></p>
+</li>
+</ul>
+<h1>论文简要 :</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>本文提出了Pix2Seq，一种简单且通用的目标检测框架。与现有方法明确地整合任务的先验知识不同，我们将目标检测视为一种基于观察像素输入的语言建模任务。目标描述（如边界框和类别标签）被表示为离散令牌序列，我们训练一个神经网络来感知图像并生成所需的序列。通过教会神经网络如何读取目标的位置和类别，我们的方法在挑战性的COCO数据集上取得了与高度专门化和优化的检测算法相媲美的结果。</p>
+</li>
+</ul>
+<h1>背景信息:</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>论文背景: 视觉目标检测系统旨在识别和定位图像中预定义类别的所有对象。大多数现有方法在架构和损失函数的选择上具有大量的先验知识，例如，许多架构针对使用边界框进行了优化，损失函数也经常针对边界框进行了定制。然而，这些专门化和复杂的方法往往难以集成到更大的系统中，或者推广到与通用智能相关的更广泛的任务领域。</p>
+</li>
+<li class="lvl-2">
+<p>过去方案: 许多现有的目标检测方法在设计上高度定制，并且在架构和损失函数的选择上具有大量的先验知识。这些方法通常针对使用边界框进行了优化，并且损失函数也针对边界框进行了定制。然而，这些专门化和复杂的方法往往难以集成到更大的系统中，或者推广到与通用智能相关的更广泛的任务领域。</p>
+</li>
+<li class="lvl-2">
+<p>论文的Motivation: 本文的动机是基于这样的直觉：如果神经网络知道对象的位置和类别，我们只需要教它如何读取这些信息。通过学习“描述”对象，模型可以学习将“语言”与像素观察结果关联起来，从而得到有用的对象表示。为了实现这一目标，本文提出了Pix2Seq框架，将目标检测视为一种基于像素输入的语言建模任务，模型架构和损失函数相对简单且通用，不需要专门为检测任务进行工程化。因此，可以将该框架轻松扩展到不同的领域或应用，并将其纳入支持通用智能的感知系统，为各种视觉任务提供语言接口。</p>
+</li>
+</ul>
+<h1>方法:</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>a. 理论背景:</p>
+<ul class="lvl-2">
+<li class="lvl-4">本文介绍了Pix2Seq，这是一个将目标检测任务视为语言建模问题的框架。作者提出将目标描述表示为离散标记的序列，并训练神经网络根据像素输入生成这些序列。该方法基于这样一个思想，即如果网络知道对象的位置和内容，它只需要学会如何读取它们。作者强调他们的框架对任务的假设要求很少，并且在COCO数据集上与专门的检测算法相比取得了竞争性的结果。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>b. 技术路线:</p>
+<ul class="lvl-2">
+<li class="lvl-4">Pix2Seq框架包括四个主要组件：图像增强、序列构建和增强、架构以及目标/损失函数。图像增强用于丰富训练样本，而序列构建涉及将对象注释转换为离散标记的序列。架构是一个编码器-解码器模型，其中编码器感知像素输入并将其编码为隐藏表示，而解码器根据前面的标记和编码的图像表示逐个生成目标序列。目标函数是最大化标记在图像和前面的标记条件下的对数似然。</li>
+</ul>
+</li>
+</ul>
+<h1>结果:</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>a. 详细的实验设置:</p>
+<ul class="lvl-2">
+<li class="lvl-4">实验中使用的模型包括R101、R50-DC5和R50-DC5。</li>
+<li class="lvl-4">模型使用ResNet骨干网络进行训练，后跟6层Transformer编码器和6层（因果）Transformer解码器。</li>
+<li class="lvl-4">图像被调整大小，使得较长的一边为1333像素。</li>
+<li class="lvl-4">序列构建使用2000个量化区间，并随机排列每个图像中的对象。</li>
+<li class="lvl-4">添加噪声对象到真实对象中，每个图像总共添加100个对象，序列长度为500。</li>
+<li class="lvl-4">模型训练300个epochs，批量大小为128。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>b. 详细的实验结果:</p>
+<ul class="lvl-2">
+<li class="lvl-4">在MS-COCO 2017检测数据集上评估了所提出的方法。</li>
+<li class="lvl-4">采用两种训练策略：在COCO上从头开始训练和在Objects365上进行预训练+微调，然后在COCO上进行微调。</li>
+<li class="lvl-4">使用平均精度（AP）指标将结果与Faster R-CNN和DETR基线进行比较。</li>
+<li class="lvl-4">Pix2Seq模型在不同阈值和目标尺寸下与基线相比取得了竞争性的结果。</li>
+</ul>
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/11/08/University/AI/PaperLearn/Pix2seq%EF%BC%9A%E5%BA%94%E7%94%A8%E4%BA%8E%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E8%AF%AD%E8%A8%80%E5%BB%BA%E6%A8%A1%E6%A1%86%E6%9E%B6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CV/" rel="tag">CV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ICLR/" rel="tag">ICLR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" rel="tag">目标检测</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2023/11/06/University/AI/PaperLearn/%E6%AF%8F%E6%97%A5%E8%AE%BA%E6%96%87%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Paper Learning指南</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
