@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="wgj&#39;s博客,大学课程知识,计算机课程知识,算法知识,实验研究,论文写作,计算机视觉,CV,CSU,xjtu" />
+       
+      <meta name="description" content="一名计算机专业大学生的博客，分享个人算法笔记、课程知识总结以及实验研究和论文写作" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>论文：Wei_Autoregressive_Visual_Tracking_CVPR_2023_paper |  Wgj&#39;s blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <script src="https://cdn.staticfile.org/mermaid/8.14.0/mermaid.min.js"></script>
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Wgj's blog" type="application/atom+xml">
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-University/AI/PaperLearn/Wei_Autoregressive_Visual_Tracking_CVPR_2023_paper"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  论文：Wei_Autoregressive_Visual_Tracking_CVPR_2023_paper
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/11/08/University/AI/PaperLearn/Wei_Autoregressive_Visual_Tracking_CVPR_2023_paper/" class="article-date">
+  <time datetime="2023-11-08T08:49:52.826Z" itemprop="datePublished">2023-11-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/">格物致知</a> / <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a> / <a class="article-category-link" href="/categories/%E6%A0%BC%E7%89%A9%E8%87%B4%E7%9F%A5/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">论文笔记</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">8.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">28 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1>Wei_Autoregressive_Visual_Tracking_CVPR_2023_paper</h1>
+<blockquote>
+<p>论文：<a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2023/papers/Wei_Autoregressive_Visual_Tracking_CVPR_2023_paper.pdf">https://openaccess.thecvf.com/content/CVPR2023/papers/Wei_Autoregressive_Visual_Tracking_CVPR_2023_paper.pdf</a></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43437453/article/details/131033203">https://blog.csdn.net/qq_43437453/article/details/131033203</a></p>
+<p>每帧模板匹配问题（忽略了视频帧之间的时序依赖性）；将跟踪视为坐标序列解释任务（保持跟踪结果的连贯性，不需要定制的定位头和后处理步骤）；</p>
+<p>受到Pix2Seq 的启发：将语言建模框架引入视觉对象跟踪中，<strong>对连续坐标进行离散化</strong>，以<u><strong>避免描述连续坐标所需的大量参数</strong></u>，这称为标记化。</p>
+<p>编码器：vision Transformer (ViT)进行视觉特征编码。</p>
+<p>解码器：使用Transformer解码器生成目标序列。</p>
+<p>知识扩展（与本文主体内容无关）：</p>
+<ol>
+<li class="lvl-3">
+<p>RAN使用循环自回归网络进行在线多目标跟踪；</p>
+</li>
+<li class="lvl-3">
+<p>SwinTrack的改进版本添加了一个新颖的运动标记来合并时间上下文以进行跟踪；</p>
+</li>
+<li class="lvl-3">
+<p>Pix2Seq将视觉任务制定为以像素标记输入为条件的语言建模任务；（ICLR）</p>
+</li>
+<li class="lvl-3">
+<p>OSTrack的ViT编码器进行<strong>视觉特征编码</strong>；（ECCV）</p>
+</li>
+<li class="lvl-3">
+<p>SIoU损失函数：更强大的边界框回归学习；</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="Abstract">Abstract</h2>
+<p>本文提出了 <strong>ARTrack</strong>，一个用于视觉对象跟踪的自回归框架。 ARTrack 将跟踪作为一种<u><strong>坐标序列解释任务</strong></u>来处理，该任务<strong>逐步估计对象轨迹</strong>，其中<u>当前估计是由先前的状态引起的</u>，进而影响子序列。这种时间自回归方法<strong>对轨迹的顺序演化进行建模</strong>，以保持<strong>跨帧跟踪对象</strong>，使其<mark>优于</mark>现有的<strong>仅考虑每帧定位精度的基于模板匹配的跟踪器</strong>。 ARTrack 简单直接，<u>消除了定制的本地化头和后处理</u>。尽管很简单，ARTrack 在主流基准数据集上实现了最先进的性能（state-of-the-art，SOTA）。源代码位于：<a target="_blank" rel="noopener" href="https://github.com/MIV-XJTU/ARTrack">https://github.com/MIV-XJTU/ARTrack</a></p>
+<h2 id="Introduction">Introduction</h2>
+<p><strong>视觉对象跟踪</strong>是计算机视觉领域的一个基本目标，跟踪器致力于根据其初始状态来估计每个视频帧中任意目标的位置。尽管其表面上的定义很简单，但由于各种问题，包括但不限于<u><strong>对象变形、尺度变化、遮挡和类似对象的干扰</strong></u>，跟踪任务在现实环境中提出了重大挑战。幸运的是，视觉跟踪<mark>利用了</mark><strong>大量的时间数据</strong>，因为它的<u>输入包括一系列视频帧</u>。通过观察，人类利用时间信息来获取目标变形、速度和加速度趋势的感知，使他们能够在面对不加区别或暂时不可用的视觉信息时保持一致的跟踪结果。</p>
+<p>当前用于视觉对象跟踪的主流方法通常将其视为<u><strong>每帧模板匹配问题</strong></u>，忽略视频帧之间<u>潜在的时间依赖性</u>。</p>
+<p>这些方法通常遵循三个主要阶段：（i）从搜索和模板图像中基于深度神经网络的特征提取，(ii) 使用卷积或注意机制进行特征匹配/融合的集成模块，以及 (iii) 通过角点、中心/尺度的定制头进行边界框定位估计和目标分类。在某些情况下，前两个阶段可以使用统一的架构进行组合。<u>后处理技术</u>通常在定位步骤中使用，例如<u><strong>汉宁窗罚分（Hanning window penalty）和框优化（box optimization）</strong></u>。一些方法<strong>结合了模板更新机制来改进目标特征表示</strong>。该类别的代表性技术包括<strong>模板图像选择</strong>、<strong>特征集成</strong>和<strong>时间演化</strong>。然而，定制的头部和后处理技术很复杂，可能需要单独的训练和推理，这会损害简单的端到端框架。此外，跟踪强调保持<u>整个序列的定位精度</u>，而传统的每帧训练方法优先考虑<u>即时定位精度</u>，导致训练和推理之间客观不匹配。</p>
+<p>这项研究提出了一种与主流方法不同的新颖的视觉对象跟踪框架，主流方法通常采用每帧模板匹配任务。相反，作者建议将跟踪视为<strong>坐标序列</strong>解释，目的是学习用于直接轨迹估计的简单<strong>端到端模型</strong>。所提出的方法基于这样的想法：给定<u><strong>帧序列</strong></u>和<u><strong>初始对象框</strong></u>，跟踪器应该以类似于语言建模任务的方式“解释”跟踪对象的坐标序列。所提出的框架通过逐步解码整个轨迹序列来模拟跨帧的对象轨迹的顺序演化。<strong>当前的估计</strong>受到<strong>先前状态</strong>的影响，进而<strong>影响子序列</strong>，从而统一训练和推理的任务目标。此外，所提出的方法通过<strong>避免定制头和后处理</strong>，而是依赖于<strong>直接坐标回归</strong>，<u><strong>简化了跟踪管道</strong></u>。</p>
+<p>所提出的自回归视觉跟踪框架称为 <u><strong>ARTrack</strong></u>，如图 1 所示。该框架的第一步是使用<u><strong>量化和序列化</strong></u>方案<strong>从对象轨迹构建离散标记序列</strong>。然后，该框架采用<u><strong>编码器-解码器架构</strong></u>来感知视觉信息并逐渐生成目标序列。在这个自回归框架中，<u><strong>先前的结果充当时空提示</strong></u>，将先前的运动动态传播到后续帧中，以获得更连贯的跟踪结果。值得注意的是，该模型<u><strong>使用结构化损失函数</strong></u>进行训练，该函数最大化目标序列的可能性，与测试时的任务目标一致。作者通过大量实验证明了这种方法的有效性，表明简单而简洁的 ARTrack 框架在流行的跟踪基准上取得了最先进的结果，优于其他高度定制的跟踪器。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231106151450816.png" alt="image-20231106151450816" style="zoom:67%;" />
+<p><em><strong>图 1</strong>.我们的 ARTrack 框架。首先，我们嵌入模板的视觉特征并通过编码器进行搜索。然后，当前时间步的坐标标记由解码器解释，以先前的估计（作为时空提示）以及命令和视觉标记为条件。</em></p>
+<h2 id="Related-Work">Related Work</h2>
+<p><strong>跟踪框架</strong>。当前流行的跟踪器通常<strong>依赖于模板和搜索图像之间的匹配</strong>。核心设计是特征融合的集成模块。为了解决目标外观沿时间维度变化的问题，一些在线方法学习用于<strong>在线模板更新</strong>的目标相关模型，该模型通常需要单独的训练。它们还需要后处理，例如汉宁窗罚分和框优化。</p>
+<p>相比之下，近年来很少有<u><strong>单目标跟踪方法</strong></u>专注于利用运动信息，而在<u><strong>多目标跟踪</strong></u>中很普遍。这些方法通常<strong>集成运动模型</strong>来利用运动信息，生成建议，然后将其与预定义检测器的结果相关联，例如<u>RAN使用循环自回归网络进行在线多目标跟踪</u>。最近，<strong>SwinTrack</strong>的改进版本添加了一个新颖的运动标记来合并时间上下文以进行跟踪。<mark>在本文中，提出了一种在统一框架中进行<u><strong>视觉模板匹配</strong></u>和<u><strong>运动建模</strong></u>的简单方法。</mark></p>
+<p><strong>视觉跟踪中的Transformer</strong>。最近的跟踪器中已经采用了<strong>注意力机制</strong>，包括参考文献[6,10,13,56,61,64]中提到的那些。例如，TransT<u>利用注意力来融合特征并建立长距离特征关联，同时自适应地关注相关信息</u>。 MixFormer使用<u>迭代混合注意力来整合特征提取和目标信息</u>。 OSTrack应用早期候选消除模块来消除不必要的搜索区域标记。相比之下，我们的模型是一个<mark>简单的</mark><u><strong>编码器-解码器架构</strong></u>，没有任何专门的头，从而产生了<mark>一个简单且纯粹的<strong>基于Transformer的跟踪器</strong></mark>。</p>
+<p><strong>视觉语言建模</strong>。近年来，语言建模取得了重大进展。一些方法旨在<u>为语言和视觉任务创建联合表示模型</u>，例如[1,39,43]中提出的方法。一种特殊的方法，<strong>Pix2Seq</strong>，<strong>将视觉任务制定为以像素标记输入为条件的语言建模任务</strong>。通过将边界框和类标签表示为离散序列，该方法统一了计算机视觉任务。==受 Pix2Seq 的启发，我们<u>将语言建模框架引入视觉对象跟踪中</u>，<u>构建了用于直接轨迹估计的时间自回归模型</u>。==我们的方法简化了跟踪框架，消除了不必要的后处理，并通过连贯的时空提示逐步解码对象坐标。</p>
+<h2 id="Tracking-as-Sequence-Interpretation">Tracking as Sequence Interpretation</h2>
+<p>我们将视觉跟踪视为顺序坐标解释任务，用条件概率表示：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031160144242.png" alt="image-20231031160144242"></p>
+<p>其中 Z 和 X<sup>t</sup> 是给定的模板和时间步 t 的搜索图像，C 是命令标记，Y 表示与 X 相关的目标序列。模板 Z 也可以在每个时间步通过<u><strong>更新机制</strong></u>进行更新，或者只是第一个。可以看出，我们将跟踪表述为时间自回归过程，其中当前结果是最近 N 个过去的函数，以模板和搜索图像为条件。这是一个N阶自回归模型，简称AR(N)模型。具体来说，当 N = 0 时，方程 (1) 退化为每帧模型 P(Y<sup>t</sup> |C , Z , X<sup>t</sup>)，其不以先前状态为条件。</p>
+<blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031160422575.png" alt="image-20231031160422575" style="zoom:50%;" />
+</blockquote>
+<p>被引入的自回归模型与视觉跟踪兼容，因为它本身就是一个序列预测任务。当前帧中估计的目标状态受到相邻的先前目标状态的影响，并且也影响后续帧。我们将这个跟踪框架称为 ARTrack，它由以下主要组件组成。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>序列构建：给定<u><strong>视频序列和初始对象框</strong></u>，视觉跟踪器预测一系列边界框。它们被映射到统一的坐标系中，并转换为具有共享词汇表的离散标记序列。</p>
+</li>
+<li class="lvl-2">
+<p>网络架构：我们使用<u><strong>编码器-解码器架构</strong></u>，其中<u><strong>编码器嵌入视觉特征</strong></u>，解码器解释<mark>目标序列</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>目标函数：模型通过具有结构化损失函数的视频帧进行训练，以最大化目标序列的对数似然。我们还探索特定任务的目标来提高绩效。</p>
+</li>
+</ul>
+<h3 id="Sequence-Construction-from-Object-Trajectory">Sequence Construction from Object Trajectory</h3>
+<p>我们将<u><strong>对象轨迹</strong></u>描述为<u><strong>具有共享词汇的离散标记序列</strong></u>。</p>
+<p><strong>标记化</strong>。受Pix2Seq框架的启发，我们<strong>对连续坐标进行离散化</strong>，以<u><strong>避免描述连续坐标所需的大量参数</strong></u>，这称为标记化。具体来说，时间步t处的对象框由四个标记组成，即[x<sup>t</sup> <sub>min</sub>, y<sup>t</sup> <sub>min</sub>, x<sup>t</sup> <sub>max</sub>, y<sup>t</sup> <sub>max</sub>]，每个标记都是[1, n<sub>bins</sub>]之间的整数。当bin数大于或等于图像分辨率时，可以实现<u><strong>零量化误差</strong></u>。然后我们<strong>使用量化项来索引可学习词汇表</strong>以获得与坐标对应的标记。这使得模型能够<strong>用离散标记来描述对象的位置</strong>，并且还允许使用语言模型中<strong>现成的解码器进行坐标回归</strong>。这种新颖的回归<u>避免了从图像特征到坐标的直接非线性映射</u>，这通常是困难的。在去标记化中，我们将输出标记特征与共享词汇进行匹配，以找到最可能的位置。</p>
+<p><strong>轨迹坐标映射</strong>。大多数跟踪器会<strong>裁剪搜索区域</strong>以减少计算成本，而不是在全分辨率帧上进行跟踪。这意味着网络输出当前帧中对象相对于搜索区域的坐标。为了获得统一的表示，需要将不同帧的盒子映射到同一坐标系中。在我们的方法中，我们将前面 N 帧的框坐标缓存在全局坐标系中，并在搜索区域被裁剪后将它们映射到当前坐标系。然而，<u>如果我们使用全帧进行搜索，则不再需要这个坐标映射步骤</u>。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031161358483.png" alt="image-20231031161358483"></p>
+<p><em><strong>图 2. 序列构建和坐标映射</strong></em>。<em>对象轨迹是通过使用全局坐标系中先前帧的坐标来构造的。跟踪过程中，将轨迹映射到当前坐标系以构建序列。任何超出范围的坐标都会被限制并以绿色遮盖。为了索引词汇表，我们<strong>将连续坐标离散化为量化项</strong>。词汇表的表示范围覆盖了搜索区域的范围</em></p>
+<p><strong>词汇的表示范围</strong>。词汇表的表示范围可以根据搜索区域的大小来设定，但是由于物体的快速移动，<u>前面的轨迹序列有时会超出搜索区域的边界。</u>为了解决这个问题，我们将<u><strong>表示范围</strong></u>扩展为<strong>搜索区域范围的倍数（<strong>例如，如果搜索区域范围为 [0.0, 1.0]，我们将其扩展为 [−0.5, 1.5]）。这使得</strong>词汇表能够包含位于搜索区域之外的坐标</strong>，这反过来又<u>允许模型捕获更多先前的运动线索以进行跟踪并预测超出搜索区域的边界框。</u></p>
+<h3 id="Network-Architecture">Network Architecture</h3>
+<p>给定从对象轨迹构建的目标序列，我们使用编码器-解码器结构进行学习和推理。这种网络架构广泛应用于现代视觉识别和语言建模。</p>
+<p><strong>Encoder</strong>。编码器可以是通用图像编码器，<strong>将像素编码为隐藏特征表示</strong>，例如 ConvNet、视觉 Transformer (ViT) 或混合架构。在这项工作中，我们使用与 OSTrack 相同的 ViT 编码器进行<strong>视觉特征编码</strong>。<u>模板和搜索图像首先被分割成补丁</u>，展平并投影以<u>生成一系列标记嵌入</u>。然后，我们<u>添加具有位置和身份嵌入的模板和搜索标记</u>，将它们连接并输入到普通的 <strong>ViT</strong> 主干中以编码视觉特征。</p>
+<p><strong>Decoder</strong>。我们使用 <strong>Transformer</strong> 解码器来生成目标序列。它以前面的<u><strong>坐标标记</strong></u>、<u><strong>命令标记</strong></u>和<u><strong>视觉特征</strong></u>为条件，逐步解码整个序列。*前面的坐标标记 (Y <sup>t−N:t−1</sup>) 用作时空提示，将运动动力学传播到后续帧中。命令标记 © 提供轨迹建议，然后将模板 (Z) 与搜索 (X<sup>t</sup>) 进行匹配，以获得更准确的坐标预测 (Y <sup>t</sup>)。*这种简单的解码方法消除了现代视觉跟踪器架构的复杂性和定制性，例如<u><strong>定位头和后处理</strong></u>，因为坐标可以立即从<strong>共享词汇</strong>中去标记。解码器有<strong>两种注意力机制</strong>。<strong>在坐标标记之间执行自注意力</strong>（带有<u><strong>因果掩码</strong></u>）以<strong>传达时空信息</strong>。<strong>交叉注意力</strong>将<u>运动线索与视觉线索结合起来做出最终的预测</u>。这两种操作在每个解码器层中交替执行，以混合两种嵌入。我们在图 3a 中说明了解码器的结构。为了提高跟踪效率，我们通过修改解码器层来研究改变的解码器。具体来说，<u><strong>自注意力层和交叉注意力层</strong></u>被解耦并单独堆叠。这样，我们就可以<strong>并行地对视觉特征进行交叉注意力</strong>，这是解码器中<u>最耗时的计算</u>。修改后的解码器如图 3b 所示。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031165531304.png" alt="image-20231031165531304"></p>
+<p><em><strong>图 3.默认和更改的解码器</strong>。我们探索两种类型的解码器：（a）以前面的坐标标记、命令标记和视觉特征为条件，逐步解码整个序列。 (b)与(a)类似，其自注意力层和交叉注意力层是解耦并单独堆叠的。并且它并行地进行与视觉特征的交叉注意。</em></p>
+<h3 id="Training-and-Inference">Training and Inference</h3>
+<p>ARTrack 是一个简单的框架，可以实现<strong>端到端</strong>的训练和推理。</p>
+<p><strong>Training</strong>。除了每帧训练和优化之外，ARTrack 还通过视频序列进行学习。它采用结构化目标，通过 softmax 交叉熵损失函数最大化标记序列的对数似然：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031165824773.png" alt="image-20231031165824773"></p>
+<p>其中 <strong>T</strong> 是<strong>目标序列的长度</strong>。这种学习方法统一了训练和推理之间的任务目标，即保持视频帧之间的定位精度。启动时 (t ≤ N)，缓存的时空提示 (Y <sup>t−N:t−1</sup>) 会填充初始提示 (Y <sup>1</sup>)，并逐渐用新的预测进行更新。</p>
+<p>这是通用目标函数，<strong>忽略了</strong>令牌的<strong>物理属性</strong>，例如<u>坐标的空间关系</u>。尽管我们发现这种与任务无关的目标对于训练模型是有效的，但我们研究了如何整合任务知识来提高性能。具体来说，我们引入了 SIoU 损失，以更好地测量<strong>预测边界框和地面真实边界框之间的空间相关性</strong>。我们首先从估计的概率分布中得到坐标标记。由于采样是不可微的，我们用分布的期望来表达坐标。然后我们得到预测的边界框并用真实值计算它的 SIoU。整个损失函数可以写为：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031170324260.png" alt="image-20231031170324260"></p>
+<p>其中L<sub>ce</sub>和L<sub>SIoU</sub>分别是<u><strong>交叉熵损失</strong></u>和<u><strong>SIoU损失</strong></u>，<strong>λ</strong>是<strong>平衡</strong>两个损失项的<strong>权重</strong>。</p>
+<p><strong>Inference</strong>。在推理时，我们使用 <u><strong>argmax 采样</strong></u>从模型似然 P(Y <sup>t</sup> |Y <sup>t−N:t−1</sup>, (C , Z , X<sup>t</sup>))中采样标记。我们发现其他随机采样技术或期望的性能与 argmax 采样相当。不需要用额外的 EOS 标记（令牌，token）来结束序列预测，因为序列长度在我们的问题中是固定的。获得<u><strong>离散标记</strong></u>后，我们对它们<strong>进行反量化以获得连续坐标</strong>。</p>
+<h2 id="Experiments">Experiments</h2>
+<h3 id="Implementation-Details">Implementation Details</h3>
+<p><strong>Model variants</strong>。我们训练具有不同配置的 ARTrack 的三种变体，如下所示：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>ARTrack<sub>256</sub>. Backbone: ViT-Base; Template size: [128×128]; Search region size: [256×256];</p>
+</li>
+<li class="lvl-2">
+<p>ARTrack<sub>384</sub>. Backbone: ViT-Base; Template size: [192×192]; Search region size: [384×384];</p>
+</li>
+<li class="lvl-2">
+<p>ARTrack-L<sub>384</sub>. Backbone: ViT-Large; Template size: [192×192]; Search region size: [384×384];</p>
+</li>
+</ul>
+<p><strong>Training strategy</strong>。我们遵循传统协议来训练我们的模型。训练集由 GOT-10k [31]（我们根据[61]删除了 GOT-10k 训练分割中的 1k 序列）、LaSOT [19] 和 TrackingNet [47] 组成。特别是对于 GOT-10k 的性能评估，模型在完整的 GOT-10k 训练集上进行训练。与使用<strong>随机平移</strong>和<strong>尺度变换</strong>来模拟空间抖动的传统每帧训练不同，我们的<strong>顺序训练</strong>允许我们<u><strong>解释逐帧跟踪目标的坐标序列</strong></u>，而<strong>无需任何增强</strong>。我们用 AdamW [42] 优化了模型，主干的<strong>学习率为 4 × 10<sup>−7</sup></strong>，<strong>其他参数为 4 × 10<sup>−6</sup></strong>。我们将网络训练 60 个 <strong>epoch</strong>，每个 epoch 960 个视频序列。由于 GPU 内存限制，每个序列包含 16 帧。</p>
+<p>更多的是，为了与主流跟踪器进行公平比较，我们<strong>首先预训练 AR(0) 模型</strong>，该模型可以利用 COCO2017 [41] 等图像数据集来与其他每帧训练的跟踪器保持一致。 AR(0)训练集由四个数据集组成，与DiMP[44]和STARK[61]相同。我们<strong>利用与 OSTrack [64] 相同的数据增强</strong>，包括<u><strong>水平翻转和亮度抖动</strong></u>。经过 <strong>AdamW 的优化</strong>，主干网的学习率为 8 × 10<sup>−6</sup>，其他参数的学习率为 8 × 10<sup>−5</sup>。我们的 AR(0) 模型经过 240 个时期的训练，每个时期有 60k 个匹配对。</p>
+<h3 id="Main-Results">Main Results</h3>
+<p>我们在多个基准上评估了我们提出的 ARTrack<sub>256</sub>、ARTrack<sub>384</sub> 和 ARTrack-L<sub>384</sub> 的性能，包括 GOT-10k [31]、TrackingNet [47]、LaSOT [19]、LaSOText [18]、TNL2K [57]、UAV123 [46]和 NFS [33]。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031172948986.png" alt="image-20231031172948986"></p>
+<blockquote>
+<p><strong>表 1</strong>. GOT-10k [31]、TrackingNet [47]、LaSOT [19] 和 LaSOText [18] 的最新技术比较。其中 * 表示仅在 GOT-10k 上训练的跟踪器。下标中的数字表示搜索区域分辨率。最好的用<strong>粗体</strong>表示，其次最好用<u>下划线</u>。</p>
+</blockquote>
+<p><strong>GOT-10k</strong> 是一个大型数据集，包含超过 10,000 个具有高精度边界框的视频帧序列。它<strong>提倡一次性跟踪规则，这意味着训练集和测试集之间的类不重叠</strong>。</p>
+<p><strong>TrackingNet</strong> 是一个用于跟踪的数据集，涵盖现实世界中的各种对象类和场景。其测试集包含 511 个序列，<strong>仅提供主框架的注释</strong>。</p>
+<p><strong>LaSOT</strong>是一个大规模基准测试，其测试集中包含280个视频，<strong>可以有效检测长期跟踪的性能</strong>。</p>
+<p><strong>LaSOText</strong> 是 LaSOT 的扩展子集，其中包括来自 15 个新类别的 150 个附加视频。这些视频<strong>具有大量相似的干扰物体和快速移动的小物体</strong>，这显着增加了跟踪难度。</p>
+<p>（i）TNL2K是一个具有自然语言标记的高质量多模态数据集；</p>
+<p>（ii）NFS是一个具有更高帧率的数据集（ 240fps）视频；</p>
+<p>（iii）UAV123，由不同无人机拍摄的复杂场景视频片段组成。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031172906066.png" alt="image-20231031172906066"></p>
+<h3 id="Analysis-of-the-Autoregressive-Model">Analysis of the Autoregressive Model</h3>
+<p>我们分析了 ARTrack 框架的主要属性。对于以下实验研究，除非另有说明，我们遵循 GOT-10k 测试协议。默认设置以灰色标记。</p>
+<p><strong>Order of autoregression</strong>。ARTrack的核心是<u><strong>自回归</strong></u>，它由<u><strong>时空提示</strong></u>的<strong>长度或阶数</strong>（N）控制。该参数<strong>决定了可以利用多少先前的轨迹信息</strong>。例如，当N = 1时，我们可以根据前一个时间步推断目标的比例和纵横比，当N = 2时，我们还可以学习粗略的移动方向。增加 N 可提供更多运动信息。我们尝试使用不同的 N 值来检查其对模型的影响。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031173332036.png" alt="image-20231031173332036" style="zoom: 67%;" />
+<p>设置词汇表示范围的一种方法是使用与搜索区域相同的范围，如图 5 中的<span style="color: blue;">蓝色</span>曲线（词汇范围：[1×]）所示。如图所示，结合时空提示与使用 N = 0（纯每帧模型）相比，通过 ARTrack 将 AO 分数提高了近 1.0%。此外，增加 N 会导致 AO 分数从 71.6% 显着提高到 73.1%。然而，当 N &gt; 3 时，由于更多无效坐标落在表示范围之外，精度会下降。</p>
+<p>正如3.1节所建议的，我们适当扩大词汇范围，以<strong>减轻由于坐标超出表示范围而导致的轨迹截断</strong>。图 5 中的<span style="color: red;">红色</span>曲线（词汇范围：[2×]）展示了这种扩展的效果。通过这样做，该模型不仅能够捕获更多先前的运动线索以获得更连贯的跟踪结果，而且还能够预测超出搜索区域的边界框。这种方法被证明是有效的，并且比朴素的 [1×] 设置好 0.4%（73.1% vs. 73.5%）。</p>
+<p>然而，<strong>扩大表示范围对边界框的定位提出了挑战</strong>。随着范围的增加，<strong>将适当的 bin 准确地分配给其相应的坐标变得越来越困难</strong>。这就是为什么当 N 很小时，[2×] 设置会导致 AO 分数较低。类似地，尽管 [3×] 设置的精度随着与 N 的同步性的增加而提高，如<span style="color: orange;">黄色</span>曲线所示，但它仍然达不到最佳性能。不幸的是，由于硬件内存限制，我们无法使用更大的 N 进行训练。</p>
+<p><strong>Qualitative comparison</strong>。为了更好地理解我们的时间自回归模型，我们在顺序预测坐标标记的同时生成<u><strong>交叉注意力图</strong></u>。为了测试我们模型的鲁棒性，我们使用了现实世界跟踪中遇到的复杂场景，例如<u><strong>运动模糊、旋转、宽高比变化和相机运动</strong></u>，如图 6 所示。有趣的是，在每个场景中，我们的跟<strong>踪器重点关注在预测每个坐标时在适当的四肢上</strong>，展示了我们的模型精确定位的能力。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031174310898.png" alt="image-20231031174310898" style="zoom:50%;" />
+<p><em><strong>图 6</strong>. 解码器的交叉注意力。 (a)：搜索区域和模板图像（位于左上角）。 (b)-(e)：解码器最后一层中相应的坐标标记到搜索注意力图。</em></p>
+<p>当面临<u><strong>遮挡和干扰</strong></u>等更具挑战性的场景时，每帧模板匹配可能不可靠。<strong>前者中的目标可能会变得不可见，而后者中各种类似物体的存在可能会迷惑跟踪器</strong>。为了克服这些问题，我们的方法<strong>利用先前的运动线索</strong>在视觉特征不具有区分性的情况下生成合理的预测。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031174554349.png" alt="image-20231031174554349" style="zoom:67%;" />
+<p><em><strong>图 7.</strong>(a)-©：搜索区域和预测框。蓝色和红色框分别表示我们和 OStrack 的预测。 (d)：ARTrack 的注意力图。 (e)：OSTrack 的注意力图。</em></p>
+<p>在图 7 中，我们逐帧展示了 ARTrack 生成的交叉注意力图，并将它们与 OSTrack [64] 估计的注意力图进行比较。为了获得实例级可视化，我们在预测每个坐标时对最后一层的交叉注意力图求和。该图的前两行演示了遮挡场景。<strong>即使在遇到完全遮挡时，我们的方法也可以通过对前面的轨迹序列进行调节来预测合理的目标边界框</strong>。另一方面，OSTrack 中的注意力被错误地分配给其他实例，这是可以理解的，因为人类很难在不观察目标的情况下定位目标。然而，<strong>鉴于目标的先前轨迹序列，人类可以跟踪不可见的物体</strong>。在最后两行描述的分心场景中也可以推断出类似的发现。<strong>当搜索图像中存在大量相似物体时，OSTrack的注意力会分散</strong>，导致错误跟踪。相反，ARTrack 可以通过考虑先前的状态来保持对目标的关注。这支持了我们的主张，即我们的方法可以有效地模拟跨帧的对象轨迹的顺序演化。</p>
+<p><strong>Bins per pixel</strong>。为了研究 bin 分辨率（即每个像素的 bin）对性能的影响，我们将搜索区域的分辨率固定为 256 像素，并使用表示范围是搜索区域范围两倍的词汇表。然后，我们改变每个像素的bin的数量，如表2所示。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031174845309.png" alt="image-20231031174845309" style="zoom:50%;" />
+<p>由于当 bin 数量大于裁剪图像的长边时，量化不会造成明显误差，因此我们首先使用 512 bin（每个像素 512/[2 × 256] bin），然后增加数量。如表 2 所示，增加实现子像素量化精度的 bin 数量可以提高性能。然而，结论与[8]的结论略有不同，这表明较少数量的箱足以实现准确的物体检测。我们认为，这种差异可能是由于精确运动建模需要更高的量化精度。<u>使用更多的 bin（例如 1600）可以显著增加词汇量并减慢训练速度。</u></p>
+<p><strong>Loss function</strong>。表 3 显示了将特定跟踪知识与任务无关目标相结合的有效性。我们观察到，<strong>将 SIoU 和 CE 损失结合起来比单独使用其中任何一个都能获得更好的性能</strong>。这可以归因于这样一个事实：在计算 SIoU 时，我们<strong>考虑了预期的边界框位置</strong>，它<strong>考虑了空间关系</strong>，从而增强了监督的鲁棒性。仅使用 SIoU 损失而不使用 CE 导致 SR0.75 显着下降，但 SR0.5 与使用 CE 损失时保持相同。我们推测这是因为该模型仅由预期的粗粒度位置进行监督，并且缺乏生成更精确的边界框的能力。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031175022151.png" alt="image-20231031175022151" style="zoom:50%;" />
+<h3 id="Limitation-Analysis">Limitation Analysis</h3>
+<p><strong>Speed analysis and architecture variant</strong>。ARTrack 框架的一个主要限制是，由于其在解码器中的串行计算，它的效率不如最近提出的跟踪器。我们研究了一种<strong>由单独堆叠的自注意力层和交叉注意力层组成的经过修改的解码器</strong>。具体来说，几个自注意力层以<strong>自回归方式处理坐标标记</strong>，然后是<strong>并行的交叉注意力层来聚合视觉特征</strong>。修改后的解码器可以<strong>显着提高推理速度</strong>（加速 73%），但<strong>准确性会有所牺牲</strong>（AO 得分降低 0.3%），如表 4 所示。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031175213178.png" alt="image-20231031175213178" style="zoom:50%;" />
+<p><strong>Training strategy and command token analysis</strong>。为了与之前在不同图像数据集（例如 COCO2017 [41]）上训练的跟踪器 [10,13,40,61,64] 进行公平比较，我们<strong>首先使用 N = 0 预训练我们的模型</strong>。这允许我们的时间自回归模型暂时像每帧模型一样运行，而不依赖于之前的状态。然后，我们<strong>在 LaSOT 基准上测试了我们的模型</strong>，结果如表 5 所示，其中预训练的 AUC 分数提高了 1.2%。然而，代价是我们需要使用可学习的命令标记来启动自回归过程，并且必须保留该标记以确保每帧训练和顺序训练之间的一致性。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031175320351.png" alt="image-20231031175320351" style="zoom:50%;" />
+<h2 id="Conclusion">Conclusion</h2>
+<p>我们提出了 ARTrack，一个简单直接的端到端自回归框架，用于视觉对象跟踪。我们将<strong>视觉跟踪</strong>视为<strong>坐标序列解释任务</strong>，因此我们<strong>采用语言建模</strong>来同时进行<u><strong>视觉模板匹配</strong></u>和<u><strong>运动信息建模</strong></u>。该<mark>跟踪器</mark>是<strong>通用编码器-解码器架构</strong>，<mark>消除了</mark><strong>定制头和后处理</strong>以<mark>简化</mark><strong>跟踪管道</strong>。更重要的是，我们<strong>提出了时空提示</strong>，<u>对轨迹传播运动线索的顺序演化进行建模</u>，以获得更连贯的跟踪结果。大量的实验证明我们的跟踪器优于其他主流跟踪器，并在主流基准数据集上实现了最先进的技术。未来，我们希望这个框架可以扩展到其他视频任务。</p>
+<hr>
+<h1>方法:</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>a. 理论背景:</p>
+<ul class="lvl-2">
+<li class="lvl-4">传统的视觉目标跟踪方法通常采用逐帧模板匹配的方式，忽略了视频帧之间的时间依赖关系。这种方法的主要步骤包括特征提取、特征融合和边界框定位。然而，这些方法复杂，需要单独训练，并且在训练和推断之间存在目标不匹配的问题。</li>
+<li class="lvl-4">本文提出了一种名为ARTrack的新型自回归框架用于视觉目标跟踪。ARTrack将跟踪任务视为一个坐标序列解释任务，当前估计值受到先前状态的影响，并进一步影响子序列。该自回归模型的基本思想是跟踪器应该“解释”一系列坐标，以类似于语言建模任务的方式追踪对象。ARTrack通过避免定制头部和后处理，而是依赖于直接坐标回归，简化了跟踪流程。该框架在流行的跟踪基准上进行了评估，并取得了最先进的性能。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>b. 技术路线:</p>
+<ul class="lvl-2">
+<li class="lvl-4">ARTrack的框架由三个主要组件组成。首先，它通过离散化连续坐标并将对象轨迹映射到统一的坐标系统中构建一个令牌序列。其次，使用编码器-解码器架构进行学习和推断，其中视觉特征编码器和Transformer解码器逐步解码目标序列。最后，使用结构化损失函数训练模型，以最大化目标序列的对数似然。该框架与视觉跟踪兼容，因为它本身就是一个序列预测任务，估计的目标状态受到相邻前一个目标状态的影响，并影响后续帧。</li>
+</ul>
+</li>
+</ul>
+<h1>结果:</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>a. 详细的实验设置:</p>
+<ul class="lvl-2">
+<li class="lvl-4">ARTrack在流行的基准数据集上进行了实验评估，包括了各种具有挑战性的情况，如目标变形、尺度变化、遮挡和干扰物体。</li>
+<li class="lvl-4">实验中使用了结构化损失函数来训练模型，并采用了编码器-解码器架构进行学习和推断。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>b. 详细的实验结果:</p>
+<ul class="lvl-2">
+<li class="lvl-4">ARTrack在性能上超过了其他主流跟踪器，达到了最先进的水平。</li>
+<li class="lvl-4">实验结果表明，ARTrack在准确性方面表现出色，并且速度更快，证明了其有效性。</li>
+<li class="lvl-4">文中还探讨了一种改进的解码器，通过解耦自注意力层和交叉注意力层，并在并行处理视觉特征上进行交叉注意力，提高了跟踪效率。</li>
+<li class="lvl-4">然而，解码器中的串行计算影响了模型的速度，扩展表示范围对边界框的定位提出了挑战。</li>
+</ul>
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wangguijiepedeval.github.io/2023/11/08/University/AI/PaperLearn/Wei_Autoregressive_Visual_Tracking_CVPR_2023_paper/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CVPR/" rel="tag">CVPR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cv/" rel="tag">cv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%87%AA%E5%9B%9E%E5%BD%92/" rel="tag">自回归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A7%86%E8%A7%89%E8%B7%9F%E8%B8%AA/" rel="tag">视觉跟踪</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B7%9F%E8%B8%AA%E5%99%A8/" rel="tag">跟踪器</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2023/11/08/University/AI/PaperLearn/Kristan_The_First_Visual_Object_Tracking_Segmentation_VOTS2023_Challenge_Results_ICCVW_2023_paper/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">论文：Kristan_The_First_Visual_Object_Tracking_Segmentation_VOTS2023_Challenge_Results_ICCVW_2023_paper</div>
+      </a>
+    
+  </nav>
+
+  
+   
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
+
+
+<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
+
+
+<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'ab8e83b45b1c73553e5a',
+    clientSecret: 'c34256673ed529723bdea8d206ac6cb5c12e57bb',
+    repo: 'wgj_blog_talk',
+    owner: 'wangguijiepedeval',
+    admin: ['wangguijiepedeval'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+  
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> Guijie Wang
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Wgj&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://hexo.io/themes/">主题</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/player">播放器</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+ 
+    
+        <link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.css">
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/katex.min.js"></script>
+        <script src="https://cdn.staticfile.org/KaTeX/0.15.1/contrib/auto-render.min.js"></script>
+        
+    
+ 
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

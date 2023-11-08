@@ -642,6 +642,506 @@
       </tags>
   </entry>
   <entry>
+    <title>论文：Wei_Autoregressive_Visual_Tracking_CVPR_2023_paper</title>
+    <url>/2023/11/08/University/AI/PaperLearn/Wei_Autoregressive_Visual_Tracking_CVPR_2023_paper/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1>Wei_Autoregressive_Visual_Tracking_CVPR_2023_paper</h1>
+<blockquote>
+<p>论文：<a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Wei_Autoregressive_Visual_Tracking_CVPR_2023_paper.pdf">https://openaccess.thecvf.com/content/CVPR2023/papers/Wei_Autoregressive_Visual_Tracking_CVPR_2023_paper.pdf</a></p>
+<p>参考：<a href="https://blog.csdn.net/qq_43437453/article/details/131033203">https://blog.csdn.net/qq_43437453/article/details/131033203</a></p>
+<p>每帧模板匹配问题（忽略了视频帧之间的时序依赖性）；将跟踪视为坐标序列解释任务（保持跟踪结果的连贯性，不需要定制的定位头和后处理步骤）；</p>
+<p>受到Pix2Seq 的启发：将语言建模框架引入视觉对象跟踪中，<strong>对连续坐标进行离散化</strong>，以<u><strong>避免描述连续坐标所需的大量参数</strong></u>，这称为标记化。</p>
+<p>编码器：vision Transformer (ViT)进行视觉特征编码。</p>
+<p>解码器：使用Transformer解码器生成目标序列。</p>
+<p>知识扩展（与本文主体内容无关）：</p>
+<ol>
+<li class="lvl-3">
+<p>RAN使用循环自回归网络进行在线多目标跟踪；</p>
+</li>
+<li class="lvl-3">
+<p>SwinTrack的改进版本添加了一个新颖的运动标记来合并时间上下文以进行跟踪；</p>
+</li>
+<li class="lvl-3">
+<p>Pix2Seq将视觉任务制定为以像素标记输入为条件的语言建模任务；（ICLR）</p>
+</li>
+<li class="lvl-3">
+<p>OSTrack的ViT编码器进行<strong>视觉特征编码</strong>；（ECCV）</p>
+</li>
+<li class="lvl-3">
+<p>SIoU损失函数：更强大的边界框回归学习；</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="Abstract">Abstract</h2>
+<p>本文提出了 <strong>ARTrack</strong>，一个用于视觉对象跟踪的自回归框架。 ARTrack 将跟踪作为一种<u><strong>坐标序列解释任务</strong></u>来处理，该任务<strong>逐步估计对象轨迹</strong>，其中<u>当前估计是由先前的状态引起的</u>，进而影响子序列。这种时间自回归方法<strong>对轨迹的顺序演化进行建模</strong>，以保持<strong>跨帧跟踪对象</strong>，使其<mark>优于</mark>现有的<strong>仅考虑每帧定位精度的基于模板匹配的跟踪器</strong>。 ARTrack 简单直接，<u>消除了定制的本地化头和后处理</u>。尽管很简单，ARTrack 在主流基准数据集上实现了最先进的性能（state-of-the-art，SOTA）。源代码位于：<a href="https://github.com/MIV-XJTU/ARTrack">https://github.com/MIV-XJTU/ARTrack</a></p>
+<h2 id="Introduction">Introduction</h2>
+<p><strong>视觉对象跟踪</strong>是计算机视觉领域的一个基本目标，跟踪器致力于根据其初始状态来估计每个视频帧中任意目标的位置。尽管其表面上的定义很简单，但由于各种问题，包括但不限于<u><strong>对象变形、尺度变化、遮挡和类似对象的干扰</strong></u>，跟踪任务在现实环境中提出了重大挑战。幸运的是，视觉跟踪<mark>利用了</mark><strong>大量的时间数据</strong>，因为它的<u>输入包括一系列视频帧</u>。通过观察，人类利用时间信息来获取目标变形、速度和加速度趋势的感知，使他们能够在面对不加区别或暂时不可用的视觉信息时保持一致的跟踪结果。</p>
+<p>当前用于视觉对象跟踪的主流方法通常将其视为<u><strong>每帧模板匹配问题</strong></u>，忽略视频帧之间<u>潜在的时间依赖性</u>。</p>
+<p>这些方法通常遵循三个主要阶段：（i）从搜索和模板图像中基于深度神经网络的特征提取，(ii) 使用卷积或注意机制进行特征匹配/融合的集成模块，以及 (iii) 通过角点、中心/尺度的定制头进行边界框定位估计和目标分类。在某些情况下，前两个阶段可以使用统一的架构进行组合。<u>后处理技术</u>通常在定位步骤中使用，例如<u><strong>汉宁窗罚分（Hanning window penalty）和框优化（box optimization）</strong></u>。一些方法<strong>结合了模板更新机制来改进目标特征表示</strong>。该类别的代表性技术包括<strong>模板图像选择</strong>、<strong>特征集成</strong>和<strong>时间演化</strong>。然而，定制的头部和后处理技术很复杂，可能需要单独的训练和推理，这会损害简单的端到端框架。此外，跟踪强调保持<u>整个序列的定位精度</u>，而传统的每帧训练方法优先考虑<u>即时定位精度</u>，导致训练和推理之间客观不匹配。</p>
+<p>这项研究提出了一种与主流方法不同的新颖的视觉对象跟踪框架，主流方法通常采用每帧模板匹配任务。相反，作者建议将跟踪视为<strong>坐标序列</strong>解释，目的是学习用于直接轨迹估计的简单<strong>端到端模型</strong>。所提出的方法基于这样的想法：给定<u><strong>帧序列</strong></u>和<u><strong>初始对象框</strong></u>，跟踪器应该以类似于语言建模任务的方式“解释”跟踪对象的坐标序列。所提出的框架通过逐步解码整个轨迹序列来模拟跨帧的对象轨迹的顺序演化。<strong>当前的估计</strong>受到<strong>先前状态</strong>的影响，进而<strong>影响子序列</strong>，从而统一训练和推理的任务目标。此外，所提出的方法通过<strong>避免定制头和后处理</strong>，而是依赖于<strong>直接坐标回归</strong>，<u><strong>简化了跟踪管道</strong></u>。</p>
+<p>所提出的自回归视觉跟踪框架称为 <u><strong>ARTrack</strong></u>，如图 1 所示。该框架的第一步是使用<u><strong>量化和序列化</strong></u>方案<strong>从对象轨迹构建离散标记序列</strong>。然后，该框架采用<u><strong>编码器-解码器架构</strong></u>来感知视觉信息并逐渐生成目标序列。在这个自回归框架中，<u><strong>先前的结果充当时空提示</strong></u>，将先前的运动动态传播到后续帧中，以获得更连贯的跟踪结果。值得注意的是，该模型<u><strong>使用结构化损失函数</strong></u>进行训练，该函数最大化目标序列的可能性，与测试时的任务目标一致。作者通过大量实验证明了这种方法的有效性，表明简单而简洁的 ARTrack 框架在流行的跟踪基准上取得了最先进的结果，优于其他高度定制的跟踪器。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231106151450816.png" alt="image-20231106151450816" style="zoom:67%;" />
+<p><em><strong>图 1</strong>.我们的 ARTrack 框架。首先，我们嵌入模板的视觉特征并通过编码器进行搜索。然后，当前时间步的坐标标记由解码器解释，以先前的估计（作为时空提示）以及命令和视觉标记为条件。</em></p>
+<h2 id="Related-Work">Related Work</h2>
+<p><strong>跟踪框架</strong>。当前流行的跟踪器通常<strong>依赖于模板和搜索图像之间的匹配</strong>。核心设计是特征融合的集成模块。为了解决目标外观沿时间维度变化的问题，一些在线方法学习用于<strong>在线模板更新</strong>的目标相关模型，该模型通常需要单独的训练。它们还需要后处理，例如汉宁窗罚分和框优化。</p>
+<p>相比之下，近年来很少有<u><strong>单目标跟踪方法</strong></u>专注于利用运动信息，而在<u><strong>多目标跟踪</strong></u>中很普遍。这些方法通常<strong>集成运动模型</strong>来利用运动信息，生成建议，然后将其与预定义检测器的结果相关联，例如<u>RAN使用循环自回归网络进行在线多目标跟踪</u>。最近，<strong>SwinTrack</strong>的改进版本添加了一个新颖的运动标记来合并时间上下文以进行跟踪。<mark>在本文中，提出了一种在统一框架中进行<u><strong>视觉模板匹配</strong></u>和<u><strong>运动建模</strong></u>的简单方法。</mark></p>
+<p><strong>视觉跟踪中的Transformer</strong>。最近的跟踪器中已经采用了<strong>注意力机制</strong>，包括参考文献[6,10,13,56,61,64]中提到的那些。例如，TransT<u>利用注意力来融合特征并建立长距离特征关联，同时自适应地关注相关信息</u>。 MixFormer使用<u>迭代混合注意力来整合特征提取和目标信息</u>。 OSTrack应用早期候选消除模块来消除不必要的搜索区域标记。相比之下，我们的模型是一个<mark>简单的</mark><u><strong>编码器-解码器架构</strong></u>，没有任何专门的头，从而产生了<mark>一个简单且纯粹的<strong>基于Transformer的跟踪器</strong></mark>。</p>
+<p><strong>视觉语言建模</strong>。近年来，语言建模取得了重大进展。一些方法旨在<u>为语言和视觉任务创建联合表示模型</u>，例如[1,39,43]中提出的方法。一种特殊的方法，<strong>Pix2Seq</strong>，<strong>将视觉任务制定为以像素标记输入为条件的语言建模任务</strong>。通过将边界框和类标签表示为离散序列，该方法统一了计算机视觉任务。==受 Pix2Seq 的启发，我们<u>将语言建模框架引入视觉对象跟踪中</u>，<u>构建了用于直接轨迹估计的时间自回归模型</u>。==我们的方法简化了跟踪框架，消除了不必要的后处理，并通过连贯的时空提示逐步解码对象坐标。</p>
+<h2 id="Tracking-as-Sequence-Interpretation">Tracking as Sequence Interpretation</h2>
+<p>我们将视觉跟踪视为顺序坐标解释任务，用条件概率表示：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031160144242.png" alt="image-20231031160144242"></p>
+<p>其中 Z 和 X<sup>t</sup> 是给定的模板和时间步 t 的搜索图像，C 是命令标记，Y 表示与 X 相关的目标序列。模板 Z 也可以在每个时间步通过<u><strong>更新机制</strong></u>进行更新，或者只是第一个。可以看出，我们将跟踪表述为时间自回归过程，其中当前结果是最近 N 个过去的函数，以模板和搜索图像为条件。这是一个N阶自回归模型，简称AR(N)模型。具体来说，当 N = 0 时，方程 (1) 退化为每帧模型 P(Y<sup>t</sup> |C , Z , X<sup>t</sup>)，其不以先前状态为条件。</p>
+<blockquote>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031160422575.png" alt="image-20231031160422575" style="zoom:50%;" />
+</blockquote>
+<p>被引入的自回归模型与视觉跟踪兼容，因为它本身就是一个序列预测任务。当前帧中估计的目标状态受到相邻的先前目标状态的影响，并且也影响后续帧。我们将这个跟踪框架称为 ARTrack，它由以下主要组件组成。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>序列构建：给定<u><strong>视频序列和初始对象框</strong></u>，视觉跟踪器预测一系列边界框。它们被映射到统一的坐标系中，并转换为具有共享词汇表的离散标记序列。</p>
+</li>
+<li class="lvl-2">
+<p>网络架构：我们使用<u><strong>编码器-解码器架构</strong></u>，其中<u><strong>编码器嵌入视觉特征</strong></u>，解码器解释<mark>目标序列</mark>。</p>
+</li>
+<li class="lvl-2">
+<p>目标函数：模型通过具有结构化损失函数的视频帧进行训练，以最大化目标序列的对数似然。我们还探索特定任务的目标来提高绩效。</p>
+</li>
+</ul>
+<h3 id="Sequence-Construction-from-Object-Trajectory">Sequence Construction from Object Trajectory</h3>
+<p>我们将<u><strong>对象轨迹</strong></u>描述为<u><strong>具有共享词汇的离散标记序列</strong></u>。</p>
+<p><strong>标记化</strong>。受Pix2Seq框架的启发，我们<strong>对连续坐标进行离散化</strong>，以<u><strong>避免描述连续坐标所需的大量参数</strong></u>，这称为标记化。具体来说，时间步t处的对象框由四个标记组成，即[x<sup>t</sup> <sub>min</sub>, y<sup>t</sup> <sub>min</sub>, x<sup>t</sup> <sub>max</sub>, y<sup>t</sup> <sub>max</sub>]，每个标记都是[1, n<sub>bins</sub>]之间的整数。当bin数大于或等于图像分辨率时，可以实现<u><strong>零量化误差</strong></u>。然后我们<strong>使用量化项来索引可学习词汇表</strong>以获得与坐标对应的标记。这使得模型能够<strong>用离散标记来描述对象的位置</strong>，并且还允许使用语言模型中<strong>现成的解码器进行坐标回归</strong>。这种新颖的回归<u>避免了从图像特征到坐标的直接非线性映射</u>，这通常是困难的。在去标记化中，我们将输出标记特征与共享词汇进行匹配，以找到最可能的位置。</p>
+<p><strong>轨迹坐标映射</strong>。大多数跟踪器会<strong>裁剪搜索区域</strong>以减少计算成本，而不是在全分辨率帧上进行跟踪。这意味着网络输出当前帧中对象相对于搜索区域的坐标。为了获得统一的表示，需要将不同帧的盒子映射到同一坐标系中。在我们的方法中，我们将前面 N 帧的框坐标缓存在全局坐标系中，并在搜索区域被裁剪后将它们映射到当前坐标系。然而，<u>如果我们使用全帧进行搜索，则不再需要这个坐标映射步骤</u>。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031161358483.png" alt="image-20231031161358483"></p>
+<p><em><strong>图 2. 序列构建和坐标映射</strong></em>。<em>对象轨迹是通过使用全局坐标系中先前帧的坐标来构造的。跟踪过程中，将轨迹映射到当前坐标系以构建序列。任何超出范围的坐标都会被限制并以绿色遮盖。为了索引词汇表，我们<strong>将连续坐标离散化为量化项</strong>。词汇表的表示范围覆盖了搜索区域的范围</em></p>
+<p><strong>词汇的表示范围</strong>。词汇表的表示范围可以根据搜索区域的大小来设定，但是由于物体的快速移动，<u>前面的轨迹序列有时会超出搜索区域的边界。</u>为了解决这个问题，我们将<u><strong>表示范围</strong></u>扩展为<strong>搜索区域范围的倍数（<strong>例如，如果搜索区域范围为 [0.0, 1.0]，我们将其扩展为 [−0.5, 1.5]）。这使得</strong>词汇表能够包含位于搜索区域之外的坐标</strong>，这反过来又<u>允许模型捕获更多先前的运动线索以进行跟踪并预测超出搜索区域的边界框。</u></p>
+<h3 id="Network-Architecture">Network Architecture</h3>
+<p>给定从对象轨迹构建的目标序列，我们使用编码器-解码器结构进行学习和推理。这种网络架构广泛应用于现代视觉识别和语言建模。</p>
+<p><strong>Encoder</strong>。编码器可以是通用图像编码器，<strong>将像素编码为隐藏特征表示</strong>，例如 ConvNet、视觉 Transformer (ViT) 或混合架构。在这项工作中，我们使用与 OSTrack 相同的 ViT 编码器进行<strong>视觉特征编码</strong>。<u>模板和搜索图像首先被分割成补丁</u>，展平并投影以<u>生成一系列标记嵌入</u>。然后，我们<u>添加具有位置和身份嵌入的模板和搜索标记</u>，将它们连接并输入到普通的 <strong>ViT</strong> 主干中以编码视觉特征。</p>
+<p><strong>Decoder</strong>。我们使用 <strong>Transformer</strong> 解码器来生成目标序列。它以前面的<u><strong>坐标标记</strong></u>、<u><strong>命令标记</strong></u>和<u><strong>视觉特征</strong></u>为条件，逐步解码整个序列。*前面的坐标标记 (Y <sup>t−N:t−1</sup>) 用作时空提示，将运动动力学传播到后续帧中。命令标记 © 提供轨迹建议，然后将模板 (Z) 与搜索 (X<sup>t</sup>) 进行匹配，以获得更准确的坐标预测 (Y <sup>t</sup>)。*这种简单的解码方法消除了现代视觉跟踪器架构的复杂性和定制性，例如<u><strong>定位头和后处理</strong></u>，因为坐标可以立即从<strong>共享词汇</strong>中去标记。解码器有<strong>两种注意力机制</strong>。<strong>在坐标标记之间执行自注意力</strong>（带有<u><strong>因果掩码</strong></u>）以<strong>传达时空信息</strong>。<strong>交叉注意力</strong>将<u>运动线索与视觉线索结合起来做出最终的预测</u>。这两种操作在每个解码器层中交替执行，以混合两种嵌入。我们在图 3a 中说明了解码器的结构。为了提高跟踪效率，我们通过修改解码器层来研究改变的解码器。具体来说，<u><strong>自注意力层和交叉注意力层</strong></u>被解耦并单独堆叠。这样，我们就可以<strong>并行地对视觉特征进行交叉注意力</strong>，这是解码器中<u>最耗时的计算</u>。修改后的解码器如图 3b 所示。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031165531304.png" alt="image-20231031165531304"></p>
+<p><em><strong>图 3.默认和更改的解码器</strong>。我们探索两种类型的解码器：（a）以前面的坐标标记、命令标记和视觉特征为条件，逐步解码整个序列。 (b)与(a)类似，其自注意力层和交叉注意力层是解耦并单独堆叠的。并且它并行地进行与视觉特征的交叉注意。</em></p>
+<h3 id="Training-and-Inference">Training and Inference</h3>
+<p>ARTrack 是一个简单的框架，可以实现<strong>端到端</strong>的训练和推理。</p>
+<p><strong>Training</strong>。除了每帧训练和优化之外，ARTrack 还通过视频序列进行学习。它采用结构化目标，通过 softmax 交叉熵损失函数最大化标记序列的对数似然：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031165824773.png" alt="image-20231031165824773"></p>
+<p>其中 <strong>T</strong> 是<strong>目标序列的长度</strong>。这种学习方法统一了训练和推理之间的任务目标，即保持视频帧之间的定位精度。启动时 (t ≤ N)，缓存的时空提示 (Y <sup>t−N:t−1</sup>) 会填充初始提示 (Y <sup>1</sup>)，并逐渐用新的预测进行更新。</p>
+<p>这是通用目标函数，<strong>忽略了</strong>令牌的<strong>物理属性</strong>，例如<u>坐标的空间关系</u>。尽管我们发现这种与任务无关的目标对于训练模型是有效的，但我们研究了如何整合任务知识来提高性能。具体来说，我们引入了 SIoU 损失，以更好地测量<strong>预测边界框和地面真实边界框之间的空间相关性</strong>。我们首先从估计的概率分布中得到坐标标记。由于采样是不可微的，我们用分布的期望来表达坐标。然后我们得到预测的边界框并用真实值计算它的 SIoU。整个损失函数可以写为：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031170324260.png" alt="image-20231031170324260"></p>
+<p>其中L<sub>ce</sub>和L<sub>SIoU</sub>分别是<u><strong>交叉熵损失</strong></u>和<u><strong>SIoU损失</strong></u>，<strong>λ</strong>是<strong>平衡</strong>两个损失项的<strong>权重</strong>。</p>
+<p><strong>Inference</strong>。在推理时，我们使用 <u><strong>argmax 采样</strong></u>从模型似然 P(Y <sup>t</sup> |Y <sup>t−N:t−1</sup>, (C , Z , X<sup>t</sup>))中采样标记。我们发现其他随机采样技术或期望的性能与 argmax 采样相当。不需要用额外的 EOS 标记（令牌，token）来结束序列预测，因为序列长度在我们的问题中是固定的。获得<u><strong>离散标记</strong></u>后，我们对它们<strong>进行反量化以获得连续坐标</strong>。</p>
+<h2 id="Experiments">Experiments</h2>
+<h3 id="Implementation-Details">Implementation Details</h3>
+<p><strong>Model variants</strong>。我们训练具有不同配置的 ARTrack 的三种变体，如下所示：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>ARTrack<sub>256</sub>. Backbone: ViT-Base; Template size: [128×128]; Search region size: [256×256];</p>
+</li>
+<li class="lvl-2">
+<p>ARTrack<sub>384</sub>. Backbone: ViT-Base; Template size: [192×192]; Search region size: [384×384];</p>
+</li>
+<li class="lvl-2">
+<p>ARTrack-L<sub>384</sub>. Backbone: ViT-Large; Template size: [192×192]; Search region size: [384×384];</p>
+</li>
+</ul>
+<p><strong>Training strategy</strong>。我们遵循传统协议来训练我们的模型。训练集由 GOT-10k [31]（我们根据[61]删除了 GOT-10k 训练分割中的 1k 序列）、LaSOT [19] 和 TrackingNet [47] 组成。特别是对于 GOT-10k 的性能评估，模型在完整的 GOT-10k 训练集上进行训练。与使用<strong>随机平移</strong>和<strong>尺度变换</strong>来模拟空间抖动的传统每帧训练不同，我们的<strong>顺序训练</strong>允许我们<u><strong>解释逐帧跟踪目标的坐标序列</strong></u>，而<strong>无需任何增强</strong>。我们用 AdamW [42] 优化了模型，主干的<strong>学习率为 4 × 10<sup>−7</sup></strong>，<strong>其他参数为 4 × 10<sup>−6</sup></strong>。我们将网络训练 60 个 <strong>epoch</strong>，每个 epoch 960 个视频序列。由于 GPU 内存限制，每个序列包含 16 帧。</p>
+<p>更多的是，为了与主流跟踪器进行公平比较，我们<strong>首先预训练 AR(0) 模型</strong>，该模型可以利用 COCO2017 [41] 等图像数据集来与其他每帧训练的跟踪器保持一致。 AR(0)训练集由四个数据集组成，与DiMP[44]和STARK[61]相同。我们<strong>利用与 OSTrack [64] 相同的数据增强</strong>，包括<u><strong>水平翻转和亮度抖动</strong></u>。经过 <strong>AdamW 的优化</strong>，主干网的学习率为 8 × 10<sup>−6</sup>，其他参数的学习率为 8 × 10<sup>−5</sup>。我们的 AR(0) 模型经过 240 个时期的训练，每个时期有 60k 个匹配对。</p>
+<h3 id="Main-Results">Main Results</h3>
+<p>我们在多个基准上评估了我们提出的 ARTrack<sub>256</sub>、ARTrack<sub>384</sub> 和 ARTrack-L<sub>384</sub> 的性能，包括 GOT-10k [31]、TrackingNet [47]、LaSOT [19]、LaSOText [18]、TNL2K [57]、UAV123 [46]和 NFS [33]。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031172948986.png" alt="image-20231031172948986"></p>
+<blockquote>
+<p><strong>表 1</strong>. GOT-10k [31]、TrackingNet [47]、LaSOT [19] 和 LaSOText [18] 的最新技术比较。其中 * 表示仅在 GOT-10k 上训练的跟踪器。下标中的数字表示搜索区域分辨率。最好的用<strong>粗体</strong>表示，其次最好用<u>下划线</u>。</p>
+</blockquote>
+<p><strong>GOT-10k</strong> 是一个大型数据集，包含超过 10,000 个具有高精度边界框的视频帧序列。它<strong>提倡一次性跟踪规则，这意味着训练集和测试集之间的类不重叠</strong>。</p>
+<p><strong>TrackingNet</strong> 是一个用于跟踪的数据集，涵盖现实世界中的各种对象类和场景。其测试集包含 511 个序列，<strong>仅提供主框架的注释</strong>。</p>
+<p><strong>LaSOT</strong>是一个大规模基准测试，其测试集中包含280个视频，<strong>可以有效检测长期跟踪的性能</strong>。</p>
+<p><strong>LaSOText</strong> 是 LaSOT 的扩展子集，其中包括来自 15 个新类别的 150 个附加视频。这些视频<strong>具有大量相似的干扰物体和快速移动的小物体</strong>，这显着增加了跟踪难度。</p>
+<p>（i）TNL2K是一个具有自然语言标记的高质量多模态数据集；</p>
+<p>（ii）NFS是一个具有更高帧率的数据集（ 240fps）视频；</p>
+<p>（iii）UAV123，由不同无人机拍摄的复杂场景视频片段组成。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031172906066.png" alt="image-20231031172906066"></p>
+<h3 id="Analysis-of-the-Autoregressive-Model">Analysis of the Autoregressive Model</h3>
+<p>我们分析了 ARTrack 框架的主要属性。对于以下实验研究，除非另有说明，我们遵循 GOT-10k 测试协议。默认设置以灰色标记。</p>
+<p><strong>Order of autoregression</strong>。ARTrack的核心是<u><strong>自回归</strong></u>，它由<u><strong>时空提示</strong></u>的<strong>长度或阶数</strong>（N）控制。该参数<strong>决定了可以利用多少先前的轨迹信息</strong>。例如，当N = 1时，我们可以根据前一个时间步推断目标的比例和纵横比，当N = 2时，我们还可以学习粗略的移动方向。增加 N 可提供更多运动信息。我们尝试使用不同的 N 值来检查其对模型的影响。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031173332036.png" alt="image-20231031173332036" style="zoom: 67%;" />
+<p>设置词汇表示范围的一种方法是使用与搜索区域相同的范围，如图 5 中的<span style="color: blue;">蓝色</span>曲线（词汇范围：[1×]）所示。如图所示，结合时空提示与使用 N = 0（纯每帧模型）相比，通过 ARTrack 将 AO 分数提高了近 1.0%。此外，增加 N 会导致 AO 分数从 71.6% 显着提高到 73.1%。然而，当 N &gt; 3 时，由于更多无效坐标落在表示范围之外，精度会下降。</p>
+<p>正如3.1节所建议的，我们适当扩大词汇范围，以<strong>减轻由于坐标超出表示范围而导致的轨迹截断</strong>。图 5 中的<span style="color: red;">红色</span>曲线（词汇范围：[2×]）展示了这种扩展的效果。通过这样做，该模型不仅能够捕获更多先前的运动线索以获得更连贯的跟踪结果，而且还能够预测超出搜索区域的边界框。这种方法被证明是有效的，并且比朴素的 [1×] 设置好 0.4%（73.1% vs. 73.5%）。</p>
+<p>然而，<strong>扩大表示范围对边界框的定位提出了挑战</strong>。随着范围的增加，<strong>将适当的 bin 准确地分配给其相应的坐标变得越来越困难</strong>。这就是为什么当 N 很小时，[2×] 设置会导致 AO 分数较低。类似地，尽管 [3×] 设置的精度随着与 N 的同步性的增加而提高，如<span style="color: orange;">黄色</span>曲线所示，但它仍然达不到最佳性能。不幸的是，由于硬件内存限制，我们无法使用更大的 N 进行训练。</p>
+<p><strong>Qualitative comparison</strong>。为了更好地理解我们的时间自回归模型，我们在顺序预测坐标标记的同时生成<u><strong>交叉注意力图</strong></u>。为了测试我们模型的鲁棒性，我们使用了现实世界跟踪中遇到的复杂场景，例如<u><strong>运动模糊、旋转、宽高比变化和相机运动</strong></u>，如图 6 所示。有趣的是，在每个场景中，我们的跟<strong>踪器重点关注在预测每个坐标时在适当的四肢上</strong>，展示了我们的模型精确定位的能力。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031174310898.png" alt="image-20231031174310898" style="zoom:50%;" />
+<p><em><strong>图 6</strong>. 解码器的交叉注意力。 (a)：搜索区域和模板图像（位于左上角）。 (b)-(e)：解码器最后一层中相应的坐标标记到搜索注意力图。</em></p>
+<p>当面临<u><strong>遮挡和干扰</strong></u>等更具挑战性的场景时，每帧模板匹配可能不可靠。<strong>前者中的目标可能会变得不可见，而后者中各种类似物体的存在可能会迷惑跟踪器</strong>。为了克服这些问题，我们的方法<strong>利用先前的运动线索</strong>在视觉特征不具有区分性的情况下生成合理的预测。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031174554349.png" alt="image-20231031174554349" style="zoom:67%;" />
+<p><em><strong>图 7.</strong>(a)-©：搜索区域和预测框。蓝色和红色框分别表示我们和 OStrack 的预测。 (d)：ARTrack 的注意力图。 (e)：OSTrack 的注意力图。</em></p>
+<p>在图 7 中，我们逐帧展示了 ARTrack 生成的交叉注意力图，并将它们与 OSTrack [64] 估计的注意力图进行比较。为了获得实例级可视化，我们在预测每个坐标时对最后一层的交叉注意力图求和。该图的前两行演示了遮挡场景。<strong>即使在遇到完全遮挡时，我们的方法也可以通过对前面的轨迹序列进行调节来预测合理的目标边界框</strong>。另一方面，OSTrack 中的注意力被错误地分配给其他实例，这是可以理解的，因为人类很难在不观察目标的情况下定位目标。然而，<strong>鉴于目标的先前轨迹序列，人类可以跟踪不可见的物体</strong>。在最后两行描述的分心场景中也可以推断出类似的发现。<strong>当搜索图像中存在大量相似物体时，OSTrack的注意力会分散</strong>，导致错误跟踪。相反，ARTrack 可以通过考虑先前的状态来保持对目标的关注。这支持了我们的主张，即我们的方法可以有效地模拟跨帧的对象轨迹的顺序演化。</p>
+<p><strong>Bins per pixel</strong>。为了研究 bin 分辨率（即每个像素的 bin）对性能的影响，我们将搜索区域的分辨率固定为 256 像素，并使用表示范围是搜索区域范围两倍的词汇表。然后，我们改变每个像素的bin的数量，如表2所示。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031174845309.png" alt="image-20231031174845309" style="zoom:50%;" />
+<p>由于当 bin 数量大于裁剪图像的长边时，量化不会造成明显误差，因此我们首先使用 512 bin（每个像素 512/[2 × 256] bin），然后增加数量。如表 2 所示，增加实现子像素量化精度的 bin 数量可以提高性能。然而，结论与[8]的结论略有不同，这表明较少数量的箱足以实现准确的物体检测。我们认为，这种差异可能是由于精确运动建模需要更高的量化精度。<u>使用更多的 bin（例如 1600）可以显著增加词汇量并减慢训练速度。</u></p>
+<p><strong>Loss function</strong>。表 3 显示了将特定跟踪知识与任务无关目标相结合的有效性。我们观察到，<strong>将 SIoU 和 CE 损失结合起来比单独使用其中任何一个都能获得更好的性能</strong>。这可以归因于这样一个事实：在计算 SIoU 时，我们<strong>考虑了预期的边界框位置</strong>，它<strong>考虑了空间关系</strong>，从而增强了监督的鲁棒性。仅使用 SIoU 损失而不使用 CE 导致 SR0.75 显着下降，但 SR0.5 与使用 CE 损失时保持相同。我们推测这是因为该模型仅由预期的粗粒度位置进行监督，并且缺乏生成更精确的边界框的能力。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031175022151.png" alt="image-20231031175022151" style="zoom:50%;" />
+<h3 id="Limitation-Analysis">Limitation Analysis</h3>
+<p><strong>Speed analysis and architecture variant</strong>。ARTrack 框架的一个主要限制是，由于其在解码器中的串行计算，它的效率不如最近提出的跟踪器。我们研究了一种<strong>由单独堆叠的自注意力层和交叉注意力层组成的经过修改的解码器</strong>。具体来说，几个自注意力层以<strong>自回归方式处理坐标标记</strong>，然后是<strong>并行的交叉注意力层来聚合视觉特征</strong>。修改后的解码器可以<strong>显着提高推理速度</strong>（加速 73%），但<strong>准确性会有所牺牲</strong>（AO 得分降低 0.3%），如表 4 所示。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031175213178.png" alt="image-20231031175213178" style="zoom:50%;" />
+<p><strong>Training strategy and command token analysis</strong>。为了与之前在不同图像数据集（例如 COCO2017 [41]）上训练的跟踪器 [10,13,40,61,64] 进行公平比较，我们<strong>首先使用 N = 0 预训练我们的模型</strong>。这允许我们的时间自回归模型暂时像每帧模型一样运行，而不依赖于之前的状态。然后，我们<strong>在 LaSOT 基准上测试了我们的模型</strong>，结果如表 5 所示，其中预训练的 AUC 分数提高了 1.2%。然而，代价是我们需要使用可学习的命令标记来启动自回归过程，并且必须保留该标记以确保每帧训练和顺序训练之间的一致性。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231031175320351.png" alt="image-20231031175320351" style="zoom:50%;" />
+<h2 id="Conclusion">Conclusion</h2>
+<p>我们提出了 ARTrack，一个简单直接的端到端自回归框架，用于视觉对象跟踪。我们将<strong>视觉跟踪</strong>视为<strong>坐标序列解释任务</strong>，因此我们<strong>采用语言建模</strong>来同时进行<u><strong>视觉模板匹配</strong></u>和<u><strong>运动信息建模</strong></u>。该<mark>跟踪器</mark>是<strong>通用编码器-解码器架构</strong>，<mark>消除了</mark><strong>定制头和后处理</strong>以<mark>简化</mark><strong>跟踪管道</strong>。更重要的是，我们<strong>提出了时空提示</strong>，<u>对轨迹传播运动线索的顺序演化进行建模</u>，以获得更连贯的跟踪结果。大量的实验证明我们的跟踪器优于其他主流跟踪器，并在主流基准数据集上实现了最先进的技术。未来，我们希望这个框架可以扩展到其他视频任务。</p>
+<hr>
+<h1>方法:</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>a. 理论背景:</p>
+<ul class="lvl-2">
+<li class="lvl-4">传统的视觉目标跟踪方法通常采用逐帧模板匹配的方式，忽略了视频帧之间的时间依赖关系。这种方法的主要步骤包括特征提取、特征融合和边界框定位。然而，这些方法复杂，需要单独训练，并且在训练和推断之间存在目标不匹配的问题。</li>
+<li class="lvl-4">本文提出了一种名为ARTrack的新型自回归框架用于视觉目标跟踪。ARTrack将跟踪任务视为一个坐标序列解释任务，当前估计值受到先前状态的影响，并进一步影响子序列。该自回归模型的基本思想是跟踪器应该“解释”一系列坐标，以类似于语言建模任务的方式追踪对象。ARTrack通过避免定制头部和后处理，而是依赖于直接坐标回归，简化了跟踪流程。该框架在流行的跟踪基准上进行了评估，并取得了最先进的性能。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>b. 技术路线:</p>
+<ul class="lvl-2">
+<li class="lvl-4">ARTrack的框架由三个主要组件组成。首先，它通过离散化连续坐标并将对象轨迹映射到统一的坐标系统中构建一个令牌序列。其次，使用编码器-解码器架构进行学习和推断，其中视觉特征编码器和Transformer解码器逐步解码目标序列。最后，使用结构化损失函数训练模型，以最大化目标序列的对数似然。该框架与视觉跟踪兼容，因为它本身就是一个序列预测任务，估计的目标状态受到相邻前一个目标状态的影响，并影响后续帧。</li>
+</ul>
+</li>
+</ul>
+<h1>结果:</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>a. 详细的实验设置:</p>
+<ul class="lvl-2">
+<li class="lvl-4">ARTrack在流行的基准数据集上进行了实验评估，包括了各种具有挑战性的情况，如目标变形、尺度变化、遮挡和干扰物体。</li>
+<li class="lvl-4">实验中使用了结构化损失函数来训练模型，并采用了编码器-解码器架构进行学习和推断。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>b. 详细的实验结果:</p>
+<ul class="lvl-2">
+<li class="lvl-4">ARTrack在性能上超过了其他主流跟踪器，达到了最先进的水平。</li>
+<li class="lvl-4">实验结果表明，ARTrack在准确性方面表现出色，并且速度更快，证明了其有效性。</li>
+<li class="lvl-4">文中还探讨了一种改进的解码器，通过解耦自注意力层和交叉注意力层，并在并行处理视觉特征上进行交叉注意力，提高了跟踪效率。</li>
+<li class="lvl-4">然而，解码器中的串行计算影响了模型的速度，扩展表示范围对边界框的定位提出了挑战。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>格物致知</category>
+        <category>计算机视觉</category>
+        <category>论文笔记</category>
+      </categories>
+      <tags>
+        <tag>视觉跟踪</tag>
+        <tag>cv</tag>
+        <tag>跟踪器</tag>
+        <tag>CVPR</tag>
+        <tag>自回归</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文：Kristan_The_First_Visual_Object_Tracking_Segmentation_VOTS2023_Challenge_Results_ICCVW_2023_paper</title>
+    <url>/2023/11/08/University/AI/PaperLearn/Kristan_The_First_Visual_Object_Tracking_Segmentation_VOTS2023_Challenge_Results_ICCVW_2023_paper/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1>Kristan_The_First_Visual_Object_Tracking_Segmentation_VOTS2023_Challenge_Results_ICCVW_2023_paper</h1>
+<blockquote>
+<p>论文：<a href="https://openaccess.thecvf.com/content/ICCV2023W/VOTS/papers/Kristan_The_First_Visual_Object_Tracking_Segmentation_VOTS2023_Challenge_Results_ICCVW_2023_paper.pdf">https://openaccess.thecvf.com/content/ICCV2023W/VOTS/papers/Kristan_The_First_Visual_Object_Tracking_Segmentation_VOTS2023_Challenge_Results_ICCVW_2023_paper.pdf</a></p>
+<p>参考：~</p>
+<p><mark>一篇关于“首届视觉对象跟踪分割VOTS2023挑战赛结果”的报告</mark></p>
+</blockquote>
+<h2 id="Abstract">Abstract</h2>
+<p>视觉对象跟踪分割 VOTS2023 挑战赛是 VOT 计划的第十一次年度<u><strong>跟踪器基准测试</strong></u>活动。该挑战首次将<strong>短期和长期以及单目标和多目标跟踪合并</strong>，并<strong>以分割掩模作为唯一的目标位置规范</strong>。创建了一个新的数据集；为了防止过度拟合，真实情况被保留。新的性能测量和评估协议以及新的工具包和评估服务器已经创建。所提出的 47 个跟踪器的结果表明，<strong>现代跟踪框架非常适合处理短期和长期跟踪的融合</strong>，并且<strong>多个和单个目标跟踪可以被视为单个问题</strong>。包含参与跟踪器详细信息、源代码、数据集和评估工具包的排行榜可在挑战网站上公开获取。</p>
+<h2 id="Introduction">Introduction</h2>
+<p>视觉对象跟踪仍然是基本的计算机视觉问题之一。过去二十年所取得的重大进展是由社区的研究努力以及旨在推进该领域最先进技术的众多举措和挑战的出现所推动的。十年前，VOT1 计划的成立是为了解决视觉对象跟踪中缺乏性能评估共识的问题。此后，VOT 挑战赛与所有后续 ICCV 和 ECCV 一起举行，最终在去年 ECCV2022 上组织的第十届 VOT 挑战赛中达到顶峰。在过去 10 年中，该计划成功地确定了主要的跟踪趋势，这些趋势反映在后来的主要计算机视觉会议的出版物中，使 VOT 活动成为跟踪社区的中心。</p>
+<p>考虑到跟踪方面的重大挑战，VOT仅限于单目标跟踪，并分别探讨了短期和长期跟踪挑战。这种方法为探索用于短期跟踪和目标重新检测的<u><strong>新型判别性帧到帧定位机制</strong></u>以及用于长期跟踪的<u><strong>约束适应机制</strong></u>提供了合适的环境。特别关注绩效衡量、评估协议和工具包的制定和修订。为了不断提高不断改进的跟踪器方法的标准，目标位置规范已从最初挑战中的报告边界框 [34、35、33、31、30、29、28] 发展到最新挑战中的每像素分割[27、32、26]。</p>
+<p>与 VOT 并行的还有大量有影响力的活动出现。最密切相关的是 UAVision2、VisDrone3 和 Anti-UAV4 挑战，<strong>解决预定义的监视相关对象类型的检测和跟踪问题</strong>。相关工作的另一部分是<strong>面向分段的多目标跟踪挑战</strong>。 MOTCplex5 <strong>通过分段解决多实例跟踪问题</strong>，并考虑了四个挑战：YouTubeVIS（视频实例分段）； VIS（遮挡视频实例分割）； DanceTrack（多人跟踪）； UVO（检测并分割图像或视频中出现的未知对象的所有实例）。 TAO-OW6 <strong>解决开放世界实例跟踪问题</strong>，而 STEP benchmark7 <strong>解决跟踪实例（例如人类和汽车）以及语义场景分割问题</strong>。 LaGOT [42] 引入了用于多对象通用跟踪的验证数据集。在 DAVIS 挑战赛 [11] 的推动下，以<u><strong>视频对象分割 (VOS)</strong></u> 为主题的研讨会也应运而生。最突出的是最近的 YouTube-VOS8 挑战，其中包括视频实例和视频对象分割。</p>
+<p>上述数据集和举措提出了新的令人兴奋的挑战，并为该领域做出了巨大贡献。然而，它们致力于跟踪整个对象实例，因此与实例检测器紧密耦合。视频分割研讨会主要关注具有挑战性的视频编辑任务，考虑经历短期（部分）遮挡和短暂消失的相对较大的对象。因此，它们不能直接满足对通用跟踪器感兴趣的传统跟踪社区的需求。</p>
+<p>跟踪的终极目标是开发能够跟踪“任何”区域的算法，而不仅仅是已知的实例，甚至是对象的各个部分，只需在第一帧提供一个训练样本。这需要开发出高效的通用对象表示方法，自监督适应机制以应对外观变化，具有定位和区分目标与周围环境的辨别模型，以及能够有效地在图像中重新检测对象以应对目标长时间缺席的机制。</p>
+<p>我们认为，该领域已经成熟到可以放松之前 VOT 挑战中所施加的限制的程度，并且应该在更广泛的背景下考虑一般对象跟踪。因此，我们提出了一个<u><em><strong>不再区分单目标跟踪和多目标跟踪</strong></em></u>、<u><em><strong>也不区分短期跟踪和长期跟踪的挑战</strong></em></u>。我们提出了一项挑战，*要求通过长序列或短序列的分割来同时跟踪一个或多个目标，而目标可能在跟踪过程中消失并稍后在视频中重新出现。目标可以是整个实例或只是其中的一部分。*为了将这个新的进化阶段与传统的 VOT 挑战区分开来，新系列被称为视觉对象跟踪和分割 (VOTS) 挑战赛。</p>
+<blockquote>
+<p>本文介绍了与 ICCV2023 视觉对象跟踪和分割研讨会联合组织的首届 VOTS2023 挑战赛以及所获得的结果。下面，我们概述了挑战和参与要求。</p>
+</blockquote>
+<h3 id="The-VOTS2023-challenge（比赛的要求和提示）">The VOTS2023 challenge（比赛的要求和提示）</h3>
+<p>评估工具包和数据集由 VOTS2023 组织者提供。挑战于5月4日开始，6月18日结束。结果以及获奖者于七月初公布。结果分析于 10 月 3 日在 ICCV2023 VOTS2023 研讨会上发表。 VOTS2023 基准测试以不断更新的排行榜开启，以促进挑战后时期的跟踪器开发。</p>
+<p>对于 VOTS2023 挑战，参与者将他们的跟踪器集成到 VOTS2023 评估套件中，这是新版本的 VOT 工具包，它实现了最新的评估协议和新数据集，并自动执行标准化实验。然后，每个参与者在评估服务器上注册跟踪器并提交实验中产生的跟踪器输出。请注意，只有初始化帧是公开可用的，而其余帧的基本事实被隔离在服务器端以防止过度拟合。此外，每个注册参与者只能尝试 10 次进行评估。</p>
+<p>鼓励参与者提交自己的新的或以前发布的跟踪器以及第三方跟踪器的修改版本。在后一种情况下，修改必须足够重要才能被接受。每份提交都附有描述跟踪器的简短摘要（用于附录 A 中的简短跟踪器描述）以及一份调查问卷，用于根据各种设计属性对其跟踪器进行分类。</p>
+<p>表现足够出色的参与者（即，超过了第3节中描述的VOTS2023基准跟踪器）并为本文提供文本并同意将其跟踪器代码公开发布在VOTS页面上的人，被提供了本研究结果论文的共同作者资格。委员会保留根据其判断取消试图违规评估协议的任何跟踪器的权利。VOTS委员会成员可以参与挑战并提交他们自己的参赛作品，但不能竞争胜利者称号。本文的所有共同作者，包括VOTS2023委员会成员和跟踪器作者，都需要在附录A中明确划分工作。</p>
+<p>不允许对流行跟踪数据集进行验证和测试分割来训练跟踪器。其中包括 OTB [56]、VOT、ALOV [1]、UAV123 [44]、NUSPRO [1]、TempleColor [36]、AVisT [46]、LaSOT-val [17]、LaGOT [42] GOT10k-val/test [1]、TrackingNet-val/测试 [1]、TOTB [1]。允许任何数据集的训练分割（包括LaSOT-train、TrackingNet-train、YouTubeVOS、COCO等）。要包含透明对象，建议使用 Trans2k10 数据集。</p>
+<p><strong>Beyond VOT challenges</strong>。VOTS 挑战合并了短期和长期、单目标和多目标跟踪，这些跟踪迄今为止被认为是单独的任务，并将分段视为唯一的目标位置规范。创建了一个新的更大的数据集，其中保留了真实情况。新的绩效衡量标准（解决单目标、多目标长期和短期跟踪）和评估协议与新工具包和评估服务器一起创建，该服务器具有公共学习板。</p>
+<p>本报告的其余部分结构如下。第 2 节描述了新的性能评估协议和性能测量，第 2.2 节介绍了新的数据集，结果在第 3 节中讨论，结论在第 4 节中得出。附录 A 提供了测试跟踪器和工作分工的简短描述。</p>
+<h2 id="The-VOTS-performance-evaluation-protocol">The VOTS performance evaluation protocol</h2>
+<p>跟踪器在所有指定目标的第一帧中初始化。对于每个后续帧，跟踪器需要报告该帧中所有可见目标的位置。具体来说，每个可见目标都需要<u><strong>分割掩模</strong></u>，对于不存在的目标报告“不存在”标签。然后使用下面介绍的新性能指标对跟踪器进行评估。</p>
+<h3 id="VOTS-performance-measures">VOTS performance measures</h3>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231104144501062.png" alt="image-20231104144501062"></p>
+<p>多目标跟踪器的目标是可靠地跟踪在第一帧中选择的每个个体目标。离开目标跟踪到背景或其他目标都被视为跟踪失败。这允许定义每个目标的性能指标，这些指标在所有目标上进行平均以获得最终得分。从跟踪单个目标的角度来看，<mark>图1</mark>中可视化的五种情景是可能的。其中三种情景涵盖了目标存在的情况：<strong>目标成功定位（sc1），跟踪器漂移（sc2），目标被错误预测为缺席（sc3）</strong>。另外两种情景涵盖了目标缺席的情况：<strong>目标被预测为存在（sc4），以及目标被预测为缺席（sc5）</strong>。接下来，我们介绍基于跟踪成功概念的性能指标，这些指标考虑了所有这些情景。</p>
+<p>如果预测的目标位置和地面实况（即分割掩模）足够匹配，则认为在序列 s 的第 n 帧上跟踪第 i 个目标是成功的。成功通过交集联合 (IoU) 来衡量，并通过某个阈值 θ 二值化（即大于 θ 的值为 1，否则为 0）。请注意，IoU 可以很好地推广到目标不存在的情况 - 如果跟踪器在这种情况下报告空掩码（即目标不存在标志），它会收到 IoU=1，因为报告的掩码与地面事实完全一致，否则 IoU=0。因此，在阈值 θ 处所考虑的目标的总体跟踪成功率定义为：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231104144652382.png" alt="image-20231104144652382" style="zoom:67%;" />
+<p>其中 T<sub>s</sub> 和 N<sub>s</sub> 是序列 s 中目标和帧的数量，N 是序列的数量，[o<sub>sin</sub> &gt; θ] 是在给定帧处对 o<sub>sin</sub>（即 IoU）进行二值化的算子。对于所有阈值 θ ∈ [0, 1)，性能可以通过类似于 [56] 的跟踪质量图来总结，如<mark>图2</mark> 所示。请注意，阈值区间是开放的，因为 IoU 不能超过 θ =1.0，并且定义(1) 使用 &gt; 而不是 ≤。出于可视化的目的，最右边的点因此用 [·≡θ] 进行评估。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231104144900490.png" alt="image-20231104144900490" style="zoom:50%;" />
+<p>跟踪质量图的解释属性与标准的成功图[56]类似，不同之处在于θ=1.0的最右侧点通常可以更高。原因是它考虑了长期跟踪性能，而不仅仅是短期跟踪性能。当IoU=1时，只有当预测完全与地面真相匹配时才会发生（图1中的sc1和sc5）。实际上，当目标可见时，这种情况非常罕见，因此该值主要由正确预测目标缺席的情况（sc5）主导。因此，实际上可实现的最大值将是数据集中目标缺席帧的百分比。这个值在图中标示出来，以便更好地解释。</p>
+<p><strong>The primary VOTS performance measure</strong>，称为跟踪质量 Q 通过曲线下面积总结了跟踪质量图。根据[51]中的成功图推导，可以证明跟踪质量等于序列归一化平均重叠，以避免数值曲线下面积计算中的错误，即：</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231104145225937.png" alt="image-20231104145225937" style="zoom:67%;" />
+<h4 id="Secondary-performance-measures">Secondary performance measures</h4>
+<p>还提出了额外的次要性能指标，用于进一步了解跟踪情况。前两个指标是VOT[27]传统上使用的，它们分别是<strong>定位精度</strong>和<strong>鲁棒性</strong>。精度（Acc）定义为成功跟踪帧上的<strong>平均重叠的序列归一化值</strong>，即，</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231104145413075.png" alt="image-20231104145413075" style="zoom:67%;" />
+<p>其中 N<sub>si</sub> 是目标 i 在序列 s 中可见的成功跟踪帧的数量（即 IoU &gt; 0）。跟踪鲁棒性（Rob）定义为 IoU &gt; 0 且目标 i 可见（即召回）的帧的百分比，</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231104145500349.png" alt="image-20231104145500349" style="zoom:67%;" />
+<p>其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>N</mi><mrow><mi>s</mi><mi>i</mi></mrow><mrow><mi>s</mi><mi>c</mi><mn>1</mn></mrow></msubsup></mrow><annotation encoding="application/x-tex">N^{sc1}_{si} </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0728em;vertical-align:-0.2587em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-2.4413em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">i</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">sc</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2587em;"><span></span></span></span></span></span></span></span></span></span> 是场景 sc1 的帧数（图 1）。根据我们之前的工作 [27]，AR 图 [26] 总结了具有可见目标的帧上的跟踪器性能，右上角位置表示更好的性能。</p>
+<p>接下来的两个次要性能指标回答了“为什么目标可见时跟踪器失败？”的问题。第一个测量称为未报告错误 (NRE)，给出跟踪器错误地将目标报告为不存在的帧的百分比，即,</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231104145743256.png" alt="image-20231104145743256" style="zoom:67%;" />
+<p>第二个称为漂移率误差 DRE，给出跟踪器偏离目标并声称存在目标的帧的百分比，即,</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231104145806560.png" alt="image-20231104145806560" style="zoom: 67%;" />
+<p>最终的次要措施回答了“目标缺勤确定得如何？”的问题。这种测量称为缺席检测质量 ADQ，给出了目标被正确预测为缺席的帧的百分比，即,</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231104145918486.png" alt="image-20231104145918486" style="zoom: 67%;" />
+<p>请注意，实际上，为了确保数值稳定性，我们仅考虑序列中至少 10 帧不存在的那些目标。</p>
+<h3 id="The-VOTS2023-dataset">The VOTS2023 dataset</h3>
+<p><strong>构建了一个新的数据集，用于评估新挑战中考虑的新的单/多目标、短期/长期分割跟踪任务</strong>。该数据集是通过包含以下现有数据集的序列构建的：LaGOT [42]、VOT-LT2021 [32]、VOT-LT2022 [26] UTB180 [2]、VOT-ST2022 [26] 和 TOTB [18]。请注意，这并不意味着最终 VOTS2023 数据集中注释了相同的目标。</p>
+<p>主要选择标准是创建一个数据集，其中包含根据我们的经验对现代跟踪架构构成挑战的情况，并且涵盖广泛的目标外观和对象类型。我们纳入了包含多个<strong>视觉上相似的对象</strong>的场景，以及由于变形或平面外旋转（例如，鱼从前到侧翻转）而发生显着<strong>外观变化的对象</strong>。小心地将<strong>杂乱背景上的物体</strong>包含在内。除了具有部分遮挡的序列之外，还考虑了包含<strong>退出视场并重新进入的对象</strong>的序列，<strong>以能够评估长期跟踪特性</strong>。我们确保这些序列涵盖了不同的对象类型和场景。例如，除了经典的空中和地面序列之外，<strong>还考虑了水下序列</strong>。除了不透明物体之外，还包括几个具有透明物体的具有挑战性的序列，以进一步增加目标多样性。</p>
+<p>在大多数现有的跟踪基准中，目标都是<strong>整个对象</strong>。为了强调跟踪一般外观的能力的重要性，我们还包括了作为其他对象（即脚、帽子、手等）<strong>一部分的对象</strong>。在每个序列中，第一帧中可能选择了多个目标。然后注释分几个阶段进行。<strong>在第一阶段</strong>，每个选定的目标都通过边界框（不一定在所有帧中）手动注释。然后运行最先进的边界框跟踪器来插入丢失的边界框。所有方框均经过手动验证和更正。<strong>在第二阶段</strong>，边界框用于指导最先进的分割算法，该算法给出初始分割掩模[22, 23]。最后，由专业注释者手动编辑分段。所有注释均由主管验证，不够精确的注释将被发回更正。<mark>图3</mark> 显示了目标多样性和注释质量的示例。</p>
+<p>最终的VOTS2023数据集由144个序列组成，总共包含341个目标。序列的平均长度约为 2000 帧（最小值 = 63，最大值 = 10700，中值 = 1810）。序列中的目标数量范围为 1 到 8（中位数 = 2，平均值 = 2.37）。在 144 个序列中，93 个包含至少一次离开视野然后返回的目标。在 341 个目标中，有 168 个发生这种情况。在目标离开并返回视野的情况下，缺席次数中位数为 3 次，最多为 23 次。以帧数计算的缺席长度中位数为 18 次。作为参考，<mark>图4</mark>显示了所有目标的第一帧144 个序列。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231104150928027.png" alt="image-20231104150928027"></p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231104151928902.png" alt="image-20231104151928902"></p>
+<h2 id="Results">Results</h2>
+<p>总共 77 个跟踪器被提交到评估服务器，其中包括 VOTS 委员会提供的基线。删除重复、接近重复和不完整的提交后，VOTS2023 挑战赛中剩余 47 个有效参赛作品：DMAOT (A.9)、HQTrack (A.42)、M-VOSTracker (A.20)、Dynamic DEAOT (A.8) )、seqtrack (A.38)、DMNet (A.12)、aot (A.25)、MCMOT (A.27)、rts rts50 002 (A.34)、VAPT (A.46)、MiOTS-ST ( A.22)、DropTrackSamb (A.11)、vttrack (A.47)、mmtrack (A.3)、MTCTrack (A.29)、MixItUp-3 (A.15)、MixItUp-2 (A.14) 、MixFormer (A.23)、MixItUp (A.2)、PriMem (A.31)、UNINEXT Huge (A.45)、SAM-MixFormer、CoCoLoT、MixFormerSAMHDeAOT、T-S-AM、AOTsup、vil net2、stark st50 ar (A.40)、MixFormerV2 (A.24)、UniTD (A.43)、alpha refine tomp101 seg 000 (A.5)、MiOTS (A.21)、SAM Tracker (A.35)、alpha refine super dimp seg 000 (A.4)、UNINEXT R50 (A.44)、READMem MiVOS (A.32)、d3sv2 (A.10)、LOVD (A.18)、starkmulti (A.17)、starkplusplus (A.39) )、Mstark (A.26)、MixSAMB (A.36)、SRZLT HSE IPPM ClipSegmentAnything (A.37)、pytest800 convnext (A.30)、ReptileFPN (A.33)、TCLCF (A.13)、TrackerPRO ( A.28）。</p>
+<p>每次提交都包含源代码的链接，以便在需要时验证结果。源代码可公开访问。下面我们总结了提交的统计数据，并请读者参阅附录 A 以获取跟踪器的简短描述。</p>
+<p>在参与的跟踪器中，13 个（28%）被分类为 ST0，16 个（34%）被分类为 ST1，6 个（13%）被分类为 LT0，12 个（26%）被分类为 LT1。大多数跟踪器（42；89%）应用了统一的<strong>动态模型</strong>，而（5；11%）应用了近乎恒定的<strong>速度模型</strong>。主要的跟踪方法是 <strong>Transformer</strong>。事实上，40 个（85%）提交的内容使用了 Transformer，而 7 个（15%）应用了深度或经典判别过滤器（在某些情况下与 Transformer 结合使用）。大多数跟踪器对目标进行<strong>多阶段定位</strong>（27 个；57%），而 20 个跟踪器（43%）执行<strong>单阶段定位</strong>。超过三分之一的提交使用<strong>通用对象分割网络 SAM</strong> [25]（17；36%），近四分之一应用<strong>特定对象网络 AlphaRef</strong> [61] 进行目标分割或细化分割（11；23%），而四分之一的人直接细分目标（12；26%）。 14 个（30%）跟踪器应用了固定模板更新机制，19 个（40%）跟踪器仅在有信心时更新模板，7 个（15%）始终更新模板，7 个（15%）从未更新模板。大多数提交的内容（45；96%）应用相同的网络进行帧到帧定位和目标重新检测，而（2；4%）应用单独的方法。</p>
+<p>结果总结在跟踪质量图（图2）、AR 图（<mark>图5</mark>）和<mark>表2</mark> 中。根据主要跟踪质量得分 (Q) 排名前 10 的跟踪器是：DMAOT A.9、HQTrack A.42、 MVOSTracker A.20、Dynamic DEAOT A.8、seqtrack A.38、DMNet A.12、aot A.25、MCMOT A.27、rts rts50 002 A.34 和 VAPT A.46。其中，8个被归类为ST1或LT0，9个基于变压器，而rts rts50 002基于深度DCF，大多数（7个）应用单阶段定位，6个以固定间隔更新其模板（只有4个在有信心时） ，并且都应用相同的网络进行帧到帧定位和目标重新检测。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231104152025112.png" alt="image-20231104152025112"></p>
+<p>排名前三的跟踪器都是使用固定模板更新和一种用于帧与帧之间的目标定位和目标重新检测的通用架构的ST1单阶段变换器跟踪器。特别是排名第一的DMAOT（A.9）是基于VOT2022 [26]的胜者AOT [63]构建的。该跟踪器将目标的长期记忆分离开来，仅在足够确定时进行更新，应用分层门控传播模块（GPM）[64]以实现更好的视觉嵌入传播和近似恒定速度的运动模型。该跟踪器应用了在ImageNet [12]上预训练的SwinTransformer，训练数据来自COCO [37]，YouTube-VOS [57]，Davis [11]，MOSE [13]，GOT10k [21]，LASOT [17]，VIPSeg [43]和OVIS [49]。接下来的三个表现最佳的跟踪器HQTRACK A.42，M-VOSTracker A.20和Dynamic DEAOT A.8类似地设计为DMAOT，即DeAOT [64]的扩展。</p>
+<p>DMAOT 获得了<strong>最高的跟踪质量</strong> (Q=0.6360)，比第二好的条目提高了 3%。 AR 图表明 DMAOT 在准确的目标分割 (Acc=0.751) 和非常好的鲁棒性 (Rob=0.795) 之间取得了良好的平衡 - 后者表明该跟踪器成功跟踪了平均测试序列长度的近 80%。跟踪器仅在 7% 的情况下偏离目标 (DRE=0.07)，并在 14% 的情况下错误地预测目标不存在 (NRE=0.14)。这也意味着，当目标存在时，大约 66% 的失败是由于错误地报告目标不存在而导致的，而 33% 的失败是由于跟踪器在报告目标存在时偏离了目标。总体而言，73% 的情况下目标缺失被正确预测 (ADQ=0.73)。</p>
+<p>DMNet (Rob=0.86) 实现了<strong>最好的鲁棒性</strong>，远远超过了 DMAOT (Rob=0.795) 的鲁棒性。这可能是由于 DMNet 中局部对应优化中最优传输的应用，这可能负责稳健的分割。然而，我们注意到 DMNet 也比 DMAOT 更自由地报告当前目标（0.56 ADQ vs 0.73 ADQ）。 DMNet 的 NRE 是 DMAOT 的一半，这表明情况可能如此，但前提是假设至少一半的 DMAOT 错误目标缺失预测发生在跟踪器实际位于目标上时。 Seqtrack 获得了最佳分割精度，它是一种具有 SAM [25] 分割功能的边界框跟踪器。这可能意味着 SAM 的良好利用和基于边界框的初始化。</p>
+<p>考虑到上面讨论的性能分数结果，可以通过 Q 图形状的分析得出更多见解（<mark>图5</mark>）。请注意，低阈值下 Q 图的高度表示跟踪器的鲁棒性，而图表的“凹凸”向右延伸的量（即较高的阈值）表示跟踪器的准确性。观察形成 Q 图形状簇的跟踪器，在低阈值下获得高 Q 值的跟踪器的一个共同属性是使用变压器特征提取主干，这可能会导致高鲁棒性。对 Q-plot 上的中到高阈值的类似分析表明，许多实现良好准确度的跟踪器的共同属性是（谨慎）使用 SAM 来分割目标，通过预测掩模或预测边界框进行初始化。</p>
+<p>VOTS2023 委员会提供了一个<strong>基线跟踪器来验证提交的总体质量</strong>。该跟踪器被创建为一组独立的 STARK [60] 跟踪器，<strong>通过边界框预测目标位置</strong>。名为 starkmulti A.17 的跟踪器实现了 Q=0.297，大约是表现最佳的 Q 分数的 47%。大约 80% 的提交优于基线跟踪器。此外，VOTS2023 委员会还提供了由 VOT-STs2022 [26] 获胜跟踪器 AOT [63] 创建的强大的最新基线，该基线已经专为多对象分割而设计。 6 个跟踪器（占提交内容的 13%）表现优于它，这表明 VOTS2023 提交内容非常强大。</p>
+<p><strong>The VOTS2023 challenge winner</strong>。根据跟踪质量得分 Q 的顶级跟踪器是 DMAOT (A.9)，因此是 VOTS2023 挑战赛的获胜者。简短的分析表明，虽然 DMAOT 在准确性和鲁棒性之间取得了良好的平衡，但如果跟踪器正确定位在目标上时，出现大量不正确的目标缺失预测，则可能有机会通过降低目标缺失阈值来进一步提高性能。目标。另外恢复的目标位置可能不那么准确，这可能会通过遵循 Seqtrack 的边界框条件 SAM 策略来提高这些情况下的性能。</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/image-20231104152845080.png" alt="image-20231104152845080"></p>
+<h2 id="Conclusion">Conclusion</h2>
+<p>首届 VOTS2023 挑战赛及结果揭晓。该挑战将短期和长期、单目标和多目标跟踪与分段合并为唯一的目标位置规范。创建了一个新的具有挑战性的数据集，其中保留了真实情况。新的绩效衡量标准和评估协议与新工具包和评估服务器一起创建，该服务器将保留公共排行榜。</p>
+<p>该论文展示了 47 个追踪器的结果。我们观察到变压器的应用大幅增加。在 VOT2022 [26] 中，47% 的提交内容来自该类别，而在 VOTS2023 中该比例已增加至 85%。有趣的是，虽然 VOTS2023 中的跟踪任务包括短期跟踪和长期跟踪，但只有三分之一的跟踪器被归类为 LT。几乎所有跟踪器都采用相同的方法框架进行目标帧到帧定位和长期重新检测，这表明这两个跟踪类别确实在方法上趋同。我们还观察到主要通过分段来定位目标的单级跟踪器的增加（接近提交的 43%）。 VOTS2023 挑战赛的获胜者是 DMAOT (A.9)，它建立在 VOT2022 [26] 获胜者 AOT [63] 的基础上。挑战结束后，开放了 VOTS2023 基准12，以促进对新的通用对象跟踪器（主要是基于分段的）的持续评估。</p>
+<p>由于边界框跟踪器仍然主导着主要计算机视觉会议和期刊的发表，我们指出了一种流行范式转变的机会。去年VOT2022 [26]挑战的研讨会结果表明，最佳的基于分割的跟踪器在边界框跟踪任务上表现优于所有边界框跟踪器，这表明分割跟踪器在准确性和鲁棒性方面不仅与边界框跟踪器相媲美，而且超越了它们。这特别有趣，因为边界框跟踪器传统上被认为比分割跟踪器更为稳健，因为它们估计较少的输出参数（即，边界框与每像素掩模）。VOTS2023的结果进一步支持了VOT2022的观察结果，并挑战了传统的信仰。</p>
+<p>除了其他标准数据集之外，跟踪社区还可以在 VOTS2023 挑战赛上投入精力评估其边界框跟踪器，从而建立更有力的证据。通过对预测的边界框应用类似 AlphaRef 或 SAM 的后处理，可以将边界框跟踪器轻松转换为分段跟踪器。本实验的重点应放在鲁棒性测量上，这将揭示这些跟踪器如何很好地处理 VOTS2023 数据集中存在的挑战性条件，以及它们如何与最佳分割跟踪器相媲美。我们相信这样的努力有可能推动现代通用对象跟踪器的发展，从而实现该领域的重大进步。</p>
+<p>十多年来，VOT 的主要目标是建立一个讨论跟踪性能评估的平台，并通过挑战数据集和工具包来支持跟踪社区。 VOTS2023 挑战推动了跟踪任务的融合，这是一个风险，因为此类跟踪器在社区中尚未得到广泛探索。跟踪社区在短时间内提供了极具竞争力的跟踪器，反应热烈，鼓励我们在未来的 VOTS 版本中继续努力，并希望见证令人兴奋的发展，从而实现跟踪的实质性改进。</p>
+<h2 id="Submitted-tracker-details⭐">Submitted tracker details⭐</h2>
+<h3 id="A-1-使用-DeAOT、Stark-和-SAM-进行多目标跟踪的混合方法-SAMMixFormer">A.1.使用 DeAOT、Stark 和 SAM 进行多目标跟踪的混合方法 (SAMMixFormer)</h3>
+<p>该方法提出了一种用于多对象跟踪的新颖混合方法，集成了三种领先模型：用于视频对象分割的分层传播解耦特征（DeAOT）[64]、用于视觉跟踪的学习时空变换器（Stark）[60]和Segment Anything用于图像分割的模型（SAM）[25]。该方法适应要跟踪的对象的数量。当物体超过5个时，采用DeAOT模型进行实时跟踪。对于较少的对象，Stark 模型将对象作为边界框进行跟踪，然后将其用作 SAM 模型的提示以生成高质量的掩模。这种方法有效地利用了每个模型的优势，从而为跨各种场景的多目标跟踪提供了多功能且高性能的解决方案。</p>
+<h3 id="A-2-Mixformer、Stark-和-Sam-的混合方法用于目标跟踪-MixItUp">A.2. Mixformer、Stark 和 Sam 的混合方法用于目标跟踪 (MixItUp)</h3>
+<p>本研究中采用的跟踪器是一种混合方法，它根据视频序列中感兴趣的对象的数量利用各种算法。当处理少量对象时，使用 MixFormer 跟踪器 [9]，因为它擅长准确估计边界框。然而，在存在大量物体的情况下，整体跟踪器会切换到 Stark 跟踪器[60]。此外，分段任意模型（SAM）[25]用于使用预测的边界框生成掩模。</p>
+<h3 id="A-3-简单但功能强大的视频流跟踪器-mmtrack">A.3.简单但功能强大的视频流跟踪器 (mmtrack)</h3>
+<p>我们提出了一个简单但功能强大的视频流跟踪器。我们采用 ViT [14] 作为我们的视觉编码器，它 1）通过自回归方法对目标对象的时空轨迹信息进行建模，2）通过长期短期视频流传播有关目标的丰富时间信息方式。最后，AlphaRefine [61]用作分割网络来预测目标掩模。</p>
+<h3 id="A-4-alpha-refine-super-dimp-seg-000-alpha-refine-super-dimp-seg-000">A.4. alpha refine super dimp seg 000 (alpha refine super dimp seg 000)</h3>
+<p>该跟踪器由 Super DiMP [3] 组成，并使用 AlphaRefine [61] 使用预测的边界框生成分割掩模。</p>
+<h3 id="A-5-alpha-refine-tomp101-seg-000-alpha-refine-tomp101-seg-000">A.5. alpha refine tomp101 seg 000 (alpha refine tomp101 seg 000)</h3>
+<p>这个跟踪器包括ToMP [40]，并使用AlphaRefine [61]来使用预测的边界框生成分割掩模。更多细节请参阅原始论文[40]。</p>
+<h3 id="A-6-AOTsup-AOTsup">A.6. AOTsup (AOTsup)</h3>
+<p>我们的多目标、长短时间跟踪器 AOTsup 会根据掩模尺寸自动优化所使用的跟踪模型。它智能地采用两种不同的模型，MixformerV2 [10] 和 AOT [63]，每个模型根据特定的尺寸比例激活。对于较大的比率，可以使用 MixformerV2 模型，因为它具有卓越的精度。另一方面，对于较小的比率，AOTsup 选择以出色的召回能力而闻名的 AOT 模型。通过这样做，AOTsup 利用这两种模型的独特优势，确保我们的短期跟踪和细分功能的准确性和稳健性。</p>
+<h3 id="A-7-在长期视觉跟踪-CoCoLoT-中结合互补跟踪器">A.7.在长期视觉跟踪 (CoCoLoT) 中结合互补跟踪器</h3>
+<p>单对象 CoCoLoT 跟踪器 [15, 16] 概括了 mlpLT [32]。它实现了一种结合了 Stark [60] 和 KeepTrack [41] 跟踪器的互补行为的策略。这些跟踪器的组合由基于类似于 MDNet [45] 的在线学习目标验证器的决策策略进行管理。在每一帧，跟踪器并行运行以预测其目标定位。基于目标定位的评估，决策策略选择当前帧的输出并纠正表现较差的跟踪器。基线跟踪器还采用了其他策略，例如自适应搜索区域的计算和避免错误的目标大小估计，以使它们的定位更加一致。在 CoCoLoT 给出的边界框之后，运行 AlphaRefine [61] 以获得每个目标的分割掩模。</p>
+<h3 id="A-8-使用动态内存解耦关联对象（动态-DEAOT）">A.8.使用动态内存解耦关联对象（动态 DEAOT）</h3>
+<p>Dynamic-DEAOT是基于借鉴DEAOT[64]的视频对象分割（VOS）框架构建的，它提供了准确的掩模预测并实现了全局搜索。为了更好地处理长期序列，我们开发了一个动态记忆库来利用长期和短期目标外观的建模。此外，我们应用带有局部搜索的 SOT 方法（MixFormer）[9]，通过提供目标的粗略位置来处理微小物体，然后使用分割部分生成更精细的掩模预测。我们使用 AdamW 优化方法在 VOS 数据集（包括 YouTube VOS、COCO 和 DAVIS）上训练我们的方法。</p>
+<h3 id="A-9-解耦内存-AOT-DMAOT">A.9.解耦内存 AOT (DMAOT)</h3>
+<p>我们提出了 DeAOT [64] 和 AOT [63] 的调整版本，称为 DMAOT，它存储对象方式的长期记忆，而不是 AOT 使用的帧方式的长期记忆。借助这种逐对象长期记忆，DMAOT 可确保所有要跟踪的对象的掩码都存储在内存中，并且与当前掩码具有高度相似性。然后 DMAOT 使用这些内存来预测当前对象掩码，从而获得更好的结果。</p>
+<h3 id="A-10-判别性单次分割跟踪器-v2-d3sv2">A.10.判别性单次分割跟踪器 v2 (d3sv2)</h3>
+<p>D3Sv2 [39] 是 D3S [38] 的扩展版本。原始方法在以下方面进行了扩展：（i）更好的主干，（ii）GIM 中的升级模块中的通道注意机制，（iii）GIM 中可训练的基于 MLP 的相似性计算，它取代了“手工制作”的顶部- K 平均运算和（iv）用于鲁棒目标尺寸估计的新尺度估计模块。</p>
+<h3 id="A-11-DropTrackSamb：具有-DropMAE-预训练和基于-SAM-模型的用于掩模预测的-DropTrack-DropTrackSamb">A.11. DropTrackSamb：具有 DropMAE 预训练和基于 SAM 模型的用于掩模预测的 DropTrack (DropTrackSamb)</h3>
+<p>DropTrackSamb由两个主要模块组成，包括基于ViT的DropTrack运动模块和SAMbase分割模块。DropTrack采用了预训练的DropMAE [55]初始化，并在OSTrack中使用标准的微调进行下游跟踪表示学习。在DropTrack中没有使用额外的在线更新或内存，也不应用跟踪失败检测，因为我们的跟踪器是一种短期跟踪器。在获取DropTrack预测的边界框后，我们将其用作SAM-base模型的盒子提示输入，以进行掩模预测。</p>
+<h3 id="A-12-动态匹配网络（DMNet）">A.12.动态匹配网络（DMNet）</h3>
+<p>我们提出了一种用于像素级和部分级匹配的动态匹配网络（DMNet），其中包括动态像素感知对应模块（Pixel-CM）和动态部分感知对齐模块（Part-AM）。这两个模块以对抗性方式进行训练，其中 PixelCM 生成更准确的掩模，接近地面事实以欺骗 Part-AM。此外，Pixel-CM 优化了局部窗口内的对应关系，以减少错误匹配，而 Part-AM 将对象划分为不同的部分，并区分预测掩模和真实情况之间的详细局部差异。最后，我们应用测试时间增强和模型集成 [6, 64] 来进一步提高准确性。</p>
+<h3 id="A-13-基于时间置信度学习的集成相关滤波器跟踪（TCLCF）">A.13.基于时间置信度学习的集成相关滤波器跟踪（TCLCF）</h3>
+<p>TCLCF 是一种基于时间置信度学习的实时集成相关滤波器跟踪器。在当前的实现中，我们使用两个不同的相关滤波器来协作跟踪同一目标。 TCLCF 跟踪器是一种高速且强大的通用对象跟踪器，不需要 GPU 加速。因此，可以在计算资源有限的嵌入式平台上实现。</p>
+<h3 id="A-14-组合不同的跟踪器以进行稳健的单对象和多对象跟踪-MixItUp-2">A.14.组合不同的跟踪器以进行稳健的单对象和多对象跟踪 (MixItUp-2)</h3>
+<p>MixItUp-2是一种集成算法，根据视频序列中的目标数量，自适应不同的情景。对于视频序列中目标数量少于5的情景，它采用MixFormer跟踪器[9]。MixFormer预测目标的边界框，提供准确的位置估计。它与Segment Anything Model（SAM）[25]配合使用，基于预测的边界框生成分割掩模，确保精确的目标识别。在存在5个或更多目标的情况下，集成跟踪器切换到DeAOT跟踪器[64]。它利用分层特征传播和注意机制来处理具有遮挡和混乱背景的复杂情况。这使得跟踪器能够准确跟踪和区分视频序列中的多个目标。通过利用集成方法并结合MixFormer和DeAOT，该跟踪器确保在各种情境下进行稳健而准确的目标跟踪。</p>
+<h3 id="A-15-组合不同的跟踪器以进行稳健的单对象和多对象跟踪-MixItUp-3">A.15.组合不同的跟踪器以进行稳健的单对象和多对象跟踪 (MixItUp-3)</h3>
+<p>MixItUp-3 与 MixItUp-2 (A.14) 类似。两个跟踪器之间的差异在于用于使用 MixFormer 跟踪器或 DeAOT 跟踪器的对象数量。对于 MixItUp-3，对象数量设置为 4。</p>
+<h3 id="A-16-组合不同的跟踪器以进行稳健的单目标和多目标跟踪-MixFormerSAMHDeAOT">A.16.组合不同的跟踪器以进行稳健的单目标和多目标跟踪 (MixFormerSAMHDeAOT)</h3>
+<p>MixFormerSAMHDeAOT 与 MixItUp2 (A.14) 类似。两个跟踪器之间的差异在于用于使用 MixFormer 跟踪器或 DeAOT 跟踪器的对象数量。对于 MixFormerSAMHDeAOT，对象数量设置为 2。</p>
+<h3 id="A-17-学习用于视觉跟踪的时空变换器-starkmulti">A.17.学习用于视觉跟踪的时空变换器 (starkmulti)</h3>
+<p>Stark [60]是一种基于变换器方法的端到端跟踪方法，它直接预测一个准确的边界框作为跟踪结果。模板和搜索区域被串联成单一特征表示，并经过多次自注意操作处理，得到最终的特征表示，然后进行边界框预测。此外，Stark不使用任何对超参数敏感的后处理，因此具有稳定的性能表现。</p>
+<h3 id="A-18-链接开放词汇检测-LOVE">A.18.链接开放词汇检测 (LOVE)</h3>
+<p>LOVD 使用预训练的开放词汇检测模型 Grounding DINO [67] 执行检测跟踪。所有序列均使用约 80 个单词的相同提示。两个检测的视觉相似度是使用文本标记上的可能性的 KL 散度来测量的。使用检测与第一帧中正确检测的相似性来过滤检测。连续的轨迹是通过将检测与前一帧的轨迹进行匹配来构建的，并且不匹配的检测会初始化新的轨迹。考虑到时间重叠以及运动和外观的相似性，轨迹与过去的轨迹相关联。使用预先训练的分段任意模型 [25] 获得每个框的掩码。</p>
+<h3 id="A-19-long-vil-net2-vil-net2">A.19. long vil net2 (vil net2)</h3>
+<p>使用的主要算法包括用于自动/交互式关键帧分割的 SAM（Segment Anything Models）[25] 和用于高效多对象跟踪和传播的 DeAOT [64]。</p>
+<h3 id="A-20-基于内存的视频对象分割跟踪器（M-VOSTracker）">A.20.基于内存的视频对象分割跟踪器（M-VOSTracker）</h3>
+<p>M-VOSTracker主要由对象分割器和掩模细化器组成。对象分割器是 DeAOT [64] 的修改版本，我们将门控传播模块扩展为 1/8 比例，并采用更强大的 InternImage [53] 作为我们的主干。该分割器使用多对象分割数据集进行训练，以便更好地理解多个对象之间的关系，并且它可以在一次推理过程中同时处理多个对象。为了进一步提高跟踪掩模的准确性，我们利用预先训练的 SAM 模型，该模型经过大规模分段数据的训练来完善我们的跟踪结果。</p>
+<h3 id="A-21-MiOTS-MiOTS-formerly-MiOTS-rushmi">A.21. MiOTS (MiOTS (formerly MiOTS rushmi))</h3>
+<p>MiOTS基于单目标多目标跟踪分割模型。对于每个跟踪目标，MiOTS 都会初始化一个跟踪器。 MiOTS 框架由两个模型组成：MixformerV2 [10] 和 AOT [63]。 MixformerV2是原始模型的扩展，输入大小为384，我们使用SAM[25]的模型参数作为预训练并重新训练模型以获得更大的MixformerV2模型。第二种模型AOT基于R50骨干网络。这个模型我们直接使用官网提供的模型参数。在跟踪过程中，MixformerV2 和 AOT 模型同时运行。 MiOTS 然后计算两个模型的跟踪结果的交并集 (IoU)。如果 IoU 小于 0.1，我们直接使用 AOT 的结果，因为它的召回性能更优越。如果 IoU 大于 0.5，我们使用 MixformerV2 的结果，因为它的准确性更好。最后，如果 IoU 在 0.1 到 0.5 的范围内，我们使用两个模型结果的交集作为最终输出。</p>
+<h3 id="A-22-MiOTS-ST-MiOTS-ST">A.22. MiOTS-ST (MiOTS-ST)</h3>
+<p>MiOTS-ST 基于 MiOTS (A.21)。在 MiOTS-ST 中，MixformerV2 和 AOT 模型根据尺寸比例独立使用。对于超过 100 的比率，由于其准确性而使用 MixformerV2，而对于低于 100 的比率，由于其出色的召回率而选择 AOT。这种方法有效地利用了两种模型的优势，提高了短期跟踪和细分模型的准确性和弹性。</p>
+<h3 id="A-23-MixConvMAE-L-MixFormer">A.23. MixConvMAE-L (MixFormer)</h3>
+<p>MixFormer-ConvMAE-Large 是一种具有迭代混合注意力的端到端跟踪（MixConvMAE-L）。 MixConvMAE-L 由两个阶段组成，分别执行基于 MixFormer 的跟踪和基于 Alpha-Refine 的分割。我们的核心设计是利用注意力操作的灵活性，提出一种混合注意力模块（MAM），用于同时进行特征提取和目标信息集成。 MixFormer-ConvMAELarge 是基于预训练的 ConvMAE-Large 构建的。</p>
+<h3 id="A-24-MixFormerV2-Base-MixFormerV2">A.24. MixFormerV2-Base (MixFormerV2)</h3>
+<p>MixFormerV2是一个统一良好的完全变压器跟踪模型，没有任何密集的卷积操作和复杂的分数预测模块。我们提出了四个关键预测标记来捕获目标模板和搜索区域之间的相关性。基于它们，我们可以轻松地预测跟踪框并通过简单的 MLP 头估计其置信度得分。通过我们的蒸馏设计，MixFormerV2 可以在性能和推理延迟之间实现出色的权衡。此外，我们在顶部放置了一个 Alpha Refine 模型来进行目标分割。</p>
+<h3 id="A-25-MS-AOT：将对象与多尺度转换器关联以进行视频对象分割-aot">A.25. MS-AOT：将对象与多尺度转换器关联以进行视频对象分割 (aot)</h3>
+<p>MS-AOT 跟踪器是基于 AOT [63,62,65]（一种基于变换器的视频对象分割方法）构建的，通过在多个特征尺度上应用变换器。 MS-AOT 可以端到端地跟踪和分割大多数对象，而无需使用边界框信息。对于微小物体，我们使用 MixFormer [9]（一种基于边界框的跟踪器）来粗略定位物体，然后再应用 MS-AOT 预测分割结果。 MS-AOT 的主干是 ResNet-50，MixFormer 的主干是 CvT [54]。</p>
+<h3 id="A-26-Mstark-Mstark">A.26. Mstark (Mstark)</h3>
+<p>Tracker Mstark 基于 Stark 模型 [60]，包含两个关键变化。首先，将对象存在标志添加到 Stark 模型中。该标志充当确定场景中是否存在对象的指示器。其次，对模型的搜索区域进行了调整，将搜索区域扩大了3.5倍。通过扩大搜索区域，模型具有更宽的视野，增加了正确检测与目标物体非常相似的物体的可能性。这一修改旨在提高模型区分相似物体的能力并减少漏检。对象存在标记有助于消除误报，而扩展的搜索区域则减少了对相似对象的误检测。</p>
+<h3 id="A-27-基于多上下文的多目标跟踪器-MCMOT">A.27.基于多上下文的多目标跟踪器 (MCMOT)</h3>
+<p>MCMOT 利用 MixFormer [9] 进行目标位置检测，并利用分段任意模型 (SAM) [25] 进行对象屏蔽。这还涉及在每个时间步独立预测每个目标的位置。然而，在目标模板共享相似视觉外观的情况下，这种独立预测可能会导致指示同一对象的不同模板。为了解决这个问题，MCMOT 结合了前一个时间步预测的上下文信息。具体来说，在当前模板的输入搜索区域中，与前一时间步预测的其他模板的位置对应的像素被设置为0。此外，MCMOT 结合了两个在线模板，即长期模板和短期模板，以提供更全面的上下文。通过这样做，模型可以同时受益于两个模板：保留消失对象的外观特征并处理外观的快速变化。</p>
+<h3 id="A-28-通过粒子重新传播和稀疏光流进行多目标跟踪器-TrackerPRO">A.28.通过粒子重新传播和稀疏光流进行多目标跟踪器 (TrackerPRO)</h3>
+<p>TrackerPRO 基于迭代粒子重新传播方法 [8]，该方法采用粒子和 HSV 颜色直方图来提高跟踪精度。与之前的算法相比，粒子分布由高斯分布改为圆形均匀分布，以在各个角度上密度均匀的圆上初始化粒子。之后，使用计算的光流来调整粒子的方向。为了跟踪各种尺寸的物体，在粒子位置周围生成收缩和膨胀区域，并在这些区域之间选择颜色分布与物体更相似的区域。跟踪对象是根据不同区域的粒子的相似分布程度来确定的。</p>
+<h3 id="A-29-多目标线索跟踪-MTCTrack">A.29.多目标线索跟踪 (MTCTrack)</h3>
+<p>MTCTrack 通过多个目标线索来挖掘目标更全面的信息。 MTCTrack 建立在 OSTrack [66] 之上，利用长期上下文信息来传播目标的外观状态，显式地建模目标的表观信息。此外，采用 Alpha-Refine [61] 来产生掩模预测作为输出。</p>
+<h3 id="A-30-OmniTracker-pyetest800-convnext-pytest800-convnext">A.30. OmniTracker pyetest800 convnext (pytest800 convnext)</h3>
+<p>取决于目标对象的初始状态是由第一帧中提供的注释还是类别指定的。结合两个社区中开发的最佳实践的优点，实例跟踪（例如，SOT 和 VOS）和类别跟踪（例如，MOT、MOTS 和 VIS），我们提出了一种新颖的跟踪与检测范例，其中跟踪补充了外观先验检测和检测提供了对候选边界框的跟踪以进行关联。配备这样的设计，进一步提出了统一的跟踪模型OmniTracker，以完全共享的网络架构、模型权重和推理管道来解决所有跟踪任务。</p>
+<h3 id="A-31-PriMem：具有先验知识的基于内存的跟踪器（PriMem）">A.31. PriMem：具有先验知识的基于内存的跟踪器（PriMem）</h3>
+<p>该 PriMem 跟踪器构建在 XMem [6] 之上，XMem 是视频对象分割中基于内存的单对象跟踪器。与原始模型相比，我们添加了实例的先验知识以改进复杂场景下的对象跟踪。此外，我们采用结合隐式表达和原始特征向量的SOTA分割模型来辅助分割掩模的生成。</p>
+<h3 id="A-32-READMem-MiVOS-READMem-MiVOS">A.32. READMem-MiVOS (READMem MiVOS)</h3>
+<p>READMem MiVOS 基于 READMem（多样化内存的鲁棒嵌入关联）[52]，这是一种半自动视频对象分割（sVOS）方法的模块化框架，旨在处理无约束视频。仅当 READMem 增加了内存内容的多样性时，READMem 才会将新帧嵌入到内存中。此外，它在更新过程中使用存储在内存中的嵌入与查询嵌入的鲁棒关联。跟踪器由两个编码器[20]组成，每个编码器用于存储器和查询帧，一个时空存储器读取块[7]，一个解码器[47]和一个存储先前观察到的帧作为参考的外部存储器。内存编码器联合使用图像和对象掩码来提取内存键和值嵌入，而查询编码器专门处理查询图像以获得查询键和值嵌入。查询键和内存键之间的交叉注意力（由时空内存读取块执行）确定了内存值的相关信息，解码器利用这些信息来分割当前帧。</p>
+<h3 id="A-33-Reptile-Meta-Tracking-ReptileFPN">A.33. Reptile Meta-Tracking (ReptileFPN)</h3>
+<p>ReptileFPN 是一个基于 FPN 模型和称为 Reptile 的元学习技术的跟踪器。我们通过重复采样不同的任务来离线训练深度学习网络。由此产生的网络可以快速适应任何域，而不需要像 MDNet 那样训练多域分支。 Reptile Meta-Tracker 的原始架构使用了类似 VGG 的主干网。这里我们使用FPN对其进行修改，进一步提高特征提取能力。在在线初始化期间，ReptileFPN 跟踪器只需要第一帧中的一些训练示例和几个优化步骤。</p>
+<h3 id="A-34-通过分段进行稳健的视觉跟踪-rts-rts50-002">A.34.通过分段进行稳健的视觉跟踪 (rts_rts50_002)</h3>
+<p>RTS [48]是一个统一的跟踪架构，能够预测准确的分割掩模。为了设计一个以分割为中心的方法，我们受到了VOS方法LWL [4]的启发。然而，为了在跟踪数据集上实现鲁棒且准确的分割，我们提出了一些新的组件。特别地，我们提出了一个实例定位分支，经过训练可以预测目标外观模型，从而允许检测遮挡并在拥挤场景中正确识别目标。实例定位分支的输出进一步用于条件化高维度掩模编码。这使得分割解码器能够集中在定位的目标上，从而实现更鲁棒的掩模预测。由于我们的提出方法包括需要使用先前的跟踪结果更新的分割记忆和实例记忆，因此我们设计了一个记忆管理模块。这个模块首先评估预测质量，决定样本是否应该进入记忆，并在需要更新时触发跟踪模型。更多详细信息请参阅[48]。</p>
+<h3 id="A-35-基于分段任何模型的-AOT-跟踪器（SAM-跟踪器）">A.35.基于分段任何模型的 AOT 跟踪器（SAM 跟踪器）</h3>
+<p>SAM Tracker使用Segment Anything模型为AOT跟踪器[63]生成参考分段信息，同时结合接地DINO[67]为跟踪器生成文本提示。</p>
+<h3 id="A-36-基于分段任何模型的-MixFormer-跟踪器-MixSAMB">A.36.基于分段任何模型的 MixFormer 跟踪器 (MixSAMB)</h3>
+<p>所提出的跟踪器模型使用具有泛化性能的分段任意模型（SAM）[25]作为后端来预测目标的图像分割信息。为了预测跟踪目标的目标区域分割，我们使用边界框跟踪器的预测结果作为 SAM 的提示。为了生成准确的提示，使用了 MixFormer [9] 模型，该模型在边界推理方面表现出了出色的性能。跟踪器使用预训练的 MixFormer-vit-base 模型，SAM 使用预训练的 ViT-base 模型[14]。</p>
+<h3 id="A-37-SegmentAnything-Open-CLIP-HSE-University-IPPM-RAS-SRZLT-HSE-IPPM-ClipSegmentAnything">A.37. SegmentAnything + Open CLIP (HSE University + IPPM RAS) (SRZLT HSE IPPM ClipSegmentAnything)</h3>
+<p>我们的方法取决于两个模型。第一个模型是 Facebook [25] 基于 VIT-H 主干的 Segment Anything。该模型搜索感兴趣的区域并返回一组掩模。第二个模型是 Open CLIP 模型13，它为每个感兴趣区域以及所有要找到的对象查找向量。之后，找到每个建议的掩模和每个对象之间的余弦相似度。为对象选择具有最大值的掩码。跟踪器一次搜索所有对象，它是一个零样本跟踪器（即它没有在任何跟踪数据集上进行训练）。开发的跟踪器可以在 Github<sup>14</sup> 上免费获得。</p>
+<h3 id="A-38-SeqTrack：视觉对象跟踪的序列到序列学习（seqtrack）">A.38. SeqTrack：视觉对象跟踪的序列到序列学习（seqtrack）</h3>
+<p>我们利用 Seqtrack [5] 作为我们的主要跟踪器，它基于简单的编码器-解码器变压器架构。对象的边界框表示为一系列离散标记，编码器提取视觉特征，而解码器使用提取的特征自回归生成边界框标记序列。为了解决干扰因素的挑战，我们还采用了一种名为 KeepTrack 的辅助跟踪器 [41]。此外，我们还结合了一个基本运动模块（在 LaSOT 数据集上训练）来预测跟踪器结果出现异常跳跃时的目标边界框。我们使用 SAM [25] 模型来预测掩模。</p>
+<h3 id="A-39-starkplusplus-starkplusplus">A.39. starkplusplus (starkplusplus)</h3>
+<p>这个修改后的模型基于stark [60]的单目标跟踪模型，并加入了一个yolo [50]检测模块以增强其功能。修改的主要目标是解决跟踪器失去目标的情况。为实现这一目标，将一个yolo检测模块集成到模型架构中。当跟踪器无法定位目标时，会触发yolo检测模块，允许模型进行新的检测以重新定位和重新获取目标。此外，引入了一个标志来提供有关当前帧中目标是否存在的信息。通过结合stark模型的优势、yolo检测模块以及引入的标志，这个修改后的模型通过在目标丢失时自动重新检测目标并提供其存在的实时信息，提供了改进的跟踪性能。</p>
+<h3 id="A-40-STARK-ST50-with-Alpha-Refine-stark-st50-ar">A.40. STARK-ST50 with Alpha-Refine (stark st50 ar)</h3>
+<p>Stark st50 ar 结合了基于 Transformer 的 STARK [60] 和 Alpha-Refine [61]。</p>
+<h3 id="A-41-跟踪和分段任何模型-T-SAM">A.41.跟踪和分段任何模型 (T-SAM)</h3>
+<p>我们选择一个有效的跟踪器 DeAOT [64] 作为基线跟踪器，以实现高效的多目标跟踪和传播。我们进一步应用大型模型 SAM（Segment Anything Models）[25] 进行自动关键帧分割。</p>
+<h3 id="A-42-高质量跟踪任何内容-HQTrack">A.42.高质量跟踪任何内容 (HQTrack)</h3>
+<p>HQTrack主要由视频多对象分割器和掩模细化器组成。分段器是 DeAOT [64] 的改进版本，我们级联一个 1/8 比例的门控传播模块，用于感知复杂场景中的小物体。此外，采用Intern-T作为我们的特征提取器来增强对象辨别能力。我们的对象分割器使用多对象分割数据集进行训练，以便更好地理解多个对象之间的关系。它可以在一次推理过程中同时处理多个对象。为了进一步提高跟踪掩模的质量，我们利用预先训练的 HQ-SAM 模型 [24] 来完善我们的跟踪结果。 HQ-SAM设计了一个可学习的高质量输出令牌，该令牌被注入到SAM的掩模解码器中，并负责预测高质量掩模。我们根据框提示计算分割器预测结果的外围框，并将其与原始图像一起输入 HQ-SAM 以获得细化结果，最终的跟踪结果是从分割器和细化器中选择的。有关更多实施细节，我们建议读者参阅我们的技术报告[68]。</p>
+<h3 id="A-43-通过目标感知消失检测-UnitTS-进行统一对象跟踪">A.43.通过目标感知消失检测 (UnitTS) 进行统一对象跟踪</h3>
+<p>我们使用基线 Unicorn [58] 同时解决 SOT 和 MOT 任务。为了解决新的 VOTS 任务，我们主要遵循 SOT 范式，但将原始的单一地面实况提示扩展到多个。为了解决物体消失的问题，我们进一步设计了一种目标感知消失检测方法。当分数低于阈值时，会激活重新检测，这里的阈值是目标感知的。我们使用预先训练的模型来处理所有视频，因此固定阈值可能不适合所有类型的目标。所以阈值与该方法中第一帧计算的分数有关。具体来说，我们为不同的对象赋予不同的阈值。</p>
+<h3 id="A-44-UNINEXT-with-ResNet-50-backbone-UNINEXT-R50">A.44. UNINEXT with ResNet-50 backbone (UNINEXT R50)</h3>
+<p>UNINEXT 是一个强大的统一模型，适用于 10 个实例感知任务。它将 10 个实例感知任务重新表述为提示引导的对象发现和检索方式。</p>
+<h3 id="A-45-UNINEXT-with-ViT-Huge-backbone-UNINEXT-Huge">A.45. UNINEXT with ViT-Huge backbone (UNINEXT Huge)</h3>
+<p>UNINEXT是10个实例感知任务的统一模型。 UNINEXT Huge [59]以ViT-Huge为骨干。其他设置与 UNINEXT R50 (A.44) 一致。</p>
+<h3 id="A-46-ViT-自适应密集融合变压器跟踪器-VAPT">A.46. ViT 自适应密集融合变压器跟踪器 (VAPT)</h3>
+<p>VAPT 是一种两阶段视频跟踪到分割架构。该跟踪器基于具有自适应网络的 ViT 编码器、4 层密集融合解码器 (DFD) 和两个 DCF 目标预测头。自适应网络建立在 12 层零中心注意力块上，将每个近层的特征上下文集成到同一特征空间中。 DFD 由目标查询张量、四个零中心注意力层和一个项目 MLP 层构建。 DCF 目标头扩展了受 ToMP [40] 头启发的卷积层。分割网络遵循 HQ-SAM [24]，根据预测的边界框生成高质量的目标掩模。在推理过程中，我们提出了一种名为 CycleTrack 的策略，通过验证时间循环一致性来纠正干扰因素引起的错误。这是基于这样的见解：作为后验条件，在时间上向后跟踪时，被跟踪目标应该跟踪前一帧目标。为了提高长期自适应跟踪能力，我们将ToMP中的基本内存更新策略扩展为交错模板更新方法。此外，搜索区域抖动是 VAPT 中的另一种推理策略。当目标丢失时，将应用它来在大范围区域内重新找到它。</p>
+<h3 id="A-47-视觉变换器跟踪（vttrack）">A.47.视觉变换器跟踪（vttrack）</h3>
+<p>我们对跟踪数据集上使用 MAE [19] 方法生成的权重进行了微调。我们使用 VIT-large 模型。首先，模板和搜索区域都被嵌入补丁，然后通过变压器块结构连接在一起进行特征提取和融合。最后，将融合后的特征输出到分类和回归头，完成边界框的生成。我们在分类头的输出上应用汉宁窗来利用对象的运动信息。之后，我们检索置信度最高位置处的回归头的输出并输出边界框。我们使用Segment Anything Segment Anything Model（SAM）[25]作为输出掩模的模型。当跟踪器输出的置信度值很低时，认为目标不再在图像中，并输出空掩模。</p>
+<h1>Basic Information:</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Title: The First Visual Object Tracking Segmentation VOTS2023 Challenge Results (第一届视觉目标跟踪分割VOTS2023挑战结果)</p>
+</li>
+<li class="lvl-2">
+<p>Authors: Matej Kristan, Jiˇr´ı Matas, Martin Danelljan, Michael Felsberg, Hyung Jin Chang, Luka ˇCehovin Zajc, Alan Lukeˇziˇc, Ondrej Drbohlav, Zhongqun Zhang, Khanh-Tung Tran, Xuan-Son Vu, Johanna Bj¨orklund, Christoph Mayer, Yushan Zhang, Lei Ke, Jie Zhao, Gustavo Fern´andez, Noor Al-Shakarji, Dong An, Michael Arens, Stefan Becker, Goutam Bhat, Sebastian Bullinger, Antoni B. Chan, Shijie Chang, Hanyuan Chen, Xin Chen, Yan Chen, Zhenyu Chen, Yangming Cheng, Yutao Cui, Chunyuan Deng, Jiahua Dong, Matteo Dunnhofer, Wei Feng, Jianlong Fu, Jie Gao, Ruize Han, Zeqi Hao, Jun-Yan He, Keji He, Zhenyu He, Xiantao Hu, Kaer Huang, Yuqing Huang, Yi Jiang, Ben Kang, Jin-Peng Lan, Hyungjun Lee, Chenyang Li, Jiahao Li, Ning Li, Wangkai Li, Xiaodi Li, Xin Li, Pengyu Liu, Yue Liu, Huchuan Lu, Bin Luo, Ping Luo, Yinchao Ma, Deshui Miao, Christian Micheloni, Kannappan Palaniappan, Hancheol Park, Matthieu Paul, HouWen Peng, Zekun Qian, Gani Rahmon, Norbert Scherer-Negenborn, Pengcheng Shao, Wooksu Shin, Elham Soltani Kazemi, Tianhui Song, Rainer Stiefelhagen, Rui Sun, Chuanming Tang, Zhangyong Tang, Imad Eddine Toubal, Jack Valmadre, Joost van de Weijer, Luc Van Gool, Jash Vira, St`ephane Vujasinovi´c, Cheng Wan, Jia Wan, Dong Wang, Fei Wang, Feifan Wang, He Wang, Limin Wang, Song Wang, Yaowei Wang, Zhepeng Wang, Gangshan Wu, Jiannan Wu, Qiangqiang Wu, Xiaojun Wu, Anqi Xiao, Jinxia Xie, Chenlong Xu, Min Xu, Tianyang Xu, Yuanyou Xu, Bin Yan, Dawei Yang, Ming-Hsuan Yang, Tianyu Yang, Yi Yang, Zongxin Yang, Xuanwu Yin, Fisher Yu, Hongyuan Yu, Qianjin Yu, Weichen Yu, YongSheng Yuan, Zehuan Yuan, Jianlin Zhang, Lu Zhang, Tianzhu Zhang, Guodongfang Zhao, Shaochuan Zhao, Yaozong Zheng, Bineng Zhong, Jiawen Zhu, Xuefeng Zhu, Yueting Zhuang, ChengAo Zong, Kunlong Zuo</p>
+</li>
+<li class="lvl-2">
+<p>Affiliation: University of Ljubljana, Slovenia (斯洛文尼亚卢布尔雅那大学)</p>
+</li>
+<li class="lvl-2">
+<p>Keywords: Visual object tracking, Segmentation, VOTS2023 Challenge (视觉目标跟踪，分割，VOTS2023挑战)</p>
+</li>
+<li class="lvl-2">
+<p>URLs: <a href="https://openaccess.thecvf.com/content/ICCV2023W/VOT/html/Kristan_The_First_Visual_Object_Tracking_Segmentation_VOTS2023_Challenge_Results_ICCVW_2023_paper.html">Paper</a>, <a href="https://github.com/votchallenge/vots2023">GitHub</a></p>
+</li>
+</ul>
+<h1>论文简要 :</h1>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>本研究是第一届视觉目标跟踪分割VOTS2023挑战的结果，通过合并短期和长期跟踪以及单目标和多目标跟踪，使用分割掩码作为唯一的目标位置指示，展示了47个跟踪器的结果，表明现代跟踪框架很适合处理短期和长期跟踪的融合，同时将多目标和单目标跟踪视为一个问题。 (This research presents the results of the first Visual Object Tracking Segmentation VOTS2023 Challenge, which merges short-term and long-term tracking as well as single-target and multiple-target tracking using segmentation masks as the only target location specification. The results of 47 trackers indicate that modern tracking frameworks are well-suited to deal with the convergence of short-term and long-term tracking, and that multiple and single target tracking can be considered a single problem.)</p>
+</li>
+</ul>
+<h2 id="背景信息">背景信息:</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>论文背景: 视觉目标跟踪是计算机视觉领域的一个基本问题，近二十年来取得了显著进展，但缺乏统一的性能评估标准。为了推动该领域的发展，VOT1倡议成立，随后的VOT挑战活动使得VOT成为跟踪领域的核心。 (Visual object tracking is a fundamental problem in computer vision, and significant progress has been made in the past two decades. However, there is a lack of consensus on performance evaluation standards. To promote the development of this field, the VOT1 initiative was</p>
+</li>
+</ul>
+<h2 id="方法">方法:</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>a. 理论背景:</p>
+<ul class="lvl-2">
+<li class="lvl-4">VOTS2023挑战是第一个将短期和长期跟踪与分割掩码结合作为目标位置规范的挑战。创建了一个新的数据集，并开发了新的性能评估指标、评估协议、工具包和评估服务器。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>b. 技术路线:</p>
+<ul class="lvl-2">
+<li class="lvl-4">VOTS2023挑战要求通过分割在长或短的序列上同时跟踪一个或多个目标，即使目标在视频中消失并重新出现。参与者将他们的跟踪器集成到VOTS2023评估工具包中，并提交他们的跟踪器输出。</li>
+</ul>
+</li>
+</ul>
+<h2 id="结果">结果:</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>a. 详细的实验设置:</p>
+<ul class="lvl-2">
+<li class="lvl-4">VOTS2023数据集包含来自现有数据集的序列，包括LaGOT、VOT-LT2021、VOT-LT2022、UTB180、VOT-ST2022和TOTB。数据集包含具有挑战性的情况，适用于现代跟踪架构，并涵盖了各种目标外观和对象类型。数据集包含具有视觉相似对象、外观变化的对象、杂乱背景上的对象、退出和重新进入视野的对象以及部分遮挡的对象。数据集共包含144个序列，共341个目标，平均序列长度约为2000帧。</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>b. 详细的实验结果:</p>
+<ul class="lvl-2">
+<li class="lvl-4">VOTS2023挑战共收到77个跟踪器的提交。经过去重和不完整提交的处理，保留了47个有效的条目。根据主要跟踪质量得分（Q）排名前10的跟踪器是DMAOT、HQTrack、M-VOSTracker、Dynamic DEAOT、seqtrack、DMNet、aot、MCMOT、rts rts50 002和VAPT。大多数这些跟踪器被归类为ST1或LT0，并且使用transformer作为主要的跟踪方法。结果在跟踪质量图、AR图和表2中进行了总结。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>格物致知</category>
+        <category>计算机视觉</category>
+        <category>论文笔记</category>
+      </categories>
+      <tags>
+        <tag>ICCV</tag>
+        <tag>视觉跟踪</tag>
+        <tag>VOTS2023挑战赛</tag>
+        <tag>cv</tag>
+        <tag>跟踪器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习_深度学习领域所涉及的基础知识</title>
+    <url>/2023/11/08/University/AI/%E6%9C%BA%E5%99%A8_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E9%A2%86%E5%9F%9F%E6%89%80%E6%B6%89%E5%8F%8A%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1>机器学习_深度学习领域所涉及的基础知识</h1>
+<h3 id="Argmax">Argmax</h3>
+<blockquote>
+<p>参考：<a href="https://baike.baidu.com/item/argmax/6034072">https://baike.baidu.com/item/argmax/6034072</a></p>
+<p>相关应用：</p>
+<ul class="lvl-1">
+<li class="lvl-2">
+<p>Sampling-Argmax：<a href="https://zhuanlan.zhihu.com/p/564050500">https://zhuanlan.zhihu.com/p/564050500</a></p>
+</li>
+</ul>
+</blockquote>
+<p>arg是变元（即自变量argument）的英文缩写。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>arg min就是使后面的式子达到最小值时变量的取值；</p>
+</li>
+<li class="lvl-2">
+<p>arg max就是使后面的式子达到最大值时变量的取值；</p>
+</li>
+</ul>
+<p>例如：对于函数式<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x,y,z)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span>，</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>arg min<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x,y,z)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span>：当<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>取得最小值时，变量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">x,y,z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span>的取值；</p>
+</li>
+<li class="lvl-2">
+<p>arg max<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x,y,z)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span>：当<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>取得最大值时，变量<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">x,y,z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span>的取值；</p>
+</li>
+</ul>
+<p>argmax的公式如下：</p>
+<p><img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/3d64f2ee47fbded10f7be36599c2bf77.svg" alt="img"></p>
+<p>对一个函数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>或一个映射<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mtext>：</mtext><mi>X</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">f：X \rightarrow Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord cjk_fallback">：</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span></span>，当x取值范围为S的时候（也叫<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">x \in S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span>），argmax的结果是使得f(x)取得最大值的x点集。</p>
+<h3 id="Softmax：一种输出节点的激活函数">Softmax：一种输出节点的激活函数</h3>
+<blockquote>
+<p>参考：</p>
+<ul class="lvl-1">
+<li class="lvl-2"><a href="https://zhuanlan.zhihu.com/p/105722023">https://zhuanlan.zhihu.com/p/105722023</a></li>
+<li class="lvl-2"><a href="https://zhuanlan.zhihu.com/p/168562182">https://zhuanlan.zhihu.com/p/168562182</a></li>
+</ul>
+</blockquote>
+<p>Softmax的含义就在于为每个输出分类的结果都赋予一个概率值，表示属于每个类别的可能性。</p>
+<img src="https://wangguijie-typora.oss-cn-chengdu.aliyuncs.com/img/v2-4452fdaaa04686aa270010f57f4db2aa_r.jpg" alt="img" style="zoom:67%;" />
+<blockquote>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">z_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>表示的是第i个节点的输出值，j表示的是输出节点的个数，即分类类别的个数。</p>
+<p>*注意以上图中的概率P值直接四舍五入为一位小数了，并不是真实的概率值。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>格物致知</category>
+      </categories>
+      <tags>
+        <tag>ML</tag>
+        <tag>DL</tag>
+        <tag>基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pix2seq：应用于目标检测的语言建模框架</title>
     <url>/2023/11/08/University/AI/PaperLearn/Pix2seq%EF%BC%9A%E5%BA%94%E7%94%A8%E4%BA%8E%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%9A%84%E8%AF%AD%E8%A8%80%E5%BB%BA%E6%A8%A1%E6%A1%86%E6%9E%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1>Pix2seq</h1>
