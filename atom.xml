@@ -6,7 +6,7 @@
   <link href="https://wangguijiepedeval.github.io/atom.xml" rel="self"/>
   
   <link href="https://wangguijiepedeval.github.io/"/>
-  <updated>2023-11-21T08:40:56.123Z</updated>
+  <updated>2024-03-01T07:49:14.957Z</updated>
   <id>https://wangguijiepedeval.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>集成开发常用技巧汇总</title>
+    <link href="https://wangguijiepedeval.github.io/2024/03/01/Comment/%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/"/>
+    <id>https://wangguijiepedeval.github.io/2024/03/01/Comment/%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%B1%87%E6%80%BB/</id>
+    <published>2024-03-01T07:50:21.390Z</published>
+    <updated>2024-03-01T07:49:14.957Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="评论贴" scheme="https://wangguijiepedeval.github.io/categories/%E8%AF%84%E8%AE%BA%E8%B4%B4/"/>
+    
+    
+    <category term="评论贴" scheme="https://wangguijiepedeval.github.io/tags/%E8%AF%84%E8%AE%BA%E8%B4%B4/"/>
+    
+    <category term="集成开发技巧" scheme="https://wangguijiepedeval.github.io/tags/%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>VSCode使用基础</title>
@@ -590,39 +617,6 @@
     <id>https://wangguijiepedeval.github.io/2023/10/18/University/Algorithm/Topic%20learning/6-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</id>
     <published>2023-10-18T07:53:53.551Z</published>
     <updated>2023-04-11T08:55:00.572Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="竞赛" scheme="https://wangguijiepedeval.github.io/categories/%E7%AB%9E%E8%B5%9B/"/>
-    
-    <category term="算法" scheme="https://wangguijiepedeval.github.io/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/"/>
-    
-    <category term="蓝桥杯" scheme="https://wangguijiepedeval.github.io/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
-    
-    <category term="专题学习" scheme="https://wangguijiepedeval.github.io/categories/%E7%AB%9E%E8%B5%9B/%E7%AE%97%E6%B3%95/%E8%93%9D%E6%A1%A5%E6%9D%AF/%E4%B8%93%E9%A2%98%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="蓝桥杯" scheme="https://wangguijiepedeval.github.io/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
-    
-    <category term="算法" scheme="https://wangguijiepedeval.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>并查集与二分算法</title>
-    <link href="https://wangguijiepedeval.github.io/2023/10/18/University/Algorithm/Topic%20learning/5-%E5%B9%B6%E6%9F%A5%E9%9B%86%E4%B8%8E%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/"/>
-    <id>https://wangguijiepedeval.github.io/2023/10/18/University/Algorithm/Topic%20learning/5-%E5%B9%B6%E6%9F%A5%E9%9B%86%E4%B8%8E%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95/</id>
-    <published>2023-10-18T07:53:53.541Z</published>
-    <updated>2023-04-11T08:54:57.428Z</updated>
     
     
       
